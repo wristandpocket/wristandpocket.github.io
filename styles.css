@@ -135,6 +135,8 @@ img {
   position: relative;
   overflow: hidden;
   padding: 40px 20px;
+  background: radial-gradient(ellipse at 50% 40%, rgba(3, 218, 198, .04) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 60%, rgba(187, 134, 252, .03) 0%, transparent 50%);
 }
 
 /* Animated glowing ring */
@@ -225,12 +227,29 @@ img {
 
 .hero__scroll-hint {
   position: absolute;
-  bottom: 36px;
-  font-size: 0.7rem;
-  letter-spacing: 3px;
+  bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--text-dim);
+  color: var(--accent-teal);
+  opacity: .85;
   animation: float 2.5s ease-in-out infinite;
+}
+
+.hero__scroll-hint::after {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-right: 2px solid var(--accent-teal);
+  border-bottom: 2px solid var(--accent-teal);
+  transform: rotate(45deg);
+  animation: chevronBounce 2s ease-in-out infinite;
 }
 
 @keyframes float {
@@ -241,7 +260,21 @@ img {
   }
 
   50% {
-    transform: translateY(-8px);
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes chevronBounce {
+
+  0%,
+  100% {
+    opacity: .4;
+    transform: rotate(45deg) translateY(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: rotate(45deg) translateY(4px);
   }
 }
 
@@ -316,6 +349,14 @@ img {
 .game-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 20px 50px rgba(0, 0, 0, .5);
+}
+
+.wrist .game-card:hover {
+  box-shadow: 0 20px 50px rgba(0, 0, 0, .5), 0 0 30px rgba(3, 218, 198, .08);
+}
+
+.pocket .game-card:hover {
+  box-shadow: 0 20px 50px rgba(0, 0, 0, .5), 0 0 30px rgba(187, 134, 252, .08);
 }
 
 .game-card__media {
@@ -393,7 +434,7 @@ img {
   padding: 10px 20px;
   border-radius: 24px;
   border: 1px solid;
-  transition: background var(--transition), color var(--transition);
+  transition: background var(--transition), color var(--transition), box-shadow var(--transition);
 }
 
 .game-card__cta--teal {
@@ -404,6 +445,7 @@ img {
 .game-card__cta--teal:hover {
   background: var(--accent-teal);
   color: var(--bg);
+  box-shadow: 0 0 20px rgba(3, 218, 198, .3);
 }
 
 .game-card__cta--purple {
@@ -414,6 +456,7 @@ img {
 .game-card__cta--purple:hover {
   background: var(--accent-purple);
   color: var(--bg);
+  box-shadow: 0 0 20px rgba(187, 134, 252, .3);
 }
 
 /* ============================================================
@@ -421,6 +464,7 @@ img {
    ============================================================ */
 .wrist {
   padding: 100px 0;
+  border-top: 1px solid rgba(255, 255, 255, .04);
 }
 
 .wrist__grid {
@@ -468,9 +512,22 @@ img {
    FOOTER
    ============================================================ */
 .site-footer {
-  padding: 60px 0 40px;
-  border-top: 1px solid rgba(255, 255, 255, .05);
+  padding: 80px 0 48px;
+  border-top: 1px solid rgba(255, 255, 255, .06);
   text-align: center;
+  position: relative;
+}
+
+.site-footer::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-teal), var(--accent-purple));
+  border-radius: 2px;
 }
 
 .footer__links {
@@ -504,6 +561,24 @@ img {
 .footer__copy {
   font-size: 0.75rem;
   color: var(--text-dim);
+}
+
+/* ---------- Accessibility: Focus ---------- */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent-teal);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.site-nav__brand {
+  text-decoration: none;
+}
+
+/* ---------- Selection ---------- */
+::selection {
+  background: rgba(3, 218, 198, .25);
+  color: var(--text-primary);
 }
 
 /* ============================================================
@@ -585,10 +660,10 @@ img {
   left: 0;
   width: 100%;
   z-index: 100;
-  padding: 18px 0;
-  background: rgba(5, 5, 5, .6);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, .04);
+  padding: 22px 0;
+  background: rgba(5, 5, 5, .75);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, .06);
 }
 
 .site-nav .container {
@@ -598,21 +673,22 @@ img {
 }
 
 .site-nav__brand {
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 3px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 4px;
   color: var(--text-primary);
 }
 
 .site-nav__links {
   display: flex;
-  gap: 24px;
+  gap: 28px;
+  align-items: center;
 }
 
 .site-nav__links a {
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   font-weight: 600;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   color: var(--text-secondary);
   transition: color var(--transition);
 }
@@ -625,18 +701,21 @@ img {
    LANGUAGE SWITCHER
    ============================================================ */
 .lang-switch {
-  padding: 4px 12px;
-  border: 1px solid rgba(255, 255, 255, .12);
+  padding: 6px 16px;
+  border: 1.5px solid var(--accent-teal);
   border-radius: 20px;
-  font-size: 0.72rem !important;
-  letter-spacing: 1px;
-  transition: background var(--transition), border-color var(--transition), color var(--transition);
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.5px;
+  color: var(--accent-teal) !important;
+  transition: background var(--transition), border-color var(--transition), color var(--transition), box-shadow var(--transition);
 }
 
 .lang-switch:hover {
-  background: rgba(255, 255, 255, .08);
-  border-color: rgba(255, 255, 255, .25);
-  color: var(--text-primary) !important;
+  background: var(--accent-teal);
+  border-color: var(--accent-teal);
+  color: var(--bg) !important;
+  box-shadow: 0 0 16px rgba(3, 218, 198, .3);
 }
 
 /* ============================================================
@@ -665,11 +744,11 @@ img {
   }
 
   .site-nav__links {
-    gap: 16px;
+    gap: 18px;
   }
 
   .site-nav__links a {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
   }
 }
 
