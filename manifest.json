@@ -1,0 +1,26 @@
+{
+  "name": "Wrist & Pocket Studio",
+  "short_name": "W&P Studio",
+  "description": "Wrist & Pocket Studio crafts premium Wear OS smartwatch games.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0f",
+  "theme_color": "#0a0a0f",
+  "orientation": "portrait-primary",
+  "lang": "en",
+  "categories": ["games", "personalization"],
+  "icons": [
+    {
+      "src": "/assets/images/pwa/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/images/pwa/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+---
+layout: default
+---
+
+<article class="post-detail" itemscope itemtype="https://schema.org/BlogPosting">
+    <meta itemprop="inLanguage" content="{{ page.lang }}">
+
+    <div class="post-back-link">
+        <a href="{{ '/' | relative_url }}#news" class="btn-back">
+            &larr; {{ site.data[site.active_lang].strings.back_home | default: 'Back to Home' }}
+        </a>
+    </div>
+
+    <header class="post-header">
+        <!-- Game Tag Badge -->
+        {% if page.tags and page.tags.size > 0 %}
+        <div class="post-tags-list">
+            {% for tag in page.tags %}
+            <span class="game-tag-badge">{{ tag }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <h1 class="post-title" itemprop="headline">{{ page.title }}</h1>
+
+        <div class="post-meta">
+            <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+                {{ page.date | date: "%Y-%m-%d" }}
+            </time>
+            <span class="meta-sep">&bull;</span>
+            <span>
+                {% assign words = content | number_of_words %}
+                {% assign read_time = words | divided_by: 180 | plus: 1 %}
+                {{ read_time }} {{ site.data[site.active_lang].strings.read_time_suffix | default: 'min read' }}
+            </span>
+            <span class="meta-sep">&bull;</span>
+            <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+                {{ site.data[site.active_lang].strings.published_by | default: 'Published by' }} <span itemprop="name">Ihor Sivochka</span>
+            </span>
+        </div>
+    </header>
+
+    {% if page.image %}
+    <div class="post-cover-image">
+        <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title }}" itemprop="image" loading="lazy">
+    </div>
+    {% endif %}
+
+    <section class="post-content" itemprop="articleBody">
+        {{ content }}
+    </section>
+
+</article>

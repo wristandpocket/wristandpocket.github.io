@@ -1,0 +1,69 @@
+---
+layout: default
+title: "Developer News & Updates — Wrist & Pocket Studio"
+permalink: /blog/
+---
+
+<div class="blog-header">
+    <h1>{{ site.data[site.active_lang].strings.news_title }}</h1>
+    <p>{{ site.data[site.active_lang].strings.news_label }}</p>
+</div>
+
+{% assign posts = site.posts | where: "lang", site.active_lang %}
+
+<!-- Get Unique Tags (Games) for active language posts -->
+{% assign raw_tags = "" %}
+{% for post in posts %}
+    {% for tag in post.tags %}
+        {% capture raw_tags %}{{ raw_tags }},{{ tag }}{% endcapture %}
+    {% endfor %}
+{% endfor %}
+{% assign tags = raw_tags | remove_first: "," | split: "," | uniq | sort %}
+
+<!-- Filter buttons -->
+{% if tags.size > 0 %}
+<div class="filter-container">
+    <span class="filter-label">{{ site.data[site.active_lang].strings.filter_by_game }}</span>
+    <div class="filter-buttons">
+        <button class="btn-filter active" data-tag="all">
+            {{ site.data[site.active_lang].strings.all_games }}
+        </button>
+        {% for tag in tags %}
+        <button class="btn-filter" data-tag="{{ tag }}">
+            {{ tag }}
+        </button>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+<!-- Post list -->
+<div class="news-grid">
+    {% if posts.size > 0 %}
+        {% for post in posts %}
+        {% assign post_tags = post.tags | join: "," %}
+        <a href="{{ post.url | relative_url }}" class="news-card fade-in" data-tags="{{ post_tags }}">
+            <div class="news-card__tags">
+                {% for tag in post.tags %}
+                <span class="game-tag-badge">{{ tag }}</span>
+                {% endfor %}
+            </div>
+            <h3 class="news-card__title">{{ post.title }}</h3>
+            <p class="news-card__excerpt">{{ post.description }}</p>
+            <div class="news-card__meta">
+                <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+                <span>
+                    {% assign words = post.content | number_of_words %}
+                    {% assign read_time = words | divided_by: 180 | plus: 1 %}
+                    {{ read_time }} {{ site.data[site.active_lang].strings.read_time_suffix | default: 'min read' }}
+                </span>
+            </div>
+        </a>
+        {% endfor %}
+    {% else %}
+        <p style="color: var(--text-secondary); text-align: center; width: 100%; grid-column: span 3; padding: 40px 0;">
+            {{ site.data[site.active_lang].strings.no_posts }}
+        </p>
+    {% endif %}
+</div>
+

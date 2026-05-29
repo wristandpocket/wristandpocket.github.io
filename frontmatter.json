@@ -1,0 +1,469 @@
+{
+  "$schema": "https://beta.frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.framework.id": "jekyll",
+  "frontMatter.preview.host": "http://localhost:4000",
+  "frontMatter.content.publicFolder": "/assets/images/",
+  "frontMatter.assets.defaultFolderPath": "assets/images",
+  "frontMatter.media.supportedFieldName": "image",
+  "frontMatter.content.pageFolders": [
+    {
+      "title": "Posts",
+      "path": "[[workspace]]/_posts",
+      "filePrefix": "{{date|yyyy-MM-dd}}",
+      "contentTypes": [
+        "Post"
+      ]
+    },
+    {
+      "title": "Drafts",
+      "path": "[[workspace]]/_drafts",
+      "filePrefix": "{{date|yyyy-MM-dd}}",
+      "contentTypes": [
+        "Post"
+      ]
+    }
+  ],
+  "frontMatter.content.draftField": {
+    "name": "published",
+    "type": "boolean",
+    "invert": true
+  },
+  "frontMatter.content.autoUpdateDate": false,
+  "frontMatter.taxonomy.slugPrefix": "{{date|yyyy-MM-dd}}",
+  "frontMatter.taxonomy.contentTypes": [
+    {
+      "name": "Post",
+      "pageBundle": false,
+      "previewPath": "/blog",
+      "fields": [
+        {
+          "title": "Layout",
+          "name": "layout",
+          "type": "string",
+          "default": "post",
+          "hidden": true,
+          "required": true
+        },
+        {
+          "title": "Title",
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "title": "Description",
+          "name": "description",
+          "type": "string",
+          "required": true,
+          "description": "SEO meta description (~160 chars)"
+        },
+        {
+          "title": "Last Modified At",
+          "name": "last_modified_at",
+          "type": "datetime",
+          "description": "Auto-updated via CMS. Used for sitemap lastmod."
+        },
+        {
+          "title": "Date",
+          "name": "date",
+          "type": "datetime",
+          "default": "{{now}}",
+          "required": true
+        },
+        {
+          "title": "Language",
+          "name": "lang",
+          "type": "choice",
+          "choices": [
+            "en",
+            "uk",
+            "ru",
+            "ko"
+          ],
+          "default": "uk",
+          "required": true
+        },
+        {
+          "title": "Page ID",
+          "name": "page_id",
+          "type": "string",
+          "description": "Unique ID to link translated versions. Use the same ID for all translations of this post."
+        },
+        {
+          "title": "Permalink",
+          "name": "permalink",
+          "type": "string",
+          "required": false,
+          "description": "Auto-generated via link button. Or manual: /blog/my-slug/"
+        },
+        {
+          "title": "Excerpt",
+          "name": "excerpt",
+          "type": "string",
+          "description": "Short teaser for listings & SEO (~100 chars)",
+          "panel": "Excerpts & Categories"
+        },
+        {
+          "title": "Tags (Game Names)",
+          "name": "tags",
+          "type": "tags",
+          "required": true,
+          "panel": "Excerpts & Categories"
+        },
+        {
+          "title": "Author",
+          "name": "author",
+          "type": "choice",
+          "choices": [
+            "ihor"
+          ],
+          "default": "ihor",
+          "required": true
+        },
+        {
+          "title": "Cover Image",
+          "name": "image",
+          "type": "image",
+          "isPreviewImage": true,
+          "panel": "Media"
+        },
+        {
+          "title": "Image Alt",
+          "name": "image_alt",
+          "type": "string",
+          "description": "Alt text for the cover image (A11Y/SEO)",
+          "panel": "Media"
+        },
+        {
+          "title": "Focus Keyword",
+          "name": "focus_keyword",
+          "type": "string",
+          "description": "Primary SEO keyword for content optimization",
+          "panel": "SEO & Indexing"
+        },
+        {
+          "title": "SEO Title",
+          "name": "seo_title",
+          "type": "string",
+          "description": "Override the meta title tag for search engines"
+        },
+        {
+          "title": "SEO Type",
+          "name": "seo_type",
+          "type": "choice",
+          "choices": [
+            "Article",
+            "BlogPosting",
+            "NewsArticle",
+            "TechArticle"
+          ],
+          "default": "BlogPosting",
+          "panel": "SEO & Indexing"
+        },
+        {
+          "title": "Canonical URL",
+          "name": "canonical_url",
+          "type": "string",
+          "description": "Specify a canonical URL if this content exists elsewhere",
+          "panel": "SEO & Indexing"
+        },
+        {
+          "title": "Robots Directives",
+          "name": "robots",
+          "type": "string",
+          "description": "Advanced robots directives (e.g., 'noimageindex, noarchive')",
+          "panel": "SEO & Indexing"
+        },
+        {
+          "title": "No Index",
+          "name": "noindex",
+          "type": "boolean",
+          "description": "Tell search engines NOT to index this page",
+          "panel": "SEO & Indexing"
+        },
+        {
+          "title": "Sitemap",
+          "name": "sitemap",
+          "type": "boolean",
+          "default": true,
+          "description": "Include this page in sitemap.xml",
+          "panel": "SEO & Indexing"
+        },
+        {
+          "title": "Related Posts",
+          "name": "related_posts",
+          "type": "list",
+          "description": "Manual related posts overrides (permalinks or IDs)",
+          "panel": "Advanced"
+        },
+        {
+          "title": "Featured",
+          "name": "featured",
+          "type": "boolean",
+          "description": "Pin or highlight this content on lists",
+          "panel": "Advanced"
+        },
+        {
+          "title": "Hidden",
+          "name": "hidden",
+          "type": "boolean",
+          "description": "Hide from lists (accessible via URL only)",
+          "panel": "Advanced"
+        },
+        {
+          "title": "Redirect From",
+          "name": "redirect_from",
+          "type": "list",
+          "description": "Previous URLs for SEO 301 redirects (e.g. /old-url/)",
+          "panel": "Advanced"
+        },
+        {
+          "title": "Table of Contents",
+          "name": "toc",
+          "type": "boolean",
+          "default": true,
+          "panel": "Advanced"
+        },
+        {
+          "title": "Published",
+          "name": "published",
+          "type": "draft",
+          "default": true,
+          "panel": "Advanced"
+        },
+        {
+          "title": "Content Type",
+          "name": "fmContentType",
+          "type": "string",
+          "hidden": true,
+          "default": "Post"
+        }
+      ]
+    }
+  ],
+  "frontMatter.data.files": [
+    {
+      "id": "authors",
+      "title": "Authors",
+      "file": "[[workspace]]/_data/authors.yml",
+      "fileType": "yaml",
+      "schema": {
+        "title": "Author",
+        "type": "object",
+        "properties": {
+          "slug": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "picture": {
+            "type": "string"
+          },
+          "jobTitle": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  ],
+  "frontMatter.custom.snippets": {
+    "Spaceship: YouTube Video": {
+      "description": "Embed a YouTube video via jekyll-spaceship syntax",
+      "body": "!(https://www.youtube.com/watch?v=[[id]])"
+    },
+    "Spaceship: Local Video": {
+      "description": "Embed a local .mp4 from /assets/images/",
+      "body": "!(/assets/images/[[filename]].mp4)"
+    },
+    "Spaceship: Mermaid Diagram": {
+      "description": "Insert a Mermaid flowchart block",
+      "body": [
+        "```mermaid",
+        "graph TD;",
+        "    A-->B;",
+        "    A-->C;",
+        "    B-->D;",
+        "    C-->D;",
+        "```"
+      ]
+    },
+    "Spaceship: Math Block": {
+      "description": "Insert a MathJax display block (jekyll-spaceship)",
+      "body": [
+        "$$",
+        "[[expression]]",
+        "$$"
+      ]
+    },
+    "Spaceship: Markdown Table": {
+      "description": "Insert a basic 2-column Markdown table",
+      "body": [
+        "| [[Header 1]] | [[Header 2]] |",
+        "| ------------ | ------------ |",
+        "| Cell 1       | Cell 2       |",
+        "| Cell 3       | Cell 4       |"
+      ]
+    },
+    "Polyglot: Translation Note": {
+      "description": "Add a note that this article has translations",
+      "body": [
+        "> 🌐 **This article is available in:** [EN](/blog/[[slug]]/) · [UK](/uk/blog/[[slug]]/) · [RU](/ru/blog/[[slug]]/) · [KO](/ko/blog/[[slug]]/) "
+      ]
+    },
+    "Callout: Info": {
+      "description": "Insert an info callout block",
+      "body": [
+        "<div class=\"callout callout--info\">",
+        "  <strong>ℹ️ Note:</strong> [[content]]",
+        "</div>"
+      ]
+    },
+    "Callout: Warning": {
+      "description": "Insert a warning callout block",
+      "body": [
+        "<div class=\"callout callout--warning\">",
+        "  <strong>⚠️ Warning:</strong> [[content]]",
+        "</div>"
+      ]
+    },
+    "Code: Liquid Raw Block": {
+      "description": "Wrap code in Liquid raw tags to prevent template parsing",
+      "body": [
+        "{% raw %}",
+        "[[code]]",
+        "{% endraw %}"
+      ]
+    },
+    "Code: Rouge Highlight": {
+      "description": "Jekyll Rouge highlight block with line numbers",
+      "body": [
+        "{% highlight [[language]] linenos %}",
+        "[[code]]",
+        "{% endhighlight %}"
+      ]
+    },
+    "Image: WebP with caption": {
+      "description": "Accessible WebP image with figure/figcaption",
+      "body": [
+        "<figure>",
+        "  <img src=\"/assets/images/[[filename]].webp\" alt=\"[[alt]]\" loading=\"lazy\" width=\"[[width]]\" height=\"[[height]]\">",
+        "  <figcaption>[[caption]]</figcaption>",
+        "</figure>"
+      ]
+    },
+    "Link: Internal post": {
+      "description": "Link to another post by its permalink",
+      "body": "[[[title]]]({{ '[[permalink]]' | relative_url }})"
+    },
+    "Jekyll: Include partial": {
+      "description": "Insert a Jekyll include tag",
+      "body": "{% include [[partial]].html %}"
+    },
+    "SEO: Article Schema": {
+      "description": "Minimal JSON-LD Article schema block",
+      "body": [
+        "<script type=\"application/ld+json\">",
+        "{",
+        "  \"@context\": \"https://schema.org\",",
+        "  \"@type\": \"Article\",",
+        "  \"headline\": \"[[title]]\",",
+        "  \"datePublished\": \"[[date]]\",",
+        "  \"author\": { \"@type\": \"Person\", \"name\": \"Wrist & Pocket Studio\" }",
+        "}",
+        "</script>"
+      ]
+    },
+    "Jekyll: Asset URL": {
+      "description": "Generate relative URL for an asset",
+      "body": "{{ '[[path]]' | relative_url }}"
+    },
+    "Jekyll: Site String": {
+      "description": "Insert localized string from _data",
+      "body": "{{ site.data[page.lang].strings.[[key]] }}"
+    }
+  },
+  "frontMatter.custom.scripts": [
+    {
+      "id": "fix-frontmatter",
+      "title": "🧹 Normalize tags (Fix)",
+      "script": ".frontmatter/scripts/fix-frontmatter.js",
+      "command": "node",
+      "type": "content",
+      "output": "notification"
+    },
+    {
+      "id": "check-seo",
+      "title": "📊 Validate SEO Meta",
+      "script": ".frontmatter/scripts/check-seo.js",
+      "command": "node",
+      "type": "content",
+      "output": "notification"
+    },
+    {
+      "id": "auto-permalink",
+      "title": "🔗 Auto Permalink",
+      "script": ".frontmatter/scripts/auto-permalink.js",
+      "command": "node",
+      "type": "content",
+      "output": "notification"
+    },
+    {
+      "id": "sync-languages",
+      "title": "🔄 Sync All Languages",
+      "script": ".frontmatter/scripts/sync-languages.js",
+      "command": "node",
+      "type": "content",
+      "output": "notification"
+    },
+    {
+      "id": "build-manual",
+      "title": "🏗️ Build Site (Manual)",
+      "script": ".frontmatter/scripts/build-manual.js",
+      "command": "node",
+      "type": "content",
+      "output": "notification"
+    },
+    {
+      "id": "new-translation",
+      "title": "🌐 Create Missing Translations",
+      "script": ".frontmatter/scripts/create-translations.js",
+      "command": "node",
+      "type": "content",
+      "output": "notification"
+    },
+    {
+      "id": "check-images",
+      "title": "🖼️ List Unoptimized Images",
+      "script": ".frontmatter/scripts/check-images.js",
+      "command": "node",
+      "type": "mediaFolder",
+      "output": "notification"
+    }
+  ],
+  "frontMatter.dashboard.openOnStart": false,
+  "frontMatter.content.sorting": [
+    {
+      "title": "Date (newest first)",
+      "name": "date",
+      "order": "desc",
+      "type": "date"
+    },
+    {
+      "title": "Date (oldest first)",
+      "name": "date",
+      "order": "asc",
+      "type": "date"
+    },
+    {
+      "title": "Title A→Z",
+      "name": "title",
+      "order": "asc",
+      "type": "string"
+    }
+  ],
+  "frontMatter.panel.freeform": true,
+  "frontMatter.global.notifications": [],
+  "frontMatter.git.enabled": true,
+  "frontMatter.git.commitMessage": "content: {{title}} [{{date}}]"
+}

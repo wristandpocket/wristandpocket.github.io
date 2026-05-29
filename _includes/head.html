@@ -1,0 +1,32 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#050505">
+    <meta name="robots" content="index, follow">
+    <meta name="google-site-verification" content="y3UJCKwuJD4My6hSz39qzEzMU1C0u16VP7FQGnva8A4" />
+
+    {% if page.banner %}
+    <link rel="preload" href="{{ page.banner | relative_url }}" as="image">
+    {% endif %}
+
+
+
+    <!-- Zero-network Emoji Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
+
+    <!-- Localized Meta Description for Homepage -->
+    {% if page.is_home %}
+    {% assign page.description = site.data[site.active_lang].strings.studio_tagline | default: site.description %}
+    {% endif %}
+
+    <!-- Jekyll SEO Tag (Title, Meta, Open Graph, Twitter, Canonical) -->
+    {% seo %}
+
+    <!-- Polyglot: Generates Hreflang headers -->
+    {% I18n_Headers %}
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="{{ '/styles.css' | relative_url }}">
+
+    {% include lang-redirect.html %}
+</head>

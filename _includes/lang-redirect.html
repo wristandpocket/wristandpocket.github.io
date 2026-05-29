@@ -1,0 +1,67 @@
+<!-- Auto-Redirect on First Visit & Language Preference -->
+<script>
+    (function () {
+        try {
+            var activeLang = '{{ site.active_lang }}';
+            var preferredLang = localStorage.getItem('preferred_lang');
+            var targetLang = null;
+
+            // 1. Check if preference exists and is valid
+            var supportedLangs = ['en', 'uk', 'ru', 'ko'];
+            if (preferredLang) {
+                if (!supportedLangs.includes(preferredLang)) {
+                    localStorage.removeItem('preferred_lang');
+                    preferredLang = null;
+                } else if (preferredLang !== activeLang) {
+                    targetLang = preferredLang;
+                }
+            } else {
+                // 2. First time visitor: Detect browser language
+                var browserLang = navigator.language || navigator.userLanguage;
+                var languages = navigator.languages || [browserLang];
+                var detectedLang = 'en'; // default
+
+                if (languages.some(function(l) { return l.startsWith('uk'); })) {
+                    detectedLang = 'uk';
+                } else if (languages.some(function(l) { return l.startsWith('ru'); })) {
+                    detectedLang = 'ru';
+                } else if (languages.some(function(l) { return l.startsWith('ko'); })) {
+                    detectedLang = 'ko';
+                }
+
+                localStorage.setItem('preferred_lang', detectedLang);
+                if (activeLang !== detectedLang) {
+                    targetLang = detectedLang;
+                }
+            }
+
+            // Execute Redirect ONLY on root paths (homepages)
+            var currentPath = window.location.pathname;
+            var isRootPath = currentPath === '/' || 
+                             currentPath === '/index.html' || 
+                             /^\/(uk|ru|ko)\/?(index\.html)?$/.test(currentPath);
+
+            if (isRootPath && targetLang && targetLang !== activeLang) {
+                var pathWithoutLang = currentPath;
+                var match = currentPath.match(/^\/(uk|ru|ko)(\/|$)/);
+                if (match) {
+                    pathWithoutLang = currentPath.substring(match[0].length);
+                    if (!pathWithoutLang.startsWith('/')) {
+                        pathWithoutLang = '/' + pathWithoutLang;
+                    }
+                }
+
+                var prefix = targetLang === 'en' ? '' : '/' + targetLang;
+                var nextPath = prefix + pathWithoutLang;
+                nextPath = nextPath.replace(/\/\//g, '/');
+                if (nextPath === '') nextPath = '/';
+
+                if (currentPath !== nextPath) {
+                    window.location.replace(nextPath + window.location.hash);
+                }
+            }
+        } catch (e) {
+            console.warn('Language auto-detect failed:', e);
+        }
+    })();
+</script>

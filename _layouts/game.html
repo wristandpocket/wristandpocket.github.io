@@ -1,0 +1,141 @@
+---
+layout: default
+---
+
+<article class="game-detail">
+    <div class="game-back-link">
+        <a href="{{ '/games/' | relative_url }}" class="btn-back">
+            &larr; {{ site.data[site.active_lang].strings.back_to_games | default: 'Back to Games' }}
+        </a>
+    </div>
+
+    <!-- Hero Banner -->
+    <header class="game-hero" style="background-image: linear-gradient(180deg, rgba(10, 10, 15, 0.6) 0%, rgba(10, 10, 15, 0.55) 50%, rgba(10, 10, 15, 0.95) 100%), url('{{ page.banner | relative_url }}');">
+        <div class="game-hero__content">
+            <span class="game-hero__badge">{{ page.badge }}</span>
+            <h1 class="game-hero__title">{{ page.title }}</h1>
+        </div>
+    </header>
+
+    <!-- Main Grid -->
+    <div class="game-grid">
+        <!-- Main Content -->
+        <section class="game-main-content">
+            {{ content }}
+        </section>
+
+        <!-- Sidebar / Specs -->
+        <aside class="game-sidebar">
+            <div class="spec-card">
+                <h2>{{ site.data[site.active_lang].strings.game_specs_title | default: 'Technical Specs' }}</h2>
+                <table class="spec-table">
+                    <tr>
+                        <td><strong>{{ site.data[site.active_lang].strings.spec_platform | default: 'Platform' }}</strong></td>
+                        <td>{{ page.specs.platform }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>{{ site.data[site.active_lang].strings.spec_engine | default: 'Engine' }}</strong></td>
+                        <td>{{ page.specs.engine }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>{{ site.data[site.active_lang].strings.spec_performance | default: 'Target' }}</strong></td>
+                        <td>{{ page.specs.performance }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>{{ site.data[site.active_lang].strings.spec_rotary | default: 'Rotary Bezel' }}</strong></td>
+                        <td>{{ page.specs.rotary }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>{{ site.data[site.active_lang].strings.spec_status | default: 'Status' }}</strong></td>
+                        <td>
+                            <span class="status-badge">{{ page.specs.status }}</span>
+                        </td>
+                    </tr>
+                </table>
+                {% if page.specs.status == 'In Development' or page.specs.status == 'В розробці' or page.specs.status == 'В разработке' or page.specs.status == '개발 중' or page.specs.status == 'In Active Development' or page.specs.status == 'В активній розробці' or page.specs.status == 'В активной разработке' or page.specs.status == '활발히 개발 중' or page.specs.status == 'In Testing' or page.specs.status == 'В тестуванні' or page.specs.status == 'В тестировании' or page.specs.status == '테스트 중' %}
+                <div class="spec-tester-cta">
+                    <a href="https://discord.gg/6vzt33SX9D" class="btn-tester" target="_blank" rel="noopener noreferrer">
+                        <img src="{{ '/assets/images/icons/beta.png' | relative_url }}" alt="" class="tester-btn-icon"> {{ site.data[site.active_lang].strings.game_tester_cta | default: 'Become a Tester' }}
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+        </aside>
+    </div>
+
+    <!-- Screenshot Gallery -->
+    {% if page.screenshots and page.screenshots.size > 0 %}
+    <section class="game-gallery-section">
+        <h2>{{ site.data[site.active_lang].strings.gallery_title | default: 'Wear OS Screen Showcase' }}</h2>
+        <div class="game-gallery">
+            {% for screen in page.screenshots %}
+            <div class="smartwatch-frame-wrapper">
+                {% if screen.type == 'video' %}
+                <div class="smartwatch-bezel smartwatch-bezel--video" data-video-src="{{ screen.src | relative_url }}">
+                    <video class="smartwatch-screen" autoplay loop muted playsinline>
+                        <source src="{{ screen.src | relative_url }}" type="video/webm">
+                    </video>
+                    <div class="smartwatch-glass-shimmer"></div>
+                </div>
+                {% else %}
+                <div class="smartwatch-bezel" data-full-src="{{ screen.full | relative_url }}">
+                    <img src="{{ screen.thumb | relative_url }}" alt="Screenshot {{ forloop.index }}" class="smartwatch-screen" loading="lazy">
+                    <div class="smartwatch-glass-shimmer"></div>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+</article>
+
+<!-- Lightbox Modal for Screenshots -->
+<div id="game-lightbox" class="lightbox-modal" aria-hidden="true" role="dialog">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close Gallery">&times;</button>
+    <button class="lightbox-prev" id="lightbox-prev" aria-label="Previous Image">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="lightbox-arrow-icon"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <div class="lightbox-content">
+        <img id="lightbox-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Enlarged screenshot">
+        <video id="lightbox-video" autoplay loop muted playsinline style="display: none;"></video>
+        <div class="lightbox-dots" id="lightbox-dots"></div>
+    </div>
+    <button class="lightbox-next" id="lightbox-next" aria-label="Next Image">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="lightbox-arrow-icon"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["VideoGame", "SoftwareApplication"],
+  "name": "{{ page.title }}",
+  "description": "{{ content | strip_html | truncatewords: 40 | escape }}",
+  "operatingSystem": "Wear OS",
+  "applicationCategory": "GameApplication",
+  "author": {
+    "@type": "Organization",
+    "name": "Wrist & Pocket Studio",
+    "url": "{{ '/' | absolute_url }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Wrist & Pocket Studio"
+  },
+  "gamePlatform": [
+    "Wear OS",
+    "Galaxy Watch",
+    "Pixel Watch"
+  ],
+  "genre": "{{ page.badge }}",
+  "image": "{{ page.banner | absolute_url }}",
+  "offers": {
+    "@type": "Offer",
+    "price": "0.00",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/PreOrder"
+  }
+}
+</script>
+

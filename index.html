@@ -1,0 +1,137 @@
+---
+layout: default
+is_home: true
+---
+
+<div class="hub-grid">
+
+    <!-- BIO CARD -->
+    <article class="hub-card fade-in" id="bio">
+        <div class="card-label">{{ site.data[site.active_lang].strings.studio_label }}</div>
+        <h1 class="bio__logo"><span>WRIST</span> & <span>POCKET</span></h1>
+        <p class="bio__tagline">{{ site.data[site.active_lang].strings.studio_tagline }}</p>
+    </article>
+
+    <!-- LAB CARD (PHILOSOPHY) -->
+    <section class="hub-card fade-in" id="lab">
+        <div class="card-label">{{ site.data[site.active_lang].strings.philosophy_label }}</div>
+        <div class="lab__icon">
+            <img src="{{ '/assets/images/noSHOVEL.webp' | relative_url }}" alt="No Shovelware Logo">
+        </div>
+        <h3>{{ site.data[site.active_lang].strings.philosophy_title }}</h3>
+        <p class="text-secondary">{{ site.data[site.active_lang].strings.philosophy_desc }}</p>
+    </section>
+
+    <!-- PREMIUM COLLECTION CARD -->
+    <section class="hub-card fade-in" id="premium">
+        <div class="card-label">{{ site.data[site.active_lang].strings.games_label }}</div>
+        <h2 class="section-title">{{ site.data[site.active_lang].strings.games_title }}</h2>
+        <div class="premium__list">
+            {% assign all_games = site.pages | where: "layout", "game" | where: "lang", site.active_lang %}
+            {% assign sorted_games = all_games | sort: "order" %}
+            {% for game in sorted_games limit: 3 %}
+            <a href="{{ game.url | relative_url }}" class="game-item">
+                <div class="game-item__media">
+                    <img src="{{ game.thumbnail | relative_url }}" alt="{{ game.title }} Screenshot" class="game-item__screenshot" onerror="this.style.display='none'" loading="lazy">
+                </div>
+                <div class="game-item__body">
+                    <h3>
+                        <span class="game-title-container">
+                            {% if game.game_icon %}
+                            <img src="{{ game.game_icon | relative_url }}" alt="{{ game.title }} icon" class="game-icon">
+                            {% endif %}
+                            {{ game.title }}
+                        </span>
+                        <span class="game-item__badge {% if game.badge_style == 'tamagotchi' %}game-item__badge--tamagotchi{% endif %}">{{ game.badge }}</span>
+                    </h3>
+                    <p>{{ game.description }}</p>
+                </div>
+                {% if game.play_store_url %}
+                <span class="game-item__cta">
+                    {{ site.data[site.active_lang].strings.play_store | default: '▶ Play Store' }}
+                </span>
+                {% else %}
+                <span class="game-item__cta game-item__cta--disabled">
+                    {{ site.data[site.active_lang].strings.coming_soon | default: 'Coming soon to Play Store' }}
+                </span>
+                {% endif %}
+            </a>
+            {% endfor %}
+        </div>
+        {% if sorted_games.size > 0 %}
+        <div style="text-align: center; margin-top: 30px; display: flex; justify-content: center;">
+            <a href="{{ '/games/' | relative_url }}" class="btn-show-all btn-show-all--cyan">
+                {{ site.data[site.active_lang].strings.games_show_all | default: 'Show All Games' }} &rarr;
+            </a>
+        </div>
+        {% endif %}
+    </section>
+
+    <!-- SOCIAL CARD -->
+    <section class="hub-card fade-in" id="social">
+        <div class="card-label">{{ site.data[site.active_lang].strings.social_label }}</div>
+        <div class="social__links">
+            <a href="https://github.com/wristandpocket" class="social__link" target="_blank" rel="noopener noreferrer">
+                <img src="{{ '/assets/images/icons/github.png' | relative_url }}" alt="GitHub" class="social-icon"> {{ site.data[site.active_lang].strings.social_github }}
+            </a>
+            <a href="mailto:wristandpocket.studio@gmail.com" class="social__link">
+                <img src="{{ '/assets/images/icons/email.png' | relative_url }}" alt="Email" class="social-icon"> {{ site.data[site.active_lang].strings.social_contact }}
+            </a>
+            <a href="https://figarist.github.io" class="social__link" target="_blank" rel="noopener noreferrer">
+                <img src="{{ '/assets/images/icons/home.png' | relative_url }}" alt="Home" class="social-icon"> {{ site.data[site.active_lang].strings.social_founder }}
+            </a>
+            <a href="https://discord.gg/6vzt33SX9D" class="social__link social__link--discord" target="_blank" rel="noopener noreferrer">
+                <img src="{{ '/assets/images/icons/beta.png' | relative_url }}" alt="Tester" class="social-icon"> {{ site.data[site.active_lang].strings.social_tester }}
+            </a>
+            <a href="https://discord.gg/nCPuHr8rve" class="social__link social__link--discord" target="_blank" rel="noopener noreferrer">
+                <img src="{{ '/assets/images/icons/idea.png' | relative_url }}" alt="Idea" class="social-icon"> {{ site.data[site.active_lang].strings.social_suggestions }}
+            </a>
+        </div>
+    </section>
+
+    <!-- NEWS FEED SECTION (LATEST 3) -->
+    <section class="hub-card fade-in" id="news">
+        <div class="card-label">{{ site.data[site.active_lang].strings.news_label }}</div>
+        <div class="news-section__header">
+            <h2 class="section-title">{{ site.data[site.active_lang].strings.news_title }}</h2>
+        </div>
+
+        {% assign posts = site.posts | where: "lang", site.active_lang %}
+        <div class="news-grid">
+            {% if posts.size > 0 %}
+                {% for post in posts limit: 2 %}
+                <a href="{{ post.url | relative_url }}" class="news-card fade-in">
+                    <div class="news-card__tags">
+                        {% for tag in post.tags %}
+                        <span class="game-tag-badge">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                    <h3 class="news-card__title">{{ post.title }}</h3>
+                    <p class="news-card__excerpt">{{ post.description | truncate: 120 }}</p>
+                    <div class="news-card__meta">
+                        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+                        <span>
+                            {% assign words = post.content | number_of_words %}
+                            {% assign read_time = words | divided_by: 180 | plus: 1 %}
+                            {{ read_time }} {{ site.data[site.active_lang].strings.read_time_suffix | default: 'min read' }}
+                        </span>
+                    </div>
+                </a>
+                {% endfor %}
+            {% else %}
+                <p style="color: var(--text-secondary); grid-column: span 3; text-align: center; padding: 40px 0;">
+                    {{ site.data[site.active_lang].strings.no_posts }}
+                </p>
+            {% endif %}
+        </div>
+
+        {% if posts.size > 0 %}
+        <div style="text-align: center; margin-top: 10px; display: flex; justify-content: center;">
+            <a href="{{ '/blog/' | relative_url }}" class="btn-show-all">
+                {{ site.data[site.active_lang].strings.news_show_all }} &rarr;
+            </a>
+        </div>
+        {% endif %}
+    </section>
+
+</div>

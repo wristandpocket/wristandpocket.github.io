@@ -1,0 +1,124 @@
+# ============================================================
+#  Wrist & Pocket Studio — Jekyll Configuration
+# ============================================================
+
+title: "Wrist & Pocket Studio — Premium Wear OS Games"
+description: "Wrist & Pocket Studio crafts premium Wear OS smartwatch games. No trash policy — only thoughtful, polished experiences."
+url: "https://wristandpocket.github.io"
+baseurl: ""
+
+lang: "en"
+email: "wristandpocket.studio@gmail.com"
+author:
+  name: "Wrist & Pocket Studio"
+  url: "https://wristandpocket.github.io"
+
+# ── Build ────────────────────────────────────────────────────
+markdown: kramdown
+highlighter: rouge
+sass:
+  style: compressed
+  sourcemap: never
+
+# Exclude dev artefacts from the build
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - .agent/
+  - .agents/
+  - .git/
+  - build.log
+  - build_error.txt
+  - build_out.txt
+
+# ── Plugins ──────────────────────────────────────────────────
+plugins:
+  - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-polyglot
+  - jekyll-spaceship
+  - jekyll-minifier
+  - jekyll-redirect-from
+  - jekyll-toc
+  - jekyll-last-modified-at
+  - jekyll-pwa-workbox
+
+# ── Polyglot Settings ────────────────────────────────────────
+languages: ["en", "uk", "ru", "ko"]
+default_lang: "en"
+exclude_from_localization:
+  - assets
+  - css
+  - javascript
+  - images
+  - js
+  - sitemap.xml
+  - robots.txt
+  - styles.scss
+  - styles.css
+parallel_localization: false
+
+# ── Defaults ─────────────────────────────────────────────────
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: "https://figarist.github.io/assets/images/default-social-card.webp"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+
+# ── Permalink ─────────────────────────────────────────────────
+permalink: /blog/:year/:month/:day/:title/
+
+# ── Feed ──────────────────────────────────────────────────────
+feed:
+  path: feed.xml
+
+# ── Spaceship Settings ──────────────────────────────────────
+jekyll-spaceship:
+  mathjax:
+    src: "/assets/vendor/mathjax/tex-mml-chtml.js"
+    config:
+      tex2jax:
+        inlineMath: [["$", "$"], ['\\(', '\\)']]
+        displayMath: [["$$", "$$"], ['\\[', '\\]']]
+        processEscapes: true
+  mermaid:
+    src: "/assets/vendor/mermaid.min.js"
+  video:
+    youtube:
+      width: 100%
+      height: auto
+  audio:
+  table:
+
+# ── Minifier Settings ────────────────────────────────────────
+jekyll-minifier:
+  exclude:
+    - "node_modules/**/*"
+    - "vendor/**/*"
+    - "assets/vendor/**/*"
+    - "assets/**/*.json"
+    - "sitemap.xml"
+    - "feed.xml"
+  uglifier_args:
+    harmony: true
+
+# ── PWA Settings ──────────────────────────────────────────────
+pwa:
+  sw_src_filepath: "service-worker.js"
+  sw_dest_filename: "sw.js"
+  precache_glob_directory: "_site"
+  precache_glob_patterns:
+    - "assets/**/*.{js,css,webp,svg}"
+    - "index.html"

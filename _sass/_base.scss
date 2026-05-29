@@ -1,0 +1,58 @@
+/* Base Reset & Styles */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: $bg-color;
+  color: $text-primary;
+  font-family: $font-sans;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(78, 205, 196, 0.03) 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(187, 134, 252, 0.03) 0%, transparent 40%);
+}
+
+img {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  pointer-events: none;
+}
+
+/* Shared Back Button */
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: $font-mono;
+  font-size: 0.85rem;
+  color: $text-secondary;
+  transition: color $t-fast, transform $t-fast;
+
+  &:hover {
+    color: $accent-cyan;
+    transform: translateX(-4px);
+  }
+}
+
+a {
+  color: $accent-cyan;
+  text-decoration: none;
+  transition: all $t-fast;
+  
+  &:hover {
+    color: #8ceee9;
+  }
+}

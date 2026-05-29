@@ -1,0 +1,40 @@
+/* SCSS Variables */
+
+$hub-gap: 20px;
+$card-radius: 24px;
+$card-padding: 24px;
+
+/* Premium Dark Palette */
+$bg-color: #0a0a0f;
+$card-bg: rgba(22, 22, 29, 0.7);
+$card-bg-hover: rgba(30, 30, 40, 0.9);
+
+/* Accent System */
+$accent-cyan: #4ecdc4;
+$accent-purple: #bb86fc;
+$accent-teal: #03dac6;
+$accent-discord: #5865f2;
+
+/* Text Hierarchy */
+$text-primary: #f2f0eb;
+$text-secondary: #a5a5c5;
+$text-muted: #7c7c9c;
+
+/* Border */
+$border-card: rgba(255, 255, 255, 0.08);
+$border-glow: rgba(78, 205, 196, 0.2);
+
+/* Shadows */
+$shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+$shadow-hover: 0 12px 48px rgba(0, 0, 0, 0.6), 0 0 20px rgba(78, 205, 196, 0.1);
+
+/* Typography */
+$font-sans: 'Outfit', system-ui, sans-serif;
+$font-mono: 'Fira Code', monospace;
+
+/* Spacing */
+$nav-spacing: 150px;
+
+/* Transitions */
+$t-fast: 0.18s ease;
+$t-med: 0.28s ease;
