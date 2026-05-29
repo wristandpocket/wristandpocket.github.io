@@ -6,7 +6,7 @@ date: "2026-05-27T07:13:00.000Z"
 lang: "en"
 page_id: "hello-world"
 permalink: "/blog/hello-world/"
-tags: ["Wrist & Pocket"]
+tags: ["Wrist & Pocket", "Devlog"]
 author: "ihor"
 seo_type: "BlogPosting"
 sitemap: true
