@@ -19,6 +19,9 @@ specs:
 screenshots:
   - type: video
     src: "/assets/images/games/cyberpunk3d-video1.webm"
+  - type: image
+    thumb: "/assets/images/games/cyberpunk3d-screen2-thumb.webp"
+    full: "/assets/images/games/cyberpunk3d-screen2-full.webp"
   - type: video
     src: "/assets/images/games/cyberpunk3d-video2.webm"
   - type: video
