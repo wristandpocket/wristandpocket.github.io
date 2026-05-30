@@ -65,7 +65,7 @@ defaults:
   - scope:
       path: ""
     values:
-      image: "https://figarist.github.io/assets/images/default-social-card.webp"
+      image: "/assets/images/default-social-card.webp"
   - scope:
       path: ""
       type: "posts"

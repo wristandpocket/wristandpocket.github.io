@@ -1,0 +1,112 @@
+{% comment %}
+Unified JSON-LD for Wrist & Pocket Studio (Organization, WebSite, BlogPosting, and Breadcrumbs).
+{% endcomment %}
+{%- assign studio_name = 'Wrist & Pocket Studio' -%}
+{%- assign studio_url = 'https://wristandpocket.github.io' -%}
+{%- assign site_logo = '/assets/images/noSHOVEL.webp' | absolute_url -%}
+{%- assign page_image = page.image | default: site.default_social_image | default: '/assets/images/default-social-card.webp' | absolute_url -%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {%- unless include.breadcrumbs_only -%}
+    {%- if page.is_home -%}
+    {
+      "@type": "Organization",
+      "@id": "{{ studio_url }}#organization",
+      "name": "{{ studio_name }}",
+      "url": "{{ studio_url }}",
+      "logo": "{{ site_logo }}",
+      "sameAs": [
+        "https://github.com/wristandpocket",
+        "https://discord.gg/6vzt33SX9D"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{ studio_url }}#website",
+      "url": "{{ studio_url }}",
+      "name": "{{ studio_name }}",
+      "publisher": {
+        "@id": "{{ studio_url }}#organization"
+      }
+    },
+    {%- else -%}
+    {
+      "@type": "{{ include.type | default: 'BlogPosting' }}",
+      "@id": "{{ page.url | absolute_url }}#article",
+      "headline": {{ page.title | jsonify }},
+      "description": {{ page.description | default: page.excerpt | strip_html | strip_newlines | truncate: 160 | jsonify }},
+      "image": "{{ page_image }}",
+      "datePublished": "{{ page.date | date_to_xmlschema }}",
+      {% if page.last_modified_at %}"dateModified": "{{ page.last_modified_at | date_to_xmlschema }}",{% endif %}
+      "inLanguage": "{{ site.active_lang }}",
+      "author": {
+        "@type": "Person",
+        "name": "Ihor Sivochka",
+        "url": "https://figarist.github.io"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "{{ studio_url }}#organization",
+        "name": "{{ studio_name }}",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "{{ site_logo }}"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ page.url | absolute_url }}"
+      }
+    },
+    {%- endif -%},
+    {%- endunless -%}
+    {
+      "@type": "BreadcrumbList",
+      "@id": "{{ page.url | absolute_url }}#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "{{ studio_url }}/"
+        }
+        {%- if page.layout == 'post' or page.url contains '/blog/' -%}
+        ,
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "{{ site.data[site.active_lang].strings.news_title | default: 'Blog' }}",
+          "item": "{{ studio_url }}/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": {{ page.title | jsonify }},
+          "item": "{{ page.url | absolute_url }}"
+        }
+        {%- elsif page.url contains '/games/' -%}
+        ,
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "{{ site.data[site.active_lang].strings.games_title | default: 'Games' }}",
+          "item": "{{ studio_url }}/games/"
+        }
+        {%- if page.layout == 'game' -%}
+        ,
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": {{ page.title | jsonify }},
+          "item": "{{ page.url | absolute_url }}"
+        }
+        {%- endif -%}
+        {%- endif -%}
+      ]
+    }
+  ]
+}
+</script>
