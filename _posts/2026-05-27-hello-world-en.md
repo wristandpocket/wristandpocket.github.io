@@ -26,7 +26,7 @@ That's why, instead of these trash titles, we create real **GAMES** that are act
 
 Right now, work is in full swing on two cool projects:
 
-- **Cyberpunk 3D** — the studio's debut. It's a technological 3D benchmark where you can enjoy beautiful graphics while finding out the real performance power of your smartwatch. Two birds with one stone, holy moly!
-- **Feed Me, Loser!** — a funny and cheeky virtual pet living right on your wrist. Feed it, keep it entertained, but watch out—not everything in this game is as simple as it seems. P.S. It will be explosive!
+- **[Cyberpunk 3D](/games/cyberpunk-3d/)** — the studio's debut. It's a technological 3D benchmark where you can enjoy beautiful graphics while finding out the real performance power of your smartwatch. Two birds with one stone, holy moly!
+- **[Feed Me, Loser!](/games/feed-me-loser/)** — a funny and cheeky virtual pet living right on your wrist. Feed it, keep it entertained, but watch out—not everything in this game is as simple as it seems. P.S. It will be explosive!
 
 Thank you for being with us. Subscribe and follow for updates—the best is yet to come!

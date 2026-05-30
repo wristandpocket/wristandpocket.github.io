@@ -66,6 +66,7 @@ defaults:
       path: ""
     values:
       image: "/assets/images/default-social-card.webp"
+      sitemap: true
   - scope:
       path: ""
       type: "posts"
