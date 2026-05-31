@@ -42,9 +42,9 @@ permalink: /privacy/
             <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google 개인정보처리방침</a>에 따라 특정 자동 텔레메트리를 수집합니다.
         </p>
 
-        <h2>3. 문의하기</h2>
+        <h2>3. 데이터 삭제 요청 및 문의하기</h2>
         <p>
-            질문이 있으신 경우, 
+            익명화된 기기 성능 또는 진단 텔레메트리 데이터의 삭제를 요청하고 싶으시거나 기타 문의 사항이 있는 경우, 
             <a href="mailto:wristandpocket.studio@gmail.com">wristandpocket.studio@gmail.com</a>으로 문의해 주시기 바랍니다.
         </p>
     </section>

@@ -42,9 +42,9 @@ permalink: /privacy/
             <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Політики конфіденційності Google</a>.
         </p>
 
-        <h2>3. Контакти</h2>
+        <h2>3. Запити на видалення даних та контакти</h2>
         <p>
-            Якщо у вас виникли запитання, зв'яжіться з нами за адресою
+            Якщо ви бажаєте надіслати запит на видалення ваших анонімних технічних даних або даних телеметрії, або у вас виникли інші запитання, зв'яжіться з нами за адресою
             <a href="mailto:wristandpocket.studio@gmail.com">wristandpocket.studio@gmail.com</a>.
         </p>
     </section>

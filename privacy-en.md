@@ -42,9 +42,9 @@ permalink: /privacy/
             <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a>.
         </p>
 
-        <h2>3. Contact</h2>
+        <h2>3. Data Deletion Requests & Contact</h2>
         <p>
-            If you have any questions, contact us at
+            If you wish to request the deletion of your anonymous performance or diagnostics telemetry data, or if you have any other questions, contact us at
             <a href="mailto:wristandpocket.studio@gmail.com">wristandpocket.studio@gmail.com</a>.
         </p>
     </section>
