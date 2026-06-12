@@ -2,6 +2,12 @@
 <script>
     (function () {
         try {
+            // Do not redirect search crawlers and audit tools
+            var isBot = /bot|google|baidu|bing|msn|duckduckbot|teoma|slurp|yandex|lighthouse|chrome-lighthouse|mediapartners/i.test(navigator.userAgent);
+            if (isBot) {
+                return;
+            }
+
             var activeLang = '{{ site.active_lang }}';
             var preferredLang = localStorage.getItem('preferred_lang');
             var targetLang = null;
@@ -35,29 +41,28 @@
                 }
             }
 
-            // Execute Redirect ONLY on root paths (homepages)
+            // Execute Redirect ONLY when landing on the main root page (activeLang === 'en')
+            // This prevents redirecting search bots and users away when they explicitly visit a localized URL (e.g. /ru/, /uk/)
             var currentPath = window.location.pathname;
-            var isRootPath = currentPath === '/' || 
-                             currentPath === '/index.html' || 
-                             /^\/(uk|ru|ko)\/?(index\.html)?$/.test(currentPath);
+            var isMainRoot = currentPath === '/' || currentPath === '/index.html';
 
-            if (isRootPath && targetLang && targetLang !== activeLang) {
-                var pathWithoutLang = currentPath;
-                var match = currentPath.match(/^\/(uk|ru|ko)(\/|$)/);
-                if (match) {
-                    pathWithoutLang = currentPath.substring(match[0].length);
-                    if (!pathWithoutLang.startsWith('/')) {
-                        pathWithoutLang = '/' + pathWithoutLang;
-                    }
-                }
-
+            if (isMainRoot && targetLang && targetLang !== activeLang) {
                 var prefix = targetLang === 'en' ? '' : '/' + targetLang;
-                var nextPath = prefix + pathWithoutLang;
+                var nextPath = prefix + currentPath;
                 nextPath = nextPath.replace(/\/\//g, '/');
                 if (nextPath === '') nextPath = '/';
 
                 if (currentPath !== nextPath) {
                     window.location.replace(nextPath + window.location.hash);
+                }
+            } else if (!isMainRoot) {
+                // If they are on a localized page root (e.g. /ru/), save this as their preferred language
+                var match = currentPath.match(/^\/(uk|ru|ko)(\/|$)/);
+                if (match) {
+                    var currentLang = match[1];
+                    if (preferredLang !== currentLang) {
+                        localStorage.setItem('preferred_lang', currentLang);
+                    }
                 }
             }
         } catch (e) {

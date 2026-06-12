@@ -7,12 +7,13 @@ sitemap: false
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   {%- assign collections = site.pages | concat: site.posts -%}
   {%- assign docs = collections | where: "sitemap", true | default: collections -%}
-  {%- assign processed_urls = "" -%}
+  {%- assign processed_urls = "|" -%}
   {%- for doc in docs -%}
     {%- if doc.url -%}
       {%- comment -%} Use permalink or url as a unique identifier for the logical content {%- endcomment -%}
       {%- assign unique_id = doc.permalink | default: doc.url -%}
-      {%- if processed_urls contains unique_id -%}{%- continue -%}{%- endif -%}
+      {%- capture check_id -%}|{{ unique_id }}|{%- endcapture -%}
+      {%- if processed_urls contains check_id -%}{%- continue -%}{%- endif -%}
       {%- assign processed_urls = processed_urls | append: unique_id | append: "|" -%}
       
       {%- unless doc.url contains '.xml' or doc.url contains '.css' or doc.url contains '.json' or doc.url contains 'assets/' or doc.url contains '/page/' or doc.url == '/404.html' or doc.url contains 'CNAME' -%}
