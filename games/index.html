@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Wear OS Premium Smartwatch Games — Wrist & Pocket Studio"
+description: "Discover Wrist & Pocket Studio's original Wear OS games for Galaxy Watch, Pixel Watch, and Android smartwatches."
 permalink: /games/
 ---
 
@@ -8,6 +9,18 @@ permalink: /games/
     <h1>{{ site.data[site.active_lang].strings.games_title }}</h1>
     <p>{{ site.data[site.active_lang].strings.games_label }}</p>
 </div>
+
+{% if site.active_lang == site.default_lang %}
+<section class="games-seo-intro fade-in">
+    <p class="games-seo-intro__eyebrow">Original games for Android smartwatches</p>
+    <h2>Wear OS games built for the wrist, not squeezed down from phones.</h2>
+    <p>
+        Wrist & Pocket Studio makes small-screen games for Wear OS devices like Galaxy Watch and Pixel Watch.
+        Every project is designed around short sessions, readable round-screen UI, rotary input, haptics,
+        OLED-friendly visuals, and real smartwatch performance limits.
+    </p>
+</section>
+{% endif %}
 
 {% assign all_games = site.pages | where: "layout", "game" | where: "lang", site.active_lang %}
 {% assign sorted_games = all_games | sort: "order" %}
@@ -48,3 +61,65 @@ permalink: /games/
         </p>
     {% endif %}
 </div>
+
+{% if site.active_lang == site.default_lang %}
+<section class="games-seo-section fade-in" aria-labelledby="wear-os-games-focus">
+    <h2 id="wear-os-games-focus">Why these Wear OS games are different</h2>
+    <div class="games-seo-grid">
+        <article>
+            <h3>Made for tiny sessions</h3>
+            <p>Quick loops, clear state, and simple controls so the game works while commuting, waiting, or taking a short break.</p>
+        </article>
+        <article>
+            <h3>Native watch controls</h3>
+            <p>Rotary bezel or crown support is treated as a first-class input, not a novelty added after the fact.</p>
+        </article>
+        <article>
+            <h3>Battery-aware design</h3>
+            <p>Dark OLED presentation, careful frame targets, and lightweight UI keep the experience practical on real watches.</p>
+        </article>
+    </div>
+</section>
+
+<section class="games-seo-section fade-in" aria-labelledby="compatible-watches">
+    <h2 id="compatible-watches">Built for modern Wear OS watches</h2>
+    <p>
+        The current collection targets Wear OS 3+ and Android smartwatches, with testing focused on the constraints
+        that matter on wrist hardware: circular safe zones, heat, touch size, short attention windows, and readable motion.
+    </p>
+    <p>
+        Start with <a href="{{ '/games/cyberpunk-3d/' | relative_url }}">Cyberpunk 3D</a> if you want a visual smartwatch benchmark,
+        or <a href="{{ '/games/feed-me-loser/' | relative_url }}">Feed Me, Loser!</a> if you want a funny virtual pet game made for your wrist.
+    </p>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Wear OS Premium Smartwatch Games",
+  "description": "Original Wear OS games from Wrist & Pocket Studio for Galaxy Watch, Pixel Watch, and Android smartwatches.",
+  "url": "{{ page.url | absolute_url }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Wrist & Pocket Studio",
+    "url": "{{ '/' | absolute_url }}"
+  },
+  "mainEntity": {
+    "@type": "ItemList",
+    "name": "Wrist & Pocket Wear OS Games",
+    "itemListElement": [
+      {% assign english_games = site.pages | where: "layout", "game" | where: "lang", site.default_lang | sort: "order" %}
+      {% for game in english_games %}
+      {
+        "@type": "ListItem",
+        "position": {{ forloop.index }},
+        "url": "{{ game.url | absolute_url }}",
+        "name": {{ game.title | jsonify }}
+      }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ]
+  }
+}
+</script>
+{% endif %}

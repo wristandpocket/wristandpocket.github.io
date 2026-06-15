@@ -4,6 +4,91 @@
   padding-top: 20px;
 }
 
+/* ---------- Games Collection SEO Blocks ---------- */
+.games-seo-intro,
+.games-seo-section {
+  color: $text-secondary;
+  line-height: 1.7;
+}
+
+.games-seo-intro {
+  max-width: 860px;
+  margin: 0 auto 34px;
+  text-align: center;
+
+  h2 {
+    color: $text-primary;
+    font-size: 2rem;
+    line-height: 1.15;
+    margin: 0 0 16px;
+  }
+
+  p {
+    margin: 0 auto 12px;
+    max-width: 780px;
+  }
+}
+
+.games-seo-intro__eyebrow {
+  color: $accent-cyan;
+  font-family: $font-mono;
+  font-size: 0.78rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.games-seo-section {
+  margin: 42px 0 0;
+
+  h2 {
+    color: $text-primary;
+    font-size: 1.45rem;
+    margin-bottom: 16px;
+  }
+
+  a {
+    color: $accent-cyan;
+    font-weight: 700;
+  }
+}
+
+.games-seo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+
+  article {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 18px;
+  }
+
+  h3 {
+    color: $text-primary;
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .games-seo-intro {
+    text-align: left;
+
+    h2 {
+      font-size: 1.55rem;
+    }
+  }
+
+  .games-seo-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .game-back-link {
   margin-bottom: 24px;
 }
