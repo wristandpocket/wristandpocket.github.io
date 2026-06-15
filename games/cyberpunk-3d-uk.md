@@ -3,10 +3,12 @@ layout: game
 title: "Cyberpunk 3D"
 badge: "3D Benchmark"
 banner: "/assets/images/games/cyberpunk3d-banner-new.webp"
+image: "/assets/images/games/cyberpunk3d-banner-new.webp"
 thumbnail: "/assets/images/games/cyberpunk3d-screen1-thumb.webp"
 game_icon: "/assets/images/icons/game-cyberpunk.png"
 description: "Перший у своєму роді, повноцінний 3D-тест для вашого смарт-годинника на Android."
 order: 1
+tester_cta: true
 page_id: "game-cyberpunk-3d"
 permalink: /games/cyberpunk-3d/
 lang: uk

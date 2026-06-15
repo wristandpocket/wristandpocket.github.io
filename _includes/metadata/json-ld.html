@@ -4,7 +4,7 @@ Unified JSON-LD for Wrist & Pocket Studio (Organization, WebSite, BlogPosting, a
 {%- assign studio_name = 'Wrist & Pocket Studio' -%}
 {%- assign studio_url = 'https://wristandpocket.github.io' -%}
 {%- assign site_logo = '/assets/images/noSHOVEL.webp' | absolute_url -%}
-{%- assign page_image = page.image | default: site.default_social_image | default: '/assets/images/default-social-card.webp' | absolute_url -%}
+{%- assign page_image = page.image | default: page.banner | default: site.default_social_image | default: '/assets/images/default-social-card.webp' | absolute_url -%}
 
 <script type="application/ld+json">
 {

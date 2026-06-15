@@ -14,13 +14,27 @@
     <!-- Zero-network Emoji Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
 
-    <!-- Localized Meta Description for Homepage -->
     {% if page.is_home %}
-    {% assign page.description = site.data[site.active_lang].strings.studio_tagline | default: site.description %}
-    {% endif %}
-
+    {% assign home_title = site.data[site.active_lang].strings.home_meta_title | default: site.title %}
+    {% assign home_description = site.data[site.active_lang].strings.home_meta_description | default: site.description %}
+    {% assign home_image = '/assets/images/default-social-card.webp' | absolute_url %}
+    <title>{{ home_title }}</title>
+    <meta name="description" content="{{ home_description | escape }}">
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+    <meta property="og:title" content="{{ home_title | escape }}">
+    <meta property="og:description" content="{{ home_description | escape }}">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:site_name" content="{{ site.title | escape }}">
+    <meta property="og:image" content="{{ home_image }}">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ home_title | escape }}">
+    <meta name="twitter:description" content="{{ home_description | escape }}">
+    <meta name="twitter:image" content="{{ home_image }}">
+    {% else %}
     <!-- Jekyll SEO Tag (Title, Meta, Open Graph, Twitter, Canonical) -->
     {% seo %}
+    {% endif %}
 
     <!-- Polyglot: Generates Hreflang headers -->
     {% I18n_Headers %}

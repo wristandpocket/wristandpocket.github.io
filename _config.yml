@@ -2,8 +2,9 @@
 #  Wrist & Pocket Studio — Jekyll Configuration
 # ============================================================
 
-title: "Wrist & Pocket Studio — Premium Wear OS Games"
-description: "Wrist & Pocket Studio crafts premium Wear OS smartwatch games. No trash policy — only thoughtful, polished experiences."
+title: "Wrist & Pocket Studio"
+tagline: "Premium Wear OS Games"
+description: "Premium Wear OS smartwatch games built with care, performance, and a no-shovelware mindset."
 url: "https://wristandpocket.github.io"
 baseurl: ""
 

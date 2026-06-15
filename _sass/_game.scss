@@ -65,6 +65,42 @@
   margin: 0;
 }
 
+.game-hero__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  margin-top: 18px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: $accent-discord;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 12px 28px rgba(88, 101, 242, 0.32);
+  font-weight: 700;
+  line-height: 1.2;
+  transition: transform $t-fast, background $t-fast, box-shadow $t-fast;
+
+  &:hover {
+    color: #ffffff;
+    background: lighten($accent-discord, 5%);
+    box-shadow: 0 16px 34px rgba(88, 101, 242, 0.4);
+    transform: translateY(-2px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $accent-cyan;
+    outline-offset: 3px;
+  }
+}
+
+.game-hero__cta-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
 /* ---------- Game Layout Grid ---------- */
 .game-grid {
   display: grid;
