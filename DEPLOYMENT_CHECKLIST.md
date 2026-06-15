@@ -13,7 +13,7 @@ Use this checklist before pushing changes to `main`, especially while the site i
 Run the static guardrail:
 
 ```powershell
-node .frontmatter/scripts/site-preflight.js
+npm.cmd run preflight
 ```
 
 This checks:
@@ -31,6 +31,20 @@ node .frontmatter/scripts/site-preflight.js --allow-url-change
 ```
 
 Use it only after documenting the redirect/indexing plan.
+
+For the usual local verification pass:
+
+```powershell
+npm.cmd run verify
+```
+
+GitHub Actions additionally runs:
+
+```powershell
+npm.cmd run verify:html
+```
+
+If this fails locally on Windows because `libcurl` is missing, rely on the GitHub Actions result or repair the RubyInstaller/MSYS2 Devkit setup before treating local HTML Proofer as authoritative.
 
 ## Push And Deploy
 

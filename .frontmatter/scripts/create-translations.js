@@ -5,7 +5,7 @@
  *
  * Given the current post/education file,
  * generates stub translation files for all missing languages
- * with correctly-prefixed permalinks.
+ * with shared Polyglot permalinks.
  */
 
 'use strict';
@@ -124,19 +124,16 @@ var basePath = TYPE_TO_PATH[rawType.toLowerCase()] || '/blog';
 var sourceLang = getFmValue(fmBlock, 'lang') || DEFAULT_LANG;
 var title      = getFmValue(fmBlock, 'title') || 'Untitled';
 
-/** Build the correct permalink for a given language. */
-function makePermalink(lang) {
-  if (lang === DEFAULT_LANG) {
-    return basePath + '/' + slug + '/';
-  }
-  return '/' + lang + basePath + '/' + slug + '/';
+/** Build the shared permalink. Polyglot adds language prefixes at render time. */
+function makePermalink() {
+  return basePath + '/' + slug + '/';
 }
 
 // -- Fix source file permalink if missing or empty ---
 // This is done before creating translations so the source file is also valid
 var sourcePermalink = getFmValue(fmBlock, 'permalink');
 if (!sourcePermalink) {
-  var newPermalink = makePermalink(sourceLang);
+  var newPermalink = makePermalink();
   var updatedContent;
   if (PERMALINK_RE.test(fmBlock)) {
     updatedContent = content.replace(PERMALINK_RE, 'permalink: "' + newPermalink + '"');
@@ -169,7 +166,7 @@ for (var i = 0; i < LANGS.length; i++) {
     continue;
   }
 
-  var langPermalink = makePermalink(lang);
+  var langPermalink = makePermalink();
 
   // Build stub front matter: swap lang and permalink
   var stubFm = fmBlock.replace(/^lang:\s*.*$/m, 'lang: ' + lang);

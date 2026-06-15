@@ -120,10 +120,22 @@ All builds are handled automatically in the cloud via GitHub Actions workflow [.
 Before pushing SEO, localization, game page, sitemap, or metadata changes, run:
 
 ```powershell
-node .frontmatter/scripts/site-preflight.js
+npm.cmd run preflight
 ```
 
 This static guard checks URL stability, localization groups, game media assets, crawler directives, and baseline Search Console safety rules. See [DEPLOYMENT_CHECKLIST.md](DEPLOYMENT_CHECKLIST.md) for the full release flow.
+
+For the usual local verification, run:
+
+```powershell
+npm.cmd run verify
+```
+
+GitHub Actions also runs HTML Proofer. On Windows, that check may require MSYS2/libcurl support:
+
+```powershell
+npm.cmd run verify:html
+```
 
 For local Ruby/Jekyll setup on Windows, see [LOCAL_JEKYLL_SETUP.md](LOCAL_JEKYLL_SETUP.md).
 

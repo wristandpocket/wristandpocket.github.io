@@ -1,0 +1,13 @@
+{
+  "name": "wristandpocket-site",
+  "private": true,
+  "scripts": {
+    "preflight": "node .frontmatter/scripts/site-preflight.js",
+    "build": "node .frontmatter/scripts/site-build.js",
+    "verify:html": "node .frontmatter/scripts/site-htmlproofer.js",
+    "verify:js": "node .frontmatter/scripts/site-js-budget.js",
+    "check:images": "node .frontmatter/scripts/check-images.js",
+    "verify": "npm run preflight && npm run build && npm run verify:js",
+    "verify:ci": "npm run preflight && npm run build && npm run verify:html && npm run verify:js"
+  }
+}

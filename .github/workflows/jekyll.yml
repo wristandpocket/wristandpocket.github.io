@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run site preflight
-        run: node .frontmatter/scripts/site-preflight.js
+        run: npm run preflight
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
@@ -43,25 +43,13 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Build with Jekyll
-        run: bundle exec jekyll build --destination ./_site
-        env:
-          JEKYLL_ENV: production
+        run: npm run build
 
       - name: Test with HTML Proofer
-        run: |
-          bundle exec htmlproofer ./_site \
-            --allow-hash-href \
-            --ignore-empty-alt \
-            --ignore-urls "/^https:\/\/(wristandpocket\.github\.io|fonts\.googleapis\.com|fonts\.gstatic\.com|mermaid\.ink|polyfill\.io)/,/assets\/images\//"
+        run: npm run verify:html
 
       - name: Check JS bundle size
-        run: |
-          JS_SIZE=$(wc -c < _site/assets/js/script.js)
-          echo "JS size: $JS_SIZE bytes"
-          if [ $JS_SIZE -gt 20480 ]; then
-            echo "::error::JS exceeds 20KB budget ($JS_SIZE bytes)"
-            exit 1
-          fi
+        run: npm run verify:js
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

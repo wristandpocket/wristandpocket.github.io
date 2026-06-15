@@ -41,18 +41,18 @@ for (var i = 0; i < slugTests.length; i++) {
 
 // ═══ Test 2: getFmValue — THE CRITICAL FIX ═══
 console.log('\n=== getFmValue TESTS ===');
-check('lang: uk',                'getFmValue', getFmValue('lang: uk', 'lang'),               'uk');
-check('lang: en',                'getFmValue', getFmValue('lang: en', 'lang'),               'en');
-check('permalink: ""  (empty!)', 'getFmValue', getFmValue('permalink: ""', 'permalink'),      null);
-check("permalink: ''  (empty!)", 'getFmValue', getFmValue("permalink: ''", 'permalink'),      null);
-check('permalink:     (bare)',   'getFmValue', getFmValue('permalink:', 'permalink'),          null);
-check('permalink:  "" (spaced)', 'getFmValue', getFmValue('permalink:  ""', 'permalink'),     null);
-check('permalink: /blog/test/',  'getFmValue', getFmValue('permalink: /blog/test/', 'permalink'), '/blog/test/');
-check('permalink: "/blog/t/"',   'getFmValue', getFmValue('permalink: "/blog/t/"', 'permalink'), '/blog/t/');
-check('title: how to make game', 'getFmValue', getFmValue('title: how to make game', 'title'), 'how to make game');
-check('title: "Two Cats"',      'getFmValue', getFmValue('title: "Two Cats"', 'title'),       'Two Cats');
-check("title: 'Single'",        'getFmValue', getFmValue("title: 'Single'", 'title'),         'Single');
-check('fmContentType: Post',    'getFmValue', getFmValue('fmContentType: Post', 'fmContentType'), 'Post');
+check('lang: uk',                getFmValue('lang: uk', 'lang'),               'uk');
+check('lang: en',                getFmValue('lang: en', 'lang'),               'en');
+check('permalink: ""  (empty!)', getFmValue('permalink: ""', 'permalink'),      null);
+check("permalink: ''  (empty!)", getFmValue("permalink: ''", 'permalink'),      null);
+check('permalink:     (bare)',   getFmValue('permalink:', 'permalink'),          null);
+check('permalink:  "" (spaced)', getFmValue('permalink:  ""', 'permalink'),     null);
+check('permalink: /blog/test/',  getFmValue('permalink: /blog/test/', 'permalink'), '/blog/test/');
+check('permalink: "/blog/t/"',   getFmValue('permalink: "/blog/t/"', 'permalink'), '/blog/t/');
+check('title: how to make game', getFmValue('title: how to make game', 'title'), 'how to make game');
+check('title: "Two Cats"',       getFmValue('title: "Two Cats"', 'title'),       'Two Cats');
+check("title: 'Single'",         getFmValue("title: 'Single'", 'title'),         'Single');
+check('fmContentType: Post',     getFmValue('fmContentType: Post', 'fmContentType'), 'Post');
 
 // Overloaded check — redo with correct signature
 pass = 0; fail = 0;
@@ -86,16 +86,15 @@ check2('with value', getFmValue('permalink: /blog/x/', 'permalink'), '/blog/x/')
 check2('quoted val', getFmValue('permalink: "/blog/x/"', 'permalink'), '/blog/x/');
 
 // Permalink build
-var DEFAULT_LANG = 'en';
 var TYPE_TO_PATH = { post: '/blog', education: '/education' };
-function makePermalink(slug, type, lang) {
+function makePermalink(slug, type) {
   var bp = TYPE_TO_PATH[type] || '/blog';
-  return lang === DEFAULT_LANG ? bp + '/' + slug + '/' : '/' + lang + bp + '/' + slug + '/';
+  return bp + '/' + slug + '/';
 }
-check2('post/uk',  makePermalink('how-to-make-game', 'post', 'uk'), '/uk/blog/how-to-make-game/');
-check2('post/en',  makePermalink('how-to-make-game', 'post', 'en'), '/blog/how-to-make-game/');
-check2('post/ru',  makePermalink('how-to-make-game', 'post', 'ru'), '/ru/blog/how-to-make-game/');
-check2('edu/ko',   makePermalink('wearos-zero-gc', 'education', 'ko'), '/ko/education/wearos-zero-gc/');
+check2('post/en',  makePermalink('how-to-make-game', 'post'), '/blog/how-to-make-game/');
+check2('post/uk',  makePermalink('how-to-make-game', 'post'), '/blog/how-to-make-game/');
+check2('post/ru',  makePermalink('how-to-make-game', 'post'), '/blog/how-to-make-game/');
+check2('edu/ko',   makePermalink('wearos-zero-gc', 'education'), '/education/wearos-zero-gc/');
 
 // PERMALINK_RE
 var PERMALINK_RE = /^permalink:\s*.*$/m;

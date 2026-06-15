@@ -46,15 +46,28 @@ bundle install
 Static preflight:
 
 ```powershell
-node .frontmatter/scripts/site-preflight.js
+npm.cmd run preflight
 ```
 
 Jekyll production build:
 
 ```powershell
-$env:JEKYLL_ENV="production"
-bundle exec jekyll build --destination ./_site
+npm.cmd run build
 ```
+
+Usual local verification:
+
+```powershell
+npm.cmd run verify
+```
+
+Optional HTML Proofer parity check:
+
+```powershell
+npm.cmd run verify:html
+```
+
+On Windows this may require MSYS2/libcurl support from RubyInstaller Devkit. GitHub Actions runs this check on Ubuntu.
 
 Local preview:
 

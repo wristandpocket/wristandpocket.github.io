@@ -5,7 +5,7 @@
  *
  * Synchronizes translations for the current file:
  * 1. Ensures consistent page_id across all versions.
- * 2. Synchronizes permalinks (with language prefixes).
+ * 2. Synchronizes shared permalinks for Polyglot.
  * 3. Creates missing translation stubs.
  */
 
@@ -87,6 +87,7 @@ var fmBlock = fmMatch[1];
 var layout = getFmValue(fmBlock, 'layout') || 'post';
 var basePath = TYPE_TO_PATH[layout.toLowerCase()] || '/blog';
 var pageId = getFmValue(fmBlock, 'page_id') || crypto.randomBytes(4).toString('hex');
+var permalink = basePath + '/' + slug + '/';
 
 // Update source file with page_id if missing
 if (!getFmValue(fmBlock, 'page_id')) {
@@ -102,7 +103,6 @@ LANGS.forEach(function(lang) {
   }
   
   var targetPath = path.join(dir, targetName);
-  var permalink = (lang === DEFAULT_LANG) ? (basePath + '/' + slug + '/') : ('/' + lang + basePath + '/' + slug + '/');
 
   if (fs.existsSync(targetPath)) {
     // Update existing file
@@ -113,8 +113,12 @@ LANGS.forEach(function(lang) {
     fs.writeFileSync(targetPath, updated, 'utf-8');
   } else {
     // Create stub
-    var stubFm = fmBlock;
-    stubFm = "layout: " + layout + "\ntitle: \"[TRANSLATE] " + (getFmValue(fmBlock, 'title') || 'Untitled') + "\"\nlang: " + lang + "\npage_id: " + pageId + "\npermalink: \"" + permalink + "\"\n" + (getFmValue(fmBlock, 'image') ? ("image: " + getFmValue(fmBlock, 'image') + "\n") : "");
+    var stubFm = "layout: " + layout + "\n";
+    stubFm += "title: \"[TRANSLATE] " + (getFmValue(fmBlock, 'title') || 'Untitled') + "\"\n";
+    stubFm += "lang: " + lang + "\n";
+    stubFm += "page_id: " + pageId + "\n";
+    stubFm += "permalink: \"" + permalink + "\"\n";
+    stubFm += getFmValue(fmBlock, 'image') ? ("image: " + getFmValue(fmBlock, 'image') + "\n") : "";
     var stubContent = "---\n" + stubFm + "---\n\n# TODO: Translate content\n";
     fs.writeFileSync(targetPath, stubContent, 'utf-8');
   }
