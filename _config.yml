@@ -5,14 +5,14 @@
 title: "Wrist & Pocket Studio"
 tagline: "Premium Wear OS Games"
 description: "Premium Wear OS smartwatch games built with care, performance, and a no-shovelware mindset."
-url: "https://wristandpocket.github.io"
+url: "https://wristandpocket.dev"
 baseurl: ""
 
 lang: "en"
 email: "wristandpocket.studio@gmail.com"
 author:
   name: "Wrist & Pocket Studio"
-  url: "https://wristandpocket.github.io"
+  url: "https://wristandpocket.dev"
 
 # ── Build ────────────────────────────────────────────────────
 markdown: kramdown
