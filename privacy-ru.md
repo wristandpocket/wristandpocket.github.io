@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Политика конфиденциальности — Wrist & Pocket Studio"
+title: "Политика конфиденциальности"
 description: "Политика конфиденциальности для приложений и игр Wrist & Pocket Studio."
 lang: ru
 permalink: /privacy/

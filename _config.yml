@@ -24,8 +24,14 @@ sass:
 # Exclude dev artefacts from the build
 exclude:
   - README.md
+  - CONTENT_WORKFLOW.md
+  - DEPLOYMENT_CHECKLIST.md
+  - LOCAL_JEKYLL_SETUP.md
   - Gemfile
   - Gemfile.lock
+  - package.json
+  - package-lock.json
+  - frontmatter.json
   - node_modules/
   - .agent/
   - .agents/

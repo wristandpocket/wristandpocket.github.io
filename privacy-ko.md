@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "개인정보처리방침 — Wrist & Pocket Studio"
+title: "개인정보처리방침"
 description: "Wrist & Pocket Studio 앱 및 게임에 대한 개인정보처리방침입니다."
 lang: ko
 permalink: /privacy/
