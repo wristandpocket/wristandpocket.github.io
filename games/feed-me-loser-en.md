@@ -4,10 +4,12 @@ title: "Feed Me, Loser!"
 badge: "Tamagotchi"
 badge_style: tamagotchi
 banner: "/assets/images/games/feedmeloser-banner.webp"
+image: "/assets/images/games/feedmeloser-banner.webp"
 thumbnail: "/assets/images/games/feedmeloser-screen2-thumb.webp"
 game_icon: "/assets/images/icons/game-pet.png"
 description: "A hilarious satirical Tamagotchi-style game for smartwatches. Take care of a demanding monster!"
 order: 2
+tester_cta: true
 page_id: "game-feed-me-loser"
 permalink: /games/feed-me-loser/
 lang: en

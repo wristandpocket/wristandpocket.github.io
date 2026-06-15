@@ -115,6 +115,18 @@ All builds are handled automatically in the cloud via GitHub Actions workflow [.
 *   **Deployment settings:** In repo Settings → Pages → Build and deployment → Source **MUST** be set to **"GitHub Actions"**.
 *   **No local Ruby needed:** You do not need to install Ruby/Bundler locally. Just commit your Markdown/YAML/SCSS edits, and let GitHub handle the compilation.
 
+### Preflight Before Push
+
+Before pushing SEO, localization, game page, sitemap, or metadata changes, run:
+
+```powershell
+node .frontmatter/scripts/site-preflight.js
+```
+
+This static guard checks URL stability, localization groups, game media assets, crawler directives, and baseline Search Console safety rules. See [DEPLOYMENT_CHECKLIST.md](DEPLOYMENT_CHECKLIST.md) for the full release flow.
+
+For local Ruby/Jekyll setup on Windows, see [LOCAL_JEKYLL_SETUP.md](LOCAL_JEKYLL_SETUP.md).
+
 ### ⚠️ HTML Proofer Rules for Placeholders & Assets
 During build validation, **HTML Proofer** checks that all referenced images, external links, and stylesheets exist.
 *   **Rule:** If you add a temporary placeholder image or path (like flags `/assets/images/flags/*.png` or screenshots `/assets/images/games/*.webp`) that is not yet physically committed to the repository, you **MUST** configure HTML Proofer to ignore this path.

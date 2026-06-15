@@ -75,6 +75,66 @@
   font-weight: 300;
 }
 
+.bio__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.bio__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.2;
+  transition: transform $t-fast, background $t-fast, border-color $t-fast, color $t-fast, box-shadow $t-fast;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $accent-cyan;
+    outline-offset: 3px;
+  }
+}
+
+.bio__cta--primary {
+  background: $accent-discord;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 10px 24px rgba(88, 101, 242, 0.28);
+
+  &:hover {
+    color: #ffffff;
+    background: lighten($accent-discord, 5%);
+    box-shadow: 0 14px 30px rgba(88, 101, 242, 0.36);
+  }
+}
+
+.bio__cta--secondary {
+  background: rgba(78, 205, 196, 0.08);
+  color: $accent-cyan;
+  border: 1px solid rgba(78, 205, 196, 0.32);
+
+  &:hover {
+    background: rgba(78, 205, 196, 0.16);
+    color: #8ceee9;
+  }
+}
+
+.bio__cta-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
 /* ---------- Premium Card (Collection) ---------- */
 #premium {
   grid-area: premium;

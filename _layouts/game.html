@@ -14,6 +14,12 @@ layout: default
         <div class="game-hero__content">
             <span class="game-hero__badge">{{ page.badge }}</span>
             <h1 class="game-hero__title">{{ page.title }}</h1>
+            {% if page.tester_cta %}
+            <a href="https://discord.gg/6vzt33SX9D" class="game-hero__cta" target="_blank" rel="noopener noreferrer">
+                <img src="{{ '/assets/images/icons/beta.png' | relative_url }}" alt="" class="game-hero__cta-icon">
+                {{ site.data[site.active_lang].strings.game_tester_cta | default: 'Become a Tester' }}
+            </a>
+            {% endif %}
         </div>
     </header>
 
@@ -52,7 +58,7 @@ layout: default
                         </td>
                     </tr>
                 </table>
-                {% if page.specs.status == 'In Development' or page.specs.status == 'В розробці' or page.specs.status == 'В разработке' or page.specs.status == '개발 중' or page.specs.status == 'In Active Development' or page.specs.status == 'В активній розробці' or page.specs.status == 'В активной разработке' or page.specs.status == '활발히 개발 중' or page.specs.status == 'In Testing' or page.specs.status == 'В тестуванні' or page.specs.status == 'В тестировании' or page.specs.status == '테스트 중' %}
+                {% if page.tester_cta %}
                 <div class="spec-tester-cta">
                     <a href="https://discord.gg/6vzt33SX9D" class="btn-tester" target="_blank" rel="noopener noreferrer">
                         <img src="{{ '/assets/images/icons/beta.png' | relative_url }}" alt="" class="tester-btn-icon"> {{ site.data[site.active_lang].strings.game_tester_cta | default: 'Become a Tester' }}

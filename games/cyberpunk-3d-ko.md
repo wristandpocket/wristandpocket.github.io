@@ -3,10 +3,12 @@ layout: game
 title: "Cyberpunk 3D"
 badge: "3D Benchmark"
 banner: "/assets/images/games/cyberpunk3d-banner-new.webp"
+image: "/assets/images/games/cyberpunk3d-banner-new.webp"
 thumbnail: "/assets/images/games/cyberpunk3d-screen1-thumb.webp"
 game_icon: "/assets/images/icons/game-cyberpunk.png"
 description: "안드로이드 스마트워치를 위해 설계된 최초의 본격 3D 그래픽 테스트."
 order: 1
+tester_cta: true
 page_id: "game-cyberpunk-3d"
 permalink: /games/cyberpunk-3d/
 lang: ko
