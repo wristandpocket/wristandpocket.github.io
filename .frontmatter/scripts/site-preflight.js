@@ -315,9 +315,6 @@ function validateFrontMatter() {
 }
 
 function validateRoadmapAndDocs() {
-  if (!exists('SITE_AUDIT_ROADMAP.md')) {
-    addWarning('SITE_AUDIT_ROADMAP.md is missing. Keep the staged SEO plan in-repo.');
-  }
   if (!exists('DEPLOYMENT_CHECKLIST.md')) {
     addWarning('DEPLOYMENT_CHECKLIST.md is missing. Add it before production-heavy release work.');
   }

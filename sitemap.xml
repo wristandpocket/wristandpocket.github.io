@@ -10,9 +10,11 @@ sitemap: false
   {%- assign processed_urls = "|" -%}
   {%- for doc in docs -%}
     {%- if doc.url -%}
+      {%- if doc.lang and doc.lang != site.default_lang -%}{%- continue -%}{%- endif -%}
+      {%- if doc.url contains '/uk/' or doc.url contains '/ru/' or doc.url contains '/ko/' -%}{%- continue -%}{%- endif -%}
       {%- comment -%} Use permalink or url as a unique identifier for the logical content {%- endcomment -%}
       {%- assign unique_id = doc.permalink | default: doc.url -%}
-      {%- capture check_id -%}|{{ unique_id }}|{%- endcapture -%}
+      {%- assign check_id = unique_id | prepend: '|' | append: '|' -%}
       {%- if processed_urls contains check_id -%}{%- continue -%}{%- endif -%}
       {%- assign processed_urls = processed_urls | append: unique_id | append: "|" -%}
       
