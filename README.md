@@ -125,6 +125,8 @@ npm.cmd run preflight
 
 This static guard checks URL stability, localization groups, game media assets, crawler directives, and baseline Search Console safety rules. See [DEPLOYMENT_CHECKLIST.md](DEPLOYMENT_CHECKLIST.md) for the full release flow.
 
+For creating posts, pages, and game detail pages, see [CONTENT_WORKFLOW.md](CONTENT_WORKFLOW.md).
+
 For the usual local verification, run:
 
 ```powershell

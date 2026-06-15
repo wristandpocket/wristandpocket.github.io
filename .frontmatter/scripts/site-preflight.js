@@ -87,6 +87,21 @@ function grepValues(block, keys) {
   return values;
 }
 
+function inferLangFromFile(file) {
+  const match = file.match(/-(en|uk|ru|ko)\.(md|html)$/);
+  return match ? match[1] : null;
+}
+
+function hasNestedKey(block, parent, key) {
+  const re = new RegExp('^' + parent + ':\\s*\\r?\\n(?:[ \\t]+[^\\r\\n]*\\r?\\n)*?[ \\t]+' + key + ':\\s*[^\\r\\n]+', 'm');
+  return re.test(block);
+}
+
+function hasListItems(block, key) {
+  const re = new RegExp('^' + key + ':\\s*\\r?\\n[ \\t]+-', 'm');
+  return re.test(block);
+}
+
 function gitShowHead(relPath) {
   try {
     return cp.execFileSync('git', ['show', 'HEAD:' + relPath], {
@@ -184,12 +199,15 @@ function validateHeadAndSitemapTemplates() {
 }
 
 function contentFiles() {
+  const localizedRootPages = fs.readdirSync(ROOT)
+    .filter(f => /-(en|uk|ru|ko)\.md$/.test(f));
   const files = []
     .concat(listFiles('games', f => f.endsWith('.md')))
     .concat(listFiles('_posts', f => f.endsWith('.md')))
     .concat(fs.readdirSync(ROOT).filter(f => /^privacy-.*\.md$/.test(f)))
+    .concat(localizedRootPages)
     .sort();
-  return files;
+  return [...new Set(files)];
 }
 
 function validateFrontMatter() {
@@ -207,6 +225,10 @@ function validateFrontMatter() {
     if (!fm.lang || !LANGS.includes(fm.lang)) {
       addError(`${file} has missing or unsupported lang.`);
     }
+    const fileLang = inferLangFromFile(file);
+    if (fileLang && fm.lang && fileLang !== fm.lang) {
+      addError(`${file} filename language suffix does not match lang: ${fm.lang}.`);
+    }
 
     if (!fm.permalink) {
       addError(`${file} is missing permalink.`);
@@ -214,6 +236,9 @@ function validateFrontMatter() {
       if (!fm.permalink.startsWith('/')) addError(`${file} permalink must start with "/".`);
       if (!fm.permalink.endsWith('/')) addError(`${file} permalink must end with "/".`);
       if (/[A-Z]/.test(fm.permalink)) addError(`${file} permalink contains uppercase characters.`);
+      if (/^\/(uk|ru|ko)\//.test(fm.permalink)) {
+        addError(`${file} permalink must be shared across translations; remove the language prefix.`);
+      }
     }
 
     const oldText = gitShowHead(file);
@@ -233,6 +258,15 @@ function validateFrontMatter() {
     }
 
     if (fm.layout === 'game') {
+      if (!fm.page_id || !fm.page_id.startsWith('game-')) {
+        addError(`${file} game page_id must start with "game-".`);
+      }
+      if (!fm.permalink || !fm.permalink.startsWith('/games/')) {
+        addError(`${file} game permalink must start with /games/.`);
+      }
+      if (!fm.description || /TODO/i.test(fm.description)) {
+        addError(`${file} game description must be publication-ready.`);
+      }
       const assetKeys = ['banner', 'thumbnail', 'game_icon', 'image'];
       for (const key of assetKeys) {
         if (!fm[key]) {
@@ -243,9 +277,17 @@ function validateFrontMatter() {
       }
 
       const mediaRefs = grepValues(fm.__block, ['src', 'thumb', 'full']);
+      if (!hasListItems(fm.__block, 'screenshots')) {
+        addError(`${file} game page must define at least one screenshot or video item.`);
+      }
       for (const media of mediaRefs) {
         if (media.startsWith('/') && !exists(media)) {
           addError(`${file} references missing gallery asset: ${media}`);
+        }
+      }
+      for (const specKey of ['platform', 'engine', 'performance', 'rotary', 'status']) {
+        if (!hasNestedKey(fm.__block, 'specs', specKey)) {
+          addError(`${file} game specs missing ${specKey}.`);
         }
       }
     }

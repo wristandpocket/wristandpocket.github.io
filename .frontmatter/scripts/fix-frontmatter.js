@@ -99,6 +99,10 @@ if (!schema) {
   console.error('No matching content type schema found for: ' + cTypeStr);
   process.exit(1);
 }
+if (schema.name.toLowerCase() === 'game') {
+  console.log('Game front matter contains nested specs/screenshots. Use scaffold scripts and site-preflight instead of normalization.');
+  process.exit(0);
+}
 
 // Extract using Regex for each schema field
 function extractValues(fields, yamlBlock, indentLevel = 0) {
