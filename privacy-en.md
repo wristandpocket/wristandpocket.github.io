@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Privacy Policy — Wrist & Pocket Studio"
+title: "Privacy Policy"
 description: "Privacy Policy for Wrist & Pocket Studio applications and games."
 lang: en
 permalink: /privacy/

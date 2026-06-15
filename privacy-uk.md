@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Політика конфіденційності — Wrist & Pocket Studio"
+title: "Політика конфіденційності"
 description: "Політика конфіденційності для додатків та ігор Wrist & Pocket Studio."
 lang: uk
 permalink: /privacy/

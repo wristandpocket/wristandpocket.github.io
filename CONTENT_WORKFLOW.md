@@ -173,6 +173,37 @@ Use URL changes only with a documented redirect/indexing plan:
 node .frontmatter/scripts/site-preflight.js --allow-url-change
 ```
 
+## SEO Metadata Notes
+
+`jekyll-seo-tag` appends the site title automatically. Do not include `Wrist & Pocket Studio` in ordinary page `title` front matter unless the page intentionally needs a custom full title. Otherwise generated titles become duplicated, for example:
+
+```text
+Wear OS Premium Smartwatch Games | Wrist & Pocket Studio
+```
+
+Keep source page titles short and query-focused:
+
+```yaml
+title: "Wear OS Premium Smartwatch Games"
+```
+
+Use the generated `_site` HTML to confirm titles, canonicals, descriptions, and `hreflang` output after SEO-sensitive edits.
+
+## Production Artifact Hygiene
+
+Jekyll copies many root files unless they are excluded. Keep local workflow and tooling files in `_config.yml` `exclude` so GitHub Pages does not publish them as public URLs.
+
+Files that should stay out of `_site` include:
+
+- `frontmatter.json`
+- `package.json`
+- `package-lock.json`
+- `CONTENT_WORKFLOW.md`
+- `DEPLOYMENT_CHECKLIST.md`
+- `LOCAL_JEKYLL_SETUP.md`
+
+`CNAME` is intentionally published because GitHub Pages uses it for the custom domain.
+
 ## Publishing Checklist
 
 Inside the site repository:
