@@ -137,7 +137,7 @@ function validateRobots() {
   if (/Disallow:\s*\/\s*$/im.test(robots)) {
     addError('robots.txt blocks the whole site with "Disallow: /".');
   }
-  if (!/Sitemap:\s*https:\/\/wristandpocket\.github\.io\/sitemap\.xml/im.test(robots)) {
+  if (!/Sitemap:\s*https:\/\/wristandpocket\.dev\/sitemap\.xml/im.test(robots)) {
     addWarning('robots.txt does not point to the production sitemap URL.');
   } else {
     addPass('robots.txt points to the production sitemap and does not block the site.');
