@@ -1,7 +1,7 @@
 # Wrist & Pocket Studio — GitHub Pages Site (Jekyll Edition)
 
 > **Owner:** Ihor Sivochka (Figarist) · **Email:** wristandpocket.studio@gmail.com  
-> **Live:** https://wristandpocket.github.io · **Repo:** https://github.com/wristandpocket
+> **Live:** https://wristandpocket.dev · **Repo:** https://github.com/wristandpocket
 
 ---
 
