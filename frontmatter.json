@@ -21,6 +21,20 @@
       "contentTypes": [
         "Post"
       ]
+    },
+    {
+      "title": "Games",
+      "path": "[[workspace]]/games",
+      "contentTypes": [
+        "Game"
+      ]
+    },
+    {
+      "title": "Pages",
+      "path": "[[workspace]]",
+      "contentTypes": [
+        "Page"
+      ]
     }
   ],
   "frontMatter.content.draftField": {
@@ -237,6 +251,235 @@
           "type": "string",
           "hidden": true,
           "default": "Post"
+        }
+      ]
+    },
+    {
+      "name": "Game",
+      "pageBundle": false,
+      "previewPath": "/games",
+      "fields": [
+        {
+          "title": "Layout",
+          "name": "layout",
+          "type": "string",
+          "default": "game",
+          "hidden": true,
+          "required": true
+        },
+        {
+          "title": "Title",
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "title": "Badge",
+          "name": "badge",
+          "type": "string",
+          "required": true
+        },
+        {
+          "title": "Badge Style",
+          "name": "badge_style",
+          "type": "string"
+        },
+        {
+          "title": "Banner",
+          "name": "banner",
+          "type": "image",
+          "required": true,
+          "isPreviewImage": true,
+          "panel": "Media"
+        },
+        {
+          "title": "Social Image",
+          "name": "image",
+          "type": "image",
+          "required": true,
+          "panel": "Media"
+        },
+        {
+          "title": "Thumbnail",
+          "name": "thumbnail",
+          "type": "image",
+          "required": true,
+          "panel": "Media"
+        },
+        {
+          "title": "Game Icon",
+          "name": "game_icon",
+          "type": "image",
+          "required": true,
+          "panel": "Media"
+        },
+        {
+          "title": "Description",
+          "name": "description",
+          "type": "string",
+          "required": true
+        },
+        {
+          "title": "Order",
+          "name": "order",
+          "type": "number",
+          "default": 99,
+          "required": true
+        },
+        {
+          "title": "Tester CTA",
+          "name": "tester_cta",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "title": "Page ID",
+          "name": "page_id",
+          "type": "string",
+          "required": true,
+          "description": "Use game-slug and keep it identical across all translations."
+        },
+        {
+          "title": "Permalink",
+          "name": "permalink",
+          "type": "string",
+          "required": true,
+          "description": "Shared Polyglot permalink, for example /games/my-game/."
+        },
+        {
+          "title": "Language",
+          "name": "lang",
+          "type": "choice",
+          "choices": [
+            "en",
+            "uk",
+            "ru",
+            "ko"
+          ],
+          "required": true
+        },
+        {
+          "title": "Specs",
+          "name": "specs",
+          "type": "block",
+          "fields": [
+            {
+              "title": "Platform",
+              "name": "platform",
+              "type": "string",
+              "default": "Wear OS 3+"
+            },
+            {
+              "title": "Engine",
+              "name": "engine",
+              "type": "string",
+              "default": "Unity"
+            },
+            {
+              "title": "Performance",
+              "name": "performance",
+              "type": "string"
+            },
+            {
+              "title": "Rotary",
+              "name": "rotary",
+              "type": "string"
+            },
+            {
+              "title": "Status",
+              "name": "status",
+              "type": "string"
+            }
+          ]
+        },
+        {
+          "title": "Play Store URL",
+          "name": "play_store_url",
+          "type": "string"
+        },
+        {
+          "title": "Sitemap",
+          "name": "sitemap",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "title": "Content Type",
+          "name": "fmContentType",
+          "type": "string",
+          "hidden": true,
+          "default": "Game"
+        }
+      ]
+    },
+    {
+      "name": "Page",
+      "pageBundle": false,
+      "previewPath": "/",
+      "fields": [
+        {
+          "title": "Layout",
+          "name": "layout",
+          "type": "string",
+          "default": "default",
+          "hidden": true,
+          "required": true
+        },
+        {
+          "title": "Title",
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "title": "Description",
+          "name": "description",
+          "type": "string",
+          "required": true
+        },
+        {
+          "title": "Language",
+          "name": "lang",
+          "type": "choice",
+          "choices": [
+            "en",
+            "uk",
+            "ru",
+            "ko"
+          ],
+          "required": true
+        },
+        {
+          "title": "Page ID",
+          "name": "page_id",
+          "type": "string",
+          "description": "Use page-slug and keep it identical across all translations."
+        },
+        {
+          "title": "Permalink",
+          "name": "permalink",
+          "type": "string",
+          "required": true,
+          "description": "Shared Polyglot permalink, for example /press-kit/."
+        },
+        {
+          "title": "Social Image",
+          "name": "image",
+          "type": "image",
+          "isPreviewImage": true
+        },
+        {
+          "title": "Sitemap",
+          "name": "sitemap",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "title": "Content Type",
+          "name": "fmContentType",
+          "type": "string",
+          "hidden": true,
+          "default": "Page"
         }
       ]
     }
