@@ -80,7 +80,7 @@ layout: default
                 {% if screen.type == 'video' %}
                 <div class="smartwatch-bezel smartwatch-bezel--video" data-video-src="{{ screen.src | relative_url }}">
                     <video class="smartwatch-screen" loop muted playsinline preload="none" poster="{{ page.thumbnail | relative_url }}" data-lazy-video>
-                        <source data-src="{{ screen.src | relative_url }}" type="video/webm">
+                        <source data-src="{{ screen.src | relative_url }}" type="video/webm" data-proofer-ignore>
                     </video>
                     <div class="smartwatch-glass-shimmer"></div>
                 </div>
