@@ -20,7 +20,7 @@ Wear OS games are not tiny phone games. A good smartwatch game has to respect th
 
 That sounds restrictive, but restrictions can be useful. When a game is built for a watch from the start, it can feel quick, personal, and oddly satisfying in a way a phone game usually cannot.
 
-### The Session Should Be Short
+## The Session Should Be Short
 
 Most smartwatch play happens between other things: waiting for coffee, sitting on a bus, checking a notification, or taking a tiny break. A strong Wear OS game should make sense in 15 to 60 seconds.
 
@@ -28,7 +28,7 @@ That does not mean the game has to be shallow. It means the player should unders
 
 For [Feed Me, Loser!](/games/feed-me-loser/), that means a Tamagotchi-style loop where the pet state is readable at a glance. For [Cyberpunk 3D](/games/cyberpunk-3d/), it means a benchmark-style experience that quickly shows what the watch can render and how it behaves under load.
 
-### Round Screens Need Real Layout Decisions
+## Round Screens Need Real Layout Decisions
 
 Many Wear OS devices use circular screens. A phone UI squeezed into a circle usually loses important controls near the corners, creates awkward text wrapping, and wastes the center where the player's attention naturally lands.
 
@@ -36,7 +36,7 @@ Good smartwatch games treat the safe area as part of the design. Important statu
 
 This is one reason smartwatch games benefit from custom UI instead of generic mobile layouts. The screen is not just smaller; it has a different shape, posture, and rhythm.
 
-### Controls Should Use the Watch
+## Controls Should Use the Watch
 
 Touch works, but Wear OS has more to offer. Rotary crowns, bezels, taps, swipes, and haptics can make a watch game feel native instead of transplanted.
 
@@ -44,7 +44,7 @@ Rotary input is especially interesting because it lets the player interact witho
 
 The important part is restraint. Watch controls are fun when they reduce friction. They become tiring when every tiny action asks for too much movement.
 
-### Battery and Heat Are Game Design Problems
+## Battery and Heat Are Game Design Problems
 
 On a smartwatch, performance is not only a technical target. It changes the game experience. If a game overheats the device, drains the battery, or stutters after a minute, players will not care how ambitious it looked in a screenshot.
 
@@ -52,7 +52,7 @@ Good Wear OS games need practical limits: careful frame targets, OLED-friendly a
 
 That is why Wrist & Pocket treats performance as part of the design brief, not as cleanup at the end.
 
-### A Watch Game Needs a Reason to Exist on the Wrist
+## A Watch Game Needs a Reason to Exist on the Wrist
 
 The best smartwatch games answer a simple question: why is this better on a watch?
 
@@ -60,7 +60,7 @@ Sometimes the answer is immediacy. Sometimes it is a pet that lives close to the
 
 If the answer is only "because we can put it there," the game probably belongs somewhere else.
 
-### What We Are Building
+## What We Are Building
 
 Wrist & Pocket Studio is building original [Wear OS games](/games/) around those constraints instead of fighting them. The current focus is:
 

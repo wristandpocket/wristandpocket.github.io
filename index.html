@@ -3,29 +3,63 @@ layout: default
 is_home: true
 ---
 
-<div class="hub-grid">
+{% assign all_games = site.pages | where: "layout", "game" | where: "lang", site.active_lang %}
+{% assign sorted_games = all_games | sort: "order" %}
 
-    <!-- BIO CARD -->
-    <article class="hub-card fade-in" id="bio">
+<section class="home-showcase fade-in" aria-labelledby="home-showcase-title">
+    <div class="home-showcase__copy">
         <div class="card-label">{{ site.data[site.active_lang].strings.studio_label }}</div>
-        <h1 class="bio__logo"><span>WRIST</span> & <span>POCKET</span></h1>
+        <h1 id="home-showcase-title" class="bio__logo"><span>WRIST</span> & <span>POCKET</span></h1>
         <p class="bio__tagline">{{ site.data[site.active_lang].strings.studio_tagline }}</p>
+        <p class="home-showcase__summary">{{ site.data[site.active_lang].strings.home_meta_description | default: site.description }}</p>
         <div class="bio__actions">
             <a href="https://discord.gg/6vzt33SX9D" class="bio__cta bio__cta--primary" target="_blank" rel="noopener noreferrer">
-                <img src="{{ '/assets/images/icons/beta.png' | relative_url }}" alt="" class="bio__cta-icon">
+                <img src="{{ '/assets/images/icons/beta.png' | relative_url }}" alt="" class="bio__cta-icon" width="24" height="24">
                 {{ site.data[site.active_lang].strings.home_primary_cta | default: 'Join Beta Testing' }}
             </a>
             <a href="{{ '/games/' | relative_url }}" class="bio__cta bio__cta--secondary">
                 {{ site.data[site.active_lang].strings.home_secondary_cta | default: 'Explore Games' }}
             </a>
         </div>
-    </article>
+    </div>
+
+    {% if sorted_games.size > 0 %}
+    <div class="home-showcase__media" aria-label="{{ site.data[site.active_lang].strings.games_title | default: 'Wear OS games' }}">
+        {% for game in sorted_games limit: 2 %}
+        <a href="{{ game.url | relative_url }}" class="home-featured-game">
+            <img
+                src="{{ game.thumbnail | relative_url }}"
+                alt="{{ game.title }} screenshot"
+                class="home-featured-game__image"
+                width="1024"
+                height="1024"
+                {% if forloop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %}
+                decoding="async">
+            <div class="home-featured-game__body">
+                <span class="game-item__badge {% if game.badge_style == 'tamagotchi' %}game-item__badge--tamagotchi{% endif %}">{{ game.badge }}</span>
+                <h2>{{ game.title }}</h2>
+                <p>{{ game.description }}</p>
+                {% if game.play_store_url %}
+                <span class="game-item__cta">{{ site.data[site.active_lang].strings.play_store | default: 'Play Store' }}</span>
+                {% elsif game.tester_cta %}
+                <span class="game-item__cta game-item__cta--beta">{{ site.data[site.active_lang].strings.game_tester_cta | default: 'Become a Beta Tester' }}</span>
+                {% else %}
+                <span class="game-item__cta game-item__cta--disabled">{{ site.data[site.active_lang].strings.coming_soon | default: 'Coming soon to Play Store' }}</span>
+                {% endif %}
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    {% endif %}
+</section>
+
+<div class="hub-grid">
 
     <!-- LAB CARD (PHILOSOPHY) -->
     <section class="hub-card fade-in" id="lab">
         <div class="card-label">{{ site.data[site.active_lang].strings.philosophy_label }}</div>
         <div class="lab__icon">
-            <img src="{{ '/assets/images/noSHOVEL.webp' | relative_url }}" alt="No Shovelware Logo">
+            <img src="{{ '/assets/images/noSHOVEL.webp' | relative_url }}" alt="No Shovelware Logo" width="1000" height="1000" loading="lazy" decoding="async">
         </div>
         <h3>{{ site.data[site.active_lang].strings.philosophy_title }}</h3>
         <p class="text-secondary">{{ site.data[site.active_lang].strings.philosophy_desc }}</p>
@@ -36,39 +70,12 @@ is_home: true
         <div class="card-label">{{ site.data[site.active_lang].strings.games_label }}</div>
         <h2 class="section-title">{{ site.data[site.active_lang].strings.games_title }}</h2>
         <div class="premium__list">
-            {% assign all_games = site.pages | where: "layout", "game" | where: "lang", site.active_lang %}
-            {% assign sorted_games = all_games | sort: "order" %}
             {% for game in sorted_games limit: 3 %}
-            <a href="{{ game.url | relative_url }}" class="game-item">
-                <div class="game-item__media">
-                    <img src="{{ game.thumbnail | relative_url }}" alt="{{ game.title }} Screenshot" class="game-item__screenshot" onerror="this.style.display='none'" loading="lazy">
-                </div>
-                <div class="game-item__body">
-                    <h3>
-                        <span class="game-title-container">
-                            {% if game.game_icon %}
-                            <img src="{{ game.game_icon | relative_url }}" alt="{{ game.title }} icon" class="game-icon">
-                            {% endif %}
-                            {{ game.title }}
-                        </span>
-                        <span class="game-item__badge {% if game.badge_style == 'tamagotchi' %}game-item__badge--tamagotchi{% endif %}">{{ game.badge }}</span>
-                    </h3>
-                    <p>{{ game.description }}</p>
-                </div>
-                {% if game.play_store_url %}
-                <span class="game-item__cta">
-                    {{ site.data[site.active_lang].strings.play_store | default: '▶ Play Store' }}
-                </span>
-                {% else %}
-                <span class="game-item__cta game-item__cta--disabled">
-                    {{ site.data[site.active_lang].strings.coming_soon | default: 'Coming soon to Play Store' }}
-                </span>
-                {% endif %}
-            </a>
+            {% include game-card.html game=game %}
             {% endfor %}
         </div>
         {% if sorted_games.size > 0 %}
-        <div style="text-align: center; margin-top: 30px; display: flex; justify-content: center;">
+        <div class="section-actions section-actions--spaced">
             <a href="{{ '/games/' | relative_url }}" class="btn-show-all btn-show-all--cyan">
                 {{ site.data[site.active_lang].strings.games_show_all | default: 'Show All Games' }} &rarr;
             </a>
@@ -81,24 +88,24 @@ is_home: true
         <div class="card-label">{{ site.data[site.active_lang].strings.social_label }}</div>
         <div class="social__links">
             <a href="https://github.com/wristandpocket" class="social__link" target="_blank" rel="noopener noreferrer">
-                <img src="{{ '/assets/images/icons/github.png' | relative_url }}" alt="GitHub" class="social-icon"> {{ site.data[site.active_lang].strings.social_github }}
+                <img src="{{ '/assets/images/icons/github.png' | relative_url }}" alt="GitHub" class="social-icon" width="26" height="26" loading="lazy" decoding="async"> {{ site.data[site.active_lang].strings.social_github }}
             </a>
             <a href="mailto:wristandpocket.studio@gmail.com" class="social__link">
-                <img src="{{ '/assets/images/icons/email.png' | relative_url }}" alt="Email" class="social-icon"> {{ site.data[site.active_lang].strings.social_contact }}
+                <img src="{{ '/assets/images/icons/email.png' | relative_url }}" alt="Email" class="social-icon" width="26" height="26" loading="lazy" decoding="async"> {{ site.data[site.active_lang].strings.social_contact }}
             </a>
             <a href="https://figarist.github.io" class="social__link" target="_blank" rel="noopener noreferrer">
-                <img src="{{ '/assets/images/icons/home.png' | relative_url }}" alt="Home" class="social-icon"> {{ site.data[site.active_lang].strings.social_founder }}
+                <img src="{{ '/assets/images/icons/home.png' | relative_url }}" alt="Home" class="social-icon" width="26" height="26" loading="lazy" decoding="async"> {{ site.data[site.active_lang].strings.social_founder }}
             </a>
             <a href="https://discord.gg/6vzt33SX9D" class="social__link social__link--discord" target="_blank" rel="noopener noreferrer">
-                <img src="{{ '/assets/images/icons/beta.png' | relative_url }}" alt="Tester" class="social-icon"> {{ site.data[site.active_lang].strings.social_tester }}
+                <img src="{{ '/assets/images/icons/beta.png' | relative_url }}" alt="Tester" class="social-icon" width="26" height="26" loading="lazy" decoding="async"> {{ site.data[site.active_lang].strings.social_tester }}
             </a>
             <a href="https://discord.gg/nCPuHr8rve" class="social__link social__link--discord" target="_blank" rel="noopener noreferrer">
-                <img src="{{ '/assets/images/icons/idea.png' | relative_url }}" alt="Idea" class="social-icon"> {{ site.data[site.active_lang].strings.social_suggestions }}
+                <img src="{{ '/assets/images/icons/idea.png' | relative_url }}" alt="Idea" class="social-icon" width="26" height="26" loading="lazy" decoding="async"> {{ site.data[site.active_lang].strings.social_suggestions }}
             </a>
         </div>
     </section>
 
-    <!-- NEWS FEED SECTION (LATEST 3) -->
+    <!-- NEWS FEED SECTION (LATEST 2) -->
     <section class="hub-card fade-in" id="news">
         <div class="card-label">{{ site.data[site.active_lang].strings.news_label }}</div>
         <div class="news-section__header">
@@ -128,14 +135,14 @@ is_home: true
                 </a>
                 {% endfor %}
             {% else %}
-                <p style="color: var(--text-secondary); grid-column: span 3; text-align: center; padding: 40px 0;">
+                <p class="empty-state">
                     {{ site.data[site.active_lang].strings.no_posts }}
                 </p>
             {% endif %}
         </div>
 
         {% if posts.size > 0 %}
-        <div style="text-align: center; margin-top: 10px; display: flex; justify-content: center;">
+        <div class="section-actions">
             <a href="{{ '/blog/' | relative_url }}" class="btn-show-all">
                 {{ site.data[site.active_lang].strings.news_show_all }} &rarr;
             </a>
@@ -145,4 +152,4 @@ is_home: true
 
 </div>
 
-{% include metadata/json-ld.html %}
+{% include metadata/json-ld.html %}

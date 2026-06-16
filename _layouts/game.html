@@ -10,13 +10,14 @@ layout: default
     </div>
 
     <!-- Hero Banner -->
-    <header class="game-hero" style="background-image: linear-gradient(180deg, rgba(10, 10, 15, 0.6) 0%, rgba(10, 10, 15, 0.55) 50%, rgba(10, 10, 15, 0.95) 100%), url('{{ page.banner | relative_url }}');">
+    <header class="game-hero">
+        <img src="{{ page.banner | relative_url }}" alt="" class="game-hero__bg" width="3440" height="1440" loading="eager" fetchpriority="high" decoding="async">
         <div class="game-hero__content">
             <span class="game-hero__badge">{{ page.badge }}</span>
             <h1 class="game-hero__title">{{ page.title }}</h1>
             {% if page.tester_cta %}
             <a href="https://discord.gg/6vzt33SX9D" class="game-hero__cta" target="_blank" rel="noopener noreferrer">
-                <img src="{{ '/assets/images/icons/beta.png' | relative_url }}" alt="" class="game-hero__cta-icon">
+                <img src="{{ '/assets/images/icons/beta.png' | relative_url }}" alt="" class="game-hero__cta-icon" width="24" height="24">
                 {{ site.data[site.active_lang].strings.game_tester_cta | default: 'Become a Tester' }}
             </a>
             {% endif %}
@@ -61,7 +62,7 @@ layout: default
                 {% if page.tester_cta %}
                 <div class="spec-tester-cta">
                     <a href="https://discord.gg/6vzt33SX9D" class="btn-tester" target="_blank" rel="noopener noreferrer">
-                        <img src="{{ '/assets/images/icons/beta.png' | relative_url }}" alt="" class="tester-btn-icon"> {{ site.data[site.active_lang].strings.game_tester_cta | default: 'Become a Tester' }}
+                        <img src="{{ '/assets/images/icons/beta.png' | relative_url }}" alt="" class="tester-btn-icon" width="26" height="26"> {{ site.data[site.active_lang].strings.game_tester_cta | default: 'Become a Tester' }}
                     </a>
                 </div>
                 {% endif %}
@@ -78,14 +79,14 @@ layout: default
             <div class="smartwatch-frame-wrapper">
                 {% if screen.type == 'video' %}
                 <div class="smartwatch-bezel smartwatch-bezel--video" data-video-src="{{ screen.src | relative_url }}">
-                    <video class="smartwatch-screen" autoplay loop muted playsinline>
-                        <source src="{{ screen.src | relative_url }}" type="video/webm">
+                    <video class="smartwatch-screen" loop muted playsinline preload="none" poster="{{ page.thumbnail | relative_url }}" data-lazy-video>
+                        <source data-src="{{ screen.src | relative_url }}" type="video/webm">
                     </video>
                     <div class="smartwatch-glass-shimmer"></div>
                 </div>
                 {% else %}
                 <div class="smartwatch-bezel" data-full-src="{{ screen.full | relative_url }}">
-                    <img src="{{ screen.thumb | relative_url }}" alt="Screenshot {{ forloop.index }}" class="smartwatch-screen" loading="lazy">
+                    <img src="{{ screen.thumb | relative_url }}" alt="{{ page.title }} screenshot {{ forloop.index }}" class="smartwatch-screen" width="1024" height="1024" loading="lazy" decoding="async">
                     <div class="smartwatch-glass-shimmer"></div>
                 </div>
                 {% endif %}
@@ -104,7 +105,7 @@ layout: default
     </button>
     <div class="lightbox-content">
         <img id="lightbox-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Enlarged screenshot">
-        <video id="lightbox-video" autoplay loop muted playsinline style="display: none;"></video>
+        <video id="lightbox-video" autoplay loop muted playsinline preload="metadata" hidden></video>
         <div class="lightbox-dots" id="lightbox-dots"></div>
     </div>
     <button class="lightbox-next" id="lightbox-next" aria-label="Next Image">

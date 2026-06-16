@@ -119,9 +119,6 @@ jekyll-minifier:
     - "assets/**/*.json"
     - "sitemap.xml"
     - "feed.xml"
-  uglifier_args:
-    harmony: true
-
 # ── PWA Settings ──────────────────────────────────────────────
 pwa:
   sw_src_filepath: "service-worker.js"

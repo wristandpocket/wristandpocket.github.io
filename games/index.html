@@ -1,95 +1,67 @@
 ---
 layout: default
 title: "Wear OS Premium Smartwatch Games"
+title_key: games_meta_title
 description: "Discover Wrist & Pocket Studio's original Wear OS games for Galaxy Watch, Pixel Watch, and Android smartwatches."
+description_key: games_meta_description
 permalink: /games/
 ---
 
+{% assign strings = site.data[site.active_lang].strings %}
+
 <div class="blog-header">
-    <h1>{{ site.data[site.active_lang].strings.games_title }}</h1>
-    <p>{{ site.data[site.active_lang].strings.games_label }}</p>
+    <h1>{{ strings.games_title }}</h1>
+    <p>{{ strings.games_label }}</p>
 </div>
 
-{% if site.active_lang == site.default_lang %}
 <section class="games-seo-intro fade-in">
-    <p class="games-seo-intro__eyebrow">Original games for Android smartwatches</p>
-    <h2>Wear OS games built for the wrist, not squeezed down from phones.</h2>
-    <p>
-        Wrist & Pocket Studio makes small-screen games for Wear OS devices like Galaxy Watch and Pixel Watch.
-        Every project is designed around short sessions, readable round-screen UI, rotary input, haptics,
-        OLED-friendly visuals, and real smartwatch performance limits.
-    </p>
+    <p class="games-seo-intro__eyebrow">{{ strings.games_seo_intro_eyebrow | default: 'Original games for Android smartwatches' }}</p>
+    <h2>{{ strings.games_seo_intro_title | default: 'Wear OS games built for the wrist, not squeezed down from phones.' }}</h2>
+    <p>{{ strings.games_seo_intro_body | default: 'Wrist & Pocket Studio makes small-screen games for Wear OS devices like Galaxy Watch and Pixel Watch. Every project is designed around short sessions, readable round-screen UI, rotary input, haptics, OLED-friendly visuals, and real smartwatch performance limits.' }}</p>
 </section>
-{% endif %}
 
 {% assign all_games = site.pages | where: "layout", "game" | where: "lang", site.active_lang %}
 {% assign sorted_games = all_games | sort: "order" %}
 
-<div class="premium__list" style="margin-bottom: 50px;">
+<div class="premium__list games-list">
     {% if sorted_games.size > 0 %}
         {% for game in sorted_games %}
-        <a href="{{ game.url | relative_url }}" class="game-item">
-            <div class="game-item__media">
-                <img src="{{ game.thumbnail | relative_url }}" alt="{{ game.title }} Screenshot" class="game-item__screenshot" onerror="this.style.display='none'" loading="lazy">
-            </div>
-            <div class="game-item__body">
-                <h3>
-                    <span class="game-title-container">
-                        {% if game.game_icon %}
-                        <img src="{{ game.game_icon | relative_url }}" alt="" class="game-icon">
-                        {% endif %}
-                        {{ game.title }}
-                    </span>
-                    <span class="game-item__badge {% if game.badge == 'Tamagotchi' or game.badge == 'Тамагочі' or game.badge == 'Тамагочи' or game.badge == '다마고치' %}game-item__badge--tamagotchi{% endif %}">{{ game.badge }}</span>
-                </h3>
-                <p>{{ game.description }}</p>
-            </div>
-            {% if game.play_store_url %}
-            <span class="game-item__cta">
-                {{ site.data[site.active_lang].strings.play_store | default: '▶ Play Store' }}
-            </span>
-            {% else %}
-            <span class="game-item__cta game-item__cta--disabled">
-                {{ site.data[site.active_lang].strings.coming_soon | default: 'Coming soon to Play Store' }}
-            </span>
-            {% endif %}
-        </a>
+        {% include game-card.html game=game %}
         {% endfor %}
     {% else %}
-        <p style="color: var(--text-secondary); text-align: center; width: 100%; grid-column: span 3; padding: 40px 0;">
-            {{ site.data[site.active_lang].strings.no_posts | default: 'No games found.' }}
+        <p class="empty-state">
+            {{ strings.no_posts | default: 'No games found.' }}
         </p>
     {% endif %}
 </div>
 
-{% if site.active_lang == site.default_lang %}
 <section class="games-seo-section fade-in" aria-labelledby="wear-os-games-focus">
-    <h2 id="wear-os-games-focus">Why these Wear OS games are different</h2>
+    <h2 id="wear-os-games-focus">{{ strings.games_seo_focus_title | default: 'Why these Wear OS games are different' }}</h2>
     <div class="games-seo-grid">
         <article>
-            <h3>Made for tiny sessions</h3>
-            <p>Quick loops, clear state, and simple controls so the game works while commuting, waiting, or taking a short break.</p>
+            <h3>{{ strings.games_seo_session_title | default: 'Made for tiny sessions' }}</h3>
+            <p>{{ strings.games_seo_session_body | default: 'Quick loops, clear state, and simple controls so the game works while commuting, waiting, or taking a short break.' }}</p>
         </article>
         <article>
-            <h3>Native watch controls</h3>
-            <p>Rotary bezel or crown support is treated as a first-class input, not a novelty added after the fact.</p>
+            <h3>{{ strings.games_seo_controls_title | default: 'Native watch controls' }}</h3>
+            <p>{{ strings.games_seo_controls_body | default: 'Rotary bezel or crown support is treated as a first-class input, not a novelty added after the fact.' }}</p>
         </article>
         <article>
-            <h3>Battery-aware design</h3>
-            <p>Dark OLED presentation, careful frame targets, and lightweight UI keep the experience practical on real watches.</p>
+            <h3>{{ strings.games_seo_battery_title | default: 'Battery-aware design' }}</h3>
+            <p>{{ strings.games_seo_battery_body | default: 'Dark OLED presentation, careful frame targets, and lightweight UI keep the experience practical on real watches.' }}</p>
         </article>
     </div>
 </section>
 
 <section class="games-seo-section fade-in" aria-labelledby="compatible-watches">
-    <h2 id="compatible-watches">Built for modern Wear OS watches</h2>
+    <h2 id="compatible-watches">{{ strings.games_seo_compat_title | default: 'Built for modern Wear OS watches' }}</h2>
+    <p>{{ strings.games_seo_compat_body | default: 'The current collection targets Wear OS 3+ and Android smartwatches, with testing focused on the constraints that matter on wrist hardware: circular safe zones, heat, touch size, short attention windows, and readable motion.' }}</p>
     <p>
-        The current collection targets Wear OS 3+ and Android smartwatches, with testing focused on the constraints
-        that matter on wrist hardware: circular safe zones, heat, touch size, short attention windows, and readable motion.
-    </p>
-    <p>
-        Start with <a href="{{ '/games/cyberpunk-3d/' | relative_url }}">Cyberpunk 3D</a> if you want a visual smartwatch benchmark,
-        or <a href="{{ '/games/feed-me-loser/' | relative_url }}">Feed Me, Loser!</a> if you want a funny virtual pet game made for your wrist.
+        {{ strings.games_seo_start_prefix | default: 'Start with' }}
+        <a href="{{ '/games/cyberpunk-3d/' | relative_url }}">Cyberpunk 3D</a>
+        {{ strings.games_seo_start_middle | default: 'if you want a visual smartwatch benchmark, or' }}
+        <a href="{{ '/games/feed-me-loser/' | relative_url }}">Feed Me, Loser!</a>
+        {{ strings.games_seo_start_suffix | default: 'if you want a funny virtual pet game made for your wrist.' }}
     </p>
 </section>
 
@@ -97,8 +69,8 @@ permalink: /games/
 {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  "name": "Wear OS Premium Smartwatch Games",
-  "description": "Original Wear OS games from Wrist & Pocket Studio for Galaxy Watch, Pixel Watch, and Android smartwatches.",
+  "name": {{ strings.games_meta_title | default: page.title | jsonify }},
+  "description": {{ strings.games_meta_description | default: page.description | jsonify }},
   "url": "{{ page.url | absolute_url }}",
   "publisher": {
     "@type": "Organization",
@@ -109,8 +81,7 @@ permalink: /games/
     "@type": "ItemList",
     "name": "Wrist & Pocket Wear OS Games",
     "itemListElement": [
-      {% assign english_games = site.pages | where: "layout", "game" | where: "lang", site.default_lang | sort: "order" %}
-      {% for game in english_games %}
+      {% for game in sorted_games %}
       {
         "@type": "ListItem",
         "position": {{ forloop.index }},
@@ -122,4 +93,3 @@ permalink: /games/
   }
 }
 </script>
-{% endif %}

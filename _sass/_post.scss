@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 /* Post and News Feed Styles */
 
 #news {
@@ -124,6 +126,10 @@
       color: $bg-color;
     }
   }
+}
+
+.games-list {
+  margin-bottom: 50px;
 }
 
 /* ---------- Blog Feed Page ---------- */

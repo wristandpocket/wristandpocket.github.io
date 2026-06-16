@@ -1,4 +1,115 @@
+@use "sass:color";
+@use "variables" as *;
+
 /* Cards Styles */
+
+.home-showcase {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 20px;
+  align-items: stretch;
+  margin-bottom: 20px;
+}
+
+.home-showcase__copy,
+.home-showcase__media {
+  min-width: 0;
+}
+
+.home-showcase__copy {
+  background: $card-bg;
+  border: 1px solid $border-card;
+  border-radius: $card-radius;
+  padding: clamp(24px, 4vw, 42px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.home-showcase__summary {
+  color: $text-secondary;
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 38rem;
+  margin-top: 14px;
+}
+
+.home-showcase__media {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.home-featured-game {
+  position: relative;
+  min-height: 420px;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: $card-radius;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #050508;
+  display: flex;
+  align-items: flex-end;
+  color: #ffffff;
+  text-decoration: none;
+  box-shadow: $shadow-card;
+  transition: transform $t-med, border-color $t-med, box-shadow $t-med;
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-6px);
+    border-color: rgba(78, 205, 196, 0.32);
+    box-shadow: $shadow-hover;
+    color: #ffffff;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $accent-cyan;
+    outline-offset: 4px;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(5, 5, 8, 0.08) 0%, rgba(5, 5, 8, 0.52) 46%, rgba(5, 5, 8, 0.96) 100%);
+    z-index: 1;
+  }
+}
+
+.home-featured-game__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.02);
+}
+
+.home-featured-game__body {
+  position: relative;
+  z-index: 2;
+  padding: 22px;
+  min-width: 0;
+
+  h2 {
+    font-size: 1.45rem;
+    line-height: 1.15;
+    margin: 12px 0 8px;
+    overflow-wrap: anywhere;
+  }
+
+  p {
+    color: rgba(242, 240, 235, 0.78);
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin-bottom: 14px;
+    overflow-wrap: anywhere;
+  }
+}
 
 .hub-card {
   background: $card-bg;
@@ -87,12 +198,16 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
+  max-width: 100%;
   min-height: 44px;
   padding: 10px 16px;
   border-radius: 10px;
   font-size: 0.95rem;
   font-weight: 700;
   line-height: 1.2;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
   transition: transform $t-fast, background $t-fast, border-color $t-fast, color $t-fast, box-shadow $t-fast;
 
   &:hover {
@@ -113,7 +228,7 @@
 
   &:hover {
     color: #ffffff;
-    background: lighten($accent-discord, 5%);
+    background: color.adjust($accent-discord, $lightness: 5%);
     box-shadow: 0 14px 30px rgba(88, 101, 242, 0.36);
   }
 }
@@ -149,13 +264,14 @@
 
 .premium__list {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
   flex-grow: 1;
 }
 
 .game-item {
   position: relative;
+  min-width: 0;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.03);
   border-radius: 16px;
@@ -221,6 +337,7 @@
 
 .game-item__body {
   margin-bottom: 15px;
+  min-width: 0;
 }
 
 .game-item h3 {
@@ -228,13 +345,17 @@
   margin-bottom: 6px;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 8px;
+  min-width: 0;
 }
 
 .game-title-container {
   display: flex;
   align-items: center;
   gap: 8px;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .game-icon {
@@ -246,9 +367,11 @@
 .game-item p {
   font-size: 0.85rem;
   color: $text-secondary;
+  overflow-wrap: anywhere;
 }
 
 .game-item__badge {
+  flex: 0 1 auto;
   font-family: $font-mono;
   font-size: 0.65rem;
   text-transform: uppercase;
@@ -256,8 +379,8 @@
   color: $accent-cyan;
   padding: 2px 6px;
   border-radius: 4px;
-  margin-left: auto;
   border: 1px solid rgba(78, 205, 196, 0.2);
+  overflow-wrap: anywhere;
 }
 
 .game-item__badge--tamagotchi {
@@ -270,11 +393,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  max-width: 100%;
   padding: 8px 16px;
   border-radius: 8px;
   font-size: 0.85rem;
   font-weight: 600;
+  line-height: 1.25;
   text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
   background: rgba(78, 205, 196, 0.1);
   color: $accent-cyan;
   border: 1px solid rgba(78, 205, 196, 0.3);
@@ -284,6 +411,17 @@
   &:hover {
     background: $accent-cyan;
     color: $bg-color;
+  }
+}
+
+.game-item__cta--beta {
+  background: rgba(88, 101, 242, 0.14);
+  color: #ffffff;
+  border-color: rgba(88, 101, 242, 0.42);
+
+  &:hover {
+    background: $accent-discord;
+    color: #ffffff;
   }
 }
 
@@ -297,6 +435,24 @@
     background: rgba(255, 255, 255, 0.03);
     color: $text-muted;
   }
+}
+
+.section-actions {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.section-actions--spaced {
+  margin-top: 30px;
+}
+
+.empty-state {
+  color: $text-secondary;
+  text-align: center;
+  width: 100%;
+  grid-column: 1 / -1;
+  padding: 40px 0;
 }
 
 /* ---------- Lab Card ---------- */
@@ -370,12 +526,28 @@
 }
 
 @media (max-width: 1024px) {
+  .home-showcase {
+    grid-template-columns: 1fr;
+  }
+
   .premium__list {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (max-width: 768px) {
+  .home-showcase__copy {
+    padding: 22px;
+  }
+
+  .home-showcase__media {
+    grid-template-columns: 1fr;
+  }
+
+  .home-featured-game {
+    min-height: 340px;
+  }
+
   .hub-card {
     padding: 16px;
   }
@@ -386,6 +558,18 @@
 }
 
 @media (max-width: 480px) {
+  .home-showcase__summary {
+    font-size: 0.92rem;
+  }
+
+  .home-featured-game {
+    min-height: 300px;
+  }
+
+  .home-featured-game__body {
+    padding: 18px;
+  }
+
   .bio__logo {
     font-size: 2rem;
   }

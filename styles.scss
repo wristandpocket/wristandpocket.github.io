@@ -3,11 +3,10 @@
 # Compiles to styles.css
 ---
 
-@import "fonts";
-@import "variables";
-@import "base";
-@import "layout";
-@import "cards";
-@import "post";
-@import "game";
+@use "fonts";
+@use "base";
+@use "layout";
+@use "cards";
+@use "post";
+@use "game";
 
