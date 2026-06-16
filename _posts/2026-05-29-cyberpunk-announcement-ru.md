@@ -14,7 +14,7 @@ published: true
 fmContentType: "Post"
 ---
 
-### Cyberpunk 3D открыт для тестирования.
+## Cyberpunk 3D открыт для тестирования.
 
 > _«Никто не ждал, но мы это сделали»_
 

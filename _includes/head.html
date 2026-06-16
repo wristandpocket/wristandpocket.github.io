@@ -31,6 +31,23 @@
     <meta name="twitter:title" content="{{ home_title | escape }}">
     <meta name="twitter:description" content="{{ home_description | escape }}">
     <meta name="twitter:image" content="{{ home_image }}">
+    {% elsif page.title_key or page.description_key %}
+    {% assign localized_title = site.data[site.active_lang].strings[page.title_key] | default: page.title | default: site.title %}
+    {% assign localized_description = site.data[site.active_lang].strings[page.description_key] | default: page.description | default: site.description %}
+    {% assign localized_image = page.image | default: page.banner | default: '/assets/images/default-social-card.webp' %}
+    <title>{{ localized_title }}</title>
+    <meta name="description" content="{{ localized_description | escape }}">
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+    <meta property="og:title" content="{{ localized_title | escape }}">
+    <meta property="og:description" content="{{ localized_description | escape }}">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:site_name" content="{{ site.title | escape }}">
+    <meta property="og:image" content="{{ localized_image | absolute_url }}">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ localized_title | escape }}">
+    <meta name="twitter:description" content="{{ localized_description | escape }}">
+    <meta name="twitter:image" content="{{ localized_image | absolute_url }}">
     {% else %}
     <!-- Jekyll SEO Tag (Title, Meta, Open Graph, Twitter, Canonical) -->
     {% seo %}

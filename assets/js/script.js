@@ -1,4 +1,4 @@
-// Wrist & Pocket Studio — Client-side scripts
+// Wrist & Pocket Studio client-side scripts
 (function () {
     'use strict';
 
@@ -6,6 +6,7 @@
         initTagFilters();
         initLanguageTracker();
         initTiltEffects();
+        initLazyVideos();
         initLightbox();
         initServiceWorker();
     });
@@ -62,10 +63,10 @@
                     var cardTags = cardTagsStr.split(',').map(function (t) { return t.trim(); });
 
                     if (selectedTag === 'all' || cardTags.indexOf(selectedTag) !== -1) {
-                        card.style.display = '';
+                        card.hidden = false;
                         card.classList.add('fade-in');
                     } else {
-                        card.style.display = 'none';
+                        card.hidden = true;
                         card.classList.remove('fade-in');
                     }
                 });
@@ -222,6 +223,52 @@
     }
 
     /**
+     * Defers below-the-fold gallery videos until they are close to the viewport.
+     */
+    function initLazyVideos() {
+        var videos = document.querySelectorAll('video[data-lazy-video]');
+        if (!videos.length) return;
+
+        var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        function loadVideo(video) {
+            if (video.getAttribute('data-video-loaded') === 'true') return;
+
+            var source = video.querySelector('source[data-src]');
+            if (source) {
+                source.src = source.getAttribute('data-src');
+                source.removeAttribute('data-src');
+            }
+
+            video.setAttribute('data-video-loaded', 'true');
+            video.load();
+
+            if (!prefersReducedMotion) {
+                video.play().catch(function () {
+                    // Autoplay can be blocked by browser policy; poster remains visible.
+                });
+            }
+        }
+
+        if ('IntersectionObserver' in window) {
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        loadVideo(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { rootMargin: '220px 0px', threshold: 0.01 });
+
+            videos.forEach(function (video) {
+                observer.observe(video);
+            });
+        } else {
+            videos.forEach(loadVideo);
+        }
+    }
+
+    /**
      * Initializes the interactive lightbox gallery for smartwatch screenshots
      */
     function initLightbox() {
@@ -287,9 +334,9 @@
             if (!item) return;
 
             if (item.type === 'video') {
-                lightboxImg.style.display = 'none';
+                lightboxImg.hidden = true;
                 if (lightboxVideo) {
-                    lightboxVideo.style.display = 'block';
+                    lightboxVideo.hidden = false;
                     lightboxVideo.src = item.src;
                     lightboxVideo.load();
                     lightboxVideo.play().catch(function (e) {
@@ -298,10 +345,10 @@
                 }
             } else {
                 if (lightboxVideo) {
-                    lightboxVideo.style.display = 'none';
+                    lightboxVideo.hidden = true;
                     lightboxVideo.src = '';
                 }
-                lightboxImg.style.display = 'block';
+                lightboxImg.hidden = false;
                 lightboxImg.src = item.src;
             }
             updateDots();

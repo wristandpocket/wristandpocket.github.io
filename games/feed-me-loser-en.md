@@ -34,17 +34,17 @@ screenshots:
     full: "/assets/images/games/feedmeloser-screen4-full.webp"
 ---
 
-### A Hilarious Satirical Tamagotchi-Style Game for Smartwatches
+## A Hilarious Satirical Tamagotchi-Style Game for Smartwatches
 
 Tamagotchi? Oh yes! You asked, you got it! Take care of a funny, demanding, and sometimes downright cheeky monster that has settled right on your wrist. Feed it, but in moderation. Do sports together, and do everything to make it live as long as possible. Because who knows... the next one might be even angrier.
 
-### Gameplay Mechanics & Features
+## Gameplay Mechanics & Features
 
 - **The Gluttony Trap:** You can pour in a lot of food so the monster eats on its own while you're busy. But be careful: **IT CAN OVEREAT**. The next time you launch the game, an explosive surprise will be waiting for you ;)
 - **Fitness Is Everything:** Make both yourself and your pet sweat by rotating the watch's mechanical bezel or crown!
 - **Sleep Mode:** When your pet goes to sleep, food consumption and energy decay drop significantly.
 
-### Designed Specifically for Wear OS
+## Designed Specifically for Wear OS
 
 - **OLED Design:** We all love deep black, right? Your battery certainly does.
 - **Thoughtful UI:** An ideal interface built through months of rigorous testing on real physical devices.

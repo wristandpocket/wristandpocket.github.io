@@ -14,7 +14,7 @@ published: true
 fmContentType: "Post"
 ---
 
-### Welcome to the Official Developer Log of Wrist & Pocket Studio!
+## Welcome to the Official Developer Log of Wrist & Pocket Studio!
 
 Here we are—a tiny indie studio focused on making fun, optimized, and genuinely exciting games for smartwatches. Our goal is simple and ambitious: we want to make watch gaming great again!
 
@@ -22,7 +22,7 @@ Let's be honest: everyone is tired of the trash that usually gets released on We
 
 That's why, instead of these trash titles, we create real **GAMES** that are actually fun to play. Something to get hooked on while commuting, to show to your friends or family, and just to have a good time.
 
-### What W&P Studio is Working On:
+## What W&P Studio is Working On:
 
 Right now, work is in full swing on two cool projects:
 

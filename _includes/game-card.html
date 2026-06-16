@@ -1,0 +1,39 @@
+{% assign game = include.game %}
+<a href="{{ game.url | relative_url }}" class="game-item">
+    <div class="game-item__media">
+        <img
+            src="{{ game.thumbnail | relative_url }}"
+            alt="{{ game.title }} screenshot"
+            class="game-item__screenshot"
+            width="1024"
+            height="1024"
+            loading="{{ include.loading | default: 'lazy' }}"
+            decoding="async"
+            onerror="this.hidden=true">
+    </div>
+    <div class="game-item__body">
+        <h3>
+            <span class="game-title-container">
+                {% if game.game_icon %}
+                <img src="{{ game.game_icon | relative_url }}" alt="" class="game-icon" width="32" height="32" loading="lazy" decoding="async">
+                {% endif %}
+                {{ game.title }}
+            </span>
+            <span class="game-item__badge {% if game.badge_style == 'tamagotchi' %}game-item__badge--tamagotchi{% endif %}">{{ game.badge }}</span>
+        </h3>
+        <p>{{ game.description }}</p>
+    </div>
+    {% if game.play_store_url %}
+    <span class="game-item__cta">
+        {{ site.data[site.active_lang].strings.play_store | default: 'Play Store' }}
+    </span>
+    {% elsif game.tester_cta %}
+    <span class="game-item__cta game-item__cta--beta">
+        {{ site.data[site.active_lang].strings.game_tester_cta | default: 'Become a Beta Tester' }}
+    </span>
+    {% else %}
+    <span class="game-item__cta game-item__cta--disabled">
+        {{ site.data[site.active_lang].strings.coming_soon | default: 'Coming soon to Play Store' }}
+    </span>
+    {% endif %}
+</a>
