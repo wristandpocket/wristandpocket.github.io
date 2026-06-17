@@ -25,10 +25,13 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(10, 10, 15, 0.88);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background:
+    linear-gradient(180deg, rgba(10, 10, 15, 0.92), rgba(10, 10, 15, 0.78)),
+    rgba(10, 10, 15, 0.88);
+  border-bottom: 1px solid var(--wp-border-06);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 }
 
 .site-nav {
@@ -85,13 +88,27 @@
 }
 
 .site-nav__links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 6px 10px;
+  border-radius: 10px;
   font-size: 0.9rem;
   font-weight: 600;
   color: $text-secondary;
   white-space: nowrap;
+  transition: color $t-fast, background $t-fast, border-color $t-fast, transform $t-fast;
   
   &:hover {
     color: $text-primary;
+    background: rgb(255 255 255 / 0.045);
+    transform: translateY(-1px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $accent-cyan;
+    outline-offset: 3px;
   }
 }
 
@@ -107,6 +124,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-height: 42px;
+  padding: 0;
+  border-radius: 50%;
   transition: transform $t-fast, filter $t-fast;
   margin-left: -4px;
   
@@ -126,9 +146,9 @@
 /* Language Switcher Layout */
 .lang-switch-wrapper {
   display: flex;
-  gap: 10px;
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
-  padding-left: 15px;
+  gap: 8px;
+  border-left: 1px solid var(--wp-border-10);
+  padding-left: 14px;
 }
 
 .lang-switch {
@@ -142,11 +162,12 @@
   cursor: pointer;
   padding: 6px 8px;
   border-radius: 6px;
-  transition: all $t-fast;
+  transition: color $t-fast, background $t-fast, transform $t-fast;
 
   &:hover {
     color: $text-primary !important;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgb(255 255 255 / 0.05);
+    transform: translateY(-1px);
   }
 
   &.active {
@@ -295,12 +316,22 @@
 
 /* ---------- Site Footer ---------- */
 .site-footer {
+  position: relative;
   text-align: center;
-  padding: 40px;
+  width: min(calc(100% - 40px), 1180px);
+  margin: 44px auto 0;
+  padding: clamp(28px, 4vw, 40px);
   color: $text-secondary;
   font-size: 0.8rem;
-  border-top: 1px solid $card-bg;
-  margin-top: 40px;
+  border: 1px solid var(--wp-border-06);
+  border-radius: $card-radius $card-radius 0 0;
+  background-color: rgba(10, 10, 15, 0.42);
+  background-image:
+    radial-gradient(circle at 50% 0%, rgba(78, 205, 196, 0.09), transparent 42%),
+    linear-gradient(180deg, rgb(255 255 255 / 0.03), rgb(255 255 255 / 0));
+  box-shadow: 0 -12px 44px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 
   a {
     color: $text-secondary;
@@ -313,13 +344,13 @@
 }
 
 .site-footer__icons-credit {
-  margin-top: 8px;
+  margin-top: 10px;
   font-size: 0.75rem;
   opacity: 0.7;
 }
 
 .site-footer__disclaimer {
-  margin-top: 12px;
+  margin-top: 14px;
   font-size: 0.7rem;
   opacity: 0.5;
   line-height: 1.4;
