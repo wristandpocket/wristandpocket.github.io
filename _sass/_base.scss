@@ -13,6 +13,21 @@ html {
   font-size: 16px;
 }
 
+:root {
+  --wp-border-05: rgba(255, 255, 255, 0.05);
+  --wp-border-06: rgba(255, 255, 255, 0.06);
+  --wp-border-07: rgba(255, 255, 255, 0.07);
+  --wp-border-075: rgba(255, 255, 255, 0.075);
+  --wp-border-08: rgba(255, 255, 255, 0.08);
+  --wp-border-085: rgba(255, 255, 255, 0.085);
+  --wp-border-10: rgba(255, 255, 255, 0.1);
+  --wp-border-15: rgba(255, 255, 255, 0.15);
+  --wp-border-16: rgba(255, 255, 255, 0.16);
+  --wp-border-30: rgba(255, 255, 255, 0.3);
+  --wp-border-40: rgba(255, 255, 255, 0.4);
+  --wp-border-50: rgba(255, 255, 255, 0.5);
+}
+
 body {
   background-color: $bg-color;
   color: $text-primary;
