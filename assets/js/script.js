@@ -118,6 +118,8 @@
     function initTiltEffects() {
         var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (prefersReducedMotion) return;
+        var hasFineHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+        if (!hasFineHover) return;
 
         // 1. Homepage Bento Cards & Game Items & News Cards
         var tiltCards = document.querySelectorAll('.hub-card, .game-item, .news-card');
