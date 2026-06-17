@@ -6,9 +6,9 @@
 .home-showcase {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: 20px;
+  gap: clamp(18px, 3vw, 28px);
   align-items: stretch;
-  margin-bottom: 20px;
+  margin-bottom: clamp(22px, 3vw, 32px);
 }
 
 .home-showcase__copy,
@@ -17,15 +17,32 @@
 }
 
 .home-showcase__copy {
-  background: $card-bg;
-  border: 1px solid $border-card;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: rgba(22, 22, 29, 0.74);
+  background-image:
+    radial-gradient(circle at 12% 8%, rgba(78, 205, 196, 0.13), transparent 34%),
+    radial-gradient(circle at 92% 12%, rgba(187, 134, 252, 0.12), transparent 36%),
+    linear-gradient(145deg, rgb(255 255 255 / 0.052), rgb(255 255 255 / 0.018));
+  border: 1px solid var(--wp-border-085);
   border-radius: $card-radius;
   padding: clamp(24px, 4vw, 42px);
   display: flex;
   flex-direction: column;
   justify-content: center;
+  box-shadow: 0 18px 54px rgba(0, 0, 0, 0.28);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: auto 24px 0;
+    height: 1px;
+    z-index: -1;
+    background: linear-gradient(90deg, transparent, rgba(78, 205, 196, 0.38), rgba(187, 134, 252, 0.28), transparent);
+  }
 }
 
 .home-showcase__summary {
@@ -39,22 +56,22 @@
 .home-showcase__media {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
+  gap: clamp(16px, 2vw, 22px);
 }
 
 .home-featured-game {
   position: relative;
-  min-height: 420px;
+  min-height: clamp(360px, 46vw, 460px);
   min-width: 0;
   overflow: hidden;
   border-radius: $card-radius;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--wp-border-08);
   background: #050508;
   display: flex;
   align-items: flex-end;
   color: #ffffff;
   text-decoration: none;
-  box-shadow: $shadow-card;
+  box-shadow: 0 18px 54px rgba(0, 0, 0, 0.36);
   transition: transform $t-med, border-color $t-med, box-shadow $t-med;
 
   &:hover,
@@ -63,6 +80,10 @@
     border-color: rgba(78, 205, 196, 0.32);
     box-shadow: $shadow-hover;
     color: #ffffff;
+
+    .home-featured-game__image {
+      transform: scale(1.07);
+    }
   }
 
   &:focus-visible {
@@ -74,7 +95,10 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(5, 5, 8, 0.08) 0%, rgba(5, 5, 8, 0.52) 46%, rgba(5, 5, 8, 0.96) 100%);
+    background:
+      radial-gradient(circle at 20% 12%, rgba(78, 205, 196, 0.2), transparent 30%),
+      radial-gradient(circle at 86% 8%, rgba(187, 134, 252, 0.18), transparent 30%),
+      linear-gradient(180deg, rgba(5, 5, 8, 0.08) 0%, rgba(5, 5, 8, 0.52) 46%, rgba(5, 5, 8, 0.96) 100%);
     z-index: 1;
   }
 }
@@ -87,6 +111,7 @@
   object-fit: cover;
   display: block;
   transform: scale(1.02);
+  transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .home-featured-game__body {
@@ -112,12 +137,14 @@
 }
 
 .hub-card {
-  background: $card-bg;
-  border: 1px solid $border-card;
+  background-color: rgba(22, 22, 29, 0.72);
+  background-image: linear-gradient(145deg, rgb(255 255 255 / 0.04), rgb(255 255 255 / 0.014));
+  border: 1px solid var(--wp-border-08);
   border-radius: $card-radius;
   padding: $card-padding;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 14px 42px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   transition: transform $t-med, border-color $t-med, box-shadow $t-med;
@@ -253,7 +280,10 @@
 /* ---------- Premium Card (Collection) ---------- */
 #premium {
   grid-area: premium;
-  background: linear-gradient(135deg, rgba(78, 205, 196, 0.05) 0%, rgba(22, 22, 29, 0.7) 100%);
+  background-color: rgba(22, 22, 29, 0.74);
+  background-image:
+    radial-gradient(circle at 10% 0%, rgba(78, 205, 196, 0.11), transparent 34%),
+    linear-gradient(135deg, rgba(78, 205, 196, 0.05) 0%, rgba(22, 22, 29, 0.7) 100%);
 }
 
 .section-title {
@@ -495,6 +525,9 @@
   grid-area: lab;
   text-align: center;
   justify-content: center;
+  background-image:
+    radial-gradient(circle at 50% 10%, rgba(187, 134, 252, 0.12), transparent 42%),
+    linear-gradient(145deg, rgb(255 255 255 / 0.04), rgb(255 255 255 / 0.014));
   
   h3 {
     font-size: 1.2rem;
@@ -530,21 +563,35 @@
 #social {
   grid-area: social;
   justify-content: center;
+  background-image:
+    radial-gradient(circle at 12% 10%, rgba(88, 101, 242, 0.12), transparent 38%),
+    linear-gradient(145deg, rgb(255 255 255 / 0.04), rgb(255 255 255 / 0.014));
 }
 
 .social__links {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .social__link {
   display: flex;
   align-items: center;
   gap: 10px;
+  min-height: 42px;
+  padding: 8px 10px;
+  border: 1px solid var(--wp-border-05);
+  border-radius: 10px;
+  background-color: rgb(255 255 255 / 0.025);
   font-weight: 600;
   font-size: 0.95rem;
-  transition: color $t-fast, text-shadow $t-fast;
+  transition: color $t-fast, text-shadow $t-fast, background $t-fast, border-color $t-fast, transform $t-fast;
+
+  &:hover {
+    background-color: rgb(255 255 255 / 0.045);
+    border-color: var(--wp-border-10);
+    transform: translateX(2px);
+  }
   
   .social-icon {
     width: 26px;
