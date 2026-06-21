@@ -398,6 +398,14 @@
     margin-bottom: 16px;
   }
 
+  h1,
+  h2,
+  p,
+  li,
+  a {
+    overflow-wrap: anywhere;
+  }
+
   .back-link {
     display: inline-block;
     margin-top: 40px;
