@@ -58,6 +58,7 @@
 
 .news-card__tags {
   display: flex;
+  flex-wrap: wrap;
   gap: 6px;
   margin-bottom: 12px;
 }
@@ -67,11 +68,15 @@
   font-size: 0.65rem;
   font-weight: 600;
   text-transform: uppercase;
-  background: rgba(78, 205, 196, 0.1);
-  color: $accent-cyan;
+  line-height: 1.25;
+  max-width: 100%;
+  background: rgba(5, 28, 32, 0.86);
+  color: #8df7ee;
   padding: 2px 6px;
   border-radius: 4px;
-  border: 1px solid rgba(78, 205, 196, 0.15);
+  border: 1px solid rgba(78, 205, 196, 0.34);
+  box-shadow: inset 0 0 0 1px rgba(10, 218, 198, 0.05), 0 0 14px rgba(78, 205, 196, 0.08);
+  overflow-wrap: anywhere;
 }
 
 .news-card__title {
@@ -177,25 +182,33 @@
 }
 
 .btn-filter {
+  appearance: none;
+  -webkit-appearance: none;
   font-family: $font-mono;
   font-size: 0.75rem;
-  background: rgba(255, 255, 255, 0.03);
-  color: $text-secondary;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  font-weight: 600;
+  line-height: 1.2;
+  background: rgba(8, 18, 24, 0.82);
+  color: #c7f6f1;
+  border: 1px solid rgba(78, 205, 196, 0.22);
   padding: 6px 12px;
   border-radius: 6px;
   cursor: pointer;
+  box-shadow: inset 0 0 0 1px rgba(78, 205, 196, 0.04), 0 8px 18px rgba(0, 0, 0, 0.18);
   transition: all $t-fast;
+  overflow-wrap: anywhere;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.06);
-    color: $text-primary;
+    background: rgba(78, 205, 196, 0.14);
+    color: #f2fffd;
+    border-color: rgba(78, 205, 196, 0.42);
   }
 
   &.active {
-    background: rgba(78, 205, 196, 0.1);
-    color: $accent-cyan;
-    border-color: rgba(78, 205, 196, 0.3);
+    background: rgba(78, 205, 196, 0.18);
+    color: #8df7ee;
+    border-color: rgba(78, 205, 196, 0.58);
+    box-shadow: inset 0 0 0 1px rgba(141, 247, 238, 0.08), 0 0 18px rgba(78, 205, 196, 0.12);
   }
 }
 
@@ -217,6 +230,7 @@
 
   .post-tags-list {
     display: flex;
+    flex-wrap: wrap;
     gap: 8px;
     margin-bottom: 12px;
   }
