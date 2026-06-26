@@ -95,6 +95,23 @@ layout: default
         </div>
     </section>
     {% endif %}
+
+    <!-- FAQ Section -->
+    {% if page.faq and page.faq.size > 0 %}
+    <section class="game-faq-section">
+        <h2>{{ site.data[site.active_lang].strings.faq_title | default: 'Frequently Asked Questions' }}</h2>
+        <div class="game-faq-list">
+            {% for item in page.faq %}
+            <div class="game-faq-item">
+                <h3 class="game-faq-question">{{ item.question }}</h3>
+                <div class="game-faq-answer">
+                    <p>{{ item.answer }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
 </article>
 
 <!-- Lightbox Modal for Screenshots -->
@@ -118,9 +135,10 @@ layout: default
   "@context": "https://schema.org",
   "@type": ["VideoGame", "SoftwareApplication"],
   "name": "{{ page.title }}",
-  "description": "{{ content | strip_html | truncatewords: 40 | escape }}",
+  "description": "{{ page.description | default: page.excerpt | strip_html | strip_newlines | truncate: 160 | escape }}",
   "operatingSystem": "Wear OS",
   "applicationCategory": "GameApplication",
+  "inLanguage": "{{ site.active_lang }}",
   "author": {
     "@type": "Organization",
     "name": "Wrist & Pocket Studio",
@@ -137,6 +155,13 @@ layout: default
   ],
   "genre": "{{ page.badge }}",
   "image": "{{ page.banner | absolute_url }}",
+  {% if page.screenshots and page.screenshots.size > 0 -%}
+  "screenshot": [
+    {% for screen in page.screenshots -%}
+    "{{ screen.full | absolute_url }}"{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ],
+  {%- endif %}
   "offers": {
     "@type": "Offer",
     "price": "0.00",
@@ -146,6 +171,25 @@ layout: default
 }
 </script>
 
+{% if page.faq and page.faq.size > 0 %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for item in page.faq %}
+    {
+      "@type": "Question",
+      "name": {{ item.question | jsonify }},
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": {{ item.answer | strip_html | strip_newlines | jsonify }}
+      }
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}
+
 {% include metadata/json-ld.html breadcrumbs_only=true %}
-
-

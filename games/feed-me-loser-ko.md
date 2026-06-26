@@ -32,7 +32,18 @@ screenshots:
   - type: image
     thumb: "/assets/images/games/feedmeloser-screen4-thumb.webp"
     full: "/assets/images/games/feedmeloser-screen4-full.webp"
+faq:
+  - question: "Wear OS 스마트워치용 다마고치 게임이 있나요?"
+    answer: "네. Feed Me, Loser!는 Wear OS 전용으로 제작된 다마고치 스타일의 가상 반려동물 게임입니다. 손목 위에서 15~60초 동안 가볍게 즐길 수 있으며, 까다로운 몬스터에게 먹이를 주고 함께 운동하고 돌볼 수 있습니다."
+  - question: "Feed Me, Loser!는 어떤 게임인가요?"
+    answer: "Feed Me, Loser!는 안드로이드 워치를 위한 유쾌하고 풍자적인 반려동물 육성 게임입니다. 까다로운 몬스터를 키우며 먹이 주기, 베젤 회전 운동, 수면 사이클, 폭식의 결과 등 원형 화면에 최적화된 OLED 디자인의 독창적인 메커니즘을 경험하실 수 있습니다."
+  - question: "Feed Me, Loser!는 어떤 스마트워치에서 플레이할 수 있나요?"
+    answer: "Feed Me, Loser!는 Samsung Galaxy Watch 4/5/6/7/Ultra, Google Pixel Watch 1/2/3 및 기타 Wear OS 3 이상을 구동하는 모든 안드로이드 스마트워치에서 작동합니다."
+  - question: "Feed Me, Loser!는 회전 베젤을 지원하나요?"
+    answer: "네. 워치의 물리 회전 베젤이나 디지털 크라운은 반려동물 운동 시뮬레이션에 적극적으로 활용됩니다. 베젤을 직접 돌려 운동을 진행할 수 있으며, 이는 단순 연출이 아닌 주요 조작 체계입니다."
 ---
+
+**Feed Me, Loser!는 Wear OS 스마트워치를 위한 다마고치 스타일의 가상 반려동물 게임입니다.** [Wrist & Pocket 스튜디오](/)가 Galaxy Watch, Pixel Watch 및 기타 Android 스마트워치를 위해 개발하였으며, 먹이 주기, 운동하기, 돌보기 기능이 있는 까다로운 몬스터가 특징입니다. 15초 단위의 짧은 플레이 세션, OLED 최적화 디자인, 물리 회전 베젤 및 크라운 제어를 지원하도록 특별히 제작되었습니다.
 
 ## 스마트워치를 위한 유쾌하고 사르카스틱한 다마고치 스타일 게임
 
@@ -49,3 +60,6 @@ screenshots:
 - **OLED 맞춤형 디자인:** 우리 모두 깊고 진한 블랙 색상을 좋아하죠, 그렇죠? 특히 배터리가 정말 좋아할 겁니다.
 - **세심한 UI:** 실제 기기에서 수개월간 거친 철저한 테스트를 바탕으로 완성된 완벽한 인터페이스입니다.
 - **커스텀 햅틱 엔진:** 손목 위에서 자연스럽고 직관적인 진동을 전해주는 자체 개발 햅틱 시스템입니다.
+
+
+

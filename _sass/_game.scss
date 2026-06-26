@@ -759,3 +759,59 @@
   }
 }
 
+/* ---------- FAQ Section ---------- */
+.game-faq-section {
+  margin-top: clamp(52px, 6vw, 72px);
+  margin-bottom: clamp(56px, 6vw, 76px);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px;
+
+  h2 {
+    font-size: clamp(1.45rem, 3vw, 1.95rem);
+    color: #ffffff;
+    margin-bottom: clamp(26px, 4vw, 36px);
+    text-align: center;
+  }
+}
+
+.game-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.game-faq-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 24px;
+  transition: border-color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    border-color: rgba(187, 134, 252, 0.3);
+    background: rgba(187, 134, 252, 0.02);
+    transform: translateY(-2px);
+  }
+}
+
+.game-faq-question {
+  font-size: 1.15rem;
+  color: #bb86fc;
+  margin: 0 0 12px 0;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.game-faq-answer {
+  color: #b0b0b5;
+  line-height: 1.6;
+  font-size: 0.98rem;
+
+  p {
+    margin: 0;
+  }
+}
+
+

@@ -37,7 +37,18 @@ screenshots:
   - type: image
     thumb: "/assets/images/games/cyberpunk3d-screen5-thumb.webp"
     full: "/assets/images/games/cyberpunk3d-screen5-full.webp"
+faq:
+  - question: "Wear OS 스마트워치용 벤치마크 앱이 있나요?"
+    answer: "네. Cyberpunk 3D는 Wear OS 전용으로 처음부터 제작된 전문 3D 벤치마크입니다. 실시간으로 사이버펑크 도시를 렌더링하여 스마트워치 GPU를 스트레스 테스트하고 실시간 FPS, 온도 데이터, 프레임 타이밍 메트릭을 보고합니다."
+  - question: "Cyberpunk 3D는 내 스마트워치에서 무엇을 테스트하나요?"
+    answer: "GPU 렌더링 성능, 부하 시 지속 FPS, 서멀 스로틀링 동작, 프레임 끊김 빈도를 측정합니다. 앱은 커스텀 URP 셰이더와 다이나믹 라이팅을 사용하여 하드웨어를 극한까지 밀어붙입니다."
+  - question: "어떤 스마트워치가 Cyberpunk 3D와 호환되나요?"
+    answer: "Cyberpunk 3D는 Samsung Galaxy Watch 4/5/6/7/Ultra, Google Pixel Watch 1/2/3, OnePlus Watch 2 등 Wear OS 3 이상을 탑재한 모든 스마트워치에서 실행됩니다."
+  - question: "스마트워치에 Cyberpunk 3D를 어떻게 설치하나요?"
+    answer: "Cyberpunk 3D는 현재 공개 베타 테스트 중입니다. [Discord 커뮤니티](https://discord.gg/6vzt33SX9D)를 통해 베타에 참여하여 조기 액세스와 피드백 기회를 얻을 수 있습니다."
 ---
+
+**Cyberpunk 3D는 Wear OS 스마트워치를 위한 무료 3D 벤치마크 앱입니다.** GPU 렌더링을 스트레스 테스트하고, 실시간 FPS를 추적하며, 서멀 스로틀링을 모니터링하고, Galaxy Watch, Pixel Watch 및 기타 Android 스마트워치의 실제 성능을 측정합니다. [Wrist & Pocket Studio](/)가 Unity 6으로 처음부터 제작한 손목 착용 기기 전용 최초의 3D 그래픽 벤치마크입니다.
 
 ## 스마트워치를 위한 최초의 3D 벤치마크
 
@@ -53,3 +64,6 @@ _"와, 내 안드로이드 워치로 도대체 뭘 실행할 수 있는 거지?"
 
 - **모던 UI:** 스튜디오의 이 파일럿 프로젝트에서는 최신 Material Design 가이드를 준수하는 어댑티브 UI를 만들기 위한 첫 시도를 선보입니다.
 - **회전 베젤 지원:** 물리 또는 디지털 회전 베젤을 쓰지 않는 Wear OS 앱이 무슨 재미가 있겠어요? 저희도 그렇게 생각하니 마음껏 돌려보세요!
+
+
+
