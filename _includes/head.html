@@ -55,6 +55,13 @@
 
     <!-- Polyglot: Generates Hreflang headers -->
     {% I18n_Headers %}
+    {%- if site.active_lang == site.default_lang -%}
+      {%- assign default_lang_url = page.url -%}
+    {%- else -%}
+      {%- assign lang_prefix = site.active_lang | prepend: '/' | append: '/' -%}
+      {%- assign default_lang_url = page.url | replace_first: lang_prefix, '/' -%}
+    {%- endif -%}
+    <link rel="alternate" hreflang="x-default" {% static_href %}href="{{ default_lang_url | absolute_url }}"{% endstatic_href %}>
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="{{ '/styles.css' | relative_url }}">
