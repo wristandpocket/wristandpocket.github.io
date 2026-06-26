@@ -48,7 +48,7 @@ permalink: /blog/
                 <span class="game-tag-badge">{{ tag }}</span>
                 {% endfor %}
             </div>
-            <h3 class="news-card__title">{{ post.title }}</h3>
+            <h2 class="news-card__title">{{ post.title }}</h2>
             <p class="news-card__excerpt">{{ post.description }}</p>
             <div class="news-card__meta">
                 <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>

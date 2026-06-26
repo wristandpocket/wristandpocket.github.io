@@ -12,7 +12,7 @@
             </a>
             
             <a href="https://discord.gg/6vzt33SX9D" class="nav-discord-link" target="_blank" rel="noopener noreferrer" title="Join Discord">
-                <img src="{{ '/assets/images/icons/discord.png' | relative_url }}" alt="Discord" class="nav-discord-icon">
+                <img src="{{ '/assets/images/icons/discord.png' | relative_url }}" alt="Discord" class="nav-discord-icon" width="42" height="42">
             </a>
 
             <!-- Language Switcher (Polyglot) -->
@@ -30,18 +30,18 @@
                 {% for lang in site.languages %}
                 {% if lang == site.active_lang %}
                 <span class="lang-switch active" data-lang="{{ lang }}">
-                    <img src="{{ '/assets/images/flags/' | append: lang | append: '.png' | relative_url }}" alt="{{ lang | upcase }}" class="lang-flag-icon{% if lang == 'ru' %} lang-flag-icon--ru{% endif %}">
+                    <img src="{{ '/assets/images/flags/' | append: lang | append: '.png' | relative_url }}" alt="{{ lang | upcase }}" class="lang-flag-icon{% if lang == 'ru' %} lang-flag-icon--ru{% endif %}" width="28" height="28">
                     {% if lang == 'en' %}EN{% elsif lang == 'uk' %}UA{% elsif lang == 'ru' %}RU{% elsif lang == 'ko' %}KO{% else %}{{ lang | upcase }}{% endif %}
                 </span>
                 {% else %}
                 {% if lang == site.default_lang %}
                 <a {% static_href %}href="{{ site.baseurl }}{{ bare_url }}" {% endstatic_href %} class="lang-switch" data-lang="{{ lang }}">
-                    <img src="{{ '/assets/images/flags/' | append: lang | append: '.png' | relative_url }}" alt="{{ lang | upcase }}" class="lang-flag-icon{% if lang == 'ru' %} lang-flag-icon--ru{% endif %}">
+                    <img src="{{ '/assets/images/flags/' | append: lang | append: '.png' | relative_url }}" alt="{{ lang | upcase }}" class="lang-flag-icon{% if lang == 'ru' %} lang-flag-icon--ru{% endif %}" width="28" height="28">
                     {% if lang == 'en' %}EN{% elsif lang == 'uk' %}UA{% elsif lang == 'ru' %}RU{% elsif lang == 'ko' %}KO{% else %}{{ lang | upcase }}{% endif %}
                 </a>
                 {% else %}
                 <a {% static_href %}href="{{ site.baseurl }}/{{ lang }}{{ bare_url }}" {% endstatic_href %} class="lang-switch" data-lang="{{ lang }}">
-                    <img src="{{ '/assets/images/flags/' | append: lang | append: '.png' | relative_url }}" alt="{{ lang | upcase }}" class="lang-flag-icon{% if lang == 'ru' %} lang-flag-icon--ru{% endif %}">
+                    <img src="{{ '/assets/images/flags/' | append: lang | append: '.png' | relative_url }}" alt="{{ lang | upcase }}" class="lang-flag-icon{% if lang == 'ru' %} lang-flag-icon--ru{% endif %}" width="28" height="28">
                     {% if lang == 'en' %}EN{% elsif lang == 'uk' %}UA{% elsif lang == 'ru' %}RU{% elsif lang == 'ko' %}KO{% else %}{{ lang | upcase }}{% endif %}
                 </a>
                 {% endif %}

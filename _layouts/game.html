@@ -79,7 +79,7 @@ layout: default
             <div class="smartwatch-frame-wrapper">
                 {% if screen.type == 'video' %}
                 <div class="smartwatch-bezel smartwatch-bezel--video" data-video-src="{{ screen.src | relative_url }}">
-                    <video class="smartwatch-screen" loop muted playsinline preload="none" poster="{{ page.thumbnail | relative_url }}" data-lazy-video>
+                    <video class="smartwatch-screen" loop muted playsinline preload="none" poster="{{ page.thumbnail | relative_url }}" data-lazy-video width="1024" height="1024">
                         <source data-src="{{ screen.src | relative_url }}" type="video/webm" data-proofer-ignore>
                     </video>
                     <div class="smartwatch-glass-shimmer"></div>
