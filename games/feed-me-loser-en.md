@@ -61,5 +61,13 @@ Tamagotchi? Oh yes! You asked, you got it! Take care of a funny, demanding, and 
 - **Thoughtful UI:** An ideal interface built through months of rigorous testing on real physical devices.
 - **Custom Haptic Engine:** A from-scratch system of natural and intuitive vibrations right on your wrist.
 
+## Beyond Simple Fitness Watch Faces
+
+Unlike passive fitness watch faces that only show static step counts, **Feed Me, Loser! is a fully interactive, offline-first smartwatch game.** It turns step goals and watch interactions into active engagement. Key differentiators include:
+
+- **Offline-First Retro Gameplay:** Play anywhere without a cellular or Wi-Fi connection. The game loop runs locally, protecting your privacy and battery.
+- **Physical Bezel Workout:** Rotate the mechanical bezel or digital crown to exercise. It provides a tactile, muscle-memory gameplay experience that standard touchscreens cannot replicate.
+- **Tactile Haptic Feedback:** A custom haptic engine delivers distinct vibration patterns for feeding, sleeping, and exercise, making the virtual pet feel alive.
+
 
 

@@ -42,7 +42,7 @@ layout: default
 
     {% if page.image %}
     <div class="post-cover-image">
-        <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title }}" itemprop="image" loading="lazy">
+        <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title }}" itemprop="image" loading="lazy" width="1200" height="630">
     </div>
     {% endif %}
 
