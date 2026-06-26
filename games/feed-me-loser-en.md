@@ -32,7 +32,18 @@ screenshots:
   - type: image
     thumb: "/assets/images/games/feedmeloser-screen4-thumb.webp"
     full: "/assets/images/games/feedmeloser-screen4-full.webp"
+faq:
+  - question: "Is there a Tamagotchi game for Wear OS smartwatches?"
+    answer: "Yes. Feed Me, Loser! is a Tamagotchi-style virtual pet game built specifically for Wear OS. You feed, exercise, and care for a demanding monster directly on your wrist, with gameplay sessions designed to last 15–60 seconds."
+  - question: "What is Feed Me, Loser!?"
+    answer: "Feed Me, Loser! is a satirical virtual pet game for Android smartwatches. It features a funny, demanding monster with feeding mechanics, bezel-powered exercise, sleep cycles, and overfeeding consequences — all wrapped in an OLED-friendly design optimized for round watch screens."
+  - question: "What smartwatches can play Feed Me, Loser!?"
+    answer: "Feed Me, Loser! runs on any smartwatch with Wear OS 3 or newer, including Samsung Galaxy Watch 4/5/6/7/Ultra, Google Pixel Watch 1/2/3, and other Android smartwatches."
+  - question: "Does Feed Me, Loser! use the rotary bezel?"
+    answer: "Yes. The rotary bezel or digital crown is used for the exercise mechanic, where you spin it to work out with your pet. It is a first-class input, not a gimmick."
 ---
+
+**Feed Me, Loser! is a Tamagotchi-style virtual pet game for Wear OS smartwatches.** Built by [Wrist & Pocket Studio](/) for Galaxy Watch, Pixel Watch, and other Android smartwatches, it features a demanding monster you feed, exercise with, and care for — designed around 15-second play sessions, OLED-friendly visuals, and rotary bezel controls.
 
 ## A Hilarious Satirical Tamagotchi-Style Game for Smartwatches
 
@@ -49,3 +60,6 @@ Tamagotchi? Oh yes! You asked, you got it! Take care of a funny, demanding, and 
 - **OLED Design:** We all love deep black, right? Your battery certainly does.
 - **Thoughtful UI:** An ideal interface built through months of rigorous testing on real physical devices.
 - **Custom Haptic Engine:** A from-scratch system of natural and intuitive vibrations right on your wrist.
+
+
+
