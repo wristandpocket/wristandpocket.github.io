@@ -16,7 +16,7 @@ const args = [
   '--allow-hash-href',
   '--ignore-empty-alt',
   '--ignore-urls',
-  '/^https:\\/\\/(wristandpocket\\.github\\.io|wristandpocket\\.dev|fonts\\.googleapis\\.com|fonts\\.gstatic\\.com|mermaid\\.ink|polyfill\\.io)/,/assets\\/images\\//'
+  '/^https:\\/\\/(wristandpocket\\.github\\.io|wristandpocket\\.dev|fonts\\.googleapis\\.com|fonts\\.gstatic\\.com|mermaid\\.ink|polyfill\\.io|icons8\\.com)/,/assets\\/images\\//'
 ];
 
 const result = cp.spawnSync('ruby', args, {
