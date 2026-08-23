@@ -9,16 +9,16 @@ thumbnail: "/assets/images/games/feedmeloser-screen2-thumb.webp"
 game_icon: "/assets/images/icons/game-pet.png"
 description: "스마트워치를 위한 유쾌하고 사르카스틱한 다마고치 스타일 게임. 변덕스러운 몬스터를 케어해보세요!"
 order: 2
-tester_cta: true
+tester_cta: false
 page_id: "game-feed-me-loser"
 permalink: /games/feed-me-loser/
 lang: ko
 specs:
   platform: "Wear OS 3+"
-  engine: "Unity 6.4 (URP Render Graph)"
-  performance: "20 FPS (배터리 절전 모드)"
-  rotary: "지원됨 (회전 베젤 운동)"
-  status: "활발히 개발 중"
+  engine: "Unity 6 (6000.5.7f1, URP)"
+  performance: "15 FPS 목표"
+  rotary: "회전 베젤 운동"
+  status: "개발 일시 중단"
 screenshots:
   - type: image
     thumb: "/assets/images/games/feedmeloser-screen1-thumb.webp"
@@ -38,7 +38,7 @@ faq:
   - question: "Feed Me, Loser!는 어떤 게임인가요?"
     answer: "Feed Me, Loser!는 안드로이드 워치를 위한 유쾌하고 풍자적인 반려동물 육성 게임입니다. 까다로운 몬스터를 키우며 먹이 주기, 베젤 회전 운동, 수면 사이클, 폭식의 결과 등 원형 화면에 최적화된 OLED 디자인의 독창적인 메커니즘을 경험하실 수 있습니다."
   - question: "Feed Me, Loser!는 어떤 스마트워치에서 플레이할 수 있나요?"
-    answer: "Feed Me, Loser!는 Samsung Galaxy Watch 4/5/6/7/Ultra, Google Pixel Watch 1/2/3 및 기타 Wear OS 3 이상을 구동하는 모든 안드로이드 스마트워치에서 작동합니다."
+    answer: "Feed Me, Loser!는 Wear OS 3 이상을 실행하는 스마트워치를 위해 설계되었습니다. 지원 여부는 기기에 따라 다를 수 있습니다."
   - question: "Feed Me, Loser!는 회전 베젤을 지원하나요?"
     answer: "네. 워치의 물리 회전 베젤이나 디지털 크라운은 반려동물 운동 시뮬레이션에 적극적으로 활용됩니다. 베젤을 직접 돌려 운동을 진행할 수 있으며, 이는 단순 연출이 아닌 주요 조작 체계입니다."
 ---
@@ -68,6 +68,4 @@ faq:
 - **오프라인 우선 레트로 게임플레이:** 통신망이나 Wi-Fi 연결 없이도 언제 어디서나 플레이할 수 있습니다. 로컬에서 독립적으로 게임 루프가 실행되어 배터리와 개인정보 유출을 방지합니다.
 - **물리 베젤을 활용한 운동 조작:** 회전 베젤이나 디지털 크라운을 직접 돌려 운동을 진행합니다. 일반 정전식 터치스크린으로는 경험할 수 없는 직관적이고 아날로그적인 근육 기억(Muscle-memory) 조작감을 선사합니다.
 - **풍부한 커스텀 햅틱 피드백:** 먹이 주기, 수면, 운동 시 동작에 맞춘 고유한 진동 패턴을 제공하여, 가상의 반려동물이 손목 위에서 살아 숨 쉬는 듯한 실감 나는 반응을 느낄 수 있습니다.
-
-
 

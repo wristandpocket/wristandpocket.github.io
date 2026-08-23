@@ -8,16 +8,16 @@ thumbnail: "/assets/images/games/cyberpunk3d-screen1-thumb.webp"
 game_icon: "/assets/images/icons/game-cyberpunk.png"
 description: "The first-of-its-kind, full-fledged 3D test for your Android smartwatch."
 order: 1
-tester_cta: true
+tester_cta: false
 page_id: "game-cyberpunk-3d"
 permalink: /games/cyberpunk-3d/
 lang: en
 specs:
   platform: "Wear OS 3+"
-  engine: "Unity 6.4 (URP Render Graph)"
-  performance: "60 FPS (Benchmark mode)"
-  rotary: "Supported (Rotary Scroll)"
-  status: "In Testing"
+  engine: "Unity 6 (6000.5.7f1, URP)"
+  performance: "3D benchmark mode"
+  rotary: "Rotary controls"
+  status: "On Hold"
 screenshots:
   - type: video
     src: "/assets/images/games/cyberpunk3d-video1.webm"
@@ -43,9 +43,9 @@ faq:
   - question: "What does Cyberpunk 3D test on my smartwatch?"
     answer: "It measures GPU rendering performance, sustained FPS under load, thermal throttling behavior, and frame stutter frequency. The app uses custom URP shaders and dynamic lighting to push the hardware to its limits."
   - question: "What smartwatches are compatible with Cyberpunk 3D?"
-    answer: "Cyberpunk 3D runs on any smartwatch with Wear OS 3 or newer, including Samsung Galaxy Watch 4/5/6/7/Ultra, Google Pixel Watch 1/2/3, OnePlus Watch 2, and other Android smartwatches."
+    answer: "Cyberpunk 3D is designed for smartwatches running Wear OS 3 or newer. Support may vary by device."
   - question: "How do I install Cyberpunk 3D on my smartwatch?"
-    answer: "Cyberpunk 3D is currently in public beta testing. You can join the beta through the [Discord community](https://discord.gg/6vzt33SX9D) to get early access and provide feedback."
+    answer: "Cyberpunk 3D is not publicly available right now. Follow Wrist & Pocket Studio for future updates."
 ---
 
 **Cyberpunk 3D is a free 3D benchmark app for Wear OS smartwatches.** It stress-tests GPU rendering, tracks real-time FPS, monitors thermal throttling, and measures actual performance on Galaxy Watch, Pixel Watch, and other Android smartwatches. Built from scratch by [Wrist & Pocket Studio](/) using Unity 6, it is the first dedicated 3D graphics benchmark designed specifically for wrist-worn devices.
@@ -65,16 +65,6 @@ Have you ever wondered, _"Man, I wonder what my Android watch can actually run?"
 - **Modern UI:** In this pilot project of the studio, we made our first attempts to create an adaptive UI following the guidelines of the latest Material Design versions.
 - **Bezel Support:** What kind of Wear OS app doesn't use the physical or digital bezel? We think the same, so spin away to your heart's content!
 
-## Watch Compatibility & Expected Performance
+## Made for Tiny Hardware with Big Ambitions
 
-To help you gauge your hardware's capabilities, here is what you can expect when running the Cyberpunk 3D benchmark:
-
-| Smartwatch Model | Processor | Target FPS | Expected Battery Behavior |
-|------------------|-----------|------------|---------------------------|
-| **Galaxy Watch Ultra** | Exynos W1000 | 58–60 FPS | Excellent thermal limits; stable frame timing |
-| **Galaxy Watch 7** | Exynos W1000 | 55–60 FPS | Low thermal throttling under sustained load |
-| **Galaxy Watch 6** | Exynos W930 | 45–55 FPS | Moderate throttling after 3 minutes |
-| **Galaxy Watch 5** | Exynos W920 | 35–45 FPS | Standard performance; normal thermal curve |
-| **Pixel Watch 3** | SW5100 | 50–60 FPS | Highly responsive; optimized frame pacing |
-| **Pixel Watch 2** | SW5100 | 45–55 FPS | Good stability; minimal frame stutters |
-| **Pixel Watch 1** | Exynos 9110 | 25–35 FPS | Noticeable thermal limits; lower stable FPS |
+Cyberpunk 3D was built to explore how far a watch-sized device can push a real-time 3D scene. Performance depends on the watch, but the challenge stays the same: fit a neon city, live diagnostics, and responsive controls onto your wrist.

@@ -8,16 +8,16 @@ thumbnail: "/assets/images/games/cyberpunk3d-screen1-thumb.webp"
 game_icon: "/assets/images/icons/game-cyberpunk.png"
 description: "안드로이드 스마트워치를 위해 설계된 최초의 본격 3D 그래픽 테스트."
 order: 1
-tester_cta: true
+tester_cta: false
 page_id: "game-cyberpunk-3d"
 permalink: /games/cyberpunk-3d/
 lang: ko
 specs:
   platform: "Wear OS 3+"
-  engine: "Unity 6.4 (URP Render Graph)"
-  performance: "60 FPS (벤치마크 모드)"
-  rotary: "지원됨 (회전 베젤)"
-  status: "테스트 중"
+  engine: "Unity 6 (6000.5.7f1, URP)"
+  performance: "3D 벤치마크 모드"
+  rotary: "회전 베젤 조작"
+  status: "개발 일시 중단"
 screenshots:
   - type: video
     src: "/assets/images/games/cyberpunk3d-video1.webm"
@@ -43,9 +43,9 @@ faq:
   - question: "Cyberpunk 3D는 내 스마트워치에서 무엇을 테스트하나요?"
     answer: "GPU 렌더링 성능, 부하 시 지속 FPS, 서멀 스로틀링 동작, 프레임 끊김 빈도를 측정합니다. 앱은 커스텀 URP 셰이더와 다이나믹 라이팅을 사용하여 하드웨어를 극한까지 밀어붙입니다."
   - question: "어떤 스마트워치가 Cyberpunk 3D와 호환되나요?"
-    answer: "Cyberpunk 3D는 Samsung Galaxy Watch 4/5/6/7/Ultra, Google Pixel Watch 1/2/3, OnePlus Watch 2 등 Wear OS 3 이상을 탑재한 모든 스마트워치에서 실행됩니다."
+    answer: "Cyberpunk 3D는 Wear OS 3 이상을 실행하는 스마트워치를 위해 설계되었습니다. 지원 여부는 기기에 따라 다를 수 있습니다."
   - question: "스마트워치에 Cyberpunk 3D를 어떻게 설치하나요?"
-    answer: "Cyberpunk 3D는 현재 공개 베타 테스트 중입니다. [Discord 커뮤니티](https://discord.gg/6vzt33SX9D)를 통해 베타에 참여하여 조기 액세스와 피드백 기회를 얻을 수 있습니다."
+    answer: "Cyberpunk 3D는 현재 공개 다운로드를 제공하지 않습니다. 향후 소식은 Wrist & Pocket Studio에서 확인해 주세요."
 ---
 
 **Cyberpunk 3D는 Wear OS 스마트워치를 위한 무료 3D 벤치마크 앱입니다.** GPU 렌더링을 스트레스 테스트하고, 실시간 FPS를 추적하며, 서멀 스로틀링을 모니터링하고, Galaxy Watch, Pixel Watch 및 기타 Android 스마트워치의 실제 성능을 측정합니다. [Wrist & Pocket Studio](/)가 Unity 6으로 처음부터 제작한 손목 착용 기기 전용 최초의 3D 그래픽 벤치마크입니다.
@@ -65,19 +65,6 @@ _"와, 내 안드로이드 워치로 도대체 뭘 실행할 수 있는 거지?"
 - **모던 UI:** 스튜디오의 이 파일럿 프로젝트에서는 최신 Material Design 가이드를 준수하는 어댑티브 UI를 만들기 위한 첫 시도를 선보입니다.
 - **회전 베젤 지원:** 물리 또는 디지털 회전 베젤을 쓰지 않는 Wear OS 앱이 무슨 재미가 있겠어요? 저희도 그렇게 생각하니 마음껏 돌려보세요!
 
-## 워치 호환성 및 예상 성능
+## 작은 하드웨어에 담은 큰 야심
 
-하드웨어 성능을 가늠해 보실 수 있도록 Cyberpunk 3D 벤치마크 실행 시 예상되는 성능 지표를 정리했습니다:
-
-| 스마트워치 모델 | 프로세서 | 목표 FPS | 예상 배터리 동작 및 발열 |
-|------------------|-----------|------------|---------------------------|
-| **Galaxy Watch Ultra** | Exynos W1000 | 58–60 FPS | 뛰어난 온도 제어; 안정적인 프레임 타이밍 |
-| **Galaxy Watch 7** | Exynos W1000 | 55–60 FPS | 지속 부하 시 매우 적은 서멀 스로틀링 |
-| **Galaxy Watch 6** | Exynos W930 | 45–55 FPS | 지속 부하 3분 후 완만한 스로틀링 발생 |
-| **Galaxy Watch 5** | Exynos W920 | 35–45 FPS | 표준적인 성능 범위; 일반적인 온도 곡선 |
-| **Pixel Watch 3** | SW5100 | 50–60 FPS | 높은 응답성; 최적화된 프레임 페이싱 |
-| **Pixel Watch 2** | SW5100 | 45–55 FPS | 양호한 안정성; 미미한 프레임 끊김(stutters) |
-| **Pixel Watch 1** | Exynos 9110 | 25–35 FPS | 뚜렷한 온도 한계 노출; 비교적 낮은 안정적 FPS |
-
-
-
+Cyberpunk 3D는 손목시계 크기의 기기에서 실시간 3D 장면을 어디까지 구현할 수 있는지 탐구하기 위해 만들어졌습니다. 성능은 기기마다 다르지만 목표는 같습니다. 네온 도시와 실시간 표시, 편리한 조작을 손목 위에 담는 것입니다.

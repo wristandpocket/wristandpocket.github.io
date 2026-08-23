@@ -9,16 +9,16 @@ thumbnail: "/assets/images/games/feedmeloser-screen2-thumb.webp"
 game_icon: "/assets/images/icons/game-pet.png"
 description: "A hilarious satirical Tamagotchi-style game for smartwatches. Take care of a demanding monster!"
 order: 2
-tester_cta: true
+tester_cta: false
 page_id: "game-feed-me-loser"
 permalink: /games/feed-me-loser/
 lang: en
 specs:
   platform: "Wear OS 3+"
-  engine: "Unity 6.4 (URP Render Graph)"
-  performance: "20 FPS (battery save mode)"
-  rotary: "Supported (Bezel Workout)"
-  status: "In Active Development"
+  engine: "Unity 6 (6000.5.7f1, URP)"
+  performance: "15 FPS target"
+  rotary: "Rotary workout"
+  status: "On Hold"
 screenshots:
   - type: image
     thumb: "/assets/images/games/feedmeloser-screen1-thumb.webp"
@@ -38,7 +38,7 @@ faq:
   - question: "What is Feed Me, Loser!?"
     answer: "Feed Me, Loser! is a satirical virtual pet game for Android smartwatches. It features a funny, demanding monster with feeding mechanics, bezel-powered exercise, sleep cycles, and overfeeding consequences — all wrapped in an OLED-friendly design optimized for round watch screens."
   - question: "What smartwatches can play Feed Me, Loser!?"
-    answer: "Feed Me, Loser! runs on any smartwatch with Wear OS 3 or newer, including Samsung Galaxy Watch 4/5/6/7/Ultra, Google Pixel Watch 1/2/3, and other Android smartwatches."
+    answer: "Feed Me, Loser! is designed for smartwatches running Wear OS 3 or newer. Support may vary by device."
   - question: "Does Feed Me, Loser! use the rotary bezel?"
     answer: "Yes. The rotary bezel or digital crown is used for the exercise mechanic, where you spin it to work out with your pet. It is a first-class input, not a gimmick."
 ---
