@@ -8,7 +8,8 @@ permalink: /privacy/
 
 <div class="privacy-page fade-in">
     <h1>개인정보 처리방침</h1>
-    <p class="updated">최종 업데이트: 2026년 6월 21일</p>
+    <p class="updated">최종 업데이트: 2026년 8월 23일</p>
+    <p><strong>제품 구성:</strong> 아래 서비스의 사용 여부는 각 출시 앱의 구성과 동의 절차에 따라 달라집니다. SDK API가 존재한다는 사실만으로 데이터 수집 또는 전송이 확인되는 것은 아닙니다.</p>
 
     <section>
         <h2>1. 적용 범위</h2>

@@ -95,7 +95,7 @@ The design is configured to match the cyberpunk / smartwatch theme:
 
 We avoid bloated search scripts and reload-heavy tag pages.
 *   The news page `/blog/` extracts unique tags from posts.
-*   [assets/js/script.js](file:///d:/GitHub/WristAndPocket/wristandpocket.github.io/assets/js/script.js) parses the `data-tags` attribute on `.news-card` items and filters them instantly on click.
+*   [assets/js/script.js](assets/js/script.js) parses the `data-tags` attribute on `.news-card` items and filters them instantly on click.
 
 ---
 
@@ -110,7 +110,7 @@ Manage content easily using the [Front Matter CMS](https://frontmatter.codes/) e
 
 ## 🚀 Deployment & CI/CD
 
-All builds are handled automatically in the cloud via GitHub Actions workflow [.github/workflows/jekyll.yml](file:///d:/GitHub/WristAndPocket/wristandpocket.github.io/.github/workflows/jekyll.yml).
+All builds are handled automatically in the cloud via GitHub Actions workflow [.github/workflows/jekyll.yml](.github/workflows/jekyll.yml).
 *   **Deploy trigger:** On every push to `main` branch.
 *   **Deployment settings:** In repo Settings → Pages → Build and deployment → Source **MUST** be set to **"GitHub Actions"**.
 *   **No local Ruby needed:** You do not need to install Ruby/Bundler locally. Just commit your Markdown/YAML/SCSS edits, and let GitHub handle the compilation.
@@ -144,5 +144,5 @@ For local Ruby/Jekyll setup on Windows, see [LOCAL_JEKYLL_SETUP.md](LOCAL_JEKYLL
 ### ⚠️ HTML Proofer Rules for Placeholders & Assets
 During build validation, **HTML Proofer** checks that all referenced images, external links, and stylesheets exist.
 *   **Rule:** If you add a temporary placeholder image or path (like flags `/assets/images/flags/*.png` or screenshots `/assets/images/games/*.webp`) that is not yet physically committed to the repository, you **MUST** configure HTML Proofer to ignore this path.
-*   **Implementation:** Add the path/regex to `--ignore-urls` in [.github/workflows/jekyll.yml](file:///d:/GitHub/WristAndPocket/wristandpocket.github.io/.github/workflows/jekyll.yml) (e.g. `,/assets\/images\//`).
+*   **Implementation:** Add the path/regex to `--ignore-urls` in [.github/workflows/jekyll.yml](.github/workflows/jekyll.yml) (e.g. `,/assets\/images\//`).
 *   **Cleanup:** Once the actual files are committed, you should remove the ignore rule so that broken links/assets can be caught normally.
