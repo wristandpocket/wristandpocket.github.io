@@ -53,6 +53,10 @@ jobs:
         id: javascript
         run: npm run verify:js
 
+      - name: Check generated-site accessibility and browser contracts
+        id: quality
+        run: npm run verify:quality
+
       - name: Write deployment verification report
         if: always()
         shell: pwsh
@@ -61,7 +65,8 @@ jobs:
           BUILD_OUTCOME: ${{ steps.build.outcome }}
           HTML_OUTCOME: ${{ steps.html.outcome }}
           JAVASCRIPT_OUTCOME: ${{ steps.javascript.outcome }}
-        run: ./scripts/ci/write-site-ci-report.ps1 -OutputPath ci-results/site-deployment-verification.md -Preflight $env:PREFLIGHT_OUTCOME -Build $env:BUILD_OUTCOME -Html $env:HTML_OUTCOME -JavaScript $env:JAVASCRIPT_OUTCOME
+          QUALITY_OUTCOME: ${{ steps.quality.outcome }}
+        run: ./scripts/ci/write-site-ci-report.ps1 -OutputPath ci-results/site-deployment-verification.md -Preflight $env:PREFLIGHT_OUTCOME -Build $env:BUILD_OUTCOME -Html $env:HTML_OUTCOME -JavaScript $env:JAVASCRIPT_OUTCOME -Quality $env:QUALITY_OUTCOME
 
       - name: Upload artifact
         if: github.event_name != 'pull_request'

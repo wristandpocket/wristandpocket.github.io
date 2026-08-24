@@ -42,9 +42,17 @@ GitHub Actions additionally runs:
 
 ```powershell
 npm.cmd run verify:html
+npm.cmd run verify:quality
 ```
 
 If this fails locally on Windows because `libcurl` is missing, rely on the GitHub Actions result or repair the RubyInstaller/MSYS2 Devkit setup before treating local HTML Proofer as authoritative.
+
+The generated-site quality command is a deterministic accessibility and
+browser-contract gate. It checks language attributes, landmarks, heading
+structure, accessible image/link/button names, canonical metadata, and locale
+routing without downloading a browser or contacting an external service.
+HTML Proofer remains the link and asset gate; this static evidence does not
+replace owner browser or device smoke testing.
 
 ## Push And Deploy
 

@@ -6,11 +6,12 @@
     "build": "node .frontmatter/scripts/site-build.js",
     "verify:html": "node .frontmatter/scripts/site-htmlproofer.js",
     "verify:js": "node .frontmatter/scripts/site-js-budget.js",
+    "verify:quality": "node .frontmatter/scripts/site-quality.js",
     "check:images": "node .frontmatter/scripts/check-images.js",
     "new:post": "node .frontmatter/scripts/site-new.js post",
     "new:page": "node .frontmatter/scripts/site-new.js page",
     "new:game": "node .frontmatter/scripts/site-new.js game",
     "verify": "npm run preflight && npm run build && npm run verify:js",
-    "verify:ci": "npm run preflight && npm run build && npm run verify:html && npm run verify:js"
+    "verify:ci": "npm run preflight && npm run build && npm run verify:html && npm run verify:js && npm run verify:quality"
   }
 }
