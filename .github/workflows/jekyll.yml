@@ -3,13 +3,13 @@ name: Deploy Jekyll with Polyglot
 on:
   push:
     branches: ["main"]
+  pull_request:
+    branches: ["main"]
   workflow_dispatch:
 
 # Grant GITHUB_TOKEN permissions to deploy Pages
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: "pages"
@@ -17,52 +17,79 @@ concurrency:
 
 jobs:
   build:
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
 
       - name: Run site preflight
+        id: preflight
         run: npm run preflight
 
       - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
+        uses: ruby/setup-ruby@4a9ddd6f338a97768b8006bf671dfbad383215f4 # v1.207.0
         with:
           ruby-version: "3.3"
           bundler-cache: true
 
-      - name: Cache Jekyll
-        uses: actions/cache@v4
-        with:
-          path: .jekyll-cache
-          key: ${{ runner.os }}-jekyll-${{ hashFiles('Gemfile.lock') }}-${{ hashFiles('_config.yml') }}
-          restore-keys: |
-            ${{ runner.os }}-jekyll-
-
       - name: Setup Pages
-        uses: actions/configure-pages@v5
+        if: github.event_name != 'pull_request'
+        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
 
       - name: Build with Jekyll
+        id: build
         run: npm run build
 
       - name: Test with HTML Proofer
+        id: html
         run: npm run verify:html
 
       - name: Check JS bundle size
+        id: javascript
         run: npm run verify:js
 
+      - name: Write deployment verification report
+        if: always()
+        shell: pwsh
+        env:
+          PREFLIGHT_OUTCOME: ${{ steps.preflight.outcome }}
+          BUILD_OUTCOME: ${{ steps.build.outcome }}
+          HTML_OUTCOME: ${{ steps.html.outcome }}
+          JAVASCRIPT_OUTCOME: ${{ steps.javascript.outcome }}
+        run: ./scripts/ci/write-site-ci-report.ps1 -OutputPath ci-results/site-deployment-verification.md -Preflight $env:PREFLIGHT_OUTCOME -Build $env:BUILD_OUTCOME -Html $env:HTML_OUTCOME -JavaScript $env:JAVASCRIPT_OUTCOME
+
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
         with:
           path: ./_site
 
+      - name: Upload verification report
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: site-deployment-verification-${{ github.run_id }}
+          path: ci-results/
+          if-no-files-found: warn
+          retention-days: 14
+
   deploy:
+    if: github.event_name != 'pull_request'
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     needs: build
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
