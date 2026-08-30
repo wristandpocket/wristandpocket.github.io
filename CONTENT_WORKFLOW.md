@@ -5,8 +5,8 @@ This document is the operating guide for creating and verifying content in the W
 ## Core Model
 
 - The site is a standalone Git repository and is tracked from the studio workspace as a Git submodule.
-- Commit and push site changes inside `wristandpocket.github.io` first.
-- Then commit and push the updated `wristandpocket.github.io` submodule pointer in the root studio workspace.
+- Commit and push site changes inside `web/studio-site` first.
+- Then commit and push the updated `web/studio-site` submodule pointer in the root studio workspace.
 - English is the source language for files, docs, code comments, commit messages, and public site text.
 
 ## Local Command Notes
@@ -222,7 +222,7 @@ Then in the root studio workspace:
 ```powershell
 git status --short --branch
 git diff --submodule
-git add wristandpocket.github.io
+git add web/studio-site
 git commit -m "chore: update site submodule pointer"
 git push origin main
 ```
