@@ -1,0 +1,23 @@
+# Auto-detect text files and normalize them to LF.
+* text=auto
+
+# Cross-platform source, documentation, and serialized data.
+*.ps1 text eol=lf
+*.sh text eol=lf
+*.cs text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.xml text eol=lf
+*.java text eol=lf
+
+# Unity serialized text assets.
+*.unity text eol=lf
+*.prefab text eol=lf
+*.asset text eol=lf
+*.meta text eol=lf
+
+# Windows-only convenience launchers.
+*.cmd text eol=crlf
+*.bat text eol=crlf
