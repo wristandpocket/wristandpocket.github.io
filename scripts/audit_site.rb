@@ -47,6 +47,9 @@ docs.each do |file, doc|
     check.call(alternates.select { |n| n['hreflang'] == alternate }.map { |n| n['href'] } == [expected], route, "incorrect hreflang #{alternate}")
   end
   check.call(!File.read(file).match?(/localhost|127\.0\.0\.1|synthetic-audit|TODO|draft-preview/), route, 'development content leaked')
+  if bare == '/' || bare.start_with?('/games/')
+    check.call(!doc.text.match?(/Premium Wear OS|first.of.its.kind|first.ever|Coming soon to Play Store/i), route, 'unverified product marketing claim')
+  end
   check.call(doc.css('[ferh]').empty?, route, 'unprocessed static_href')
   doc.css('script[type="application/ld+json"]').each do |block|
     begin
