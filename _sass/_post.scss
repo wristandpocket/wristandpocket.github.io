@@ -107,6 +107,7 @@
   align-items: center;
   justify-content: center;
   padding: 10px 20px;
+  min-height: 44px;
   border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 600;
@@ -192,6 +193,7 @@
   color: #c7f6f1;
   border: 1px solid rgba(78, 205, 196, 0.22);
   padding: 6px 12px;
+  min-height: 44px;
   border-radius: 6px;
   cursor: pointer;
   box-shadow: inset 0 0 0 1px rgba(78, 205, 196, 0.04), 0 8px 18px rgba(0, 0, 0, 0.18);

@@ -14,7 +14,8 @@ Dir.mktmpdir('wrist-pocket-audit-') do |temp|
     'duplicate hreflang' => original.sub('</head>', '<link rel="alternate" hreflang="uk" href="https://wristandpocket.dev/uk/"></head>'),
     'wrong canonical' => original.sub('rel="canonical" href="https://wristandpocket.dev/uk/"', 'rel="canonical" href="https://wristandpocket.dev/"'),
     'unwanted noindex' => original.sub('index, follow', 'noindex'),
-    'localhost leak' => original.sub('</main>', '<p>http://localhost:4000</p></main>')
+    'localhost leak' => original.sub('</main>', '<p>http://localhost:4000</p></main>'),
+    'homepage breadcrumb' => original.sub('"@graph": [{', '"@graph": [{"@type":"BreadcrumbList","itemListElement":[]},{')
   }
   cases.each do |name, broken|
     raise "Control did not mutate HTML: #{name}" if broken == original

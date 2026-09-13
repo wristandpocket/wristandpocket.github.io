@@ -1,17 +1,23 @@
 <header class="site-header">
+    {% assign nav_path = page.url %}
+    {% if site.active_lang != site.default_lang %}
+    {% capture active_prefix %}/{{ site.active_lang }}{% endcapture %}
+    {% assign nav_path = page.url | replace_first: active_prefix, '' %}
+    {% endif %}
+    {% if nav_path == '' %}{% assign nav_path = '/' %}{% endif %}
     <nav class="site-nav">
         <a href="{{ '/' | relative_url }}" class="site-nav__brand"><span>W</span>&amp;<span>P</span> STUDIO</a>
         <div class="site-nav__links">
-            <a href="{{ '/games/' | relative_url }}">
+            <a href="{{ '/games/' | relative_url }}"{% if nav_path == '/games/' or page.layout == 'game' %} aria-current="page"{% endif %}>
                 <span class="nav-text-desktop">{{ site.data[site.active_lang].strings.games_title | default: 'Games' }}</span>
                 <span class="nav-text-mobile">{{ site.data[site.active_lang].strings.nav_games | default: 'Games' }}</span>
             </a>
-            <a href="{{ '/blog/' | relative_url }}">
+            <a href="{{ '/blog/' | relative_url }}"{% if nav_path == '/blog/' or page.layout == 'post' %} aria-current="page"{% endif %}>
                 <span class="nav-text-desktop">{{ site.data[site.active_lang].strings.news_label | default: 'News' }}</span>
                 <span class="nav-text-mobile">{{ site.data[site.active_lang].strings.nav_news | default: 'News' }}</span>
             </a>
             
-            <a href="{{ "/contact/" | relative_url }}" class="nav-contact">{{ site.data.site_copy[site.active_lang].contact }}</a>
+            <a href="{{ "/contact/" | relative_url }}" class="nav-contact"{% if nav_path == '/contact/' %} aria-current="page"{% endif %}>{{ site.data.site_copy[site.active_lang].contact }}</a>
 
             <!-- Language Switcher (Polyglot) -->
             {% assign bare_url = page.url %}
@@ -28,7 +34,7 @@
                 {% for lang in site.languages %}
                 {% assign language_name = site.data.language_names[lang] %}
                 {% capture language_url %}{% if lang != site.default_lang %}/{{ lang }}{% endif %}{{ bare_url }}{% endcapture %}
-                <a {% static_href %}href="{{ language_url }}"{% endstatic_href %} class="lang-switch{% if lang == site.active_lang %} active{% endif %}" data-lang="{{ lang }}" lang="{{ lang }}" hreflang="{{ lang }}" aria-label="{{ language_name }}" {% if lang == site.active_lang %}aria-current="true"{% endif %}>{{ lang | upcase }}</a>
+                <a {% static_href %}href="{{ language_url }}"{% endstatic_href %} class="lang-switch{% if lang == site.active_lang %} active{% endif %}" data-lang="{{ lang }}" lang="{{ lang }}" hreflang="{{ lang }}" aria-label="{{ language_name }}" {% if lang == site.active_lang %}aria-current="page"{% endif %}>{{ lang | upcase }}</a>
                 {% endfor %}
             </div>
         </div>

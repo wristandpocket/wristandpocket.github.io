@@ -3,7 +3,7 @@ layout: default
 ---
 {% assign copy = site.data.site_copy[site.active_lang] %}
 <article class="game-detail" data-project="{{ page.page_id }}">
-<p><a href="{{ '/games/' | relative_url }}">&larr; {{ site.data[site.active_lang].strings.back_to_games }}</a></p>
+<p class="game-back-link"><a class="btn-back" href="{{ '/games/' | relative_url }}">&larr; {{ site.data[site.active_lang].strings.back_to_games }}</a></p>
 <header class="project-hero">
 <img src="{{ page.banner | relative_url }}" alt="{{ page.title }}" width="3440" height="1440" fetchpriority="high">
 <div><p class="card-label">{{ page.badge }}</p><h1>{{ page.title }}</h1><p>{{ page.description }}</p><span class="project-status">{{ copy.status }}</span><p>{{ copy.access }}</p>

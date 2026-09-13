@@ -112,6 +112,15 @@
   }
 }
 
+.site-nav__links > a[aria-current="page"] {
+  color: $text-primary;
+  background: rgb(255 255 255 / 0.045);
+}
+
+.site-nav__links > a[aria-current="page"]:hover {
+  color: $text-primary;
+}
+
 .nav-text-desktop {
   display: inline;
 }
@@ -175,6 +184,11 @@
     background: rgba(78, 205, 196, 0.1);
     cursor: default;
   }
+}
+
+.btn-back {
+  min-height: 44px;
+  padding: 8px 0;
 }
 
 .lang-flag-icon {

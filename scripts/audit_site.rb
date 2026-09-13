@@ -57,6 +57,9 @@ docs.each do |file, doc|
       check.call(!block.text.match?(/aggregateRating|"offers"/), route, 'unverified rating or offer')
       # Check URL identities too: Polyglot does not localize JSON-LD strings.
       objects = data['@graph'] || [data]
+      if %w[/ /uk/ /ru/ /ko/].include?(route)
+        check.call(objects.none? { |object| object['@type'] == 'BreadcrumbList' }, route, 'homepage emits self-referential BreadcrumbList')
+      end
       objects.each do |object|
         next unless %w[CreativeWork BlogPosting CollectionPage].include?(object['@type'])
         identity = object['url'] || object.dig('mainEntityOfPage', '@id')

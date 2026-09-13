@@ -39,6 +39,19 @@ Scope: `wristandpocket/wristandpocket.github.io`, branch `main`. Initial working
 - Browser matrices: all 48 HTML routes at 390x844 and 1280x900; H1, locale, document overflow and loaded-image failure checks. These DOM measurements are not a claim of manual pixel inspection of every page.
 - Focused manual browser checks: home, catalogue, both projects, blog filtering, language switching, support links, privacy and 404; native gallery keyboard controls; all three WebM files reach their ends without media errors.
 
+## Final polish pass — 2026-09-13
+
+The final review closed the remaining small consistency and accessibility gaps:
+
+- Header navigation now exposes `aria-current="page"` for the active catalogue, news, contact and project routes. The current language uses the standard `page` token as well.
+- Back-to-catalogue, topic filters, “show all” and social links now keep a 44px minimum touch target. External footer and contact links use an explicit new-tab and `noopener noreferrer` contract.
+- Open Graph and X/Twitter image alt metadata are emitted from the localized page title.
+- Homepage JSON-LD no longer emits a self-referential `BreadcrumbList`; the route audit now guards all four localized homepages against that regression.
+
+Fresh local evidence after the pass: Jekyll served the root, Ukrainian homepage, both project routes and the blog; the project hero and media rendered; the Development filter reduced the post list; the gallery opened at media 2 and closed with Escape; Ukrainian navigation and localized links remained reciprocal. Existing browser matrices still cover all 48 routes at 390x844 and 1280x900.
+
+Automated results after the pass: `npm run preflight`, `npm run build`, `npm run verify:routes` (48 pages, 1,448 URL references, 0 errors), `npm run verify:quality`, `npm run verify:js` (1,924 bytes), `npm run check:images` and `npm run test:audit` all pass. Local `npm run verify:html` remains unavailable because Ruby cannot load libcurl on Windows (error 126); the Linux GitHub Actions gate is the required independent HTMLProofer result. The Icons8 endpoint remains the only external inventory response requiring review (HTTP 403).
+
 ## Local environment limitations
 
 Ruby 3.4.8 can build the site and run Nokogiri audits. Local HTMLProofer cannot load libcurl (Windows error 126). A bounded local Git-libcurl attempt also failed. Linux GitHub Actions remains the required independent HTMLProofer gate. No system-wide runtime or PATH changes were made.

@@ -1,7 +1,7 @@
 {% assign copy = site.data.site_copy[site.active_lang] %}
 <footer class="site-footer">
-    <div class="footer-links"><a href="{{ '/contact/' | relative_url }}">{{ copy.contact }}</a><a href="{{ '/privacy/' | relative_url }}">{{ site.data[site.active_lang].strings.privacy_policy }}</a><a href="https://figarist.github.io/{% if site.active_lang != 'en' %}{{ site.active_lang }}/{% endif %}">{{ copy.founder }}</a></div>
+    <div class="footer-links"><a href="{{ '/contact/' | relative_url }}">{{ copy.contact }}</a><a href="{{ '/privacy/' | relative_url }}">{{ site.data[site.active_lang].strings.privacy_policy }}</a><a href="https://figarist.github.io/{% if site.active_lang != 'en' %}{{ site.active_lang }}/{% endif %}" target="_blank" rel="noopener noreferrer">{{ copy.founder }}</a></div>
     <p>&copy; {{ site.time | date: '%Y' }} Wrist &amp; Pocket Studio. {{ copy.rights }}</p>
-    <p class="site-footer__icons-credit">{{ copy.credit }} <a href="https://icons8.com">Icons8</a></p>
+    <p class="site-footer__icons-credit">{{ copy.credit }} <a href="https://icons8.com" target="_blank" rel="noopener noreferrer">Icons8</a></p>
     <p class="site-footer__disclaimer">{{ copy.disclaimer }}</p>
 </footer>
