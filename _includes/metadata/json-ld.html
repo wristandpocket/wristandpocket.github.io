@@ -5,6 +5,10 @@ Unified JSON-LD for Wrist & Pocket Studio (Organization, WebSite, BlogPosting, a
 {%- assign studio_url = 'https://wristandpocket.dev' -%}
 {%- assign site_logo = '/assets/images/noSHOVEL.webp' | absolute_url -%}
 {%- assign page_image = page.image | default: page.banner | default: site.default_social_image | default: '/assets/images/default-social-card.webp' | absolute_url -%}
+{%- assign show_breadcrumbs = true -%}
+{%- if page.is_home and include.breadcrumbs_only != true -%}
+{%- assign show_breadcrumbs = false -%}
+{%- endif -%}
 
 <script type="application/ld+json">
 {
@@ -31,7 +35,7 @@ Unified JSON-LD for Wrist & Pocket Studio (Organization, WebSite, BlogPosting, a
       "publisher": {
         "@id": "{{ studio_url }}#organization"
       }
-    },
+    }
     {%- else -%}
     {
       "@type": "{{ include.type | default: 'BlogPosting' }}",
@@ -60,9 +64,11 @@ Unified JSON-LD for Wrist & Pocket Studio (Organization, WebSite, BlogPosting, a
         "@type": "WebPage",
         "@id": "{{ site.url }}{% if site.active_lang != site.default_lang %}/{{ site.active_lang }}{% endif %}{{ page.url }}"
       }
-    },
+    }
     {%- endif -%}
     {%- endunless -%}
+    {%- if show_breadcrumbs -%}
+    {%- unless include.breadcrumbs_only -%},{%- endunless -%}
     {
       "@type": "BreadcrumbList",
       "@id": "{{ site.url }}{% if site.active_lang != site.default_lang %}/{{ site.active_lang }}{% endif %}{{ page.url }}#breadcrumb",
@@ -107,6 +113,7 @@ Unified JSON-LD for Wrist & Pocket Studio (Organization, WebSite, BlogPosting, a
         {%- endif -%}
       ]
     }
+    {%- endif -%}
   ]
 }
 </script>

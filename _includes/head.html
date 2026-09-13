@@ -21,12 +21,14 @@
 <meta property="og:url" content="{{ current_url }}">
 <meta property="og:site_name" content="Wrist &amp; Pocket Studio">
 <meta property="og:image" content="{{ social_image }}">
+<meta property="og:image:alt" content="{{ title | escape }}">
 <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
 <meta property="og:locale" content="{{ site.data.locale_codes[site.active_lang] }}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ title | escape }}">
 <meta name="twitter:description" content="{{ description | escape }}">
 <meta name="twitter:image" content="{{ social_image }}">
+<meta name="twitter:image:alt" content="{{ title | escape }}">
 {% for lang in site.languages %}
 {% capture alternate_url %}{{ site.url }}{% if lang != site.default_lang %}/{{ lang }}{% endif %}{{ page.url }}{% endcapture %}
 <link rel="alternate" hreflang="{{ lang }}" {% static_href %}href="{{ alternate_url }}"{% endstatic_href %}>
