@@ -11,7 +11,9 @@
     "new:post": "node .frontmatter/scripts/site-new.js post",
     "new:page": "node .frontmatter/scripts/site-new.js page",
     "new:game": "node .frontmatter/scripts/site-new.js game",
-    "verify": "npm run preflight && npm run build && npm run verify:js",
-    "verify:ci": "npm run preflight && npm run build && npm run verify:html && npm run verify:js && npm run verify:quality"
+    "verify": "npm run preflight && npm run build && npm run verify:html && npm run verify:js && npm run verify:quality && npm run verify:routes && npm run test:audit",
+    "verify:ci": "npm run preflight && npm run build && npm run verify:html && npm run verify:js && npm run verify:quality && npm run verify:routes && npm run test:audit",
+    "verify:routes": "ruby -S bundle exec ruby scripts/audit_site.rb",
+    "test:audit": "ruby -S bundle exec ruby scripts/test_audit.rb"
   }
 }
