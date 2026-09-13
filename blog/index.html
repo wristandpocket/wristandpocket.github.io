@@ -14,13 +14,11 @@ permalink: /blog/
 
 {% assign posts = site.posts | where: "lang", site.active_lang %}
 
-{% assign raw_tags = "" %}
+{% assign tags = "" | split: "" %}
 {% for post in posts %}
-    {% for tag in post.tags %}
-        {% capture raw_tags %}{{ raw_tags }},{{ tag }}{% endcapture %}
-    {% endfor %}
+    {% assign tags = tags | concat: post.tags %}
 {% endfor %}
-{% assign tags = raw_tags | remove_first: "," | split: "," | uniq | sort %}
+{% assign tags = tags | uniq | sort %}
 
 {% if tags.size > 0 %}
 <div class="filter-container">
@@ -31,7 +29,7 @@ permalink: /blog/
         </button>
         {% for tag in tags %}
         <button class="btn-filter" data-tag="{{ tag }}">
-            {{ tag }}
+            {{ site.data.tag_labels[site.active_lang][tag] | default: tag }}
         </button>
         {% endfor %}
     </div>
@@ -41,11 +39,10 @@ permalink: /blog/
 <div class="news-grid">
     {% if posts.size > 0 %}
         {% for post in posts %}
-        {% assign post_tags = post.tags | join: "," %}
-        <a href="{{ post.url | relative_url }}" class="news-card fade-in" data-tags="{{ post_tags }}">
+        <a href="{{ post.url | relative_url }}" class="news-card fade-in" data-tags="{{ post.tags | jsonify | escape }}">
             <div class="news-card__tags">
                 {% for tag in post.tags %}
-                <span class="game-tag-badge">{{ tag }}</span>
+                <span class="game-tag-badge">{{ site.data.tag_labels[site.active_lang][tag] | default: tag }}</span>
                 {% endfor %}
             </div>
             <h2 class="news-card__title">{{ post.title }}</h2>

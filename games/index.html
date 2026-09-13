@@ -14,11 +14,7 @@ permalink: /games/
     <p>{{ strings.games_label }}</p>
 </div>
 
-<section class="games-seo-intro fade-in">
-    <p class="games-seo-intro__eyebrow">{{ strings.games_seo_intro_eyebrow | default: 'Original games for Android smartwatches' }}</p>
-    <h2>{{ strings.games_seo_intro_title | default: 'Wear OS games built for the wrist, not squeezed down from phones.' }}</h2>
-    <p>{{ strings.games_seo_intro_body | default: 'Wrist & Pocket Studio makes small-screen games for Wear OS devices like Galaxy Watch and Pixel Watch. Every project is designed around short sessions, readable round-screen UI, rotary input, haptics, OLED-friendly visuals, and real smartwatch performance limits.' }}</p>
-</section>
+<p class="catalog-intro">{{ site.data.site_copy[site.active_lang].intro }}</p>
 
 {% assign all_games = site.pages | where: "layout", "game" | where: "lang", site.active_lang %}
 {% assign sorted_games = all_games | sort: "order" %}
@@ -26,7 +22,7 @@ permalink: /games/
 <div class="premium__list games-list">
     {% if sorted_games.size > 0 %}
         {% for game in sorted_games %}
-        {% include game-card.html game=game %}
+        {% include game-card.html game=game heading="h2" %}
         {% endfor %}
     {% else %}
         <p class="empty-state">
@@ -35,35 +31,7 @@ permalink: /games/
     {% endif %}
 </div>
 
-<section class="games-seo-section fade-in" aria-labelledby="wear-os-games-focus">
-    <h2 id="wear-os-games-focus">{{ strings.games_seo_focus_title | default: 'Why these Wear OS games are different' }}</h2>
-    <div class="games-seo-grid">
-        <article>
-            <h3>{{ strings.games_seo_session_title | default: 'Made for tiny sessions' }}</h3>
-            <p>{{ strings.games_seo_session_body | default: 'Quick loops, clear state, and simple controls so the game works while commuting, waiting, or taking a short break.' }}</p>
-        </article>
-        <article>
-            <h3>{{ strings.games_seo_controls_title | default: 'Native watch controls' }}</h3>
-            <p>{{ strings.games_seo_controls_body | default: 'Rotary bezel or crown support is treated as a first-class input, not a novelty added after the fact.' }}</p>
-        </article>
-        <article>
-            <h3>{{ strings.games_seo_battery_title | default: 'Battery-aware design' }}</h3>
-            <p>{{ strings.games_seo_battery_body | default: 'Dark OLED presentation, careful frame targets, and lightweight UI keep the experience practical on real watches.' }}</p>
-        </article>
-    </div>
-</section>
-
-<section class="games-seo-section fade-in" aria-labelledby="compatible-watches">
-    <h2 id="compatible-watches">{{ strings.games_seo_compat_title | default: 'Built for modern Wear OS watches' }}</h2>
-    <p>{{ strings.games_seo_compat_body | default: 'The current collection targets Wear OS 3+ and Android smartwatches, with testing focused on the constraints that matter on wrist hardware: circular safe zones, heat, touch size, short attention windows, and readable motion.' }}</p>
-    <p>
-        {{ strings.games_seo_start_prefix | default: 'Start with' }}
-        <a href="{{ '/games/cyberpunk-3d/' | relative_url }}">Cyberpunk 3D</a>
-        {{ strings.games_seo_start_middle | default: 'if you want a visual smartwatch benchmark, or' }}
-        <a href="{{ '/games/feed-me-loser/' | relative_url }}">Feed Me, Loser!</a>
-        {{ strings.games_seo_start_suffix | default: 'if you want a funny virtual pet game made for your wrist.' }}
-    </p>
-</section>
+<section class="games-seo-section"><h2>{{ site.data.site_copy[site.active_lang].requirements }}</h2><p>{{ site.data.site_copy[site.active_lang].compat }}</p></section>
 
 <script type="application/ld+json">
 {
@@ -71,7 +39,7 @@ permalink: /games/
   "@type": "CollectionPage",
   "name": {{ strings.games_meta_title | default: page.title | jsonify }},
   "description": {{ strings.games_meta_description | default: page.description | jsonify }},
-  "url": "{{ page.url | absolute_url }}",
+  "url": "{{ site.url }}{% if site.active_lang != site.default_lang %}/{{ site.active_lang }}{% endif %}{{ page.url }}",
   "publisher": {
     "@type": "Organization",
     "name": "Wrist & Pocket Studio",
@@ -85,7 +53,7 @@ permalink: /games/
       {
         "@type": "ListItem",
         "position": {{ forloop.index }},
-        "url": "{{ game.url | absolute_url }}",
+        "url": "{{ site.url }}{% if site.active_lang != site.default_lang %}/{{ site.active_lang }}{% endif %}{{ game.url }}",
         "name": {{ game.title | jsonify }}
       }{% unless forloop.last %},{% endunless %}
       {% endfor %}

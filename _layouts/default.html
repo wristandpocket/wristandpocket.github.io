@@ -4,16 +4,17 @@
 {% include head.html %}
 
 <body>
+    <a class="skip-link" href="#main-content">{{ site.data.site_copy[site.active_lang].skip }}</a>
 
     {% include header.html %}
 
-    <main class="container">
+    <main class="container" id="main-content" tabindex="-1">
         {{ content }}
     </main>
 
     {% include footer.html %}
 
-    <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/script.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
 </body>
 
 </html>

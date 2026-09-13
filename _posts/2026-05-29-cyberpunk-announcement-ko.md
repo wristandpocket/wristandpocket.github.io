@@ -1,7 +1,7 @@
 ---
 layout: "post"
-title: "Cyberpunk 3D 공개 테스트 시작!"
-description: "Cyberpunk 3D가 공개 테스트 단계에 들어갔습니다. 첫 릴리스를 다듬는 데 함께할 적극적인 Wear OS 테스터를 모집합니다."
+title: "Cyberpunk 3D: 테스트 공지 기록"
+description: "2026년 5월 개발 공지 기록입니다. 현재 공개 이용은 제공되지 않습니다. 최신 상태는 프로젝트 페이지를 확인하세요."
 date: "2026-05-29T18:52:00.000Z"
 lang: "ko"
 page_id: "cyberpunk-announcement"

@@ -16,7 +16,7 @@ layout: default
         {% if page.tags and page.tags.size > 0 %}
         <div class="post-tags-list">
             {% for tag in page.tags %}
-            <span class="game-tag-badge">{{ tag }}</span>
+            <span class="game-tag-badge">{{ site.data.tag_labels[site.active_lang][tag] | default: tag }}</span>
             {% endfor %}
         </div>
         {% endif %}
@@ -47,7 +47,8 @@ layout: default
     {% endif %}
 
     <section class="post-content" itemprop="articleBody">
-        {{ content }}
+        <aside class="archive-note">{{ site.data.site_copy[site.active_lang].archive }} <a href="{{ "/games/" | relative_url }}">{{ site.data.site_copy[site.active_lang].projects }}</a></aside>
+            {{ content }}
     </section>
 
 </article>

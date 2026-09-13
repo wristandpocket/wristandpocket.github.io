@@ -1,19 +1,19 @@
 ---
 layout: game
 title: "Cyberpunk 3D"
-badge: "3D Benchmark"
+badge: "3D 그래픽 실험"
 banner: "/assets/images/games/cyberpunk3d-banner-new.webp"
 image: "/assets/images/games/cyberpunk3d-banner-new.webp"
 thumbnail: "/assets/images/games/cyberpunk3d-screen1-thumb.webp"
 game_icon: "/assets/images/icons/game-cyberpunk.png"
-description: "안드로이드 스마트워치를 위해 설계된 최초의 본격 3D 그래픽 테스트."
+description: "네온 도시를 배경으로 한 Wear OS용 3D 그래픽 실험입니다."
 order: 1
 tester_cta: false
 page_id: "game-cyberpunk-3d"
 permalink: /games/cyberpunk-3d/
 lang: ko
 specs:
-  platform: "Wear OS 3+"
+  platform: "Wear OS (target)"
   engine: "Unity 6 (6000.5.7f1, URP)"
   performance: "3D 벤치마크 모드"
   rotary: "회전 베젤 조작"
@@ -48,23 +48,16 @@ faq:
     answer: "Cyberpunk 3D는 현재 공개 다운로드를 제공하지 않습니다. 향후 소식은 Wrist & Pocket Studio에서 확인해 주세요."
 ---
 
-**Cyberpunk 3D는 Wear OS 스마트워치를 위한 무료 3D 벤치마크 앱입니다.** GPU 렌더링을 스트레스 테스트하고, 실시간 FPS를 추적하며, 서멀 스로틀링을 모니터링하고, Galaxy Watch, Pixel Watch 및 기타 Android 스마트워치의 실제 성능을 측정합니다. [Wrist & Pocket Studio](/)가 Unity 6으로 처음부터 제작한 손목 착용 기기 전용 최초의 3D 그래픽 벤치마크입니다.
+Cyberpunk 3D는 시계 크기의 화면에서 실시간 네온 도시를 탐구합니다. 아래 개발 자료에는 장면과 화면상의 성능 표시가 담겨 있습니다.
 
-## 스마트워치를 위한 최초의 3D 벤치마크
+이 프로젝트는 그래픽 벤치마크 형식을 탐구합니다. 검증된 측정 방법, 기기별 비교 결과 또는 배터리 사용 수치는 공개하지 않았습니다.
 
-_"와, 내 안드로이드 워치로 도대체 뭘 실행할 수 있는 거지?"_ 라는 의문이 든 적이 있으신가요? 여기 답이 있습니다! 손목을 위해 밑바닥부터 완벽하게 최적화된, 최초의 본격 3D 테스트를 소개합니다. 단순히 미래지향적인 사이버펑크 도시를 달리는 것에 그치지 않고, 스마트워치의 진짜 성능까지 측정할 수 있습니다. 일석이조, 홀리 몰리!
+## 호환성
 
-## 가혹한 한계 속에서도 빛나는 고품질 그래픽
+목표 플랫폼은 Wear OS입니다. 공개 출시를 위한 최소 OS 버전과 테스트된 시계 모델은 아직 확인되지 않았습니다.
 
-- **밑바닥부터 진행한 최적화:** Unity의 강력한 성능 덕분에 하드웨어의 모든 성능을 쥐어짜냈지만, 이 과정에서 다치거나 희생된 배터리는 단 하나도 없습니다!
-- **최상의 그래픽 효과:** 커스텀 셰이더 덕분에 콘솔 게임에 가까운 수준 높은 그래픽을 구현했습니다.
-- **24/7 모니터링:** 이 게임은 사용자의 건강 대신 스마트워치 자체의 '건강' 상태(온도, FPS, 프레임 끊김(stutter) 등)를 실시간으로 추적합니다.
+## 업데이트 및 지원
 
-## 극대화된 네이티브 안드로이드 경험
+현재 공개 다운로드는 제공되지 않습니다. 출시일은 발표되지 않았습니다.
 
-- **모던 UI:** 스튜디오의 이 파일럿 프로젝트에서는 최신 Material Design 가이드를 준수하는 어댑티브 UI를 만들기 위한 첫 시도를 선보입니다.
-- **회전 베젤 지원:** 물리 또는 디지털 회전 베젤을 쓰지 않는 Wear OS 앱이 무슨 재미가 있겠어요? 저희도 그렇게 생각하니 마음껏 돌려보세요!
-
-## 작은 하드웨어에 담은 큰 야심
-
-Cyberpunk 3D는 손목시계 크기의 기기에서 실시간 3D 장면을 어디까지 구현할 수 있는지 탐구하기 위해 만들어졌습니다. 성능은 기기마다 다르지만 목표는 같습니다. 네온 도시와 실시간 표시, 편리한 조작을 손목 위에 담는 것입니다.
+[개발 기록](/blog/) · [문의 및 지원](/contact/)

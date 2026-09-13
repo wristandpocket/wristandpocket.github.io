@@ -1,7 +1,7 @@
 ---
 layout: "post"
-title: "Cyberpunk 3D Is Open for Testing!"
-description: "Cyberpunk 3D has entered public testing. Active Wear OS testers are welcome to push the benchmark and help shape the first release."
+title: "Cyberpunk 3D: testing announcement archive"
+description: "A May 2026 development announcement. Public access is currently unavailable; see the project page for its status."
 date: "2026-05-29T18:52:00.000Z"
 lang: "en"
 page_id: "cyberpunk-announcement"

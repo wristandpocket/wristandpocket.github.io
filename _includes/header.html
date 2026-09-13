@@ -1,5 +1,5 @@
 <header class="site-header">
-    <nav class="site-nav fade-in">
+    <nav class="site-nav">
         <a href="{{ '/' | relative_url }}" class="site-nav__brand"><span>W</span>&amp;<span>P</span> STUDIO</a>
         <div class="site-nav__links">
             <a href="{{ '/games/' | relative_url }}">
@@ -11,9 +11,7 @@
                 <span class="nav-text-mobile">{{ site.data[site.active_lang].strings.nav_news | default: 'News' }}</span>
             </a>
             
-            <a href="https://discord.gg/6vzt33SX9D" class="nav-discord-link" target="_blank" rel="noopener noreferrer" title="Join Discord">
-                <img src="{{ '/assets/images/icons/discord.png' | relative_url }}" alt="Discord" class="nav-discord-icon" width="42" height="42">
-            </a>
+            <a href="{{ "/contact/" | relative_url }}" class="nav-contact">{{ site.data.site_copy[site.active_lang].contact }}</a>
 
             <!-- Language Switcher (Polyglot) -->
             {% assign bare_url = page.url %}
@@ -26,26 +24,11 @@
             {% endfor %}
             {% if bare_url == '' %}{% assign bare_url = '/' %}{% endif %}
 
-            <div class="lang-switch-wrapper" translate="no" role="group">
+            <div class="lang-switch-wrapper" translate="no" role="group" aria-label="{{ site.data.site_copy[site.active_lang].languages }}">
                 {% for lang in site.languages %}
-                {% if lang == site.active_lang %}
-                <span class="lang-switch active" data-lang="{{ lang }}">
-                    <img src="{{ '/assets/images/flags/' | append: lang | append: '.png' | relative_url }}" alt="{{ lang | upcase }}" class="lang-flag-icon{% if lang == 'ru' %} lang-flag-icon--ru{% endif %}" width="28" height="28">
-                    {% if lang == 'en' %}EN{% elsif lang == 'uk' %}UA{% elsif lang == 'ru' %}RU{% elsif lang == 'ko' %}KO{% else %}{{ lang | upcase }}{% endif %}
-                </span>
-                {% else %}
-                {% if lang == site.default_lang %}
-                <a {% static_href %}href="{{ site.baseurl }}{{ bare_url }}" {% endstatic_href %} class="lang-switch" data-lang="{{ lang }}">
-                    <img src="{{ '/assets/images/flags/' | append: lang | append: '.png' | relative_url }}" alt="{{ lang | upcase }}" class="lang-flag-icon{% if lang == 'ru' %} lang-flag-icon--ru{% endif %}" width="28" height="28">
-                    {% if lang == 'en' %}EN{% elsif lang == 'uk' %}UA{% elsif lang == 'ru' %}RU{% elsif lang == 'ko' %}KO{% else %}{{ lang | upcase }}{% endif %}
-                </a>
-                {% else %}
-                <a {% static_href %}href="{{ site.baseurl }}/{{ lang }}{{ bare_url }}" {% endstatic_href %} class="lang-switch" data-lang="{{ lang }}">
-                    <img src="{{ '/assets/images/flags/' | append: lang | append: '.png' | relative_url }}" alt="{{ lang | upcase }}" class="lang-flag-icon{% if lang == 'ru' %} lang-flag-icon--ru{% endif %}" width="28" height="28">
-                    {% if lang == 'en' %}EN{% elsif lang == 'uk' %}UA{% elsif lang == 'ru' %}RU{% elsif lang == 'ko' %}KO{% else %}{{ lang | upcase }}{% endif %}
-                </a>
-                {% endif %}
-                {% endif %}
+                {% assign language_name = site.data.language_names[lang] %}
+                {% capture language_url %}{% if lang != site.default_lang %}/{{ lang }}{% endif %}{{ bare_url }}{% endcapture %}
+                <a {% static_href %}href="{{ language_url }}"{% endstatic_href %} class="lang-switch{% if lang == site.active_lang %} active{% endif %}" data-lang="{{ lang }}" lang="{{ lang }}" hreflang="{{ lang }}" aria-label="{{ language_name }}" {% if lang == site.active_lang %}aria-current="true"{% endif %}>{{ lang | upcase }}</a>
                 {% endfor %}
             </div>
         </div>

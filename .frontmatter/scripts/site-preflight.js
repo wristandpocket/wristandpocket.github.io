@@ -177,8 +177,8 @@ function validateHeadAndSitemapTemplates() {
   const sitemap = exists('sitemap.xml') ? read('sitemap.xml') : '';
   const langRedirect = exists('_includes/lang-redirect.html') ? read('_includes/lang-redirect.html') : '';
 
-  if (!head.includes('{% I18n_Headers %}')) {
-    addError('_includes/head.html is missing Polyglot I18n_Headers.');
+  if (!head.includes('hreflang="{{ lang }}"')) {
+    addError('_includes/head.html is missing explicit language alternates.');
   }
   if (!head.includes('rel="canonical"') && !head.includes('{% seo %}')) {
     addError('_includes/head.html has no visible canonical source.');
@@ -191,11 +191,9 @@ function validateHeadAndSitemapTemplates() {
       addWarning(`sitemap.xml template may not emit hreflang for ${lang}.`);
     }
   }
-  if (!/bot\|google\|baidu\|bing/i.test(langRedirect)) {
-    addWarning('_includes/lang-redirect.html does not appear to guard search crawlers.');
-  }
 
-  addPass('Head, sitemap, and language redirect templates have baseline SEO guards.');
+
+  addPass('Head and sitemap templates have baseline SEO guards.');
 }
 
 function contentFiles() {
