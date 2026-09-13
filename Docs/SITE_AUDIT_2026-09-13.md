@@ -52,6 +52,8 @@ Fresh local evidence after the pass: Jekyll served the root, Ukrainian homepage,
 
 Automated results after the pass: `npm run preflight`, `npm run build`, `npm run verify:routes` (48 pages, 1,448 URL references, 0 errors), `npm run verify:quality`, `npm run verify:js` (1,924 bytes), `npm run check:images` and `npm run test:audit` all pass. Local `npm run verify:html` remains unavailable because Ruby cannot load libcurl on Windows (error 126); the Linux GitHub Actions gate is the required independent HTMLProofer result. The Icons8 endpoint remains the only external inventory response requiring review (HTTP 403).
 
+Commit `2865151104a961bcecf764afe7565703dd699beb` was published through [GitHub Actions run 34765348162](https://github.com/wristandpocket/wristandpocket.github.io/actions/runs/34765348162), with both build and Pages deployment jobs successful. A post-deploy probe returned HTTP 200 for `/`, `/uk/`, `/ru/`, `/ko/`, `/games/cyberpunk-3d/` and `/contact/`, with the expected canonical and five-link hreflang set; the intentional missing route returned HTTP 404 and the custom page. The live browser rechecked the root, Ukrainian locale, project hero, topic filter, gallery open/Escape close and custom 404.
+
 ## Local environment limitations
 
 Ruby 3.4.8 can build the site and run Nokogiri audits. Local HTMLProofer cannot load libcurl (Windows error 126). A bounded local Git-libcurl attempt also failed. Linux GitHub Actions remains the required independent HTMLProofer gate. No system-wide runtime or PATH changes were made.
