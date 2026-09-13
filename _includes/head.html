@@ -1,70 +1,38 @@
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#050505">
-    <meta name="robots" content="index, follow">
-    <meta name="google-site-verification" content="y3UJCKwuJD4My6hSz39qzEzMU1C0u16VP7FQGnva8A4" />
-
-    {% if page.banner %}
-    <link rel="preload" href="{{ page.banner | relative_url }}" as="image">
-    {% endif %}
-
-
-
-    <!-- Zero-network Emoji Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
-
-    {% if page.is_home %}
-    {% assign home_title = site.data[site.active_lang].strings.home_meta_title | default: site.title %}
-    {% assign home_description = site.data[site.active_lang].strings.home_meta_description | default: site.description %}
-    {% assign home_image = '/assets/images/default-social-card.webp' | absolute_url %}
-    <title>{{ home_title }}</title>
-    <meta name="description" content="{{ home_description | escape }}">
-    <link rel="canonical" href="{{ page.url | absolute_url }}">
-    <meta property="og:title" content="{{ home_title | escape }}">
-    <meta property="og:description" content="{{ home_description | escape }}">
-    <meta property="og:url" content="{{ page.url | absolute_url }}">
-    <meta property="og:site_name" content="{{ site.title | escape }}">
-    <meta property="og:image" content="{{ home_image }}">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ home_title | escape }}">
-    <meta name="twitter:description" content="{{ home_description | escape }}">
-    <meta name="twitter:image" content="{{ home_image }}">
-    {% elsif page.title_key or page.description_key %}
-    {% assign localized_title = site.data[site.active_lang].strings[page.title_key] | default: page.title | default: site.title %}
-    {% assign localized_description = site.data[site.active_lang].strings[page.description_key] | default: page.description | default: site.description %}
-    {% assign localized_image = page.image | default: page.banner | default: '/assets/images/default-social-card.webp' %}
-    <title>{{ localized_title }}</title>
-    <meta name="description" content="{{ localized_description | escape }}">
-    <link rel="canonical" href="{{ page.url | absolute_url }}">
-    <meta property="og:title" content="{{ localized_title | escape }}">
-    <meta property="og:description" content="{{ localized_description | escape }}">
-    <meta property="og:url" content="{{ page.url | absolute_url }}">
-    <meta property="og:site_name" content="{{ site.title | escape }}">
-    <meta property="og:image" content="{{ localized_image | absolute_url }}">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ localized_title | escape }}">
-    <meta name="twitter:description" content="{{ localized_description | escape }}">
-    <meta name="twitter:image" content="{{ localized_image | absolute_url }}">
-    {% else %}
-    <!-- Jekyll SEO Tag (Title, Meta, Open Graph, Twitter, Canonical) -->
-    {% seo %}
-    {% endif %}
-
-    <!-- Polyglot: Generates Hreflang headers -->
-    {% I18n_Headers %}
-    {%- if site.active_lang == site.default_lang -%}
-      {%- assign default_lang_url = page.url -%}
-    {%- else -%}
-      {%- assign lang_prefix = site.active_lang | prepend: '/' | append: '/' -%}
-      {%- assign default_lang_url = page.url | replace_first: lang_prefix, '/' -%}
-    {%- endif -%}
-    <link rel="alternate" hreflang="x-default" {% static_href %}href="{{ default_lang_url | absolute_url }}"{% endstatic_href %}>
-
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="{{ '/styles.css' | relative_url }}">
-
-    {% include lang-redirect.html %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0c1016">
+<meta name="robots" content="{{ page.robots | default: 'index, follow' }}">
+<meta name="google-site-verification" content="y3UJCKwuJD4My6hSz39qzEzMU1C0u16VP7FQGnva8A4">
+{% assign strings = site.data[site.active_lang].strings %}
+{% assign copy = site.data.site_copy[site.active_lang] %}
+{% assign title = page.title | default: site.title %}
+{% assign description = page.description | default: site.description %}
+{% if page.is_home %}{% assign title = strings.home_meta_title %}{% assign description = copy.intro %}
+{% elsif page.copy_metadata %}{% assign title = copy[page.title_key] %}{% assign description = copy[page.description_key] %}
+{% elsif page.title_key %}{% assign title = strings[page.title_key] %}{% assign description = strings[page.description_key] %}{% endif %}
+{% capture current_url %}{{ site.url }}{% if site.active_lang != site.default_lang %}/{{ site.active_lang }}{% endif %}{{ page.url }}{% endcapture %}
+{% assign social_image = page.image | default: page.banner | default: '/assets/images/default-social-card.webp' | absolute_url %}
+<title>{{ title | escape }}{% unless page.is_home or page.title_key %} | Wrist &amp; Pocket Studio{% endunless %}</title>
+<meta name="description" content="{{ description | escape }}">
+<link rel="canonical" {% static_href %}href="{{ current_url }}"{% endstatic_href %}>
+<meta property="og:title" content="{{ title | escape }}">
+<meta property="og:description" content="{{ description | escape }}">
+<meta property="og:url" content="{{ current_url }}">
+<meta property="og:site_name" content="Wrist &amp; Pocket Studio">
+<meta property="og:image" content="{{ social_image }}">
+<meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+<meta property="og:locale" content="{{ site.data.locale_codes[site.active_lang] }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ title | escape }}">
+<meta name="twitter:description" content="{{ description | escape }}">
+<meta name="twitter:image" content="{{ social_image }}">
+{% for lang in site.languages %}
+{% capture alternate_url %}{{ site.url }}{% if lang != site.default_lang %}/{{ lang }}{% endif %}{{ page.url }}{% endcapture %}
+<link rel="alternate" hreflang="{{ lang }}" {% static_href %}href="{{ alternate_url }}"{% endstatic_href %}>
+{% endfor %}
+<link rel="alternate" hreflang="x-default" {% static_href %}href="{{ page.url | absolute_url }}"{% endstatic_href %}>
+<link rel="icon" href="{{ '/assets/images/icons/game-cyberpunk.png' | relative_url }}" type="image/png">
+<link rel="stylesheet" href="{{ '/styles.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+{% include lang-redirect.html %}
 </head>

@@ -35,7 +35,7 @@ Unified JSON-LD for Wrist & Pocket Studio (Organization, WebSite, BlogPosting, a
     {%- else -%}
     {
       "@type": "{{ include.type | default: 'BlogPosting' }}",
-      "@id": "{{ page.url | absolute_url }}#article",
+      "@id": "{{ site.url }}{% if site.active_lang != site.default_lang %}/{{ site.active_lang }}{% endif %}{{ page.url }}#article",
       "headline": {{ page.title | jsonify }},
       "description": {{ page.description | default: page.excerpt | strip_html | strip_newlines | truncate: 160 | jsonify }},
       "image": "{{ page_image }}",
@@ -58,20 +58,20 @@ Unified JSON-LD for Wrist & Pocket Studio (Organization, WebSite, BlogPosting, a
       },
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "{{ page.url | absolute_url }}"
+        "@id": "{{ site.url }}{% if site.active_lang != site.default_lang %}/{{ site.active_lang }}{% endif %}{{ page.url }}"
       }
     },
     {%- endif -%}
     {%- endunless -%}
     {
       "@type": "BreadcrumbList",
-      "@id": "{{ page.url | absolute_url }}#breadcrumb",
+      "@id": "{{ site.url }}{% if site.active_lang != site.default_lang %}/{{ site.active_lang }}{% endif %}{{ page.url }}#breadcrumb",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
-          "name": "Home",
-          "item": "{{ studio_url }}/"
+          "name": {{ site.data[site.active_lang].strings.back_home | jsonify }},
+          "item": "{{ studio_url }}{% if site.active_lang != site.default_lang %}/{{ site.active_lang }}{% endif %}/"
         }
         {%- if page.layout == 'post' or page.url contains '/blog/' -%}
         ,
@@ -79,13 +79,13 @@ Unified JSON-LD for Wrist & Pocket Studio (Organization, WebSite, BlogPosting, a
           "@type": "ListItem",
           "position": 2,
           "name": "{{ site.data[site.active_lang].strings.news_title | default: 'Blog' }}",
-          "item": "{{ studio_url }}/blog/"
+          "item": "{{ studio_url }}{% if site.active_lang != site.default_lang %}/{{ site.active_lang }}{% endif %}/blog/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": {{ page.title | jsonify }},
-          "item": "{{ page.url | absolute_url }}"
+          "item": "{{ site.url }}{% if site.active_lang != site.default_lang %}/{{ site.active_lang }}{% endif %}{{ page.url }}"
         }
         {%- elsif page.url contains '/games/' -%}
         ,
@@ -93,7 +93,7 @@ Unified JSON-LD for Wrist & Pocket Studio (Organization, WebSite, BlogPosting, a
           "@type": "ListItem",
           "position": 2,
           "name": "{{ site.data[site.active_lang].strings.games_title | default: 'Games' }}",
-          "item": "{{ studio_url }}/games/"
+          "item": "{{ studio_url }}{% if site.active_lang != site.default_lang %}/{{ site.active_lang }}{% endif %}/games/"
         }
         {%- if page.layout == 'game' -%}
         ,
@@ -101,7 +101,7 @@ Unified JSON-LD for Wrist & Pocket Studio (Organization, WebSite, BlogPosting, a
           "@type": "ListItem",
           "position": 3,
           "name": {{ page.title | jsonify }},
-          "item": "{{ page.url | absolute_url }}"
+          "item": "{{ site.url }}{% if site.active_lang != site.default_lang %}/{{ site.active_lang }}{% endif %}{{ page.url }}"
         }
         {%- endif -%}
         {%- endif -%}

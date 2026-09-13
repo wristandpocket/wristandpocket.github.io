@@ -1,195 +1,30 @@
 ---
 layout: default
 ---
-
-<article class="game-detail">
-    <div class="game-back-link">
-        <a href="{{ '/games/' | relative_url }}" class="btn-back">
-            &larr; {{ site.data[site.active_lang].strings.back_to_games | default: 'Back to Games' }}
-        </a>
-    </div>
-
-    <!-- Hero Banner -->
-    <header class="game-hero">
-        <img src="{{ page.banner | relative_url }}" alt="" class="game-hero__bg" width="3440" height="1440" loading="eager" fetchpriority="high" decoding="async">
-        <div class="game-hero__content">
-            <span class="game-hero__badge">{{ page.badge }}</span>
-            <h1 class="game-hero__title">{{ page.title }}</h1>
-            {% if page.tester_cta %}
-            <a href="https://discord.gg/6vzt33SX9D" class="game-hero__cta" target="_blank" rel="noopener noreferrer">
-                <img src="{{ '/assets/images/icons/beta.png' | relative_url }}" alt="" class="game-hero__cta-icon" width="24" height="24">
-                {{ site.data[site.active_lang].strings.game_tester_cta | default: 'Become a Tester' }}
-            </a>
-            {% endif %}
-        </div>
-    </header>
-
-    <!-- Main Grid -->
-    <div class="game-grid">
-        <!-- Main Content -->
-        <section class="game-main-content">
-            {{ content }}
-        </section>
-
-        <!-- Sidebar / Specs -->
-        <aside class="game-sidebar">
-            <div class="spec-card">
-                <h2>{{ site.data[site.active_lang].strings.game_specs_title | default: 'Technical Specs' }}</h2>
-                <table class="spec-table">
-                    <tr>
-                        <td><strong>{{ site.data[site.active_lang].strings.spec_platform | default: 'Platform' }}</strong></td>
-                        <td>{{ page.specs.platform }}</td>
-                    </tr>
-                    <tr>
-                        <td><strong>{{ site.data[site.active_lang].strings.spec_engine | default: 'Engine' }}</strong></td>
-                        <td>{{ page.specs.engine }}</td>
-                    </tr>
-                    <tr>
-                        <td><strong>{{ site.data[site.active_lang].strings.spec_performance | default: 'Target' }}</strong></td>
-                        <td>{{ page.specs.performance }}</td>
-                    </tr>
-                    <tr>
-                        <td><strong>{{ site.data[site.active_lang].strings.spec_rotary | default: 'Rotary Bezel' }}</strong></td>
-                        <td>{{ page.specs.rotary }}</td>
-                    </tr>
-                    <tr>
-                        <td><strong>{{ site.data[site.active_lang].strings.spec_status | default: 'Status' }}</strong></td>
-                        <td>
-                            <span class="status-badge">{{ page.specs.status }}</span>
-                        </td>
-                    </tr>
-                </table>
-                {% if page.tester_cta %}
-                <div class="spec-tester-cta">
-                    <a href="https://discord.gg/6vzt33SX9D" class="btn-tester" target="_blank" rel="noopener noreferrer">
-                        <img src="{{ '/assets/images/icons/beta.png' | relative_url }}" alt="" class="tester-btn-icon" width="26" height="26"> {{ site.data[site.active_lang].strings.game_tester_cta | default: 'Become a Tester' }}
-                    </a>
-                </div>
-                {% endif %}
-            </div>
-        </aside>
-    </div>
-
-    <!-- Screenshot Gallery -->
-    {% if page.screenshots and page.screenshots.size > 0 %}
-    <section class="game-gallery-section">
-        <h2>{{ site.data[site.active_lang].strings.gallery_title | default: 'Wear OS Screen Showcase' }}</h2>
-        <div class="game-gallery">
-            {% for screen in page.screenshots %}
-            <div class="smartwatch-frame-wrapper">
-                {% if screen.type == 'video' %}
-                <div class="smartwatch-bezel smartwatch-bezel--video" data-video-src="{{ screen.src | relative_url }}">
-                    <video class="smartwatch-screen" loop muted playsinline preload="none" poster="{{ page.thumbnail | relative_url }}" data-lazy-video width="1024" height="1024">
-                        <source data-src="{{ screen.src | relative_url }}" type="video/webm" data-proofer-ignore>
-                    </video>
-                    <div class="smartwatch-glass-shimmer"></div>
-                </div>
-                {% else %}
-                <div class="smartwatch-bezel" data-full-src="{{ screen.full | relative_url }}">
-                    <img src="{{ screen.thumb | relative_url }}" alt="{{ page.title }} screenshot {{ forloop.index }}" class="smartwatch-screen" width="1024" height="1024" loading="lazy" decoding="async">
-                    <div class="smartwatch-glass-shimmer"></div>
-                </div>
-                {% endif %}
-            </div>
-            {% endfor %}
-        </div>
-    </section>
-    {% endif %}
-
-    <!-- FAQ Section -->
-    {% if page.faq and page.faq.size > 0 %}
-    <section class="game-faq-section">
-        <h2>{{ site.data[site.active_lang].strings.faq_title | default: 'Frequently Asked Questions' }}</h2>
-        <div class="game-faq-list">
-            {% for item in page.faq %}
-            <div class="game-faq-item">
-                <h3 class="game-faq-question">{{ item.question }}</h3>
-                <div class="game-faq-answer">
-                    <p>{{ item.answer }}</p>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </section>
-    {% endif %}
-</article>
-
-<!-- Lightbox Modal for Screenshots -->
-<div id="game-lightbox" class="lightbox-modal" aria-hidden="true" role="dialog">
-    <button class="lightbox-close" id="lightbox-close" aria-label="Close Gallery">&times;</button>
-    <button class="lightbox-prev" id="lightbox-prev" aria-label="Previous Image">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="lightbox-arrow-icon"><polyline points="15 18 9 12 15 6"></polyline></svg>
-    </button>
-    <div class="lightbox-content">
-        <img id="lightbox-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Enlarged screenshot">
-        <video id="lightbox-video" autoplay loop muted playsinline preload="metadata" hidden></video>
-        <div class="lightbox-dots" id="lightbox-dots"></div>
-    </div>
-    <button class="lightbox-next" id="lightbox-next" aria-label="Next Image">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="lightbox-arrow-icon"><polyline points="9 18 15 12 9 6"></polyline></svg>
-    </button>
-</div>
-
+{% assign copy = site.data.site_copy[site.active_lang] %}
+<article class="game-detail" data-project="{{ page.page_id }}">
+<p><a href="{{ '/games/' | relative_url }}">&larr; {{ site.data[site.active_lang].strings.back_to_games }}</a></p>
+<header class="project-hero">
+<img src="{{ page.banner | relative_url }}" alt="{{ page.title }}" width="3440" height="1440" fetchpriority="high">
+<div><p class="card-label">{{ page.badge }}</p><h1>{{ page.title }}</h1><p>{{ page.description }}</p><span class="project-status">{{ copy.status }}</span><p>{{ copy.access }}</p>
+{% if page.play_store_url %}<a href="{{ page.play_store_url }}" data-event="store_click">{{ site.data[site.active_lang].strings.play_store }}</a>{% endif %}
+{% if page.test_url %}<a href="{{ page.test_url }}" data-event="testing_click">{{ site.data[site.active_lang].strings.game_tester_cta }}</a>{% endif %}</div></header>
+<div class="project-prose">{{ content }}</div>
+<section class="game-gallery-section" aria-labelledby="gallery-title">
+<h2 id="gallery-title">{{ copy.gallery }}</h2><p>{{ copy.media_note }}</p>
+<div class="project-gallery">
+{% for screen in page.screenshots %}<figure>
+{% if screen.type == 'video' %}
+<video controls playsinline preload="none" poster="{{ page.thumbnail | relative_url }}" width="1024" height="1024" aria-label="{{ page.title }} — {{ copy.gallery }} {{ forloop.index }}"><source src="{{ screen.src | relative_url }}" type="video/webm"></video>
+{% else %}
+<a class="gallery-image" href="{{ screen.full | relative_url }}" aria-label="{{ copy.open }} {{ forloop.index }} — {{ page.title }}"><img src="{{ screen.thumb | relative_url }}" alt="{{ page.title }} — {{ copy.gallery }} {{ forloop.index }}" width="1024" height="1024" loading="lazy"></a>
+{% endif %}<figcaption>{{ page.title }} · {{ forloop.index }}</figcaption></figure>{% endfor %}
+</div></section></article>
+<dialog id="media-dialog" aria-label="{{ copy.gallery }}">
+<div class="dialog-toolbar"><button type="button" id="media-prev" aria-label="{{ copy.prev }}">&larr;</button><button type="button" id="media-close">{{ copy.close }} &times;</button><button type="button" id="media-next" aria-label="{{ copy.next }}">&rarr;</button></div>
+<img id="media-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="">
+</dialog>
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": ["VideoGame", "SoftwareApplication"],
-  "name": "{{ page.title }}",
-  "description": "{{ page.description | default: page.excerpt | strip_html | strip_newlines | truncate: 160 | escape }}",
-  "operatingSystem": "Wear OS",
-  "applicationCategory": "GameApplication",
-  "inLanguage": "{{ site.active_lang }}",
-  "author": {
-    "@type": "Organization",
-    "name": "Wrist & Pocket Studio",
-    "url": "{{ '/' | absolute_url }}"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Wrist & Pocket Studio"
-  },
-  "gamePlatform": [
-    "Wear OS",
-    "Galaxy Watch",
-    "Pixel Watch"
-  ],
-  "genre": "{{ page.badge }}",
-  "image": "{{ page.banner | absolute_url }}",
-  {% if page.screenshots and page.screenshots.size > 0 -%}
-  "screenshot": [
-    {% for screen in page.screenshots -%}
-    "{{ screen.full | absolute_url }}"{% unless forloop.last %},{% endunless %}
-    {% endfor %}
-  ],
-  {%- endif %}
-  "offers": {
-    "@type": "Offer",
-    "price": "0.00",
-    "priceCurrency": "USD",
-    "availability": "https://schema.org/PreOrder"
-  }
-}
+{"@context":"https://schema.org","@type":"CreativeWork","name":{{ page.title | jsonify }},"description":{{ page.description | jsonify }},"inLanguage":{{ site.active_lang | jsonify }},"url":"{{ site.url }}{% if site.active_lang != site.default_lang %}/{{ site.active_lang }}{% endif %}{{ page.url }}","image":"{{ page.banner | absolute_url }}","creativeWorkStatus":{{ copy.status | jsonify }},"creator":{"@type":"Organization","name":"Wrist & Pocket Studio"}}
 </script>
-
-{% if page.faq and page.faq.size > 0 %}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {% for item in page.faq %}
-    {
-      "@type": "Question",
-      "name": {{ item.question | jsonify }},
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": {{ item.answer | strip_html | strip_newlines | jsonify }}
-      }
-    }{% unless forloop.last %},{% endunless %}
-    {% endfor %}
-  ]
-}
-</script>
-{% endif %}
-
 {% include metadata/json-ld.html breadcrumbs_only=true %}

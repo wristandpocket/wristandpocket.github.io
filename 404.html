@@ -1,0 +1,11 @@
+---
+layout: default
+title_key: notfound
+description_key: notfound_text
+copy_metadata: true
+permalink: /404.html
+sitemap: false
+robots: noindex
+---
+{% assign copy = site.data.site_copy[site.active_lang] %}
+<section class="prose-page"><p class="card-label">404</p><h1>{{ copy.notfound }}</h1><p>{{ copy.notfound_text }}</p><p><a href="{{ '/' | relative_url }}">{{ site.data[site.active_lang].strings.back_home }}</a> · <a href="{{ '/games/' | relative_url }}">{{ copy.projects }}</a></p></section>

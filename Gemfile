@@ -13,7 +13,7 @@ group :jekyll_plugins do
   gem "jekyll-spaceship"
   gem "jekyll-minifier"
   gem "jekyll-redirect-from"
-  gem "jekyll-pwa-workbox"
+  gem "jekyll-pwa-workbox", require: false
   gem "jekyll-toc"
   gem "jekyll-last-modified-at"
   gem "jekyll-archives"

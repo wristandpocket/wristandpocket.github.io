@@ -92,3 +92,5 @@ permalink: /privacy/
 
     <a href="{{ '/' | relative_url }}" class="back-link">&larr; Back to Home</a>
 </div>
+
+<p>The website stores your language choice in this browser. It does not currently load a separate website analytics counter.</p>

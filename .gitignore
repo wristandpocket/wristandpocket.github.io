@@ -424,3 +424,6 @@ _site/
 
 # Local CI evidence (GitHub retains uploaded artifacts separately).
 /ci-results/
+
+# Local visual and verification evidence
+qa-evidence/

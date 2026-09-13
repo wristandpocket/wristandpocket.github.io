@@ -3,8 +3,8 @@
 # ============================================================
 
 title: "Wrist & Pocket Studio"
-tagline: "Premium Wear OS Games"
-description: "Premium Wear OS smartwatch games built with care, performance, and a no-shovelware mindset."
+tagline: "Games and experiments for Wear OS"
+description: "Wear OS games, project media and development notes from Wrist & Pocket Studio."
 url: "https://wristandpocket.dev"
 baseurl: ""
 
@@ -23,6 +23,11 @@ sass:
 
 # Exclude dev artefacts from the build
 exclude:
+  - Docs/
+  - scripts/
+  - qa-evidence/
+  - ci-results/
+  - service-worker.js
   - README.md
   - CONTENT_WORKFLOW.md
   - DEPLOYMENT_CHECKLIST.md
@@ -50,13 +55,13 @@ plugins:
   - jekyll-redirect-from
   - jekyll-toc
   - jekyll-last-modified-at
-  - jekyll-pwa-workbox
 
 # ── Polyglot Settings ────────────────────────────────────────
 languages: ["en", "uk", "ru", "ko"]
 default_lang: "en"
 exclude_from_localization:
   - assets
+  - sw.js
   - css
   - javascript
   - images
@@ -94,6 +99,7 @@ feed:
 
 # ── Spaceship Settings ──────────────────────────────────────
 jekyll-spaceship:
+  processors: [table-processor, media-processor, emoji-processor, element-processor]
   mathjax:
     src: "/assets/vendor/mathjax/tex-mml-chtml.js"
     config:
@@ -120,10 +126,3 @@ jekyll-minifier:
     - "sitemap.xml"
     - "feed.xml"
 # ── PWA Settings ──────────────────────────────────────────────
-pwa:
-  sw_src_filepath: "service-worker.js"
-  sw_dest_filename: "sw.js"
-  precache_glob_directory: "_site"
-  precache_glob_patterns:
-    - "assets/**/*.{js,css,webp,svg}"
-    - "index.html"

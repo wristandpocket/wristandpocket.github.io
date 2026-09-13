@@ -1,0 +1,30 @@
+{
+  "en": {
+    "Devlog": "Development",
+    "Announcement": "Announcement",
+    "Smartwatch Games": "Watch games",
+    "Game Design": "Game design",
+    "Feed Me Loser": "Feed Me, Loser!"
+  },
+  "uk": {
+    "Devlog": "Розробка",
+    "Announcement": "Оголошення",
+    "Smartwatch Games": "Ігри для годинників",
+    "Game Design": "Дизайн ігор",
+    "Feed Me Loser": "Feed Me, Loser!"
+  },
+  "ru": {
+    "Devlog": "Разработка",
+    "Announcement": "Объявления",
+    "Smartwatch Games": "Игры для часов",
+    "Game Design": "Дизайн игр",
+    "Feed Me Loser": "Feed Me, Loser!"
+  },
+  "ko": {
+    "Devlog": "개발",
+    "Announcement": "공지",
+    "Smartwatch Games": "스마트워치 게임",
+    "Game Design": "게임 디자인",
+    "Feed Me Loser": "Feed Me, Loser!"
+  }
+}
