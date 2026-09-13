@@ -57,6 +57,12 @@ jobs:
         id: quality
         run: npm run verify:quality
 
+      - name: Validate routes, metadata, anchors and publication boundaries
+        run: npm run verify:routes
+
+      - name: Prove the audit rejects broken output
+        run: npm run test:audit
+
       - name: Write deployment verification report
         if: always()
         shell: pwsh
