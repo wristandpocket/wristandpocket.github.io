@@ -1,7 +1,7 @@
 ---
 layout: game
 title: "Cyberpunk 3D"
-badge: "3D Benchmark"
+badge: "3D Experiment"
 banner: "/assets/images/games/cyberpunk3d-banner-new.webp"
 image: "/assets/images/games/cyberpunk3d-banner-new.webp"
 thumbnail: "/assets/images/games/cyberpunk3d-screen1-thumb.webp"
@@ -15,7 +15,7 @@ lang: en
 specs:
   platform: "Wear OS (target)"
   engine: "Unity 6 (6000.5.7f1, URP)"
-  performance: "3D benchmark mode"
+  performance: "Benchmark-style experiment"
   rotary: "Rotary controls"
   status: "On Hold"
 screenshots:
@@ -39,11 +39,11 @@ screenshots:
     full: "/assets/images/games/cyberpunk3d-screen5-full.webp"
 faq:
   - question: "Is there a benchmark app for Wear OS smartwatches?"
-    answer: "Yes. Cyberpunk 3D is a dedicated 3D benchmark built from scratch for Wear OS. It renders a real-time cyberpunk cityscape to stress-test your smartwatch GPU and reports live FPS, thermal data, and frame-timing metrics."
+    answer: "Cyberpunk 3D is an experimental Wear OS project exploring a benchmark-style experience. Its development build renders a real-time cyberpunk city, but no validated measurement method or published results are available."
   - question: "What does Cyberpunk 3D test on my smartwatch?"
-    answer: "It measures GPU rendering performance, sustained FPS under load, thermal throttling behavior, and frame stutter frequency. The app uses custom URP shaders and dynamic lighting to push the hardware to its limits."
+    answer: "The experiment may examine GPU rendering, frame-rate behavior under load, thermal behavior, and frame-stutter frequency. These are areas of investigation, not published measurements or device results. Custom URP shaders and dynamic lighting are part of the development scene."
   - question: "What smartwatches are compatible with Cyberpunk 3D?"
-    answer: "Cyberpunk 3D is designed for smartwatches running Wear OS 3 or newer. Support may vary by device."
+    answer: "Wear OS is the intended platform. The minimum OS version and tested watch models for a public release have not been confirmed."
   - question: "How do I install Cyberpunk 3D on my smartwatch?"
     answer: "Cyberpunk 3D is not publicly available right now. Follow Wrist & Pocket Studio for future updates."
 ---

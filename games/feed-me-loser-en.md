@@ -38,7 +38,7 @@ faq:
   - question: "What is Feed Me, Loser!?"
     answer: "Feed Me, Loser! is a satirical virtual pet game for Android smartwatches. It features a funny, demanding monster with feeding mechanics, bezel-powered exercise, sleep cycles, and overfeeding consequences — all wrapped in an OLED-friendly design optimized for round watch screens."
   - question: "What smartwatches can play Feed Me, Loser!?"
-    answer: "Feed Me, Loser! is designed for smartwatches running Wear OS 3 or newer. Support may vary by device."
+    answer: "Wear OS is the intended platform. The minimum OS version and tested watch models for a public release have not been confirmed."
   - question: "Does Feed Me, Loser! use the rotary bezel?"
     answer: "Yes. The rotary bezel or digital crown is used for the exercise mechanic, where you spin it to work out with your pet. It is a first-class input, not a gimmick."
 ---
