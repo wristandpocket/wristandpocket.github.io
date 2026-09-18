@@ -90,3 +90,19 @@ This pass was performed locally on `main` at the requested post-release baseline
 | Owner-provided | None added. | Store/test URL, supported watch models, minimum Wear OS version, FPS, battery, thermal, GPU, or other performance results remain unverified owner-level inputs. |
 
 Local result details: `npm run verify:routes` reported 48 pages, 1,452 URL references, and 0 errors; `npm run verify:quality`, `npm run verify:js`, `npm run check:images`, `npm run test:audit`, and `git diff --check` passed. `npm run verify:html` remains locally blocked on Windows by the known missing `libcurl` load (error 126); Linux CI is the mandatory HTMLProofer gate. The external inventory reported nine reachable external URLs and the Icons8 URL as `requires-review` (HTTP 403).
+
+## Release publication — 2026-09-18
+
+The hardening release was committed as `5ebc8815261d9c52e4b34c9e0dae67fe168aca44` (`Harden source claims and 320px browser checks`), pushed to `origin/main`, and published by [GitHub Actions run 35325006086](https://github.com/wristandpocket/wristandpocket.github.io/actions/runs/35325006086).
+
+| Gate | Result |
+| --- | --- |
+| Jekyll build | PASS in Linux CI |
+| Linux HTMLProofer | PASS |
+| Source-claim verification and negative tests | PASS |
+| Dependency-free Chrome CDP 320x568 gate | PASS; `/404.html` returned the expected HTTP 404 in the local harness |
+| Pages deployment | PASS |
+
+Post-deploy HTTP and browser-control checks covered `/`, `/uk/games/`, `/games/cyberpunk-3d/`, `/blog/`, and an intentionally missing route. The four published routes returned HTTP 200; the missing route returned HTTP 404 and rendered the custom 404 page. At a 320x568 browser viewport, the checked pages had one H1, the expected canonical path, five reciprocal hreflang entries, active navigation, and `scrollWidth` below the 320px viewport. After bounded scrolling, no rendered image failed to load. The root `noSHOVEL.webp` element is intentionally hidden by `.lab__icon { display: none; }` and remains lazy/un-decoded in the live DOM; its URL returns HTTP 200 with `image/webp`, so it is excluded from the rendered-image failure result.
+
+These live checks are rendered DOM/browser-contract evidence, not manual visual QA, cross-browser coverage, device compatibility, performance, or game-execution evidence. The Windows HTMLProofer limitation remains local-only (`libcurl` error 126); the Linux Actions result is the release gate. Icons8 remains a visible external `403 requires-review`; it is not allowlisted or masked. Store/test URLs, supported watch models, minimum Wear OS version, and FPS, battery, thermal, GPU, or other performance results remain unverified owner-level inputs.
