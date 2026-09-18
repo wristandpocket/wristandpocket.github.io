@@ -57,6 +57,15 @@ jobs:
         id: quality
         run: npm run verify:quality
 
+      - name: Check source and generated product claims
+        run: npm run verify:source-claims
+
+      - name: Prove source-claim guard rejects unsafe claims
+        run: npm run test:source-claims
+
+      - name: Check 320px browser contracts
+        run: npm run verify:browser-320
+
       - name: Validate routes, metadata, anchors and publication boundaries
         run: npm run verify:routes
 

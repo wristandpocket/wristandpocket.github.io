@@ -47,6 +47,9 @@
 
 .site-nav__brand {
   flex: 0 0 auto;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   font-weight: 800;
   letter-spacing: 2px;
   font-size: 1.1rem;

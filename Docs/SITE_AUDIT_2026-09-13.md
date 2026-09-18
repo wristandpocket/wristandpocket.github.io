@@ -67,3 +67,26 @@ Confirm current project status, a real store/testing URL when available, minimum
 ## Search Console follow-up
 
 The existing verification meta token is preserved. Submit `https://wristandpocket.dev/sitemap.xml` in the verified property. Inspect the four locale homepages and both product routes: confirm selected canonical and rendered content, then request indexing for materially updated pages. Monitor Pages, video indexing and crawl errors after recrawl. Search visibility and indexing timing are controlled by the search engine, not guaranteed by passing site checks.
+
+## Narrow post-release hardening pass — 2026-09-13
+
+This pass was performed locally on `main` at the requested post-release baseline. It was not published or pushed.
+
+- The four localized Cyberpunk 3D pages no longer present GPU rendering performance, sustained FPS, thermal throttling, frame-stutter frequency, compatibility minimums, or published device results as established facts. Their FAQ now describes those items as possible experiment dimensions and explicitly says that validated methodology and device results are not published. The visible badge/spec wording is also benchmark-style/experimental rather than a measured-result promise.
+- The four historical `2026-05-27-hello-world-*` sources now state that the announcement is dated and not current evidence of availability, compatibility, or performance. Each keeps a prominent direct link to the Cyberpunk 3D project page for current status. The shared post layout's archive note remains in place.
+- The same unconfirmed Wear OS minimum-version wording was removed from the four Feed Me, Loser! FAQ sources; no model matrix or minimum OS was invented.
+- `npm run verify:source-claims` is a narrow source/generated regression guard. It scans renderable Markdown/front matter, localized data/templates, and `_site` HTML for asserted performance results, concrete device minimum/support claims, and store/test listings or URLs. It intentionally permits neutral technical discussion and explicit experiment/disclaimer wording. It scanned 54 source files and 48 generated HTML files in this pass.
+- `npm run test:source-claims` proves rejection of a source performance claim, a front-matter `Wear OS 3+` claim, and a generated Play Store URL, and proves that neutral technical discussion is allowed.
+- `npm run verify:browser-320` uses the installed system Chrome through the DevTools Protocol and a dependency-free local static server. At `320x568`, `/`, `/uk/games/`, `/games/cyberpunk-3d/`, `/blog/`, and `/404.html` all passed document overflow, loaded-image, one-H1, `html[lang]`, active navigation, and 44x44 navigation-target checks. It is a rendered DOM/browser smoke check, not full manual visual QA, device testing, or accessibility certification. No Playwright/Puppeteer dependency or browser download was added.
+- The footer attribution now targets the official Icons8 license/attribution page: `https://icons8.com/license`. The source remains a real attribution link, but this automated inventory currently receives HTTP 403 and records it as `requires-review`; no allowlist or 403 masking was added. The official page's attribution guidance remains the reason for the URL choice.
+
+### Evidence boundaries for this pass
+
+| Evidence class | This pass establishes | This pass does not establish |
+| --- | --- | --- |
+| Local source/build | Preflight, Jekyll build, source-claim guard, negative guard test, route audit, generated quality, JS budget, image policy, disposable audit mutation test, and the local 320px Chrome DOM check passed. | A clean Linux HTMLProofer run or a new production deployment. |
+| CI | The existing Linux GitHub Actions HTMLProofer/deploy result at the confirmed baseline remains the required CI gate. | This unpushed hardening diff has not run in GitHub Actions yet. |
+| Live browser | The prior live 320px evidence for `/` and `/uk/games/` remains historical live evidence; the five-route 320px result above is local Chrome evidence. | A new live production check after this unpushed change, cross-browser coverage, manual visual inspection of every route, or device execution. |
+| Owner-provided | None added. | Store/test URL, supported watch models, minimum Wear OS version, FPS, battery, thermal, GPU, or other performance results remain unverified owner-level inputs. |
+
+Local result details: `npm run verify:routes` reported 48 pages, 1,452 URL references, and 0 errors; `npm run verify:quality`, `npm run verify:js`, `npm run check:images`, `npm run test:audit`, and `git diff --check` passed. `npm run verify:html` remains locally blocked on Windows by the known missing `libcurl` load (error 126); Linux CI is the mandatory HTMLProofer gate. The external inventory reported nine reachable external URLs and the Icons8 URL as `requires-review` (HTTP 403).

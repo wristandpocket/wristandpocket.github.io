@@ -7,12 +7,15 @@
     "verify:html": "node .frontmatter/scripts/site-htmlproofer.js",
     "verify:js": "node .frontmatter/scripts/site-js-budget.js",
     "verify:quality": "node .frontmatter/scripts/site-quality.js",
+    "verify:source-claims": "node scripts/verify_source_claims.js",
+    "test:source-claims": "node scripts/test_source_claims.js",
+    "verify:browser-320": "node scripts/check_mobile_browser.js",
     "check:images": "node .frontmatter/scripts/check-images.js",
     "new:post": "node .frontmatter/scripts/site-new.js post",
     "new:page": "node .frontmatter/scripts/site-new.js page",
     "new:game": "node .frontmatter/scripts/site-new.js game",
-    "verify": "npm run preflight && npm run build && npm run verify:html && npm run verify:js && npm run verify:quality && npm run verify:routes && npm run test:audit",
-    "verify:ci": "npm run preflight && npm run build && npm run verify:html && npm run verify:js && npm run verify:quality && npm run verify:routes && npm run test:audit",
+    "verify": "npm run preflight && npm run build && npm run verify:source-claims && npm run test:source-claims && npm run verify:browser-320 && npm run verify:html && npm run verify:js && npm run verify:quality && npm run verify:routes && npm run test:audit",
+    "verify:ci": "npm run preflight && npm run build && npm run verify:source-claims && npm run test:source-claims && npm run verify:browser-320 && npm run verify:html && npm run verify:js && npm run verify:quality && npm run verify:routes && npm run test:audit",
     "verify:routes": "ruby -S bundle exec ruby scripts/audit_site.rb",
     "test:audit": "ruby -S bundle exec ruby scripts/test_audit.rb"
   }
