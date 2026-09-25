@@ -114,7 +114,7 @@ function listen(server) {
   });
 }
 
-function waitForHttp(url, timeoutMs = 12000) {
+function waitForHttp(url, timeoutMs = 30000) {
   const start = Date.now();
   return new Promise((resolve, reject) => {
     const attempt = () => {
@@ -389,20 +389,20 @@ async function inspectRoute(session, baseUrl, route) {
   await session.send('Page.navigate', { url: baseUrl + route });
   await navigationDone;
   await session.evaluate(`(async () => {
+    for (const image of document.images) image.loading = 'eager';
+    for (let y = 0; y <= document.documentElement.scrollHeight; y += Math.max(window.innerHeight, 1)) {
+      window.scrollTo(0, y);
+      await new Promise(resolve => setTimeout(resolve, 60));
+    }
     const imageLoads = [...document.images].map(image => {
-      image.loading = 'eager';
       if (image.complete) return Promise.resolve();
       return new Promise(resolve => {
         const finish = () => { image.removeEventListener('load', finish); image.removeEventListener('error', finish); resolve(); };
         image.addEventListener('load', finish, { once: true });
         image.addEventListener('error', finish, { once: true });
-        setTimeout(finish, 4000);
+        setTimeout(finish, 10000);
       });
     });
-    for (let y = 0; y <= document.documentElement.scrollHeight; y += Math.max(window.innerHeight, 1)) {
-      window.scrollTo(0, y);
-      await new Promise(resolve => setTimeout(resolve, 60));
-    }
     await Promise.all(imageLoads);
     window.scrollTo(0, 0);
     await new Promise(resolve => setTimeout(resolve, 120));

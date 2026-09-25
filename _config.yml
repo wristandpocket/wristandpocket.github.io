@@ -29,6 +29,7 @@ exclude:
   - ci-results/
   - service-worker.js
   - README.md
+  - GEMINI.md
   - CONTENT_WORKFLOW.md
   - DEPLOYMENT_CHECKLIST.md
   - LOCAL_JEKYLL_SETUP.md
