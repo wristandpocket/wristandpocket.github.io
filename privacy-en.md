@@ -8,89 +8,46 @@ permalink: /privacy/
 
 <div class="privacy-page fade-in">
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: August 23, 2026</p>
-    <p><strong>Product configuration:</strong> The services described below depend on the configuration and consent flow of each shipped application. The presence of an SDK API alone does not confirm that data is collected or transmitted.</p>
+    <p class="updated">Last updated: September 25, 2026</p>
+    <p><strong>Product configuration:</strong> This policy gives a studio-wide baseline. The services described below depend on the configuration, features, providers, and consent flow of each product. The presence of an SDK API alone does not confirm that data is collected or transmitted.</p>
 
     <section>
         <h2>1. Scope</h2>
-        <p>
-            This Privacy Policy explains how Wrist &amp; Pocket Studio handles data in our Wear OS games, applications, and website.
-        </p>
+        <p>This Privacy Policy explains how Wrist &amp; Pocket Studio handles data in our games, applications, and website. Products can differ in their features, providers, storage, audiences, and notices. A product-specific notice or store disclosure adds to this baseline and controls details for that product.</p>
 
-        <h2>2. Information We Collect</h2>
-        <p>
-            Our games do not require an account and do not ask you to provide direct identifiers such as your name, email address, physical address, contacts, photos, messages, precise location, microphone, or camera data.
-        </p>
-        <p>
-            To keep our Wear OS games stable and improve performance, our apps may collect technical and pseudonymous data that does not directly identify you:
-        </p>
-        <ul>
-            <li><strong>Device and hardware information:</strong> device model, operating system version, screen information, hardware capabilities, and similar technical details.</li>
-            <li><strong>App performance data:</strong> frame rate, memory use, performance diagnostics, battery or stability signals, and other app performance measurements.</li>
-            <li><strong>Crash logs and diagnostics:</strong> crash reports, exception details, stack traces, error logs, and app state information needed to diagnose bugs.</li>
-            <li><strong>App activity:</strong> basic app interactions such as starting a session, gameplay or benchmark events, scores, and game-over events.</li>
-            <li><strong>Device or other identifiers:</strong> pseudonymous installation IDs, device IDs, or service-generated identifiers used for diagnostics, analytics, fraud prevention, or session measurement.</li>
-        </ul>
+        <h2>2. Studio-wide baseline</h2>
+        <p>Depending on a product's configuration, we may process limited technical, usage, support, or security information needed to operate and maintain that product. The exact data, purpose, retention, and provider are product-specific; examples in this policy are not a promise that every product collects the same information.</p>
+        <p>We do not use this page to claim universal anonymity, universal deletion, or one consent flow for every product. Please use the in-app and store disclosures for the product you use.</p>
 
-        <h2>3. Third-Party Services</h2>
-        <p>
-            Our apps may use Unity Technologies services to provide diagnostics, analytics, and performance telemetry:
-        </p>
-        <ul>
-            <li><strong>Unity Analytics:</strong> helps us understand aggregated app interactions, sessions, device characteristics, and performance trends.</li>
-            <li><strong>Unity Cloud Diagnostics:</strong> helps us receive and diagnose crash reports, exceptions, and stability problems.</li>
-        </ul>
-        <p>
-            Unity processes data according to its own privacy terms. Learn more in the
-            <a href="https://unity.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Unity Privacy Policy</a>.
-        </p>
-        <p>
-            Our apps are distributed through Google Play, which may process store, device, install, and diagnostic data according to the
-            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a>.
-        </p>
+        <h2>3. GRIDBREAK data and consent</h2>
+        <p>In the configured GRIDBREAK release path, the game does not require an account. Before its Analytics provider can receive Product events, the game presents an explicit choice: <strong>Allow Analytics</strong> or <strong>Play Without Analytics</strong>. Refusing does not block gameplay, and you can change the choice in Settings.</p>
+        <p>After opt-in, the configured GRIDBREAK Product path may send technical session and attempt identifiers, event time, active gameplay time, app/build and SDK version information, route steps, bounded gameplay progress, selected milestones, save schema/revision correlation, and allowlisted save-error information to Unity Analytics. It does not intentionally send your name, email address, precise location, contacts, microphone or camera content, or raw local save/world data.</p>
+        <p>The configured path is intended not to send these Product Analytics events before a choice or after refusal/revocation. The released product's actual configuration and notices control what applies. Local saves are independent of Analytics consent.</p>
 
-        <h2>4. How We Use Data</h2>
-        <p>
-            We use collected app data for app functionality, crash fixing, performance analysis, compatibility testing, analytics, security, and reliability. We do not sell personal or sensitive user data.
-        </p>
+        <h2>4. Service providers</h2>
+        <p>GRIDBREAK uses Unity Analytics as its configured Analytics provider when you opt in. Unity may process data under its own terms. Learn more in the <a href="https://unity.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Unity Privacy Policy</a>.</p>
+        <p>Our applications may also be distributed through Google Play, which may process store, installation, device, and diagnostic data under the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a>. Platform processing is separate from the GRIDBREAK Product event fields described above and may vary by product and platform.</p>
 
-        <h2>5. Sharing</h2>
-        <p>
-            We do not sell data. Data may be processed by service providers such as Unity or Google only to operate, distribute, analyze, secure, or improve our apps and services.
-        </p>
+        <h2>5. How we use data</h2>
+        <p>For a particular product, we use data for the purposes described in its configuration and notices, such as operating features, support, security, reliability, or understanding usage. For GRIDBREAK, opted-in Analytics data is used to understand sessions, route progression, bounded gameplay progress, milestones, save-related reliability signals, compatibility, and stability. The described GRIDBREAK Product Analytics path is not used for advertising or to sell personal data.</p>
 
-        <h2>6. Security</h2>
-        <p>
-            Data is transmitted using encrypted connections where supported by the platform and service providers. No online service can be guaranteed to be completely secure, but we use reasonable technical and organizational measures to protect the data we process.
-        </p>
+        <h2>6. Storage, sharing, and deletion</h2>
+        <p>Storage and account features vary by product. In GRIDBREAK, saves are local to the supported device or browser storage and independent of Analytics consent. GRIDBREAK does not create an account for saving, provide cloud saves, or provide cross-device save transfer.</p>
+        <p>Provider retention periods, regions, exports, backups, and deletion completion depend on the configured service and account. When you disable Analytics in GRIDBREAK, the game requests the supported provider deletion operation where applicable. A deletion request is not proof that every remote copy, export, backup, or downstream copy has already been erased; aggregated or anonymized data may not be individually deletable.</p>
+        <p>You can request review or deletion of data associated with our applications at <a href="mailto:wristandpocket.studio@gmail.com">wristandpocket.studio@gmail.com</a>. Include the app name and relevant details that may help us locate the data. We may need additional information to verify or process the request.</p>
 
-        <h2>7. Retention and Deletion</h2>
-        <p>
-            We retain diagnostics and analytics data only as long as needed for app stability, performance analysis, debugging, legal compliance, or as required by our service providers. Aggregated or anonymized data may not be individually deletable.
-        </p>
-        <p>
-            You can request deletion of data associated with our apps by contacting us at
-            <a href="mailto:wristandpocket.studio@gmail.com">wristandpocket.studio@gmail.com</a>. Include the app name and any relevant details that may help us locate the data. We may need to ask for additional information to verify or process your request.
-        </p>
+        <h2>7. Security</h2>
+        <p>We use reasonable technical and organizational measures for the data we process. Online services cannot guarantee complete security, and this policy does not promise a particular security or deletion result from a third-party provider.</p>
 
         <h2>8. Website</h2>
-        <p>
-            Our website may receive basic server logs such as IP address, browser type, pages visited, referrer, and request time for security, abuse prevention, reliability, and troubleshooting. If we add website analytics, cookies, forms, or newsletters, this policy will be updated before that data is used for new purposes.
-        </p>
+        <p>Our website stores your selected language in this browser and does not currently load a separate website analytics counter. Hosting or security systems may receive basic server logs such as IP address, browser type, pages visited, referrer, and request time. This website statement does not describe Product telemetry. If we add website analytics, cookies, forms, or newsletters for new purposes, we will update this policy before using them for those purposes.</p>
 
-        <h2>9. Children and Families</h2>
-        <p>
-            Our apps are not intended to collect personal information from children. If you believe a child provided personal information to us, contact us and we will take appropriate action. If a game becomes child-directed or joins a family program, we will update the app, privacy policy, and Google Play declarations before release.
-        </p>
+        <h2>9. Children and families</h2>
+        <p>Product audiences and store classifications can differ. This policy does not set a universal age rating or make every product child-directed. If a product becomes child-directed or joins a family program, we will review and update that product, this policy, and the relevant store disclosures before release.</p>
 
         <h2>10. Contact</h2>
-        <p>
-            For privacy questions or data deletion requests, contact us at
-            <a href="mailto:wristandpocket.studio@gmail.com">wristandpocket.studio@gmail.com</a>.
-        </p>
+        <p>For privacy questions or data deletion requests, contact <a href="mailto:wristandpocket.studio@gmail.com">wristandpocket.studio@gmail.com</a>.</p>
     </section>
 
     <a href="{{ '/' | relative_url }}" class="back-link">&larr; Back to Home</a>
 </div>
-
-<p>The website stores your language choice in this browser. It does not currently load a separate website analytics counter.</p>
