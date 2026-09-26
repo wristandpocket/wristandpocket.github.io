@@ -8,7 +8,7 @@ permalink: /privacy/
 
 <div class="privacy-page fade-in">
     <h1>개인정보 처리방침</h1>
-    <p class="updated">최종 업데이트: 2026년 9월 25일</p>
+    <p class="updated">최종 업데이트: 2026년 9월 26일</p>
     <p><strong>제품 구성:</strong> 이 정책은 스튜디오 전체에 적용되는 기본 기준을 제공합니다. 아래 서비스의 사용 여부는 각 제품의 구성, 기능, 제공업체 및 동의 절차에 따라 달라집니다. SDK API가 존재한다는 사실만으로 데이터 수집 또는 전송이 확인되는 것은 아닙니다.</p>
 
     <section>
@@ -23,9 +23,11 @@ permalink: /privacy/
         <p>구성된 GRIDBREAK 출시 경로에서는 계정이 필요하지 않습니다. Analytics 제공업체가 제품 이벤트를 받기 전에 게임은 <strong>Allow Analytics</strong> 또는 <strong>Play Without Analytics</strong> 중 명시적인 선택을 표시합니다. 거부해도 플레이가 차단되지 않으며 Settings에서 선택을 변경할 수 있습니다.</p>
         <p>동의 후 구성된 GRIDBREAK 제품 이벤트 경로는 Unity Analytics에 기술적 세션 및 시도 식별자, 이벤트 시간, 활성 플레이 시간, 앱/빌드 및 SDK 버전 정보, 경로 단계, 제한된 게임 진행 정보, 주요 이벤트, 저장 데이터 스키마/리비전 연계 정보와 허용된 저장 오류 정보를 보낼 수 있습니다. 이름, 이메일 주소, 정확한 위치, 연락처, 마이크 또는 카메라 콘텐츠, 원시 로컬 저장/월드 데이터를 의도적으로 보내지 않습니다.</p>
         <p>구성된 경로는 선택 전이나 거부/철회 후에 이러한 Product Analytics 이벤트를 보내지 않도록 설계되었습니다. 실제 적용 내용은 출시된 제품의 구성과 안내에 따릅니다. 로컬 저장은 Analytics 동의와 독립적입니다.</p>
+        <p>Pocket Game, Dish of Chaos, Cyberpunk 3D를 포함한 다른 구성된 제품 경로도 제공업체가 Product 이벤트를 받기 전에 동일한 명시적 선택을 사용할 수 있습니다. 제품에 따라 이러한 이벤트에는 경로 단계, 제한된 게임 진행, 시도 결과 또는 프레임 속도, 메모리, 배터리 사용량과 같은 집계된 벤치마크 측정값이 포함될 수 있습니다. Product 이벤트 필드는 이름, 이메일 주소, 정확한 위치, 연락처, 마이크 또는 카메라 콘텐츠, 원시 저장/월드 데이터 또는 기기 모델 식별자를 포함하지 않도록 설계되었습니다. 정확한 필드와 제공업체 사용 여부는 제품 및 출시 구성에 따라 다릅니다.</p>
+        <p>구성된 제품의 동의 후 Analytics 데이터는 세션, 경로 진행, 제한된 게임 진행, 시도 결과, 집계된 벤치마크 요약, 호환성 및 안정성을 이해하는 데 사용될 수 있습니다. 이러한 Product Analytics 경로는 광고에 사용하거나 개인정보를 판매하지 않습니다.</p>
 
         <h2>4. 서비스 제공업체</h2>
-        <p>GRIDBREAK는 동의한 경우 Unity Analytics를 구성된 Analytics 제공업체로 사용합니다. Unity는 자체 약관에 따라 데이터를 처리할 수 있습니다. 자세한 내용은 <a href="https://unity.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Unity 개인정보 처리방침</a>을 참조하세요.</p>
+        <p>제품에서 사용하도록 설정된 경우, 동의 후 Unity Analytics를 구성된 Analytics 제공업체로 사용할 수 있습니다. Unity는 자체 약관에 따라 데이터를 처리할 수 있습니다. 자세한 내용은 <a href="https://unity.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Unity 개인정보 처리방침</a>을 참조하세요.</p>
         <p>당사의 앱은 Google Play를 통해 배포될 수 있으며, Google Play는 <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google 개인정보 처리방침</a>에 따라 스토어, 설치, 기기 및 진단 데이터를 처리할 수 있습니다. 이러한 플랫폼 처리는 위에 설명한 GRIDBREAK 제품 이벤트와 별개이며 제품 및 플랫폼에 따라 달라질 수 있습니다.</p>
 
         <h2>5. 데이터 사용 방법</h2>

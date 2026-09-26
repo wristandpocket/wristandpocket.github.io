@@ -8,7 +8,7 @@ permalink: /privacy/
 
 <div class="privacy-page fade-in">
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: September 25, 2026</p>
+    <p class="updated">Last updated: September 26, 2026</p>
     <p><strong>Product configuration:</strong> This policy gives a studio-wide baseline. The services described below depend on the configuration, features, providers, and consent flow of each product. The presence of an SDK API alone does not confirm that data is collected or transmitted.</p>
 
     <section>
@@ -23,17 +23,18 @@ permalink: /privacy/
         <p>In the configured GRIDBREAK release path, the game does not require an account. Before its Analytics provider can receive Product events, the game presents an explicit choice: <strong>Allow Analytics</strong> or <strong>Play Without Analytics</strong>. Refusing does not block gameplay, and you can change the choice in Settings.</p>
         <p>After opt-in, the configured GRIDBREAK Product path may send technical session and attempt identifiers, event time, active gameplay time, app/build and SDK version information, route steps, bounded gameplay progress, selected milestones, save schema/revision correlation, and allowlisted save-error information to Unity Analytics. It does not intentionally send your name, email address, precise location, contacts, microphone or camera content, or raw local save/world data.</p>
         <p>The configured path is intended not to send these Product Analytics events before a choice or after refusal/revocation. The released product's actual configuration and notices control what applies. Local saves are independent of Analytics consent.</p>
+        <p>Other configured product paths, including Pocket Game, Dish of Chaos, and Cyberpunk 3D, may use the same explicit choice before a provider receives Product events. Depending on the product, those events may contain route steps, bounded gameplay progress, run results, or aggregate benchmark measurements such as frame-rate, memory, and battery summaries. Product event fields are designed not to include names, email addresses, precise location, contacts, microphone or camera content, raw save/world data, or device model identifiers. Exact fields and provider availability remain product- and release-specific.</p>
 
         <h2>4. Service providers</h2>
-        <p>GRIDBREAK uses Unity Analytics as its configured Analytics provider when you opt in. Unity may process data under its own terms. Learn more in the <a href="https://unity.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Unity Privacy Policy</a>.</p>
+        <p>When enabled for a product, Unity Analytics may be used as its configured Analytics provider after you opt in. Unity may process data under its own terms. Learn more in the <a href="https://unity.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Unity Privacy Policy</a>.</p>
         <p>Our applications may also be distributed through Google Play, which may process store, installation, device, and diagnostic data under the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a>. Platform processing is separate from the GRIDBREAK Product event fields described above and may vary by product and platform.</p>
 
         <h2>5. How we use data</h2>
-        <p>For a particular product, we use data for the purposes described in its configuration and notices, such as operating features, support, security, reliability, or understanding usage. For GRIDBREAK, opted-in Analytics data is used to understand sessions, route progression, bounded gameplay progress, milestones, save-related reliability signals, compatibility, and stability. The described GRIDBREAK Product Analytics path is not used for advertising or to sell personal data.</p>
+        <p>For a particular product, we use data for the purposes described in its configuration and notices, such as operating features, support, security, reliability, or understanding usage. For configured products, opted-in Analytics data may be used to understand sessions, route progression, bounded gameplay progress, run outcomes, benchmark summaries, compatibility, and stability. These Product Analytics paths are not used for advertising or to sell personal data.</p>
 
         <h2>6. Storage, sharing, and deletion</h2>
         <p>Storage and account features vary by product. In GRIDBREAK, saves are local to the supported device or browser storage and independent of Analytics consent. GRIDBREAK does not create an account for saving, provide cloud saves, or provide cross-device save transfer.</p>
-        <p>Provider retention periods, regions, exports, backups, and deletion completion depend on the configured service and account. When you disable Analytics in GRIDBREAK, the game requests the supported provider deletion operation where applicable. A deletion request is not proof that every remote copy, export, backup, or downstream copy has already been erased; aggregated or anonymized data may not be individually deletable.</p>
+        <p>Provider retention periods, regions, exports, backups, and deletion completion depend on the configured service and account. When you disable Analytics in a configured product, the game requests the supported provider deletion operation where applicable. A deletion request is not proof that every remote copy, export, backup, or downstream copy has already been erased; aggregated or anonymized data may not be individually deletable.</p>
         <p>You can request review or deletion of data associated with our applications at <a href="mailto:wristandpocket.studio@gmail.com">wristandpocket.studio@gmail.com</a>. Include the app name and relevant details that may help us locate the data. We may need additional information to verify or process the request.</p>
 
         <h2>7. Security</h2>
