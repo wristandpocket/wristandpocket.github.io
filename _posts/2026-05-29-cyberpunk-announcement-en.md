@@ -14,12 +14,14 @@ published: true
 fmContentType: "Post"
 ---
 
-## Cyberpunk 3D Is Open for Testing.
+## Archived May 2026 testing announcement
+
+This is an archived announcement from May 2026. It describes a testing phase at that time; Cyberpunk 3D is now in legacy maintenance, public access is unavailable, and this post is not an invitation to test. See the [Cyberpunk 3D project page](/games/cyberpunk-3d/) for current status.
 
 > _"Nobody expected it, but we did it."_
 
-**Cyberpunk 3D** has entered public testing. After extensive research on Reddit and talking to a ton of people, I finally took the leap. And you know what? IT'S ABOUT TIME!
+At the time, **Cyberpunk 3D** entered public testing. The original announcement described the decision after research on Reddit and conversations with other developers.
 
-We are looking for active Wear OS testers to join the team. Please tear this app apart, find every bug, and push it to its absolute limits! :3
+The original announcement invited Wear OS testers to look for bugs and push the app to its limits. That invitation has ended.
 
 **May the bezel be with you!**

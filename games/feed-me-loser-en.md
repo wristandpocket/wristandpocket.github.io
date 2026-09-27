@@ -16,9 +16,9 @@ lang: en
 specs:
   platform: "Wear OS (target)"
   engine: "Unity 6 (6000.5.7f1, URP)"
-  performance: "15 FPS target"
+  performance: "Archived 15 FPS target"
   rotary: "Rotary workout"
-  status: "On Hold"
+  status: "Legacy maintenance"
 screenshots:
   - type: image
     thumb: "/assets/images/games/feedmeloser-screen1-thumb.webp"
@@ -34,7 +34,7 @@ screenshots:
     full: "/assets/images/games/feedmeloser-screen4-full.webp"
 faq:
   - question: "Is there a Tamagotchi game for Wear OS smartwatches?"
-    answer: "Yes. Feed Me, Loser! is a Tamagotchi-style virtual pet game built specifically for Wear OS. You feed, exercise, and care for a demanding monster directly on your wrist, with gameplay sessions designed to last 15–60 seconds."
+    answer: "Feed Me, Loser! is a legacy-maintenance Tamagotchi-style virtual pet concept for Wear OS. The archived design describes feeding, exercise, and care for a demanding monster directly on your wrist, with sessions intended to last 15–60 seconds."
   - question: "What is Feed Me, Loser!?"
     answer: "Feed Me, Loser! is a satirical virtual pet game for Android smartwatches. It features a funny, demanding monster with feeding mechanics, bezel-powered exercise, sleep cycles, and overfeeding consequences — all wrapped in an OLED-friendly design optimized for round watch screens."
   - question: "What smartwatches can play Feed Me, Loser!?"
@@ -43,9 +43,9 @@ faq:
     answer: "Yes. The rotary bezel or digital crown is used for the exercise mechanic, where you spin it to work out with your pet. It is a first-class input, not a gimmick."
 ---
 
-Feed Me, Loser! explores a satirical virtual pet on a watch-sized screen. The concept centres on feeding, care and the consequences of looking after a demanding monster.
+Feed Me, Loser! is a legacy-maintenance Wear OS concept for a satirical virtual pet on a watch-sized screen. The concept centres on feeding, care and the consequences of looking after a demanding monster.
 
-Development notes describe the intended pet loop. The screenshots below show development material; they are not a promise that every planned mechanic is ready for release.
+Archived development notes describe the intended pet loop. The screenshots below are development material; they are not a promise that every planned mechanic is ready for release.
 
 ## Compatibility
 

@@ -1,7 +1,7 @@
 {
   "name": "Wrist & Pocket Studio",
   "short_name": "W&P Studio",
-  "description": "Wrist & Pocket Studio crafts premium Wear OS smartwatch games.",
+  "description": "Wrist & Pocket Studio creates games and experiments for Wear OS.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0a0a0f",

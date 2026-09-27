@@ -1,7 +1,7 @@
 ---
 layout: "post"
-title: "Feed Me, Loser! Devlog: Building the First Playable Pet Loop"
-description: "A Feed Me, Loser! devlog about the first playable Wear OS pet loop, current game state, notifications, offline simulation, and tester-ready clarity."
+title: "Feed Me, Loser! Devlog Archive: First Playable Pet Loop"
+description: "An archived June 2026 Feed Me, Loser! devlog about a first playable Wear OS pet loop, notifications, offline simulation, and tester-ready clarity."
 date: "2026-06-23T00:00:00.000Z"
 lang: "en"
 page_id: "feed-me-loser-first-playable-pet-loop"
@@ -17,17 +17,19 @@ published: true
 fmContentType: "Post"
 ---
 
-[Feed Me, Loser!](/games/feed-me-loser/) is not trying to be a mobile pet simulator squeezed onto a watch. The current goal is smaller and more honest: make one complete virtual pet loop for Wear OS that a new tester can understand in under a minute.
+This is an archived June 2026 devlog. It records a development snapshot from that date; Feed Me, Loser! is now in legacy maintenance, and this post does not describe a current tester build or invitation.
+
+At the time, [Feed Me, Loser!](/games/feed-me-loser/) was not trying to be a mobile pet simulator squeezed onto a watch. The goal described in this snapshot was smaller and more honest: make one complete virtual pet loop for Wear OS that a new tester could understand in under a minute.
 
 On paper, that sounds simple. On a round screen, it gets harder. A watch game has almost no room to hide confusion. If the pet is hungry, dirty, too heavy, asleep, stressed, or dead, the player needs to see it quickly and understand what to do next.
 
-## Where the Game Is Right Now
+## Where the Game Was on 2026-06-23
 
-The game is in active development. The foundation is already being built around a satirical Tamagotchi-style loop: feeding, weight, cleanliness, sleep, stress, auto-feeder, death, life restart, haptic feedback, and offline simulation.
+The game was in active development at the time of publication. The foundation then was being built around a satirical Tamagotchi-style loop: feeding, weight, cleanliness, sleep, stress, auto-feeder, death, life restart, haptic feedback, and offline simulation.
 
-The main work right now is not adding ten more features. The main work is making the first playable loop readable and complete.
+The main work then was not adding ten more features. It was making the first playable loop readable and complete.
 
-The loop we are tightening now:
+The loop being tightened at publication was:
 
 - open the game;
 - read the monster's state;
@@ -50,10 +52,10 @@ Death is part of the joke, but it should not feel random. Hunger, overeating, an
 
 On a phone, a virtual pet can rely on large menus, long explanations, and many screens. On a watch, that gets tiring fast. The game needs short text, large touch zones, dark battery-friendly graphics, clear vibration feedback, and a layout that respects the round display.
 
-That is why the first tester-ready version is focused on the minimum loop, not the longest feature list. If one cheeky little monster feels alive on the wrist, then the next layers have a strong foundation.
+That is why the planned tester-ready version focused on the minimum loop, not the longest feature list. If one cheeky little monster felt alive on the wrist, the next layers would have a strong foundation.
 
-## What Comes Next
+## What Was Planned Next
 
-The next pass is clarity: make the pet state easier to read, check that feed/wash/workout do not block the UI, confirm save and offline behavior, and prepare honest screenshots from the real current build.
+The next pass described in this snapshot was clarity: make the pet state easier to read, check that feed/wash/workout did not block the UI, confirm save and offline behavior, and prepare honest screenshots from the build at that time.
 
-This is not a final release announcement. It is a progress marker: Feed Me, Loser! is moving toward a small, understandable tester build, one loop at a time.
+This was not a final release announcement. It was a progress marker for the work at that time; it is not evidence of a current tester build.
