@@ -281,6 +281,10 @@ class DevToolsSession {
     });
   }
 
+  discard(method) {
+    this.events = this.events.filter(event => event.method !== method);
+  }
+
   waitFor(method, timeoutMs = 10000) {
     const existing = this.events.findIndex(event => event.method === method);
     if (existing >= 0) {
@@ -306,7 +310,11 @@ class DevToolsSession {
       awaitPromise: true,
       returnByValue: true
     });
-    if (result.exceptionDetails) throw new Error('Page evaluation failed.');
+    if (result.exceptionDetails) {
+      const exception = result.exceptionDetails.exception || {};
+      const detail = exception.description || exception.value || result.exceptionDetails.text || 'unknown exception';
+      throw new Error(`Page evaluation failed: ${detail}`);
+    }
     return result.result.value;
   }
 }
@@ -385,8 +393,12 @@ function isPortFree(port) {
 async function inspectRoute(session, baseUrl, route) {
   const expectedStatus = EXPECTED_STATUS.get(route);
   const httpStatus = await requestStatus(baseUrl + route);
-  const navigationDone = session.waitFor('Page.loadEventFired');
+  // The browser loads the initial URL before the DevTools session is ready.
+  // Drop that stale load event before each navigation; otherwise a fast CI
+  // run can evaluate the old document while the new navigation is in flight.
+  session.discard('Page.loadEventFired');
   await session.send('Page.navigate', { url: baseUrl + route });
+  const navigationDone = session.waitFor('Page.loadEventFired');
   await navigationDone;
   await session.evaluate(`(async () => {
     for (const image of document.images) image.loading = 'eager';

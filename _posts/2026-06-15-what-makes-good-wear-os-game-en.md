@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "What Makes a Good Wear OS Game?"
-description: "A practical look at smartwatch game design for Wear OS: short sessions, round screens, rotary input, battery limits, haptics, and honest performance."
+description: "A dated June 2026 design note on smartwatch game design for Wear OS: short sessions, round screens, rotary input, battery limits, haptics, and honest performance."
 date: "2026-06-15T09:00:00.000Z"
 lang: "en"
 page_id: "what-makes-good-wear-os-game"
@@ -15,6 +15,8 @@ sitemap: true
 published: true
 fmContentType: "Post"
 ---
+
+This is a dated design note from June 2026. It records the studio's thinking at publication and does not describe current active development or testing. See the [project pages](/games/) for current status.
 
 Wear OS games are not tiny phone games. A good smartwatch game has to respect the wrist: a small round display, short attention windows, limited battery, heat, and controls that must work with one hand.
 
@@ -60,12 +62,12 @@ Sometimes the answer is immediacy. Sometimes it is a pet that lives close to the
 
 If the answer is only "because we can put it there," the game probably belongs somewhere else.
 
-## What We Are Building
+## What the Studio Was Building in June 2026
 
-Wrist & Pocket Studio is building original [Wear OS games](/games/) around those constraints instead of fighting them. The current focus is:
+In June 2026, Wrist & Pocket Studio was exploring original [Wear OS games](/games/) around those constraints instead of fighting them. The focus at publication was:
 
 - [Cyberpunk 3D](/games/cyberpunk-3d/), a 3D smartwatch benchmark and visual stress test for Android watches.
 - [Feed Me, Loser!](/games/feed-me-loser/), a satirical Tamagotchi-style smartwatch game about caring for a demanding little monster.
 
-Both projects are still shaped by real-device testing, feedback, battery behavior, and the weird joy of making games for a screen that lives on your wrist.
+At publication, both projects were discussed in relation to real-device testing, feedback, battery behavior, and the weird joy of making games for a screen that lives on your wrist.
 

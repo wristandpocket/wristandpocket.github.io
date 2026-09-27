@@ -17,7 +17,7 @@ specs:
   engine: "Unity 6 (6000.5.7f1, URP)"
   performance: "Benchmark-style experiment"
   rotary: "Rotary controls"
-  status: "On Hold"
+  status: "Legacy maintenance"
 screenshots:
   - type: video
     src: "/assets/images/games/cyberpunk3d-video1.webm"
@@ -39,7 +39,7 @@ screenshots:
     full: "/assets/images/games/cyberpunk3d-screen5-full.webp"
 faq:
   - question: "Is there a benchmark app for Wear OS smartwatches?"
-    answer: "Cyberpunk 3D is an experimental Wear OS project exploring a benchmark-style experience. Its development build renders a real-time cyberpunk city, but no validated measurement method or published results are available."
+    answer: "Cyberpunk 3D is a legacy-maintenance Wear OS project exploring a benchmark-style experience. Its archived development build renders a real-time cyberpunk city, but no validated measurement method or published results are available."
   - question: "What does Cyberpunk 3D test on my smartwatch?"
     answer: "The experiment may examine GPU rendering, frame-rate behavior under load, thermal behavior, and frame-stutter frequency. These are areas of investigation, not published measurements or device results. Custom URP shaders and dynamic lighting are part of the development scene."
   - question: "What smartwatches are compatible with Cyberpunk 3D?"
@@ -48,7 +48,7 @@ faq:
     answer: "Cyberpunk 3D is not publicly available right now. Follow Wrist & Pocket Studio for future updates."
 ---
 
-Cyberpunk 3D explores a real-time neon city on a watch-sized screen. The development media below show the visual scene and an on-screen performance overlay.
+Cyberpunk 3D is a legacy-maintenance Wear OS project exploring a real-time neon city on a watch-sized screen. The archived development media below show the visual scene and an on-screen performance overlay.
 
 The project explores a benchmark-style experience. We have not published a validated measurement methodology, comparable device results or battery-life figures.
 
