@@ -31,11 +31,7 @@ sitemap: false
         {%- endfor -%}
       {%- endunless -%}
     {%- endif -%}
-  {%- endfor %}
-  <url>
-    <loc>{{ site.url }}/wearview/</loc>
-    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
-  </url>
+  {%- endfor -%}
 </urlset>
 {%- endcapture -%}
 {{- sitemap_content | strip -}}
