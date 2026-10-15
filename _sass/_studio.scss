@@ -61,3 +61,8 @@ html[lang="ko"] { word-break: keep-all; overflow-wrap: anywhere; }
 .tool-faq details p { padding: 0 20px 18px; color: #c3cbd7; line-height: 1.75; }
 .tool-cta-end { text-align: center; margin: 40px 0 8px; }
 @media (max-width: 700px) { .home-tool { grid-template-columns: 1fr; gap: 20px; } .tool-gallery { grid-template-columns: 1fr; } }
+/* Home polish: featured games sit on the page itself, without the legacy square #premium panel behind them. */
+#premium.home-showcase__media { background: none; }
+.home-featured-game { isolation: isolate; }
+/* Stacked featured cards: fill the image slot instead of letterboxing a square shot into dark bars. */
+@media (max-width: 1000px) { .home-featured-game__image { height: 220px; object-fit: cover; object-position: center 35%; } }
