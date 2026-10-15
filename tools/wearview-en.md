@@ -49,7 +49,6 @@ So WearView puts your screen onto a 3D model of a real watch, at the right physi
 - **Native pixels.** Show the frame at the watch's real panel resolution with crisp pixels, so you see the sampling the device will do.
 - **Compare.** Put two watches side by side with synced cameras, for example a 41 mm Pixel Watch next to a 47 mm Galaxy Watch.
 - **Lighting presets.** Studio, sunlight and night, to check contrast and glare.
-- **Share a view.** Copy a link that restores the device, compare, lighting and mode. Screenshots are never part of the link.
 
 ## Who it is for
 
