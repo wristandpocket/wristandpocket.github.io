@@ -19,7 +19,15 @@ layout: default
 {% else %}
 <a class="gallery-image" href="{{ screen.full | relative_url }}" aria-label="{{ copy.open }} {{ forloop.index }} — {{ page.title }}"><img src="{{ screen.thumb | relative_url }}" alt="{{ page.title }} — {{ copy.gallery }} {{ forloop.index }}" width="1024" height="1024" loading="lazy"></a>
 {% endif %}<figcaption>{{ page.title }} · {{ forloop.index }}</figcaption></figure>{% endfor %}
-</div></section></article>
+</div></section>
+{% if page.faq %}<section class="tool-faq" aria-labelledby="faq-title">
+<h2 id="faq-title">{{ site.data[site.active_lang].strings.faq_title }}</h2>
+{% for item in page.faq %}<details><summary>{{ item.question }}</summary><p>{{ item.answer }}</p></details>{% endfor %}
+</section>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{% for item in page.faq %}{"@type":"Question","name":{{ item.question | jsonify }},"acceptedAnswer":{"@type":"Answer","text":{{ item.answer | jsonify }}}}{% unless forloop.last %},{% endunless %}{% endfor %}]}
+</script>{% endif %}
+</article>
 <dialog id="media-dialog" aria-label="{{ copy.gallery }}">
 <div class="dialog-toolbar"><button type="button" id="media-prev" aria-label="{{ copy.prev }}">&larr;</button><button type="button" id="media-close">{{ copy.close }} &times;</button><button type="button" id="media-next" aria-label="{{ copy.next }}">&rarr;</button></div>
 <img id="media-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="">

@@ -76,7 +76,7 @@ Unified JSON-LD for Wrist & Pocket Studio (Organization, WebSite, BlogPosting, a
         {
           "@type": "ListItem",
           "position": 1,
-          "name": {{ site.data[site.active_lang].strings.back_home | jsonify }},
+          "name": "{{ studio_name }}",
           "item": "{{ studio_url }}{% if site.active_lang != site.default_lang %}/{{ site.active_lang }}{% endif %}/"
         }
         {%- if page.layout == 'post' or page.url contains '/blog/' -%}
@@ -110,6 +110,14 @@ Unified JSON-LD for Wrist & Pocket Studio (Organization, WebSite, BlogPosting, a
           "item": "{{ site.url }}{% if site.active_lang != site.default_lang %}/{{ site.active_lang }}{% endif %}{{ page.url }}"
         }
         {%- endif -%}
+        {%- elsif page.layout == 'tool' -%}
+        ,
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "WearView",
+          "item": "{{ site.url }}{% if site.active_lang != site.default_lang %}/{{ site.active_lang }}{% endif %}{{ page.url }}"
+        }
         {%- endif -%}
       ]
     }

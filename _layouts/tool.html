@@ -1,0 +1,31 @@
+---
+layout: default
+---
+{% assign strings = site.data[site.active_lang].strings %}
+{% capture page_url %}{{ site.url }}{% if site.active_lang != site.default_lang %}/{{ site.active_lang }}{% endif %}{{ page.url }}{% endcapture %}
+<article class="tool-detail" data-project="{{ page.page_id }}">
+<p class="game-back-link"><a class="btn-back" href="{{ '/' | relative_url }}">&larr; {{ strings.back_home }}</a></p>
+<header class="project-hero tool-hero">
+<img src="{{ page.banner | relative_url }}" alt="{{ page.banner_alt }}" width="1600" height="1000" fetchpriority="high">
+<div><p class="card-label">{{ page.badge }}</p><h1>{{ page.title }}</h1><p>{{ page.description }}</p>
+<div class="bio__actions"><a class="bio__cta bio__cta--primary" {% static_href %}href="{{ page.app_url }}"{% endstatic_href %} data-event="tool_open">{{ page.cta }} &rarr;</a><a class="bio__cta bio__cta--secondary" href="{{ page.source_url }}" target="_blank" rel="noopener noreferrer">{{ page.source_cta }}</a></div>
+<p class="tool-hero__note">{{ page.cta_note }}</p></div></header>
+<div class="project-prose">{{ content }}</div>
+{% if page.screenshots %}<section class="game-gallery-section" aria-labelledby="gallery-title">
+<h2 id="gallery-title">{{ page.gallery_title }}</h2>
+<div class="project-gallery tool-gallery">
+{% for shot in page.screenshots %}<figure><img src="{{ shot.src | relative_url }}" alt="{{ shot.alt }}" width="{{ shot.width | default: 1200 }}" height="{{ shot.height | default: 900 }}" loading="lazy" decoding="async"><figcaption>{{ shot.alt }}</figcaption></figure>{% endfor %}
+</div></section>{% endif %}
+{% if page.faq %}<section class="tool-faq" aria-labelledby="faq-title">
+<h2 id="faq-title">{{ strings.faq_title }}</h2>
+{% for item in page.faq %}<details><summary>{{ item.question }}</summary><p>{{ item.answer }}</p></details>{% endfor %}
+</section>{% endif %}
+<p class="tool-cta-end"><a class="bio__cta bio__cta--primary" {% static_href %}href="{{ page.app_url }}"{% endstatic_href %} data-event="tool_open">{{ page.cta }} &rarr;</a></p>
+</article>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"SoftwareApplication","@id":"{{ page_url }}#app","name":"WearView","url":"{{ site.url }}{{ page.app_url }}","description":{{ page.description | jsonify }},"inLanguage":{{ site.active_lang | jsonify }},"applicationCategory":"DeveloperApplication","operatingSystem":"Web browser","image":"{{ page.image | absolute_url }}","isAccessibleForFree":true,"license":"https://opensource.org/licenses/MIT","sameAs":"{{ page.source_url }}","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","@id":"https://wristandpocket.dev#organization","name":"Wrist & Pocket Studio"}}{% if page.faq %},
+{"@type":"FAQPage","@id":"{{ page_url }}#faq","mainEntity":[{% for item in page.faq %}{"@type":"Question","name":{{ item.question | jsonify }},"acceptedAnswer":{"@type":"Answer","text":{{ item.answer | jsonify }}}}{% unless forloop.last %},{% endunless %}{% endfor %}]}{% endif %}
+]}
+</script>
+{% include metadata/json-ld.html breadcrumbs_only=true %}
