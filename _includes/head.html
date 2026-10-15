@@ -13,7 +13,7 @@
 {% elsif page.title_key %}{% assign title = strings[page.title_key] %}{% assign description = strings[page.description_key] %}{% endif %}
 {% capture current_url %}{{ site.url }}{% if site.active_lang != site.default_lang %}/{{ site.active_lang }}{% endif %}{{ page.url }}{% endcapture %}
 {% assign social_image = page.image | default: page.banner | default: '/assets/images/default-social-card.webp' | absolute_url %}
-<title>{{ title | escape }}{% unless page.is_home or page.title_key %} | Wrist &amp; Pocket Studio{% endunless %}</title>
+<title>{{ title | escape }}{% unless page.is_home or title contains 'Wrist & Pocket' %} | Wrist &amp; Pocket Studio{% endunless %}</title>
 <meta name="description" content="{{ description | escape }}">
 <link rel="canonical" {% static_href %}href="{{ current_url }}"{% endstatic_href %}>
 <meta property="og:title" content="{{ title | escape }}">

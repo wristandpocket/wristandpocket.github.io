@@ -94,6 +94,22 @@ is_home: true
     </section>
 
 
+    <!-- TOOL CARD (WEARVIEW) -->
+    <section class="hub-card home-tool fade-in" id="tools">
+        <a href="{{ '/tools/wearview/' | relative_url }}" class="home-tool__media" tabindex="-1" aria-hidden="true">
+            <img src="{{ '/assets/images/tools/wearview-card.webp' | relative_url }}" alt="" width="800" height="600" loading="lazy" decoding="async">
+        </a>
+        <div class="home-tool__body">
+            <div class="card-label">{{ copy.tool_label }}</div>
+            <h2>{{ copy.tool_title }}</h2>
+            <p class="text-secondary">{{ copy.tool_text }}</p>
+            <div class="bio__actions">
+                <a {% static_href %}href="/wearview/"{% endstatic_href %} class="bio__cta bio__cta--primary" data-event="tool_open">{{ copy.tool_cta }} &rarr;</a>
+                <a href="{{ '/tools/wearview/' | relative_url }}" class="bio__cta bio__cta--secondary">{{ copy.tool_more }}</a>
+            </div>
+        </div>
+    </section>
+
     <!-- LAB CARD (PHILOSOPHY) -->
     <section class="hub-card fade-in" id="lab">
         <div class="card-label">{{ site.data[site.active_lang].strings.philosophy_label }}</div>

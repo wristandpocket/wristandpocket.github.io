@@ -16,7 +16,7 @@
                 <span class="nav-text-desktop">{{ site.data[site.active_lang].strings.news_label | default: 'News' }}</span>
                 <span class="nav-text-mobile">{{ site.data[site.active_lang].strings.nav_news | default: 'News' }}</span>
             </a>
-            <a {% static_href %}href="/wearview/"{% endstatic_href %} translate="no">WearView</a>
+            <a href="{{ '/tools/wearview/' | relative_url }}" translate="no"{% if page.layout == 'tool' %} aria-current="page"{% endif %}>WearView</a>
 
             <a href="{{ "/contact/" | relative_url }}" class="nav-contact"{% if nav_path == '/contact/' %} aria-current="page"{% endif %}>{{ site.data.site_copy[site.active_lang].contact }}</a>
 

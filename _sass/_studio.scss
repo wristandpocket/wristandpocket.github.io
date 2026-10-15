@@ -41,3 +41,23 @@ html[lang="ko"] { word-break: keep-all; overflow-wrap: anywhere; }
  .studio-home-grid { display: flex; flex-direction: column; }.studio-home-grid #news { order: -1; }.project-hero { grid-template-columns: 1fr; }.project-hero > img { min-height: 0; height: auto; aspect-ratio: 2/1; }.project-gallery { grid-template-columns: 1fr 1fr; gap: 16px; }.project-card-end { flex: auto; width: 100%; }.bio__actions { flex-direction: column; align-items: stretch; }.bio__cta { justify-content: center; }.site-footer { width: calc(100% - 32px); padding: 24px 16px; }.news-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 360px) { .project-gallery { grid-template-columns: 1fr; } }
+/* WearView: home tool card and /tools/ landing page */
+.studio-home-grid { grid-template-areas: 'news news' 'tools tools' 'lab social'; }
+#tools { grid-area: tools; }
+.home-tool { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 32px; align-items: center; }
+.home-tool__media { display: block; border-radius: 16px; overflow: hidden; border: 1px solid #303b4b; background: #0a0e14; }
+.home-tool__media img { display: block; width: 100%; height: auto; }
+.home-tool__body h2 { font-size: clamp(1.4rem, 2.4vw, 1.9rem); line-height: 1.2; margin: 8px 0 14px; }
+.home-tool__body .bio__actions { margin-top: 22px; }
+.tool-hero > img { object-fit: cover; background: #0a0e14; }
+.tool-hero .bio__actions { margin-top: 8px; }
+.tool-hero__note { font-size: .85rem; color: #aebacb !important; margin: 14px 0 0 !important; }
+.tool-gallery img { aspect-ratio: 4 / 3; object-fit: cover; }
+.tool-faq { max-width: 780px; margin: 48px auto 0; }
+.tool-faq h2 { margin-bottom: 16px; }
+.tool-faq details { border: 1px solid #293646; border-radius: 14px; background: #111923; margin-bottom: 10px; }
+.tool-faq summary { cursor: pointer; padding: 16px 20px; font-weight: 650; min-height: 44px; }
+.tool-faq details[open] summary { color: #72e0d6; }
+.tool-faq details p { padding: 0 20px 18px; color: #c3cbd7; line-height: 1.75; }
+.tool-cta-end { text-align: center; margin: 40px 0 8px; }
+@media (max-width: 700px) { .home-tool { grid-template-columns: 1fr; gap: 20px; } .tool-gallery { grid-template-columns: 1fr; } }

@@ -47,7 +47,7 @@ layout: default
     {% endif %}
 
     <section class="post-content" itemprop="articleBody">
-        <aside class="archive-note">{{ site.data.site_copy[site.active_lang].archive }} <a href="{{ "/games/" | relative_url }}">{{ site.data.site_copy[site.active_lang].projects }}</a></aside>
+        {% unless page.archive_note == false %}<aside class="archive-note">{{ site.data.site_copy[site.active_lang].archive }} <a href="{{ "/games/" | relative_url }}">{{ site.data.site_copy[site.active_lang].projects }}</a></aside>{% endunless %}
             {{ content }}
     </section>
 

@@ -34,7 +34,12 @@
     "cyber": "A Wear OS 3D graphics experiment set in a neon city.",
     "pet": "A virtual pet concept for Wear OS: look after a demanding little monster.",
     "cyber_body": "Cyberpunk 3D is a legacy-maintenance Wear OS project exploring a real-time neon city on a watch-sized screen. The archived development media below show the visual scene and an on-screen performance overlay.\n\nThe project explores a benchmark-style experience. We have not published a validated measurement methodology, comparable device results or battery-life figures.",
-    "pet_body": "Feed Me, Loser! is a legacy-maintenance Wear OS concept about a satirical virtual pet on a watch-sized screen. The concept centres on feeding, care and the consequences of looking after a demanding monster.\n\nArchived development notes describe the intended pet loop. The screenshots below are development material; they are not a promise that every planned mechanic is ready for release."
+    "pet_body": "Feed Me, Loser! is a legacy-maintenance Wear OS concept about a satirical virtual pet on a watch-sized screen. The concept centres on feeding, care and the consequences of looking after a demanding monster.\n\nArchived development notes describe the intended pet loop. The screenshots below are development material; they are not a promise that every planned mechanic is ready for release.",
+    "tool_label": "Developer tool",
+    "tool_title": "WearView: see your screen on a real watch",
+    "tool_text": "Paste a screenshot or mirror the Unity Game view onto accurate 3D Wear OS watches at real size. Free, open source, runs in your browser.",
+    "tool_cta": "Open WearView",
+    "tool_more": "About the tool"
   },
   "uk": {
     "hero": "Маленький екран. Власний світ.",
@@ -71,7 +76,12 @@
     "cyber": "Експеримент із тривимірною графікою для Wear OS у неоновому місті.",
     "pet": "Концепція віртуального вихованця для Wear OS: доглядайте за вередливим монстриком.",
     "cyber_body": "Cyberpunk 3D — проєкт для Wear OS у режимі підтримки, що досліджує неонове місто в реальному часі на екрані розміром із годинник. Архівні матеріали розробки нижче показують сцену й екранні показники продуктивності.\n\nЗадум проєкту — дослідити формат графічного тесту. Перевіреної методики вимірювання, порівняльних результатів пристроїв і даних про витрату заряду ми не публікували.",
-    "pet_body": "Feed Me, Loser! — концепція Wear OS у режимі підтримки: сатирична гра про віртуального вихованця на маленькому екрані. В основі — годування, догляд і наслідки турботи про вимогливого монстрика.\n\nАрхівні нотатки про розробку описують задуманий ігровий цикл. Скриншоти нижче є матеріалами розробки, а не обіцянкою готовності всіх запланованих механік до релізу."
+    "pet_body": "Feed Me, Loser! — концепція Wear OS у режимі підтримки: сатирична гра про віртуального вихованця на маленькому екрані. В основі — годування, догляд і наслідки турботи про вимогливого монстрика.\n\nАрхівні нотатки про розробку описують задуманий ігровий цикл. Скриншоти нижче є матеріалами розробки, а не обіцянкою готовності всіх запланованих механік до релізу.",
+    "tool_label": "Інструмент для розробників",
+    "tool_title": "WearView: ваш екран на справжньому годиннику",
+    "tool_text": "Вставте скриншот або транслюйте Unity Game view на точні 3D-годинники Wear OS у реальному розмірі. Безкоштовно, з відкритим кодом, працює у браузері.",
+    "tool_cta": "Відкрити WearView",
+    "tool_more": "Про інструмент"
   },
   "ru": {
     "hero": "Маленький экран. Свой мир.",
@@ -108,7 +118,12 @@
     "cyber": "Эксперимент с трёхмерной графикой для Wear OS в неоновом городе.",
     "pet": "Концепция виртуального питомца для Wear OS: заботьтесь о капризном монстрике.",
     "cyber_body": "Cyberpunk 3D — проект для Wear OS в режиме поддержки, исследующий неоновый город в реальном времени на экране размером с часы. Архивные материалы разработки ниже показывают сцену и экранные показатели производительности.\n\nЗамысел проекта — исследовать формат графического теста. Проверенную методику измерения, сравнительные результаты устройств и данные о расходе заряда мы не публиковали.",
-    "pet_body": "Feed Me, Loser! — концепция для Wear OS в режиме поддержки: сатирическая игра о виртуальном питомце на маленьком экране. В основе — кормление, уход и последствия заботы о требовательном монстрике.\n\nАрхивные заметки о разработке описывают задуманный игровой цикл. Скриншоты ниже являются материалами разработки, а не обещанием готовности всех запланированных механик к релизу."
+    "pet_body": "Feed Me, Loser! — концепция для Wear OS в режиме поддержки: сатирическая игра о виртуальном питомце на маленьком экране. В основе — кормление, уход и последствия заботы о требовательном монстрике.\n\nАрхивные заметки о разработке описывают задуманный игровой цикл. Скриншоты ниже являются материалами разработки, а не обещанием готовности всех запланированных механик к релизу.",
+    "tool_label": "Инструмент для разработчиков",
+    "tool_title": "WearView: ваш экран на настоящих часах",
+    "tool_text": "Вставьте скриншот или транслируйте Unity Game view на точные 3D-часы Wear OS в реальном размере. Бесплатно, с открытым кодом, работает в браузере.",
+    "tool_cta": "Открыть WearView",
+    "tool_more": "Об инструменте"
   },
   "ko": {
     "hero": "작은 화면. 우리만의 세계.",
@@ -145,6 +160,11 @@
     "cyber": "네온 도시를 배경으로 한 Wear OS용 3D 그래픽 실험입니다.",
     "pet": "Wear OS용 가상 반려동물 콘셉트: 까다로운 작은 몬스터를 돌보세요.",
     "cyber_body": "Cyberpunk 3D는 레거시 유지보수 상태의 Wear OS 프로젝트로, 시계 크기의 화면에서 실시간 네온 도시를 탐구합니다. 아래 보관된 개발 자료에는 장면과 화면상의 성능 표시가 담겨 있습니다.\n\n이 프로젝트는 그래픽 벤치마크 형식을 탐구합니다. 검증된 측정 방법, 기기별 비교 결과 또는 배터리 사용 수치는 공개하지 않았습니다.",
-    "pet_body": "Feed Me, Loser!는 레거시 유지보수 상태의 Wear OS 콘셉트로, 시계 크기의 화면에서 즐기는 풍자적인 가상 반려동물 게임입니다. 먹이 주기, 돌보기와 까다로운 몬스터를 보살핀 결과가 중심입니다.\n\n보관된 개발 기록에는 구상 중인 플레이 흐름이 설명되어 있습니다. 아래 스크린샷은 개발 자료이며 모든 계획된 기능의 출시 준비가 끝났다는 약속은 아닙니다."
+    "pet_body": "Feed Me, Loser!는 레거시 유지보수 상태의 Wear OS 콘셉트로, 시계 크기의 화면에서 즐기는 풍자적인 가상 반려동물 게임입니다. 먹이 주기, 돌보기와 까다로운 몬스터를 보살핀 결과가 중심입니다.\n\n보관된 개발 기록에는 구상 중인 플레이 흐름이 설명되어 있습니다. 아래 스크린샷은 개발 자료이며 모든 계획된 기능의 출시 준비가 끝났다는 약속은 아닙니다.",
+    "tool_label": "개발자 도구",
+    "tool_title": "WearView: 실제 워치에서 화면 확인",
+    "tool_text": "스크린샷을 붙여넣거나 Unity Game 뷰를 정확한 3D Wear OS 워치에 실제 크기로 미러링하세요. 무료 오픈 소스이며 브라우저에서 실행됩니다.",
+    "tool_cta": "WearView 열기",
+    "tool_more": "도구 소개"
   }
 }
