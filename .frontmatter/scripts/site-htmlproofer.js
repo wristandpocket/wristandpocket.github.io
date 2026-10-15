@@ -15,7 +15,10 @@ const args = [
   './_site',
   '--allow-hash-href',
   '--ignore-empty-alt',
-  '--disable-external'
+  '--disable-external',
+  // WearView is deployed from its own repository at /wearview/, outside this Jekyll build.
+  '--ignore-urls',
+  '/^\\/wearview\\//'
 ];
 
 const result = cp.spawnSync('ruby', args, {

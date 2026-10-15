@@ -24,7 +24,7 @@ layout: default
 </article>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
-{"@type":"SoftwareApplication","@id":"{{ page_url }}#app","name":"WearView","url":"{{ site.url }}{{ page.app_url }}","description":{{ page.description | jsonify }},"inLanguage":{{ site.active_lang | jsonify }},"applicationCategory":"DeveloperApplication","operatingSystem":"Web browser","image":"{{ page.image | absolute_url }}","isAccessibleForFree":true,"license":"https://opensource.org/licenses/MIT","sameAs":"{{ page.source_url }}","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","@id":"https://wristandpocket.dev#organization","name":"Wrist & Pocket Studio"}}{% if page.faq %},
+{"@type":"SoftwareApplication","@id":"{{ page_url }}#app","name":"WearView","url":"{{ site.url }}{{ page.app_url }}","description":{{ page.description | jsonify }},"inLanguage":{{ site.active_lang | jsonify }},"applicationCategory":"DeveloperApplication","operatingSystem":"Web browser","image":"{{ page.image | absolute_url }}","isAccessibleForFree":true,"license":"https://opensource.org/licenses/MIT","sameAs":"{{ page.source_url }}","publisher":{"@type":"Organization","@id":"https://wristandpocket.dev#organization","name":"Wrist & Pocket Studio"}}{% if page.faq %},
 {"@type":"FAQPage","@id":"{{ page_url }}#faq","mainEntity":[{% for item in page.faq %}{"@type":"Question","name":{{ item.question | jsonify }},"acceptedAnswer":{"@type":"Answer","text":{{ item.answer | jsonify }}}}{% unless forloop.last %},{% endunless %}{% endfor %}]}{% endif %}
 ]}
 </script>

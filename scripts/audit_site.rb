@@ -78,6 +78,8 @@ docs.each do |file, doc|
         target_url = URI.join(url, value)
         records << { source: route, url: target_url.to_s }
         next unless target_url.host == 'wristandpocket.dev'
+        # Apps deployed from their own repositories under this domain, outside this Jekyll build.
+        next if target_url.path.start_with?('/wearview/')
         target = target_for.call(target_url.path)
         check.call(File.file?(target), route, "missing target #{value}")
         if File.file?(target) && target.end_with?('.html') && target_url.fragment
