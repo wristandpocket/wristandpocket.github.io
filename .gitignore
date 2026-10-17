@@ -427,3 +427,8 @@ _site/
 
 # Local visual and verification evidence
 qa-evidence/
+
+# OS and editor noise
+.DS_Store
+desktop.ini
+Thumbs.db
