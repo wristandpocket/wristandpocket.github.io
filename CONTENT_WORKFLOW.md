@@ -1,77 +1,84 @@
 # Wrist & Pocket Site Content Workflow
 
-This document is the operating guide for creating and verifying content in the Wrist & Pocket Studio Jekyll site.
+This document is the operating guide for creating, updating, and verifying content in the Wrist & Pocket Studio Jekyll site (`web/studio-site`).
 
 ## Core Model
 
-- The site is a standalone Git repository and is tracked from the studio workspace as a Git submodule.
+- The site is a standalone public Git repository (`wristandpocket/wristandpocket.github.io`) tracked from the private studio workspace as the `web/studio-site` Git submodule.
 - Commit and push site changes inside `web/studio-site` first.
 - Then commit and push the updated `web/studio-site` submodule pointer in the root studio workspace.
-- English is the source language for files, docs, code comments, commit messages, and public site text.
+- English is the source language for files, docs, code comments, commit messages, and public site copy. Every public route must maintain strict 4-locale parity (`en`, `uk`, `ru`, `ko`).
+- Never copy private SDK code, internal studio roadmaps, commercial license keys, or unconfirmed product claims into this public repository.
 
-## Local Command Notes
+## Local Command Notes (macOS & Windows)
 
-On Windows PowerShell, use `npm.cmd` rather than `npm` because the default execution policy may block `npm.ps1`.
+- On **macOS / Linux**, use `npm run <script>`.
+- On **Windows PowerShell**, use `npm.cmd run <script>` if execution policy blocks `npm.ps1`.
 
 Common commands:
 
-```powershell
+```bash
+# macOS / Linux
+npm run preflight
+npm run build
+npm run verify
+npm run check:images
+
+# Windows PowerShell
 npm.cmd run preflight
 npm.cmd run build
 npm.cmd run verify
 npm.cmd run check:images
 ```
 
-`npm.cmd run verify` runs the checks that are expected to work locally on this Windows workspace:
+`npm run verify` (and `npm run verify:ci`) runs the full 10-step verification pipeline:
 
-- site preflight
-- production Jekyll build
-- JavaScript size budget
+1. `npm run preflight` — front matter, 4-locale groups, permalink stability, and game/tool media asset checks.
+2. `npm run build` — production Jekyll build (`JEKYLL_ENV=production`) with UTF-8 encoding enforced.
+3. `npm run verify:source-claims` — regression guard scanning 65 source files and 56 generated HTML pages for unconfirmed performance, OS minimum, or store claims.
+4. `npm run test:source-claims` — negative tests proving the claim guard catches unsafe claims.
+5. `npm run verify:browser-320` — headless Chrome/Edge/Brave DevTools check at `320x568` across `/`, `/uk/games/`, `/games/cyberpunk-3d/`, `/tools/wearview/`, `/blog/`, and `/404.html`.
+6. `npm run verify:html` — HTMLProofer link, image, and script verification across all 56 generated HTML files (ignoring `/^\/wearview\//`, which is deployed from a separate repository).
+7. `npm run verify:js` — verifies `_site/assets/js/script.js` remains within the 20 KB budget.
+8. `npm run verify:quality` — generated HTML landmark, single-H1, heading order, `img[alt]`, and accessible link/button name gate.
+9. `npm run verify:routes` — Nokogiri route, canonical, 5-link `hreflang`, JSON-LD, internal anchor, sitemap (52 indexable URLs), and `scripts/public_routes.json` audit.
+10. `npm run test:audit` — mutation tests against a temporary copy of `_site` proving `audit_site.rb` rejects broken output.
 
-GitHub Actions also runs HTML Proofer:
-
-```powershell
-npm.cmd run verify:html
-```
-
-On Windows, HTML Proofer may fail if Ruby/MSYS2 cannot find `libcurl`. Treat the GitHub Actions Ubuntu result as authoritative unless local RubyInstaller/MSYS2 is repaired.
+> **Note on Windows HTMLProofer:** On Windows, `npm.cmd run verify:html` may fail locally if RubyInstaller/MSYS2 cannot load `libcurl.dll` (error 126). On macOS and in Linux GitHub Actions, `npm run verify:html` runs natively.
 
 ## Creating A New Blog Post
 
 Use the scaffold command:
 
-```powershell
-npm.cmd run new:post -- --slug cyberpunk-devlog --title "Cyberpunk Devlog" --date 2026-06-15 --tag "Cyberpunk 3D"
+```bash
+npm run new:post -- --slug cyberpunk-devlog --title "Cyberpunk Devlog" --date 2026-10-23 --tag "Cyberpunk 3D"
 ```
 
-This creates:
+This creates four synchronized files:
 
 - `_posts/YYYY-MM-DD-cyberpunk-devlog-en.md`
 - `_posts/YYYY-MM-DD-cyberpunk-devlog-uk.md`
 - `_posts/YYYY-MM-DD-cyberpunk-devlog-ru.md`
 - `_posts/YYYY-MM-DD-cyberpunk-devlog-ko.md`
 
-The scaffold sets one shared `page_id` and one shared `permalink`:
+Each file shares one `page_id` and one `permalink`:
 
 ```yaml
 page_id: "cyberpunk-devlog"
 permalink: "/blog/cyberpunk-devlog/"
 ```
 
-Do not manually add `/uk`, `/ru`, or `/ko` to `permalink`. Jekyll Polyglot adds language prefixes when rendering localized URLs.
-
-After editing the generated files, run:
-
-```powershell
-npm.cmd run preflight
-```
+- Do not manually add `/uk`, `/ru`, or `/ko` to `permalink`. Jekyll Polyglot adds language prefixes when rendering localized URLs.
+- For current studio/tool posts (such as the WearView post), set `archive_note: false` in front matter if the dated-devlog archive banner should be omitted.
+- When adding a new topic tag, add its localized display names to `_data/tag_labels.json` across `en`, `uk`, `ru`, and `ko`.
+- After publishing a new route, add its 4 localized paths to `scripts/public_routes.json` to protect the URL against future regressions.
 
 ## Creating A New Static Page
 
 Use the scaffold command:
 
-```powershell
-npm.cmd run new:page -- --slug press-kit --title "Press Kit"
+```bash
+npm run new:page -- --slug press-kit --title "Press Kit"
 ```
 
 This creates:
@@ -88,14 +95,14 @@ page_id: "page-press-kit"
 permalink: "/press-kit/"
 ```
 
-Use this flow for public pages such as press kits, support, tester instructions, or policies that are not game detail pages.
+Alternatively, single-template pages like `contact.html` and `404.html` can use `copy_metadata: true` with `title_key` and `description_key` referencing `_data/site_copy.json`.
 
 ## Creating A New Game Page
 
 Use the scaffold command:
 
-```powershell
-npm.cmd run new:game -- --slug neon-runner --title "Neon Runner" --badge "Prototype" --order 3
+```bash
+npm run new:game -- --slug neon-runner --title "Neon Runner" --badge "Prototype" --order 3
 ```
 
 This creates:
@@ -108,127 +115,51 @@ This creates:
 Game pages must keep these fields complete:
 
 - `layout: game`
-- `title`
-- `badge`
-- `banner`
-- `image`
-- `thumbnail`
-- `game_icon`
-- `description`
-- `order`
-- `tester_cta`
-- `page_id`
-- `permalink`
-- `lang`
-- `specs.platform`
-- `specs.engine`
-- `specs.performance`
-- `specs.rotary`
-- `specs.status`
-- at least one `screenshots` item
+- `title`, `badge`, `description`, `order`, `tester_cta`
+- `banner`, `image`, `thumbnail`, `game_icon`
+- `page_id` (starting with `game-`) and `permalink` (starting with `/games/`)
+- `lang` (`en`, `uk`, `ru`, `ko`)
+- `specs.platform`, `specs.engine`, `specs.performance`, `specs.rotary`, `specs.status`
+- at least one `screenshots` item (`type: image` with `thumb`/`full` or `type: video` with `src`)
 
-The scaffold uses existing placeholder assets so preflight can pass, but real game pages should replace them before publication:
+## Developer Tool Pages (`tools/`)
 
-- `banner`
-- `image`
-- `thumbnail`
-- `game_icon`
-- `screenshots`
+Tool landing pages (such as `tools/wearview-{en,uk,ru,ko}.md`) use `layout: tool` and require:
 
-## Front Matter CMS
+- `page_id` starting with `tool-` (e.g., `tool-wearview`)
+- shared `permalink` starting with `/tools/` (e.g., `/tools/wearview/`)
+- `banner`, `banner_alt`, `image`, `app_url`, `source_url`, `cta`, `source_cta`, `cta_note`
+- `gallery_title`, `screenshots` (`src`, `alt`), and `faq` (`question`, `answer`)
 
-`frontmatter.json` defines three content types:
+Note: If `app_url` points to a standalone web app deployed from a sibling repository under `wristandpocket.dev` (such as `/wearview/`), wrap the link in `{% static_href %}href="/wearview/"{% endstatic_href %}` so Jekyll Polyglot does not rewrite it to `/uk/wearview/`.
 
-- `Post`
-- `Game`
-- `Page`
+## Front Matter CMS & Helper Scripts
 
-Use the matching content type when editing in Front Matter CMS. The `fix-frontmatter.js` normalizer intentionally refuses to rewrite `Game` files because game pages contain nested `specs` and `screenshots` data. Use scaffold scripts and `site-preflight.js` for game page safety.
-
-The older language helper scripts are now aligned with Polyglot:
-
-- `sync-languages.js`
-- `create-translations.js`
-- `auto-permalink.js`
-
-All of them should keep shared permalinks without language prefixes.
-
-## Preflight Rules
-
-`site-preflight.js` is the main safety gate. It checks:
-
-- crawler safety in `robots.txt`
-- no accidental `noindex`, broad `nofollow`, or redirects
-- canonical/hreflang template basics
-- stable permalinks against `HEAD`
-- language suffix matches `lang`
-- localized groups contain `en`, `uk`, `ru`, and `ko`
-- shared permalinks across translations
-- no `/uk`, `/ru`, or `/ko` prefixes inside front matter permalinks
-- game pages have required media and specs
-
-Use URL changes only with a documented redirect/indexing plan:
-
-```powershell
-node .frontmatter/scripts/site-preflight.js --allow-url-change
-```
-
-## SEO Metadata Notes
-
-`jekyll-seo-tag` appends the site title automatically. Do not include `Wrist & Pocket Studio` in ordinary page `title` front matter unless the page intentionally needs a custom full title. Otherwise generated titles become duplicated, for example:
-
-```text
-Wear OS Premium Smartwatch Games | Wrist & Pocket Studio
-```
-
-Keep source page titles short and query-focused:
-
-```yaml
-title: "Wear OS Premium Smartwatch Games"
-```
-
-Use the generated `_site` HTML to confirm titles, canonicals, descriptions, and `hreflang` output after SEO-sensitive edits.
+`frontmatter.json` defines the content schemas (`Post`, `Game`, `Page`). The helper scripts in `.frontmatter/scripts/` (`auto-permalink.js`, `create-translations.js`, `sync-languages.js`, `check-seo.js`, `fix-frontmatter.js`) are aligned with Polyglot shared permalinks and automatically skip destructive normalization on `games/` and `tools/` files that contain nested YAML objects.
 
 ## Production Artifact Hygiene
 
-Jekyll copies many root files unless they are excluded. Keep local workflow and tooling files in `_config.yml` `exclude` so GitHub Pages does not publish them as public URLs.
-
-Files that should stay out of `_site` include:
-
-- `frontmatter.json`
-- `package.json`
-- `package-lock.json`
-- `CONTENT_WORKFLOW.md`
-- `DEPLOYMENT_CHECKLIST.md`
-- `LOCAL_JEKYLL_SETUP.md`
-
-`CNAME` is intentionally published because GitHub Pages uses it for the custom domain.
+Keep local workflow, audit, and tooling files in `_config.yml` `exclude` so GitHub Pages does not publish them as public URLs (`Docs/`, `scripts/`, `qa-evidence/`, `ci-results/`, `.agents/`, `.frontmatter/`, `README.md`, `GEMINI.md`, `CONTENT_WORKFLOW.md`, `DEPLOYMENT_CHECKLIST.md`, `LOCAL_JEKYLL_SETUP.md`, `package.json`, `frontmatter.json`, `service-worker.js`). `audit_site.rb` enforces that no `.rb`, `.ps1`, `.md`, `.log`, or `.toml` files leak into `_site/`.
 
 ## Publishing Checklist
 
-Inside the site repository:
+Inside `web/studio-site`:
 
-```powershell
+```bash
 git status --short --branch
-npm.cmd run verify
+npm run verify
 git diff --check
 git add <explicit files>
 git commit -m "..."
 git push origin main
 ```
 
-Then in the root studio workspace:
+Then in the root studio workspace (`WristAndPocket-Studio`):
 
-```powershell
+```bash
 git status --short --branch
 git diff --submodule
 git add web/studio-site
 git commit -m "chore: update site submodule pointer"
 git push origin main
 ```
-
-## Known Follow-Ups
-
-- Convert or intentionally whitelist remaining PNG assets reported by `npm.cmd run check:images`.
-- Repair local Windows HTML Proofer support by fixing RubyInstaller/MSYS2 `libcurl`.
-- Add visual QA screenshots for desktop, mobile, and narrow mobile when layout-heavy changes are made.

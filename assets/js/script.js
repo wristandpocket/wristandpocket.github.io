@@ -20,14 +20,15 @@
         });
     });
     var dialog = document.getElementById('media-dialog');
-    if (dialog && typeof dialog.showModal === 'function') {
-        var items = Array.from(document.querySelectorAll('.gallery-image'));
+    var items = Array.from(document.querySelectorAll('.gallery-image'));
+    if (dialog && typeof dialog.showModal === 'function' && items.length > 0) {
         var picture = document.getElementById('media-image');
         var current = 0, opener;
         function show(index) {
             current = (index + items.length) % items.length;
             picture.src = items[current].href;
-            picture.alt = items[current].querySelector('img').alt;
+            var img = items[current].querySelector('img');
+            picture.alt = img ? img.alt : '';
         }
         items.forEach(function (link, index) {
             link.addEventListener('click', function (event) {

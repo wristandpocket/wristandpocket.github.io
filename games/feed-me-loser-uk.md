@@ -15,7 +15,7 @@ permalink: /games/feed-me-loser/
 lang: uk
 specs:
   platform: "Wear OS (target)"
-  engine: "Unity 6 (6000.5.7f1, URP)"
+  engine: "Unity 6 (6000.6.5f1, URP)"
   performance: "Архівна ціль — 15 FPS"
   rotary: "Тренування з безелем"
   status: "Підтримка застарілого проєкту"

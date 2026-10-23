@@ -7,9 +7,15 @@
 
 const cp = require('child_process');
 
-const result = cp.spawnSync('ruby', ['-S', 'bundle', 'exec', 'jekyll', 'build', '--destination', './_site'], {
+const rubyOpt = [process.env.RUBYOPT, '-EUTF-8:UTF-8'].filter(Boolean).join(' ');
+const result = cp.spawnSync('ruby', ['-E', 'UTF-8:UTF-8', '-S', 'bundle', 'exec', 'jekyll', 'build', '--destination', './_site'], {
   cwd: process.cwd(),
-  env: Object.assign({}, process.env, { JEKYLL_ENV: 'production' }),
+  env: Object.assign({}, process.env, {
+    JEKYLL_ENV: 'production',
+    LANG: process.env.LANG || 'en_US.UTF-8',
+    LC_ALL: process.env.LC_ALL || 'en_US.UTF-8',
+    RUBYOPT: rubyOpt
+  }),
   stdio: 'inherit'
 });
 

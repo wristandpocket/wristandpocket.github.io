@@ -41,7 +41,7 @@ function relative(file) {
 
 function sourceFiles() {
   const files = [];
-  for (const directory of ['games', '_posts', '_includes', '_layouts', '_data']) {
+  for (const directory of ['games', 'tools', 'blog', '_posts', '_includes', '_layouts', '_data']) {
     files.push(...walk(path.join(ROOT, directory)));
   }
   for (const entry of fs.existsSync(ROOT) ? fs.readdirSync(ROOT, { withFileTypes: true }) : []) {

@@ -1,32 +1,47 @@
 # Local Jekyll Setup
 
-This project deploys through GitHub Actions, but local Jekyll is useful for fast build checks before pushing to `main`.
+This project deploys through GitHub Actions, but local Jekyll and Node.js verification scripts are used for fast pre-push checks on both **macOS** and **Windows**.
 
-## macOS Setup
+## Runtime Baseline
 
-Recommended installation using Homebrew and `rbenv` (Ruby version manager):
+- **Ruby:** `3.4.x` (pinned in `.ruby-version` and `.github/workflows/jekyll.yml`)
+- **Bundler:** `2.x+`
+- **Node.js:** `18+` / `20+` (used by `.frontmatter/scripts/*` and `scripts/*`)
+- **Browser (for `verify:browser-320`):** Google Chrome, Chromium, Brave Browser, or Microsoft Edge
 
-1. **Install Homebrew** (if not already installed) from [brew.sh](https://brew.sh).
-2. **Install rbenv and ruby-build**:
+## macOS Setup (Apple Silicon / Intel)
+
+You can use either **Homebrew Ruby 3.4** (`/opt/homebrew/opt/ruby@3.4/bin`) or **rbenv**. CI pins Ruby `3.4`; the unversioned Homebrew `ruby` formula is Ruby 4.x, where `bundle exec jekyll` fails with `cannot load such file -- ostruct`.
+
+### Option A: Homebrew Ruby (Recommended on Apple Silicon MacBook)
+
+1. **Install Ruby and Node.js via Homebrew**:
+   ```bash
+   brew install ruby@3.4 node
+   ```
+2. **Ensure Homebrew Ruby and Gems are on your `PATH`** (in `~/.zshrc`):
+   ```bash
+   export PATH="/opt/homebrew/opt/ruby@3.4/bin:/opt/homebrew/bin:$PATH"
+   ```
+3. **Install Bundler and repository gems**:
+   ```bash
+   gem install bundler
+   bundle install
+   ```
+
+### Option B: rbenv
+
+1. **Install `rbenv` and `ruby-build`**:
    ```bash
    brew install rbenv ruby-build
-   ```
-3. **Configure shell integration** (for zsh):
-   ```bash
    echo 'eval "$(rbenv init - zsh)"' >> ~/.zshrc
    source ~/.zshrc
    ```
-4. **Install and set Ruby version**:
+2. **Install Ruby 3.4**:
    ```bash
-   rbenv install 3.3.11
-   rbenv local 3.3.11
-   ```
-5. **Install bundler**:
-   ```bash
+   rbenv install 3.4.2
+   rbenv local 3.4.2
    gem install bundler
-   ```
-6. **Install dependencies**:
-   ```bash
    bundle install
    ```
 
@@ -37,78 +52,74 @@ Official references:
 - Jekyll Windows install: https://jekyllrb.com/docs/installation/windows/
 - RubyInstaller downloads: https://rubyinstaller.org/downloads/
 
-1. **Install Ruby with Devkit** from RubyInstaller:
-   - Download the recommended `Ruby+Devkit` x64 installer.
-   - During install, keep `Add Ruby executables to your PATH` enabled.
-   - At the end, run the `ridk install` step when the installer offers it.
-   - In the `ridk install` prompt, choose the default MSYS2/Devkit setup option.
-   Close and reopen PowerShell.
+1. **Install Ruby+Devkit 3.4.x** from RubyInstaller:
+   - Keep `Add Ruby executables to your PATH` enabled.
+   - Run the `ridk install` step at the end and select the default MSYS2/Devkit option.
+   - Close and reopen PowerShell.
 
-2. **Verify Ruby Tools**:
+2. **Verify Ruby Tools & Install Site Gems**:
    ```powershell
    ruby --version
-   gem --version
    bundle --version
-   ```
-   If `bundle` is missing:
-   ```powershell
-   gem install bundler
-   ```
-
-3. **Install Site Gems**:
-   Run from the repository root:
-   ```powershell
    bundle install
    ```
 
 ## Local Preview
 
 To run the local preview server:
-- **macOS / Linux**:
-  ```bash
-  bundle exec jekyll serve --livereload
-  ```
-- **Windows**:
-  ```powershell
-  bundle exec jekyll serve --livereload
-  ```
+
+```bash
+bundle exec jekyll serve --livereload
+```
 
 Open:
+
 ```text
 http://127.0.0.1:4000/
 ```
 
-## Running Local Checks (Node.js)
+## Running Local Verification Checks
 
-If you have Node.js installed, you can run automated verification scripts:
+On **macOS / Linux** use `npm run <script>`; on **Windows PowerShell** use `npm.cmd run <script>`:
 
-- Static preflight:
+- **Static preflight** (front matter, 4-locale groups, permalinks, media assets):
   ```bash
-  # macOS / Linux
   npm run preflight
-  # Windows
-  npm.cmd run preflight
   ```
-- Jekyll production build:
+- **Production Jekyll build** (`JEKYLL_ENV=production` with UTF-8 enforced):
   ```bash
-  # macOS / Linux
   npm run build
-  # Windows
-  npm.cmd run build
   ```
-- Full verification pass (preflight + build + JS budget checks):
+- **Source & generated claim guard** (plus negative unit tests):
   ```bash
-  # macOS / Linux
-  npm run verify
-  # Windows
-  npm.cmd run verify
+  npm run verify:source-claims
+  npm run test:source-claims
   ```
-- Optional HTML Proofer parity check:
+- **Route, metadata, JSON-LD, anchor & sitemap audit** (plus mutation tests):
   ```bash
-  # macOS / Linux
+  npm run verify:routes
+  npm run test:audit
+  ```
+- **Generated-site accessibility & JS budget checks**:
+  ```bash
+  npm run verify:quality
+  npm run verify:js
+  ```
+- **320×568 headless browser smoke check** (uses installed Chrome/Chromium/Brave/Edge via DevTools Protocol):
+  ```bash
+  npm run verify:browser-320
+  ```
+- **HTMLProofer check**:
+  ```bash
   npm run verify:html
-  # Windows
-  npm.cmd run verify:html
+  ```
+- **Image format policy check** (WebP/SVG + approved PNG icons):
+  ```bash
+  npm run check:images
+  ```
+- **Full 10-step CI verification pipeline**:
+  ```bash
+  npm run verify
   ```
 
 ## Troubleshooting
@@ -122,6 +133,6 @@ bundle pristine
 bundle install
 ```
 
-### If Ruby is not found after installation
+### If `npm run verify:html` Fails with `libcurl` Error 126 on Windows
 
-Close all terminal windows and open a new shell session so the updated environment PATH is loaded.
+This is a known Windows RubyInstaller/MSYS2 DLL search path limitation for `typhoeus`/`ethon`. Both macOS (`npm run verify:html`) and the Linux GitHub Actions workflow run HTMLProofer natively, and `npm run verify:routes` independently validates all internal targets, assets, and anchors via Nokogiri on every platform.

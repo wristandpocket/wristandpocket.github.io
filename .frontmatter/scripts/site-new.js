@@ -108,7 +108,7 @@ function createPost(args) {
     const fm = frontMatter([
       ['layout', yamlString('post')],
       ['title', yamlString(localizedTitle(title, lang))],
-      ['description', yamlString('TODO: Write a 120-160 character search description.')],
+      ['description', yamlString('Write a 120-160 character search description.')],
       ['date', yamlString(date + 'T12:00:00.000Z')],
       ['lang', lang],
       ['page_id', yamlString(slug)],
@@ -116,15 +116,15 @@ function createPost(args) {
       ['tags', [tag]],
       ['author', 'ihor'],
       ['image', yamlString('/assets/images/default-social-card.webp')],
-      ['image_alt', yamlString('TODO: Describe the social preview image.')],
-      ['focus_keyword', yamlString('TODO')],
+      ['image_alt', yamlString('Describe the social preview image.')],
+      ['focus_keyword', yamlString('Wear OS')],
       ['seo_type', yamlString('BlogPosting')],
       ['sitemap', 'true'],
       ['toc', 'true'],
       ['published', 'true'],
       ['fmContentType', yamlString('Post')]
     ]);
-    const body = '\n\n## TODO\n\nWrite the English source copy first, then translate this version.\n';
+    const body = '\n\n## Overview\n\nWrite the English source copy first, then translate this version.\n';
     created.push(writeFile(relPath, fm + body, args.force));
   }
   return created;
@@ -141,7 +141,7 @@ function createPage(args) {
     const fm = frontMatter([
       ['layout', yamlString('default')],
       ['title', yamlString(localizedTitle(title, lang))],
-      ['description', yamlString('TODO: Write a 120-160 character search description.')],
+      ['description', yamlString('Write a 120-160 character search description.')],
       ['lang', lang],
       ['page_id', yamlString('page-' + slug)],
       ['permalink', yamlString('/' + slug + '/')],
@@ -149,7 +149,7 @@ function createPage(args) {
       ['sitemap', 'true'],
       ['fmContentType', yamlString('Page')]
     ]);
-    const body = '\n\n<div class="page-content fade-in">\n  <h1>' + localizedTitle(title, lang) + '</h1>\n  <p>TODO: Write page content.</p>\n</div>\n';
+    const body = '\n\n<article class="prose-page">\n  <h1>' + localizedTitle(title, lang) + '</h1>\n  <p>Write page content.</p>\n</article>\n';
     created.push(writeFile(relPath, fm + body, args.force));
   }
   return created;
@@ -174,18 +174,18 @@ function createGame(args) {
       'image: "/assets/images/default-social-card.webp"',
       'thumbnail: "/assets/images/default-social-card.webp"',
       'game_icon: "/assets/images/icons/beta.png"',
-      'description: "TODO: Write a concise game description for search and listings."',
+      'description: "Write a concise game description for search and listings."',
       'order: ' + order,
       'tester_cta: false',
       'page_id: "game-' + slug + '"',
       'permalink: "/games/' + slug + '/"',
       'lang: ' + lang,
       'specs:',
-      '  platform: "Wear OS 3+"',
-      '  engine: "Unity"',
-      '  performance: "TODO"',
-      '  rotary: "TODO"',
-      '  status: "Prototype"',
+      '  platform: "Wear OS (target)"',
+      '  engine: "Unity 6 (6000.6.5f1, URP)"',
+      '  performance: "In development"',
+      '  rotary: "Rotary controls"',
+      '  status: "In development"',
       'screenshots:',
       '  - type: image',
       '    thumb: "/assets/images/default-social-card.webp"',
@@ -193,7 +193,7 @@ function createGame(args) {
       'fmContentType: "Game"',
       '---'
     ].join('\n');
-    const body = '\n\n### TODO\n\nWrite the game pitch and feature sections.\n';
+    const body = '\n\n## Overview\n\nWrite the game pitch and feature sections.\n';
     created.push(writeFile(relPath, fm + body, args.force));
   }
   return created;

@@ -11,16 +11,8 @@
 var fs   = require('fs');
 var path = require('path');
 
-// -- Config ---
-// DEBUG LOGGING
-fs.appendFileSync(
-  path.join(__dirname, 'debug.log'),
-  '--- RUN ' + new Date().toISOString() + ' ---\n' + process.argv.join('\n') + '\n\n'
-);
-
-var DEFAULT_LANG   = 'en';
 var LANG_SUFFIXES  = ['en', 'uk', 'ru', 'ko'];
-var TYPE_TO_PATH   = { post: '/blog', education: '/education' };
+var TYPE_TO_PATH   = { post: '/blog', game: '/games', tool: '/tools' };
 
 var rawArgs = process.argv.slice(2);
 if (rawArgs.length === 0) {
@@ -28,34 +20,24 @@ if (rawArgs.length === 0) {
   process.exit(1);
 }
 
-// Find the file path
-// Strategy 1: Look for the JSON payload, it almost always contains the true file path
 var filePath = null;
 var fmContentType = null;
 
 for (var i = 0; i < rawArgs.length; i++) {
   var arg = rawArgs[i];
-  
-  // Is it a JSON payload?
   if (arg.trim().startsWith('{') && arg.trim().endsWith('}')) {
     try {
       var parsed = JSON.parse(arg);
       if (parsed.path || parsed.filePath) {
         filePath = parsed.path || parsed.filePath;
       }
-      
-      // We can also extract the content type early from the JSON
       if (parsed.fmContentType) {
         fmContentType = parsed.fmContentType;
       }
-    } catch (_) {
-      // Ignore JSON parse errors
-    }
+    } catch (_) {}
   }
 }
 
-// Strategy 2: If we didn't find a JSON payload with a path, 
-// look for the first argument that is a valid existing file ending in .md
 if (!filePath) {
   for (var j = 0; j < rawArgs.length; j++) {
     var possiblePath = rawArgs[j];
@@ -73,7 +55,6 @@ if (!filePath || !fs.existsSync(filePath)) {
 
 filePath = path.resolve(filePath);
 
-// -- Read file ---
 var content;
 try {
   content = fs.readFileSync(filePath, 'utf-8');
@@ -111,7 +92,6 @@ function getFmValue(block, key) {
   return null;
 }
 
-// -- Extract slug from filename ---
 var extname  = path.extname(filePath);
 var basename = path.basename(filePath, extname);
 
@@ -124,18 +104,12 @@ if (!slugRaw) {
   process.exit(1);
 }
 
-// -- Determine content type ---
 var rawType  = fmContentType || getFmValue(fmBlock, 'fmContentType') || getFmValue(fmBlock, 'layout') || 'post';
-var basePath = TYPE_TO_PATH[rawType.toLowerCase()] || '/blog';
+var typeKey  = rawType.toLowerCase();
+var basePath = TYPE_TO_PATH[typeKey] !== undefined ? TYPE_TO_PATH[typeKey] : (typeKey === 'page' || typeKey === 'default' ? '' : '/blog');
 
-// -- Determine language ---
-var lang = getFmValue(fmBlock, 'lang') || DEFAULT_LANG;
-
-// -- Build permalink ---
-// Polyglot handles language prefixes automatically. Permalink MUST be universal.
 var permalink = basePath + '/' + slugRaw + '/';
 
-// -- Write back ---
 var PERMALINK_RE = /^permalink:\s*.*$/m;
 
 var newContent;

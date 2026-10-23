@@ -76,11 +76,10 @@ const fmBlock = fmMatch[1];
 // Extract layout/type to pick schema
 let cTypeStr = 'post';
 
-// Reliable method 1: Check the folder path
-if (filePath.includes('/_education/') || filePath.includes('\\_education\\')) {
-    cTypeStr = 'education';
+if (filePath.includes('/games/') || filePath.includes('\\games\\') || filePath.includes('/tools/') || filePath.includes('\\tools\\')) {
+    console.log('Game and Tool front matter contains nested specs/screenshots/faq. Use scaffold scripts and site-preflight instead of normalization.');
+    process.exit(0);
 } else {
-    // Fallback: Check fmContentType or layout in the file
     const fmContentTypeMatch = fmBlock.match(/^fmContentType:\s*(.*)$/m);
     const layoutMatch = fmBlock.match(/^layout:\s*(.*)$/m);
     
@@ -99,12 +98,11 @@ if (!schema) {
   console.error('No matching content type schema found for: ' + cTypeStr);
   process.exit(1);
 }
-if (schema.name.toLowerCase() === 'game') {
-  console.log('Game front matter contains nested specs/screenshots. Use scaffold scripts and site-preflight instead of normalization.');
+if (schema.name.toLowerCase() === 'game' || schema.name.toLowerCase() === 'tool') {
+  console.log('Game and Tool front matter contains nested specs/screenshots/faq. Use scaffold scripts and site-preflight instead of normalization.');
   process.exit(0);
 }
 
-// Extract using Regex for each schema field
 function extractValues(fields, yamlBlock, indentLevel = 0) {
   const data = {};
   for (const field of fields) {
@@ -230,7 +228,6 @@ function processSchemaFields(fields, data, indent = '') {
   }
 }
 
-// Rescue logic: extract rogue 'last_modified_at' directly if it exists but wasn't caught
 const rogueModifiedRegex = /^last_modified_at:\s*(.*)$/gm;
 let lastModifiedMatch;
 let lastModifiedValue = fmData.last_modified_at;
@@ -248,7 +245,6 @@ const newFmString = '---\n' + newYamlLines.join('\n') + '\n---';
 const body = content.slice(fmMatch[0].length);
 const finalFileContent = newFmString + body;
 
-// Count stats
 const existingKeys = new Set();
 fmBlock.split(/\r?\n/).forEach(line => {
   const m = line.match(/^([a-z_]+):/);
@@ -284,4 +280,3 @@ try {
   console.error('Failed to write file: ' + e.message);
   process.exit(1);
 }
-

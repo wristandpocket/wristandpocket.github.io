@@ -22,7 +22,7 @@ const ROOT = path.resolve(process.cwd());
 const SITE = path.join(ROOT, '_site');
 const WIDTH = 320;
 const HEIGHT = 568;
-const ROUTES = ['/', '/uk/games/', '/games/cyberpunk-3d/', '/blog/', '/404.html'];
+const ROUTES = ['/', '/uk/games/', '/games/cyberpunk-3d/', '/tools/wearview/', '/blog/', '/404.html'];
 const EXPECTED_STATUS = new Map(ROUTES.map(route => [route, route === '/404.html' ? 404 : 200]));
 const failures = [];
 
@@ -30,6 +30,10 @@ function findBrowser() {
   const explicit = process.env.BROWSER_PATH || process.env.CHROME_PATH || process.env.EDGE_PATH;
   const candidates = [
     explicit,
+    process.platform === 'darwin' ? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' : null,
+    process.platform === 'darwin' ? '/Applications/Chromium.app/Contents/MacOS/Chromium' : null,
+    process.platform === 'darwin' ? '/Applications/Brave Browser.app/Contents/MacOS/Brave Browser' : null,
+    process.platform === 'darwin' ? '/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge' : null,
     process.platform === 'win32' ? path.join(process.env.ProgramFiles || '', 'Google/Chrome/Application/chrome.exe') : null,
     process.platform === 'win32' ? path.join(process.env['ProgramFiles(x86)'] || '', 'Google/Chrome/Application/chrome.exe') : null,
     process.platform === 'win32' ? path.join(process.env.LOCALAPPDATA || '', 'Google/Chrome/Application/chrome.exe') : null,

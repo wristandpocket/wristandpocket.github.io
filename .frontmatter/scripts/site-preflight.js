@@ -149,8 +149,10 @@ function validateDangerousSeoDirectives() {
     .concat(listFiles('_includes', f => f.endsWith('.html')))
     .concat(listFiles('_layouts', f => f.endsWith('.html')))
     .concat(listFiles('games', f => f.endsWith('.md') || f.endsWith('.html')))
+    .concat(listFiles('tools', f => f.endsWith('.md') || f.endsWith('.html')))
+    .concat(listFiles('blog', f => f.endsWith('.md') || f.endsWith('.html')))
     .concat(listFiles('_posts', f => f.endsWith('.md')))
-    .concat(['index.html', 'sitemap.xml', 'robots.txt'])
+    .concat(['index.html', 'contact.html', 'sitemap.xml', 'robots.txt'])
     .filter(file => exists(file));
 
   const dangerous = [
@@ -175,7 +177,6 @@ function validateDangerousSeoDirectives() {
 function validateHeadAndSitemapTemplates() {
   const head = exists('_includes/head.html') ? read('_includes/head.html') : '';
   const sitemap = exists('sitemap.xml') ? read('sitemap.xml') : '';
-  const langRedirect = exists('_includes/lang-redirect.html') ? read('_includes/lang-redirect.html') : '';
 
   if (!head.includes('hreflang="{{ lang }}"')) {
     addError('_includes/head.html is missing explicit language alternates.');
@@ -192,15 +193,27 @@ function validateHeadAndSitemapTemplates() {
     }
   }
 
-
   addPass('Head and sitemap templates have baseline SEO guards.');
 }
+
+const SCAFFOLD_PLACEHOLDERS = [
+  'Write a 120-160 character search description.',
+  'Write a concise game description for search and listings.',
+  'Describe the social preview image.',
+  'Write the English source copy first, then translate this version.',
+  'Write the game pitch and feature sections.',
+  'Write page content.',
+  'Translate content.',
+  '<!-- Translate from ',
+  '[TRANSLATE]'
+];
 
 function contentFiles() {
   const localizedRootPages = fs.readdirSync(ROOT)
     .filter(f => /-(en|uk|ru|ko)\.md$/.test(f));
   const files = []
     .concat(listFiles('games', f => f.endsWith('.md')))
+    .concat(listFiles('tools', f => f.endsWith('.md')))
     .concat(listFiles('_posts', f => f.endsWith('.md')))
     .concat(fs.readdirSync(ROOT).filter(f => /^privacy-.*\.md$/.test(f)))
     .concat(localizedRootPages)
@@ -218,6 +231,12 @@ function validateFrontMatter() {
     if (!fm) {
       addError(`${file} is missing YAML front matter.`);
       continue;
+    }
+
+    // Scaffold scripts no longer emit TODO markers, so match their placeholder copy.
+    const placeholder = SCAFFOLD_PLACEHOLDERS.find(marker => text.includes(marker));
+    if (placeholder) {
+      addError(`${file} still contains scaffold placeholder text: "${placeholder}"`);
     }
 
     if (!fm.lang || !LANGS.includes(fm.lang)) {
@@ -289,6 +308,28 @@ function validateFrontMatter() {
         }
       }
     }
+
+    if (fm.layout === 'tool') {
+      if (!fm.page_id || !fm.page_id.startsWith('tool-')) {
+        addError(`${file} tool page_id must start with "tool-".`);
+      }
+      if (!fm.permalink || !fm.permalink.startsWith('/tools/')) {
+        addError(`${file} tool permalink must start with /tools/.`);
+      }
+      for (const key of ['banner', 'image']) {
+        if (!fm[key]) {
+          addError(`${file} tool page is missing ${key}.`);
+        } else if (!exists(fm[key])) {
+          addError(`${file} references missing ${key}: ${fm[key]}`);
+        }
+      }
+      const mediaRefs = grepValues(fm.__block, ['src']);
+      for (const media of mediaRefs) {
+        if (media.startsWith('/') && !exists(media)) {
+          addError(`${file} references missing tool gallery asset: ${media}`);
+        }
+      }
+    }
   }
 
   for (const [pageId, entries] of byPageId) {
@@ -309,7 +350,7 @@ function validateFrontMatter() {
     }
   }
 
-  addPass('Front matter, localization groups, URL stability, and game assets validated.');
+  addPass('Front matter, localization groups, URL stability, and game/tool assets validated.');
 }
 
 function validateRoadmapAndDocs() {
