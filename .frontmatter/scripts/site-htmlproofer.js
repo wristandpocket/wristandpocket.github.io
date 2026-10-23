@@ -8,6 +8,8 @@
 const cp = require('child_process');
 
 const args = [
+  '-E',
+  'UTF-8:UTF-8',
   '-S',
   'bundle',
   'exec',
@@ -21,8 +23,14 @@ const args = [
   '/^\\/wearview\\//'
 ];
 
+const rubyOpt = [process.env.RUBYOPT, '-EUTF-8:UTF-8'].filter(Boolean).join(' ');
 const result = cp.spawnSync('ruby', args, {
   cwd: process.cwd(),
+  env: Object.assign({}, process.env, {
+    LANG: process.env.LANG || 'en_US.UTF-8',
+    LC_ALL: process.env.LC_ALL || 'en_US.UTF-8',
+    RUBYOPT: rubyOpt
+  }),
   stdio: 'inherit'
 });
 

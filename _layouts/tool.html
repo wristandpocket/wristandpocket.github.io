@@ -2,6 +2,7 @@
 layout: default
 ---
 {% assign strings = site.data[site.active_lang].strings %}
+{% assign copy = site.data.site_copy[site.active_lang] %}
 {% capture page_url %}{{ site.url }}{% if site.active_lang != site.default_lang %}/{{ site.active_lang }}{% endif %}{{ page.url }}{% endcapture %}
 <article class="tool-detail" data-project="{{ page.page_id }}">
 <p class="game-back-link"><a class="btn-back" href="{{ '/' | relative_url }}">&larr; {{ strings.back_home }}</a></p>
@@ -14,7 +15,7 @@ layout: default
 {% if page.screenshots %}<section class="game-gallery-section" aria-labelledby="gallery-title">
 <h2 id="gallery-title">{{ page.gallery_title }}</h2>
 <div class="project-gallery tool-gallery">
-{% for shot in page.screenshots %}<figure><img src="{{ shot.src | relative_url }}" alt="{{ shot.alt }}" width="{{ shot.width | default: 1200 }}" height="{{ shot.height | default: 900 }}" loading="lazy" decoding="async"><figcaption>{{ shot.alt }}</figcaption></figure>{% endfor %}
+{% for shot in page.screenshots %}<figure><a class="gallery-image" href="{{ shot.src | relative_url }}" aria-label="{{ copy.open }} {{ forloop.index }} — {{ page.title }}"><img src="{{ shot.src | relative_url }}" alt="{{ shot.alt }}" width="{{ shot.width | default: 1200 }}" height="{{ shot.height | default: 900 }}" loading="lazy" decoding="async"></a><figcaption>{{ shot.alt }}</figcaption></figure>{% endfor %}
 </div></section>{% endif %}
 {% if page.faq %}<section class="tool-faq" aria-labelledby="faq-title">
 <h2 id="faq-title">{{ strings.faq_title }}</h2>
@@ -22,6 +23,10 @@ layout: default
 </section>{% endif %}
 <p class="tool-cta-end"><a class="bio__cta bio__cta--primary" {% static_href %}href="{{ page.app_url }}"{% endstatic_href %} data-event="tool_open">{{ page.cta }} &rarr;</a></p>
 </article>
+<dialog id="media-dialog" aria-label="{{ page.gallery_title | default: copy.gallery }}">
+<div class="dialog-toolbar"><button type="button" id="media-prev" aria-label="{{ copy.prev }}">&larr;</button><button type="button" id="media-close">{{ copy.close }} &times;</button><button type="button" id="media-next" aria-label="{{ copy.next }}">&rarr;</button></div>
+<img id="media-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="">
+</dialog>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
 {"@type":"SoftwareApplication","@id":"{{ page_url }}#app","name":"WearView","url":"{{ site.url }}{{ page.app_url }}","description":{{ page.description | jsonify }},"inLanguage":{{ site.active_lang | jsonify }},"applicationCategory":"DeveloperApplication","operatingSystem":"Web browser","image":"{{ page.image | absolute_url }}","isAccessibleForFree":true,"license":"https://opensource.org/licenses/MIT","sameAs":"{{ page.source_url }}","publisher":{"@type":"Organization","@id":"https://wristandpocket.dev#organization","name":"Wrist & Pocket Studio"}}{% if page.faq %},

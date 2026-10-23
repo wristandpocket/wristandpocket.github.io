@@ -3,12 +3,13 @@ layout: default
 title: "Privacy Policy"
 description: "Privacy Policy for Wrist & Pocket Studio applications, games, and website."
 lang: en
+page_id: "page-privacy"
 permalink: /privacy/
 ---
 
 <div class="privacy-page fade-in">
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: September 26, 2026</p>
+    <p class="updated">Last updated: October 23, 2026</p>
     <p><strong>Product configuration:</strong> This policy gives a studio-wide baseline. The services described below depend on the configuration, features, providers, and consent flow of each product. The presence of an SDK API alone does not confirm that data is collected or transmitted.</p>
 
     <section>
@@ -34,7 +35,7 @@ permalink: /privacy/
 
         <h2>6. Storage, sharing, and deletion</h2>
         <p>Storage and account features vary by product. In GRIDBREAK, saves are local to the supported device or browser storage and independent of Analytics consent. GRIDBREAK does not create an account for saving, provide cloud saves, or provide cross-device save transfer.</p>
-        <p>Provider retention periods, regions, exports, backups, and deletion completion depend on the configured service and account. When you disable Analytics in a configured product, the game requests the supported provider deletion operation where applicable. A deletion request is not proof that every remote copy, export, backup, or downstream copy has already been erased; aggregated or anonymized data may not be individually deletable.</p>
+        <p>Provider retention periods, regions, exports, backups, and deletion completion depend on the configured service and account. When you disable Analytics in Settings in a configured product, future Product Analytics event collection stops; a later explicit opt-in may resume collection. Withdrawing consent in the app does not automatically delete previously transmitted data, and aggregated or anonymized data may not be individually deletable.</p>
         <p>You can request review or deletion of data associated with our applications at <a href="mailto:wristandpocket.studio@gmail.com">wristandpocket.studio@gmail.com</a>. Include the app name and relevant details that may help us locate the data. We may need additional information to verify or process the request.</p>
 
         <h2>7. Security</h2>

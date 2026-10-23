@@ -16,7 +16,7 @@
     "new:game": "node .frontmatter/scripts/site-new.js game",
     "verify": "npm run preflight && npm run build && npm run verify:source-claims && npm run test:source-claims && npm run verify:browser-320 && npm run verify:html && npm run verify:js && npm run verify:quality && npm run verify:routes && npm run test:audit",
     "verify:ci": "npm run preflight && npm run build && npm run verify:source-claims && npm run test:source-claims && npm run verify:browser-320 && npm run verify:html && npm run verify:js && npm run verify:quality && npm run verify:routes && npm run test:audit",
-    "verify:routes": "ruby -S bundle exec ruby scripts/audit_site.rb",
-    "test:audit": "ruby -S bundle exec ruby scripts/test_audit.rb"
+    "verify:routes": "ruby -E UTF-8:UTF-8 -S bundle exec ruby -E UTF-8:UTF-8 scripts/audit_site.rb",
+    "test:audit": "ruby -E UTF-8:UTF-8 -S bundle exec ruby -E UTF-8:UTF-8 scripts/test_audit.rb"
   }
 }

@@ -14,7 +14,7 @@ permalink: /games/cyberpunk-3d/
 lang: en
 specs:
   platform: "Wear OS (target)"
-  engine: "Unity 6 (6000.5.7f1, URP)"
+  engine: "Unity 6 (6000.6.5f1, URP)"
   performance: "Benchmark-style experiment"
   rotary: "Rotary controls"
   status: "Legacy maintenance"

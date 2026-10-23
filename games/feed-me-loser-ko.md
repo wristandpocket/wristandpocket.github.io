@@ -15,7 +15,7 @@ permalink: /games/feed-me-loser/
 lang: ko
 specs:
   platform: "Wear OS (target)"
-  engine: "Unity 6 (6000.5.7f1, URP)"
+  engine: "Unity 6 (6000.6.5f1, URP)"
   performance: "보관된 목표: 15 FPS"
   rotary: "회전 베젤 운동"
   status: "레거시 유지보수"

@@ -3,7 +3,7 @@
  * create-translations.js
  * Front Matter CMS Custom Action
  *
- * Given the current post/education file,
+ * Given the current post/game/tool/page file,
  * generates stub translation files for all missing languages
  * with shared Polyglot permalinks.
  */
@@ -13,15 +13,13 @@
 var fs   = require('fs');
 var path = require('path');
 
-// -- Config ---
 var DEFAULT_LANG     = 'en';
 var LANGS            = ['en', 'uk', 'ru', 'ko'];
 var LANG_LABELS      = { en: 'English', uk: 'Ukrainian', ru: 'Russian', ko: 'Korean' };
 var LANG_SUFFIXES_RE = new RegExp('-(' + LANGS.join('|') + ')$');
-var TYPE_TO_PATH     = { post: '/blog', education: '/education' };
+var TYPE_TO_PATH     = { post: '/blog', game: '/games', tool: '/tools' };
 var PERMALINK_RE     = /^permalink:\s*.*$/m;
 
-// -- Input Parsing ---
 var rawArgs = process.argv.slice(2);
 if (rawArgs.length === 0) {
   console.error('No arguments provided by Front Matter CMS.');
@@ -31,7 +29,6 @@ if (rawArgs.length === 0) {
 var filePath = null;
 var fmContentType = null;
 
-// Strategy 1: JSON Payload
 for (var i = 0; i < rawArgs.length; i++) {
   var arg = rawArgs[i];
   if (arg.trim().startsWith('{') && arg.trim().endsWith('}')) {
@@ -47,7 +44,6 @@ for (var i = 0; i < rawArgs.length; i++) {
   }
 }
 
-// Strategy 2: Raw file path
 if (!filePath) {
   for (var j = 0; j < rawArgs.length; j++) {
     var possiblePath = rawArgs[j];
@@ -65,7 +61,6 @@ if (!filePath || !fs.existsSync(filePath)) {
 
 filePath = path.resolve(filePath);
 
-// -- Read file ---
 var content;
 try {
   content = fs.readFileSync(filePath, 'utf-8');
@@ -83,10 +78,6 @@ if (!fmMatch) {
 var fmBlock = fmMatch[1];
 var body    = content.slice(fmMatch[0].length).trim();
 
-/**
- * Extract a scalar value from a YAML front matter block.
- * Uses line-by-line search to avoid regex escaping issues.
- */
 function getFmValue(block, key) {
   var lines = block.split(/\r?\n/);
   var prefix = key + ':';
@@ -101,7 +92,6 @@ function getFmValue(block, key) {
   return null;
 }
 
-// -- Extract slug & date prefix from filename ---
 var dir        = path.dirname(filePath);
 var extname    = path.extname(filePath);
 var basename   = path.basename(filePath, extname);
@@ -116,21 +106,16 @@ if (!slug) {
   process.exit(1);
 }
 
-// -- Determine content type ---
 var rawType  = fmContentType || getFmValue(fmBlock, 'fmContentType') || getFmValue(fmBlock, 'layout') || 'post';
-var basePath = TYPE_TO_PATH[rawType.toLowerCase()] || '/blog';
+var typeKey  = rawType.toLowerCase();
+var basePath = TYPE_TO_PATH[typeKey] !== undefined ? TYPE_TO_PATH[typeKey] : (typeKey === 'page' || typeKey === 'default' ? '' : '/blog');
 
-// -- Determine source language ---
 var sourceLang = getFmValue(fmBlock, 'lang') || DEFAULT_LANG;
-var title      = getFmValue(fmBlock, 'title') || 'Untitled';
 
-/** Build the shared permalink. Polyglot adds language prefixes at render time. */
 function makePermalink() {
   return basePath + '/' + slug + '/';
 }
 
-// -- Fix source file permalink if missing or empty ---
-// This is done before creating translations so the source file is also valid
 var sourcePermalink = getFmValue(fmBlock, 'permalink');
 if (!sourcePermalink) {
   var newPermalink = makePermalink();
@@ -151,7 +136,6 @@ if (!sourcePermalink) {
   }
 }
 
-// -- Create translation stubs ---
 var created = [];
 var skipped = [];
 
@@ -166,12 +150,9 @@ for (var i = 0; i < LANGS.length; i++) {
     continue;
   }
 
-  var langPermalink = makePermalink();
-
-  // Build stub front matter: swap lang and permalink
+  var langPermalink = sourcePermalink || makePermalink();
   var stubFm = fmBlock.replace(/^lang:\s*.*$/m, 'lang: ' + lang);
 
-  // Ensure permalink is correct for target language
   if (PERMALINK_RE.test(stubFm)) {
     stubFm = stubFm.replace(PERMALINK_RE, 'permalink: "' + langPermalink + '"');
   } else {
@@ -181,7 +162,7 @@ for (var i = 0; i < LANGS.length; i++) {
     );
   }
 
-  var stubContent = '---\n' + stubFm + '\n---\n\n<!-- TODO: Translate from ' + LANG_LABELS[sourceLang] + ' -->\n\n' + body + '\n';
+  var stubContent = '---\n' + stubFm + '\n---\n\n<!-- Translate from ' + LANG_LABELS[sourceLang] + ' -->\n\n' + body + '\n';
 
   try {
     fs.writeFileSync(targetFile, stubContent, 'utf-8');
@@ -191,7 +172,6 @@ for (var i = 0; i < LANGS.length; i++) {
   }
 }
 
-// -- Report ---
 if (created.length > 0) {
   console.log('Created: ' + created.join(' | '));
 }

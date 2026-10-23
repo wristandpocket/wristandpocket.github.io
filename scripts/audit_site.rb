@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+Encoding.default_external = Encoding::UTF_8
+Encoding.default_internal = Encoding::UTF_8
 require 'nokogiri'
 require 'json'
 require 'uri'
@@ -8,7 +10,7 @@ base = File.expand_path(ARGV.fetch(0, '_site'))
 origin = 'https://wristandpocket.dev'
 errors = []
 records = []
-docs = Dir["#{base}/**/*.html"].to_h { |file| [file, Nokogiri::HTML(File.read(file))] }
+docs = Dir["#{base}/**/*.html"].to_h { |file| [file, Nokogiri::HTML(File.read(file, encoding: 'UTF-8'))] }
 check = ->(condition, route, message) { errors << "#{route}: #{message}" unless condition }
 route_for = ->(file) { file.delete_prefix(base).sub(/index\.html$/, '') }
 target_for = lambda do |route|
@@ -16,7 +18,7 @@ target_for = lambda do |route|
   route.end_with?('/') ? File.join(target, 'index.html') : target
 end
 sitemap_file = File.join(base, 'sitemap.xml')
-sitemap = File.file?(sitemap_file) ? Nokogiri::XML(File.read(sitemap_file)) : Nokogiri::XML('')
+sitemap = File.file?(sitemap_file) ? Nokogiri::XML(File.read(sitemap_file, encoding: 'UTF-8')) : Nokogiri::XML('')
 urls = sitemap.xpath('//*[local-name()="loc"]').map(&:text)
 check.call(!urls.empty? && urls.uniq == urls, 'sitemap', 'missing or duplicate URLs')
 indexable = []
@@ -46,7 +48,7 @@ docs.each do |file, doc|
     expected = origin + (%w[en x-default].include?(alternate) ? '' : "/#{alternate}") + bare
     check.call(alternates.select { |n| n['hreflang'] == alternate }.map { |n| n['href'] } == [expected], route, "incorrect hreflang #{alternate}")
   end
-  check.call(!File.read(file).match?(/localhost|127\.0\.0\.1|synthetic-audit|TODO|draft-preview/), route, 'development content leaked')
+  check.call(!File.read(file, encoding: 'UTF-8').match?(/localhost|127\.0\.0\.1|synthetic-audit|TODO|draft-preview/), route, 'development content leaked')
   if bare == '/' || bare.start_with?('/games/')
     check.call(!doc.text.match?(/Premium Wear OS|first.of.its.kind|first.ever|Coming soon to Play Store/i), route, 'unverified product marketing claim')
   end
@@ -83,7 +85,7 @@ docs.each do |file, doc|
         target = target_for.call(target_url.path)
         check.call(File.file?(target), route, "missing target #{value}")
         if File.file?(target) && target.end_with?('.html') && target_url.fragment
-          target_doc = docs[target] || Nokogiri::HTML(File.read(target))
+          target_doc = docs[target] || Nokogiri::HTML(File.read(target, encoding: 'UTF-8'))
           fragment = URI::DEFAULT_PARSER.unescape(target_url.fragment)
           check.call(target_doc.css('[id],[name]').any? { |n| n['id'] == fragment || n['name'] == fragment }, route, "missing anchor #{value}")
         end
@@ -95,17 +97,17 @@ docs.each do |file, doc|
 end
 metadata.each { |(_, key, _), routes| check.call(routes.size == 1, routes.join(', '), "duplicate #{key} in one locale") }
 check.call(urls.sort == indexable.sort, 'sitemap', 'must contain exactly the indexable canonical HTML routes')
-JSON.parse(File.read('scripts/public_routes.json')).each do |route|
+JSON.parse(File.read('scripts/public_routes.json', encoding: 'UTF-8')).each do |route|
   check.call(File.file?(target_for.call(route)), route, 'previously published route removed')
 end
 %w[Docs scripts qa-evidence ci-results .agents .frontmatter].each do |name|
   check.call(Dir["#{base}/**/#{name}"].empty?, name, 'internal directory leaked')
 end
 check.call(!Dir["#{base}/**/*"].any? { |p| File.file?(p) && p.match?(/\.(rb|ps1|md|log|toml)$/i) }, 'build', 'source or operational file leaked')
-robots = File.read(File.join(base, 'robots.txt'))
+robots = File.read(File.join(base, 'robots.txt'), encoding: 'UTF-8')
 check.call(robots.include?("Sitemap: #{origin}/sitemap.xml") && !robots.match?(/^Disallow:\s*\/\s*$/), 'robots.txt', 'invalid crawl policy')
 FileUtils.mkdir_p('qa-evidence')
-File.write('qa-evidence/link-inventory.json', JSON.pretty_generate({pages: docs.size, records: records.uniq, errors: errors}))
+File.write('qa-evidence/link-inventory.json', JSON.pretty_generate({pages: docs.size, records: records.uniq, errors: errors}), encoding: 'UTF-8')
 puts "Site audit: #{docs.size} pages, #{records.size} URL references, #{errors.size} errors"
 puts errors.first(60)
 exit(errors.empty? ? 0 : 1)

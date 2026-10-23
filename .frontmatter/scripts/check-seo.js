@@ -3,7 +3,7 @@
  * check-seo.js
  * Front Matter CMS Custom Action
  *
- * Comprehensive SEO validation for Figarist posts.
+ * Comprehensive SEO validation for Wrist & Pocket Studio posts and pages.
  * Checks: title, description, keywords, images, permalink, lang,
  * page_id, heading structure, body keyword usage, and more.
  */
@@ -137,7 +137,6 @@ if (focus_keyword) {
     successes.push('Keyword found in description.');
   }
 
-  // Body keyword density
   var bodyLower = body.toLowerCase();
   var kwCount = 0;
   var searchIdx = 0;
@@ -194,10 +193,10 @@ if (!permalink) {
   if (/[^a-z0-9\-\/]/.test(permalink)) {
     tips.push('Permalink contains special chars. Prefer only a-z, 0-9, hyphens.');
   }
-  if (permalink.match(/^\/[a-z]{2}\/(blog|education)\/[\w-]+\/$/)) {
-    successes.push('Permalink format looks correct.');
-  } else if (permalink.match(/^\/(blog|education)\/[\w-]+\/$/)) {
-    successes.push('Permalink format (default lang) looks correct.');
+  if (/^\/(uk|ru|ko)\//.test(permalink)) {
+    warnings.push('Permalink contains language prefix. Polyglot requires shared permalinks without /uk, /ru, /ko.');
+  } else if (permalink.match(/^\/(blog|games|tools)\/[\w-]+\/$/) || permalink.match(/^\/[\w-]+\/$/)) {
+    successes.push('Permalink format (shared Polyglot path) looks correct.');
   }
 }
 
