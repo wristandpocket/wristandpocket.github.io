@@ -47,9 +47,9 @@
   padding: clamp(20px, 3vw, 30px);
   border: 1px solid var(--wp-border-07);
   border-radius: 20px;
-  background-color: rgba(10, 10, 15, 0.44);
+  background-color: rgba($wp-bg-app, 0.44);
   background-image:
-    linear-gradient(135deg, rgba(78, 205, 196, 0.075), rgba(187, 134, 252, 0.045) 54%, rgb(255 255 255 / 0.025));
+    linear-gradient(135deg, rgba($wp-accent, 0.075), rgba($wp-accent-purple, 0.045) 54%, rgb(255 255 255 / 0.025));
   box-shadow: 0 16px 46px rgba(0, 0, 0, 0.24);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -82,7 +82,7 @@
   padding: clamp(20px, 3vw, 28px);
   border: 1px solid var(--wp-border-06);
   border-radius: 20px;
-  background: rgba(10, 10, 15, 0.32);
+  background: rgba($wp-bg-app, 0.32);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 
@@ -155,7 +155,7 @@
 .game-hero {
   min-height: clamp(280px, 36vw, 420px);
   border-radius: $card-radius;
-  background-color: #0a0a0f;
+  background-color: $wp-bg-app;
   border: 1px solid var(--wp-border-08);
   display: flex;
   align-items: flex-end;
@@ -163,7 +163,7 @@
   margin-bottom: clamp(32px, 4vw, 48px);
   box-shadow:
     0 24px 70px rgba(0, 0, 0, 0.34),
-    inset 0 0 150px rgba(10, 10, 15, 0.86);
+    inset 0 0 150px rgba($wp-bg-app, 0.86);
   position: relative;
   overflow: hidden;
   isolation: isolate;
@@ -173,8 +173,8 @@
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(90deg, rgba(10, 10, 15, 0.86) 0%, rgba(10, 10, 15, 0.58) 46%, rgba(10, 10, 15, 0.2) 100%),
-      linear-gradient(180deg, rgba(10, 10, 15, 0.22) 0%, rgba(10, 10, 15, 0.56) 54%, rgba(10, 10, 15, 0.94) 100%);
+      linear-gradient(90deg, rgba($wp-bg-app, 0.86) 0%, rgba($wp-bg-app, 0.58) 46%, rgba($wp-bg-app, 0.2) 100%),
+      linear-gradient(180deg, rgba($wp-bg-app, 0.22) 0%, rgba($wp-bg-app, 0.56) 54%, rgba($wp-bg-app, 0.94) 100%);
     pointer-events: none;
     z-index: 1;
   }
@@ -187,9 +187,9 @@
     right: 0;
     bottom: 0;
     background:
-      radial-gradient(circle at 18% 18%, rgba(78, 205, 196, 0.18), transparent 34%),
-      radial-gradient(circle at 80% 12%, rgba(187, 134, 252, 0.14), transparent 32%),
-      radial-gradient(circle at center, transparent 22%, rgba(10, 10, 15, 0.52) 100%);
+      radial-gradient(circle at 18% 18%, rgba($wp-accent, 0.18), transparent 34%),
+      radial-gradient(circle at 80% 12%, rgba($wp-accent-purple, 0.14), transparent 32%),
+      radial-gradient(circle at center, transparent 22%, rgba($wp-bg-app, 0.52) 100%);
     pointer-events: none;
     z-index: 2;
     mix-blend-mode: screen;
@@ -218,11 +218,11 @@
   font-family: $font-mono;
   font-size: 0.75rem;
   text-transform: uppercase;
-  background: rgba(78, 205, 196, 0.2);
+  background: rgba($wp-accent, 0.2);
   color: $accent-cyan;
   padding: 4px 10px;
   border-radius: 4px;
-  border: 1px solid rgba(78, 205, 196, 0.4);
+  border: 1px solid rgba($wp-accent, 0.4);
   display: inline-block;
   margin-bottom: 12px;
 }
@@ -321,9 +321,9 @@
   .spec-card {
     position: sticky;
     top: 98px;
-    background-color: rgba(22, 22, 29, 0.76);
+    background-color: rgba($wp-bg-surface, 0.76);
     background-image:
-      radial-gradient(circle at 12% 0%, rgba(78, 205, 196, 0.11), transparent 38%),
+      radial-gradient(circle at 12% 0%, rgba($wp-accent, 0.11), transparent 38%),
       linear-gradient(145deg, rgb(255 255 255 / 0.052), rgb(255 255 255 / 0.018));
     border: 1px solid var(--wp-border-085);
     border-radius: $card-radius;
@@ -374,12 +374,12 @@
   font-family: $font-mono;
   font-size: 0.7rem;
   text-transform: uppercase;
-  background: rgba(187, 134, 252, 0.1);
+  background: rgba($wp-accent-purple, 0.1);
   color: $accent-purple;
   padding: 3px 8px;
   border-radius: 4px;
-  border: 1px solid rgba(187, 134, 252, 0.2);
-  box-shadow: 0 0 18px rgba(187, 134, 252, 0.08);
+  border: 1px solid rgba($wp-accent-purple, 0.2);
+  box-shadow: 0 0 18px rgba($wp-accent-purple, 0.08);
 }
 
 /* ---------- Screen Showcase Gallery ---------- */
@@ -449,7 +449,7 @@
     transform: scale(1.05);
     box-shadow: 
       0 16px 40px rgba(0, 0, 0, 0.85),
-      0 0 24px rgba(78, 205, 196, 0.3),
+      0 0 24px rgba($wp-accent, 0.3),
       inset 0 0 10px rgba(0, 0, 0, 0.5);
   }
 }
@@ -539,7 +539,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(10, 10, 15, 0.6) !important;
+  background: rgba($wp-bg-app, 0.6) !important;
   border: 1px solid var(--wp-border-15) !important;
   color: #ffffff !important;
   -webkit-appearance: none;
@@ -560,17 +560,17 @@
   padding: 0;
 
   &:hover {
-    background: rgba(78, 205, 196, 0.2);
+    background: rgba($wp-accent, 0.2);
     border-color: $accent-cyan;
     color: $accent-cyan;
-    box-shadow: 0 0 15px rgba(78, 205, 196, 0.3);
+    box-shadow: 0 0 15px rgba($wp-accent, 0.3);
     transform: translateY(-50%) scale(1.05);
   }
 
   &:focus-visible {
     outline: 2px solid $accent-cyan;
     outline-offset: 3px;
-    background: rgba(78, 205, 196, 0.2);
+    background: rgba($wp-accent, 0.2);
     border-color: $accent-cyan;
   }
 
@@ -663,7 +663,7 @@
   &.active {
     background: $accent-cyan;
     transform: scale(1.25);
-    box-shadow: 0 0 12px rgba(78, 205, 196, 0.8);
+    box-shadow: 0 0 12px rgba($wp-accent, 0.8);
     border-color: var(--wp-border-40);
   }
 }
@@ -709,7 +709,7 @@
 
     &::before {
       background:
-        linear-gradient(180deg, rgba(10, 10, 15, 0.24) 0%, rgba(10, 10, 15, 0.62) 54%, rgba(10, 10, 15, 0.96) 100%);
+        linear-gradient(180deg, rgba($wp-bg-app, 0.24) 0%, rgba($wp-bg-app, 0.62) 54%, rgba($wp-bg-app, 0.96) 100%);
     }
   }
 
@@ -790,15 +790,15 @@
   transition: border-color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
 
   &:hover {
-    border-color: rgba(187, 134, 252, 0.3);
-    background: rgba(187, 134, 252, 0.02);
+    border-color: rgba($wp-accent-purple, 0.3);
+    background: rgba($wp-accent-purple, 0.02);
     transform: translateY(-2px);
   }
 }
 
 .game-faq-question {
   font-size: 1.15rem;
-  color: #bb86fc;
+  color: $wp-accent-purple;
   margin: 0 0 12px 0;
   font-weight: 600;
   line-height: 1.4;
