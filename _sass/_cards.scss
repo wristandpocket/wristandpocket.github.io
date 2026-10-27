@@ -20,10 +20,10 @@
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  background-color: rgba(22, 22, 29, 0.74);
+  background-color: rgba($wp-bg-surface, 0.74);
   background-image:
-    radial-gradient(circle at 12% 8%, rgba(78, 205, 196, 0.13), transparent 34%),
-    radial-gradient(circle at 92% 12%, rgba(187, 134, 252, 0.12), transparent 36%),
+    radial-gradient(circle at 12% 8%, rgba($wp-accent, 0.13), transparent 34%),
+    radial-gradient(circle at 92% 12%, rgba($wp-accent-purple, 0.12), transparent 36%),
     linear-gradient(145deg, rgb(255 255 255 / 0.052), rgb(255 255 255 / 0.018));
   border: 1px solid var(--wp-border-085);
   border-radius: $card-radius;
@@ -41,7 +41,7 @@
     inset: auto 24px 0;
     height: 1px;
     z-index: -1;
-    background: linear-gradient(90deg, transparent, rgba(78, 205, 196, 0.38), rgba(187, 134, 252, 0.28), transparent);
+    background: linear-gradient(90deg, transparent, rgba($wp-accent, 0.38), rgba($wp-accent-purple, 0.28), transparent);
   }
 }
 
@@ -77,7 +77,7 @@
   &:hover,
   &:focus-visible {
     transform: translateY(-6px);
-    border-color: rgba(78, 205, 196, 0.32);
+    border-color: rgba($wp-accent, 0.32);
     box-shadow: $shadow-hover;
     color: #ffffff;
 
@@ -96,8 +96,8 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(circle at 20% 12%, rgba(78, 205, 196, 0.2), transparent 30%),
-      radial-gradient(circle at 86% 8%, rgba(187, 134, 252, 0.18), transparent 30%),
+      radial-gradient(circle at 20% 12%, rgba($wp-accent, 0.2), transparent 30%),
+      radial-gradient(circle at 86% 8%, rgba($wp-accent-purple, 0.18), transparent 30%),
       linear-gradient(180deg, rgba(5, 5, 8, 0.08) 0%, rgba(5, 5, 8, 0.52) 46%, rgba(5, 5, 8, 0.96) 100%);
     z-index: 1;
   }
@@ -137,7 +137,7 @@
 }
 
 .hub-card {
-  background-color: rgba(22, 22, 29, 0.72);
+  background-color: rgba($wp-bg-surface, 0.72);
   background-image: linear-gradient(145deg, rgb(255 255 255 / 0.04), rgb(255 255 255 / 0.014));
   border: 1px solid var(--wp-border-08);
   border-radius: $card-radius;
@@ -261,13 +261,13 @@
 }
 
 .bio__cta--secondary {
-  background: rgba(78, 205, 196, 0.08);
+  background: rgba($wp-accent, 0.08);
   color: $accent-cyan;
-  border: 1px solid rgba(78, 205, 196, 0.32);
+  border: 1px solid rgba($wp-accent, 0.32);
 
   &:hover {
-    background: rgba(78, 205, 196, 0.16);
-    color: #8ceee9;
+    background: rgba($wp-accent, 0.16);
+    color: $wp-accent-hover;
   }
 }
 
@@ -280,10 +280,10 @@
 /* ---------- Premium Card (Collection) ---------- */
 #premium {
   grid-area: premium;
-  background-color: rgba(22, 22, 29, 0.74);
+  background-color: rgba($wp-bg-surface, 0.74);
   background-image:
-    radial-gradient(circle at 10% 0%, rgba(78, 205, 196, 0.11), transparent 34%),
-    linear-gradient(135deg, rgba(78, 205, 196, 0.05) 0%, rgba(22, 22, 29, 0.7) 100%);
+    radial-gradient(circle at 10% 0%, rgba($wp-accent, 0.11), transparent 34%),
+    linear-gradient(135deg, rgba($wp-accent, 0.05) 0%, rgba($wp-bg-surface, 0.7) 100%);
 }
 
 .section-title {
@@ -306,7 +306,7 @@
   isolation: isolate;
   background-color: rgb(255 255 255 / 0.03);
   background-image:
-    linear-gradient(145deg, rgb(255 255 255 / 0.065) 0%, rgb(255 255 255 / 0.018) 46%, rgba(78, 205, 196, 0.035) 100%);
+    linear-gradient(145deg, rgb(255 255 255 / 0.065) 0%, rgb(255 255 255 / 0.018) 46%, rgba($wp-accent, 0.035) 100%);
   border-radius: 16px;
   padding: 20px;
   border: 1px solid rgba(255, 255, 255, 0.05);
@@ -324,8 +324,8 @@
     inset: 0;
     z-index: -1;
     background:
-      radial-gradient(circle at 20% 0%, rgba(78, 205, 196, 0.14), transparent 34%),
-      radial-gradient(circle at 100% 12%, rgba(187, 134, 252, 0.13), transparent 30%);
+      radial-gradient(circle at 20% 0%, rgba($wp-accent, 0.14), transparent 34%),
+      radial-gradient(circle at 100% 12%, rgba($wp-accent-purple, 0.13), transparent 30%);
     opacity: 0;
     transition: opacity $t-med;
   }
@@ -334,8 +334,8 @@
     transform: translateY(-6px) scale(1.02);
     background-color: rgb(255 255 255 / 0.05);
     background-image:
-      linear-gradient(145deg, rgb(255 255 255 / 0.09) 0%, rgb(255 255 255 / 0.026) 46%, rgba(78, 205, 196, 0.05) 100%);
-    border-color: rgba(78, 205, 196, 0.3);
+      linear-gradient(145deg, rgb(255 255 255 / 0.09) 0%, rgb(255 255 255 / 0.026) 46%, rgba($wp-accent, 0.05) 100%);
+    border-color: rgba($wp-accent, 0.3);
     box-shadow: $shadow-hover;
     color: $text-primary;
 
@@ -434,18 +434,18 @@
   font-family: $font-mono;
   font-size: 0.65rem;
   text-transform: uppercase;
-  background: rgba(78, 205, 196, 0.1);
+  background: rgba($wp-accent, 0.1);
   color: $accent-cyan;
   padding: 2px 6px;
   border-radius: 4px;
-  border: 1px solid rgba(78, 205, 196, 0.2);
+  border: 1px solid rgba($wp-accent, 0.2);
   overflow-wrap: anywhere;
 }
 
 .game-item__badge--tamagotchi {
-  background: rgba(187, 134, 252, 0.1);
+  background: rgba($wp-accent-purple, 0.1);
   color: $accent-purple;
-  border-color: rgba(187, 134, 252, 0.2);
+  border-color: rgba($wp-accent-purple, 0.2);
 }
 
 .game-item__cta {
@@ -462,17 +462,17 @@
   text-align: center;
   white-space: normal;
   overflow-wrap: anywhere;
-  background: rgba(78, 205, 196, 0.1);
+  background: rgba($wp-accent, 0.1);
   color: $accent-cyan;
-  border: 1px solid rgba(78, 205, 196, 0.3);
+  border: 1px solid rgba($wp-accent, 0.3);
   align-self: flex-start;
-  box-shadow: 0 8px 20px rgba(78, 205, 196, 0.08);
+  box-shadow: 0 8px 20px rgba($wp-accent, 0.08);
   transition: transform $t-fast, background $t-fast, border-color $t-fast, color $t-fast, box-shadow $t-fast;
 
   &:hover {
     background: $accent-cyan;
     color: $bg-color;
-    box-shadow: 0 12px 26px rgba(78, 205, 196, 0.2);
+    box-shadow: 0 12px 26px rgba($wp-accent, 0.2);
     transform: translateY(-1px);
   }
 }
@@ -526,7 +526,7 @@
   text-align: center;
   justify-content: center;
   background-image:
-    radial-gradient(circle at 50% 10%, rgba(187, 134, 252, 0.12), transparent 42%),
+    radial-gradient(circle at 50% 10%, rgba($wp-accent-purple, 0.12), transparent 42%),
     linear-gradient(145deg, rgb(255 255 255 / 0.04), rgb(255 255 255 / 0.014));
   
   h3 {

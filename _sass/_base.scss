@@ -14,6 +14,7 @@ html {
 }
 
 :root {
+  @include wp-css-variables;
   --wp-border-05: rgba(255, 255, 255, 0.05);
   --wp-border-06: rgba(255, 255, 255, 0.06);
   --wp-border-07: rgba(255, 255, 255, 0.07);
@@ -37,10 +38,10 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background-image:
-    radial-gradient(circle at 12% 8%, rgba(78, 205, 196, 0.16) 0%, transparent 42%),
-    radial-gradient(circle at 88% 16%, rgba(187, 134, 252, 0.12) 0%, transparent 44%),
+    radial-gradient(circle at 12% 8%, rgba($wp-accent, 0.16) 0%, transparent 42%),
+    radial-gradient(circle at 88% 16%, rgba($wp-accent-purple, 0.12) 0%, transparent 44%),
     radial-gradient(circle at 50% 100%, rgba(255, 184, 108, 0.07) 0%, transparent 48%),
-    linear-gradient(135deg, #0a0a0f 0%, #0f1820 38%, #171222 68%, #0a0a0f 100%);
+    linear-gradient(135deg, $wp-bg-app 0%, #0f1820 38%, #171222 68%, $wp-bg-app 100%);
   background-attachment: fixed;
   background-size: cover;
 }
@@ -75,7 +76,7 @@ a {
   transition: all $t-fast;
   
   &:hover {
-    color: #8ceee9;
+    color: $wp-accent-hover;
   }
 }
 
