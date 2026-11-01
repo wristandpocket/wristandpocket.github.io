@@ -71,6 +71,7 @@ exclude_from_localization:
   - robots.txt
   - styles.scss
   - styles.css
+  - wearview
 parallel_localization: false
 
 # ── Defaults ─────────────────────────────────────────────────

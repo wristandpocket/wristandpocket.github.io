@@ -6,7 +6,7 @@
     {% endif %}
     {% if nav_path == '' %}{% assign nav_path = '/' %}{% endif %}
     <nav class="site-nav">
-        <a href="{{ '/' | relative_url }}" class="site-nav__brand"><span>W</span>&amp;<span>P</span> STUDIO</a>
+        <a href="{{ '/' | relative_url }}" class="site-nav__brand" aria-label="Wrist &amp; Pocket Studio"><span class="brand-w">W</span><span class="brand-amp">&amp;</span><span class="brand-p">P</span><span class="brand-tail">STUDIO</span></a>
         <div class="site-nav__links">
             <a href="{{ '/games/' | relative_url }}"{% if nav_path == '/games/' or page.layout == 'game' %} aria-current="page"{% endif %}>
                 <span class="nav-text-desktop">{{ site.data[site.active_lang].strings.games_title | default: 'Games' }}</span>

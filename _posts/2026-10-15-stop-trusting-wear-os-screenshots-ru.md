@@ -62,7 +62,7 @@ fmContentType: "Post"
 
 WearView бесплатный и с открытым кодом.
 
-- Открыть: <a {% static_href %}href="https://wristandpocket.dev/wearview/"{% endstatic_href %}>wristandpocket.dev/wearview</a>
+- Открыть: [wristandpocket.dev/wearview](https://wristandpocket.dev/wearview/)
 - Подробнее и FAQ: [страница WearView](/ru/tools/wearview/)
 - Код: [GitHub](https://github.com/wristandpocket/wearview)
 
@@ -70,4 +70,4 @@ WearView бесплатный и с открытым кодом.
 
 ## Это только начало
 
-WearView вырос из моих собственных потребностей, и список «а было бы круто, если бы…» у меня уже длинный. Некоторые вещи из него уже в работе, и они сделают проверку игр для часов ещё проще. Пока не раскрываю карты — stay tuned 😉
+WearView вырос из моих собственных потребностей, и список «а было бы круто, если бы…» у меня уже длинный. Некоторые вещи из него уже в работе, и они сделают проверку игр для часов ещё проще. Пока не раскрываю карты — stay tuned
