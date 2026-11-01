@@ -34,7 +34,8 @@
 <link rel="alternate" hreflang="{{ lang }}" {% static_href %}href="{{ alternate_url }}"{% endstatic_href %}>
 {% endfor %}
 <link rel="alternate" hreflang="x-default" {% static_href %}href="{{ page.url | absolute_url }}"{% endstatic_href %}>
-<link rel="icon" href="{{ '/assets/images/icons/game-cyberpunk.png' | relative_url }}" type="image/png">
+<link rel="icon" href="{{ '/assets/images/favicon-wp.svg' | relative_url }}" type="image/svg+xml">
+<link rel="alternate icon" href="{{ '/assets/images/icons/game-cyberpunk.png' | relative_url }}" type="image/png">
 <link rel="stylesheet" href="{{ '/styles.css' | relative_url }}?v={{ site.time | date: '%s' }}">
 {% include lang-redirect.html %}
 </head>

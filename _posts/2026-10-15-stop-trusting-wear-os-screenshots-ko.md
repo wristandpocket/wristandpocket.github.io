@@ -62,7 +62,7 @@ fmContentType: "Post"
 
 WearView는 무료 오픈 소스입니다.
 
-- 열기: <a {% static_href %}href="https://wristandpocket.dev/wearview/"{% endstatic_href %}>wristandpocket.dev/wearview</a>
+- 열기: [wristandpocket.dev/wearview](https://wristandpocket.dev/wearview/)
 - 자세한 내용과 FAQ: [WearView 페이지](/ko/tools/wearview/)
 - 코드: [GitHub](https://github.com/wristandpocket/wearview)
 
@@ -70,4 +70,4 @@ WearView는 무료 오픈 소스입니다.
 
 ## 이제 시작일 뿐입니다
 
-WearView는 제 필요에서 시작됐고, "이런 게 있으면 좋겠다" 목록은 벌써 깁니다. 그중 일부는 이미 작업 중이고, 워치 게임 확인을 훨씬 더 쉽게 만들어 줄 겁니다. 아직은 비밀입니다. stay tuned 😉
+WearView는 제 필요에서 시작됐고, "이런 게 있으면 좋겠다" 목록은 벌써 깁니다. 그중 일부는 이미 작업 중이고, 워치 게임 확인을 훨씬 더 쉽게 만들어 줄 겁니다. 아직은 비밀입니다. stay tuned

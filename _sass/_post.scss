@@ -4,7 +4,6 @@
 
 #news {
   grid-area: news;
-  background: linear-gradient(135deg, rgba($wp-accent-purple, 0.03) 0%, rgba($wp-bg-surface, 0.7) 100%);
 }
 
 .news-section__header {
@@ -21,37 +20,28 @@
   margin-bottom: 20px;
 }
 
-@media (max-width: 600px) {
-  .news-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 .news-card {
   position: relative;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: $wp-bg-surface-elevated;
+  border: 1px solid var(--wp-border-05);
   border-radius: 16px;
   padding: 20px;
   display: flex;
   flex-direction: column;
-  transition: all $t-fast;
+  transition: transform $t-fast, border-color $t-fast;
   cursor: pointer;
   color: $text-primary;
   text-decoration: none;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.04);
-    border-color: rgba($wp-accent, 0.15);
+    border-color: rgba($wp-accent, 0.25);
     transform: translateY(-2px);
-    color: $text-primary;
   }
 
   &:focus-visible {
     outline: 2px solid $accent-cyan;
     outline-offset: 4px;
-    background: rgba(255, 255, 255, 0.04);
     transform: translateY(-2px);
   }
 }
@@ -64,18 +54,17 @@
 }
 
 .game-tag-badge {
-  font-family: $font-mono;
+  font-family: 'Pixeloid Sans', $font-mono;
   font-size: 0.65rem;
-  font-weight: 600;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   line-height: 1.25;
   max-width: 100%;
-  background: rgba(5, 28, 32, 0.86);
+  background: rgba($wp-accent, 0.08);
   color: $wp-accent-hover;
-  padding: 2px 6px;
+  padding: 3px 6px;
   border-radius: 4px;
-  border: 1px solid rgba($wp-accent, 0.34);
-  box-shadow: inset 0 0 0 1px rgba(10, 218, 198, 0.05), 0 0 14px rgba($wp-accent, 0.08);
+  border: 1px solid rgba($wp-accent, 0.25);
   overflow-wrap: anywhere;
 }
 
@@ -134,10 +123,6 @@
       color: $bg-color;
     }
   }
-}
-
-.games-list {
-  margin-bottom: 50px;
 }
 
 /* ---------- Blog Feed Page ---------- */
@@ -199,7 +184,6 @@
   min-height: 44px;
   border-radius: 6px;
   cursor: pointer;
-  box-shadow: inset 0 0 0 1px rgba($wp-accent, 0.04), 0 8px 18px rgba(0, 0, 0, 0.18);
   transition: all $t-fast;
   overflow-wrap: anywhere;
 
@@ -213,7 +197,6 @@
     background: rgba($wp-accent, 0.18);
     color: $wp-accent-hover;
     border-color: rgba($wp-accent, 0.58);
-    box-shadow: inset 0 0 0 1px rgba(141, 247, 238, 0.08), 0 0 18px rgba($wp-accent, 0.12);
   }
 }
 
@@ -294,9 +277,8 @@
   h2 { font-size: clamp(1.35rem, 3.5vw, 1.6rem); }
   h3 { font-size: clamp(1.15rem, 3vw, 1.3rem); }
 
-  /* Codeblocks and Highlights */
   pre {
-    background: rgba($wp-bg-surface, 0.8) !important;
+    background: $wp-bg-surface-elevated !important;
     border: 1px solid $border-card;
     border-radius: 12px;
     padding: 16px;
@@ -320,7 +302,6 @@
     font-size: 0.85rem;
   }
 
-  /* Blockquote styling */
   blockquote {
     border-left: 4px solid $accent-purple;
     padding-left: 20px;
@@ -329,7 +310,6 @@
     font-style: italic;
   }
 
-  /* Lists */
   ul, ol {
     margin-bottom: 24px;
     padding-left: 24px;
@@ -339,7 +319,6 @@
     }
   }
 
-  /* Images */
   img {
     max-width: 100%;
     height: auto;
@@ -362,7 +341,6 @@
     }
   }
 
-  /* Tables */
   table {
     width: 100%;
     border-collapse: collapse;
@@ -423,11 +401,7 @@
     margin-bottom: 16px;
   }
 
-  h1,
-  h2,
-  p,
-  li,
-  a {
+  h1, h2, p, li, a {
     overflow-wrap: anywhere;
   }
 

@@ -62,7 +62,7 @@ It's not an emulator. It doesn't run your APK, doesn't measure FPS and doesn't r
 
 WearView is free and open source.
 
-- Open it: <a {% static_href %}href="https://wristandpocket.dev/wearview/"{% endstatic_href %}>wristandpocket.dev/wearview</a>
+- Open it: [wristandpocket.dev/wearview](https://wristandpocket.dev/wearview/)
 - More details and FAQ: [WearView page](/tools/wearview/)
 - Code: [GitHub](https://github.com/wristandpocket/wearview)
 
@@ -70,4 +70,4 @@ If your watch is missing, let me know on GitHub or [Discord](https://discord.gg/
 
 ## This is just the beginning
 
-WearView grew out of my own needs, and my "wouldn't it be cool if…" list is already long. Some things from it are already in the works, and they'll make checking watch games even easier. Not showing my cards yet — stay tuned 😉
+WearView grew out of my own needs, and my "wouldn't it be cool if…" list is already long. Some things from it are already in the works, and they'll make checking watch games even easier. Not showing my cards yet — stay tuned
