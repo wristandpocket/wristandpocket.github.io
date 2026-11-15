@@ -3,6 +3,7 @@ layout: "post"
 title: "내 Wear OS 게임 스크린샷을 더 이상 믿지 않는 이유"
 description: "모니터 속 스크린샷은 플레이어가 보는 워치 게임의 모습을 보여 주지 않습니다. 화면을 실제 크기의 3D 워치 모델에 띄워 주는 무료 도구 WearView를 만든 이유를 소개합니다."
 date: "2026-10-15T12:00:00.000Z"
+last_modified_at: "2026-11-15T12:00:00.000Z"
 lang: "ko"
 page_id: "stop-trusting-wear-os-screenshots"
 permalink: "/blog/stop-trusting-wear-os-screenshots/"
@@ -34,7 +35,7 @@ fmContentType: "Post"
 
 브라우저에서 페이지를 열면 끝입니다. 설치도, 가입도 필요 없고 스크린샷은 어디로도 전송되지 않습니다.
 
-워치를 고르고(현재 Pixel Watch, Galaxy Watch, OnePlus, TicWatch 등 11개 모델), Ctrl+V나 끌어다 놓기로 이미지를 넣으면 3D 모델의 화면에 표시됩니다. 워치를 돌려 보고, 손목에 채워 보고, "햇빛"이나 "야간" 조명에서도 볼 수 있습니다.
+워치를 고르고(현재 **4개 제품군 21종의 정확한 3D 모델**: Google Pixel Watch 1–4, Samsung Galaxy Watch4 Classic부터 Watch8 Classic 및 Ultra, OnePlus Watch 2/3, Xiaomi Watch 2 Pro, Mobvoi TicWatch Pro 5), Ctrl+V나 끌어다 놓기로 이미지를 넣으면 3D 모델의 화면에 표시됩니다. 워치를 돌려 보고, `0°`·`35°`·`75°` 각도 프리셋을 전환하고, 손목에 채우거나 "햇빛" 및 "야간" 조명에서도 확인할 수 있습니다.
 
 ## 가장 좋아하는 기능, 라이브 모드
 
@@ -53,6 +54,8 @@ fmContentType: "Post"
 **네이티브 픽셀.** 프레임을 워치의 실제 해상도로 보여 줍니다. 작은 글자나 픽셀 아트가 얼마나 남는지 바로 보입니다.
 
 **두 워치 나란히.** 작은 Pixel Watch를 큰 Galaxy Watch 옆에 놓아 봅니다. 큰 워치에서 여유롭던 화면이 작은 워치에서는 비좁아지는 경우가 많고, 그게 1초 만에 보입니다.
+
+**물리 인체공학 &amp; AOD 검사기.** 1:1 보정 모드에서 **14mm 손가락 터치 패드**는 실제 손가락 끝이 작은 버튼을 얼마나 가리는지 보여 주고, **2초 한눈 테스트**는 손목을 들어 2초 안에 핵심 HUD를 읽을 수 있는지 확인하며, **AOD / OPR &lt; 10% 히트맵**은 Always-On Display에서 OLED 번인 기준을 넘는 픽셀을 표시합니다. 자세한 내용은 실전 가이드를 참고하세요: [Wear OS 세이프 존, 14mm 터치 타겟 &amp; AOD 10% 미만 OPR](/ko/blog/wearos-safe-zones-aod-opr-ergonomics/).
 
 ## 솔직한 한계
 

@@ -3,6 +3,7 @@ layout: "post"
 title: "Why I stopped trusting screenshots of my Wear OS games"
 description: "A screenshot on a monitor does not show a watch game the way a player sees it. Here is why I built WearView, a free tool that puts your screen on a 3D watch model at real size."
 date: "2026-10-15T12:00:00.000Z"
+last_modified_at: "2026-11-15T12:00:00.000Z"
 lang: "en"
 page_id: "stop-trusting-wear-os-screenshots"
 permalink: "/blog/stop-trusting-wear-os-screenshots/"
@@ -34,7 +35,7 @@ On a monitor you can't see that the Galaxy Watch7 44 mm display is about 37 mm a
 
 You open a page in your browser, and that's it. Nothing to install, no sign-up, and your screenshots don't go anywhere.
 
-Pick a watch (there are 11 right now: Pixel Watch, Galaxy Watch, OnePlus, TicWatch), drop in an image with Ctrl+V or drag and drop, and it lands on the screen of a 3D model. You can spin the watch, put it on a wrist, look at it in "sunlight" or at "night".
+Pick a watch (there are now **21 accurate 3D models across 4 device families**: Google Pixel Watch 1–4, Samsung Galaxy Watch 4 Classic through Watch8 Classic & Ultra, OnePlus Watch 2/3, Xiaomi Watch 2 Pro, and Mobvoi TicWatch Pro 5), drop in an image with Ctrl+V or drag and drop, and it lands on the screen of a 3D model. You can spin the watch, snap between `0°` Front, `35°` Tilt, and `75°` Bezel presets, put it on a wrist, or look at it in "sunlight" or at "night".
 
 ## Live mode is my favourite part
 
@@ -53,6 +54,8 @@ Change a font size, move a button, recolour the background — and you instantly
 **Native pixels.** Shows the frame at the watch's real resolution. You immediately see what's left of small text or pixel art.
 
 **Two watches side by side.** I put a small Pixel Watch next to a big Galaxy Watch. What feels roomy on the big one often gets cramped on the small one — and you see it in a second.
+
+**Physical Ergonomics &amp; AOD Checkers.** In calibrated 1:1 mode, the **14 mm Finger Contact Pad** shows how much of a tiny UI button a human fingertip covers; the **2-Second Glanceability Test** checks whether key HUD text reads in one wrist-raise glance; and the **AOD / OPR &lt; 10% Heatmap** flags Always-On Display frames that burn too many OLED pixels. Read the full breakdown in our guide: [Wear OS Safe Zones, 14mm Touch Targets &amp; AOD &lt;10% OPR](/blog/wearos-safe-zones-aod-opr-ergonomics/).
 
 ## Honest about the limits
 
