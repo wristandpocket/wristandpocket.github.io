@@ -1,7 +1,8 @@
 # Wrist & Pocket Studio — Official Website (`wristandpocket.dev`)
 
-> **Owner:** Ihor Sivochka (Figarist) · **Email:** wristandpocket.studio@gmail.com  
-> **Live:** https://wristandpocket.dev · **Repo:** https://github.com/wristandpocket/wristandpocket.github.io
+> **Owner:** [Ihor Sivochka (Figarist)](https://sivochka.com/) · **Email:** wristandpocket.studio@gmail.com  
+> **Live Studio:** [https://wristandpocket.dev/](https://wristandpocket.dev/) · **WearView 3D App:** [https://wristandpocket.dev/wearview/](https://wristandpocket.dev/wearview/) · **WearView Docs:** [https://wristandpocket.dev/tools/wearview/](https://wristandpocket.dev/tools/wearview/) · **Dev Blog:** [https://wristandpocket.dev/blog/](https://wristandpocket.dev/blog/)  
+> **Repo:** [wristandpocket/wristandpocket.github.io](https://github.com/wristandpocket/wristandpocket.github.io)
 
 ---
 
@@ -58,7 +59,7 @@ This repository is the public website for **Wrist & Pocket Studio**, built with 
 ├── index.html          ← Studio homepage (Hero showcase, Featured games, News, WearView tool card, Philosophy, Connect)
 ├── privacy-*.md        ← Quadrilingual Privacy Policy (/privacy/, aligned with studio consent baseline)
 ├── styles.scss         ← Master SCSS entry point (compiles to /styles.css)
-├── sitemap.xml         ← Quadrilingual XML sitemap with reciprocal xhtml:link hreflang alternates (52 routes)
+├── sitemap.xml         ← Quadrilingual XML sitemap with reciprocal xhtml:link hreflang alternates (56 routes)
 └── robots.txt          ← Crawler directives pointing to https://wristandpocket.dev/sitemap.xml
 ```
 
@@ -106,7 +107,7 @@ On macOS/Linux use `npm run <script>`; on Windows PowerShell use `npm.cmd run <s
 | `npm run verify:html` | HTMLProofer check on `./_site` (ignores `/^\/wearview\//`, which is deployed from a separate repository) |
 | `npm run verify:js` | Verifies `_site/assets/js/script.js` stays under the 20 KB budget (currently ~1.9 KB) |
 | `npm run verify:quality` | Deterministic DOM accessibility gate (landmarks, single H1, heading hierarchy, `img[alt]`, accessible names) |
-| `npm run verify:routes` | Nokogiri audit of all 56 HTML pages (52 indexable routes + 4 localized `404.html`), canonicals, 5-link `hreflang`, JSON-LD, anchors, and `public_routes.json` |
+| `npm run verify:routes` | Nokogiri audit of all 60 HTML pages (56 indexable routes + 4 localized `404.html`), canonicals, 5-link `hreflang`, JSON-LD, anchors, and `public_routes.json` |
 | `npm run test:audit` | Mutation test suite proving `audit_site.rb` catches broken assets, anchors, canonicals, sitemaps, and file leaks |
 | `npm run verify` | Runs the complete 10-step verification pipeline end-to-end |
 | `npm run check:images` | Checks `assets/images/` for WebP/SVG compliance and approved PNG icon exceptions |
