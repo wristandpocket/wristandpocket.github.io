@@ -31,15 +31,26 @@
     "notfound": "Page not found",
     "notfound_text": "This address does not lead to a page. Explore the projects or return home.",
     "privacy_note": "The website stores your language choice in this browser. It does not currently load a separate website analytics counter.",
-    "cyber": "A Wear OS 3D graphics experiment set in a neon city.",
+    "cyber": "A Wear OS 3D game set in a neon city. The studio's pilot project, now in testing.",
     "pet": "A virtual pet concept for Wear OS: look after a demanding little monster.",
-    "cyber_body": "Cyberpunk 3D is a legacy-maintenance Wear OS project exploring a real-time neon city on a watch-sized screen. The archived development media below show the visual scene and an on-screen performance overlay.\n\nThe project explores a benchmark-style experience. We have not published a validated measurement methodology, comparable device results or battery-life figures.",
+    "cyber_body": "Cyberpunk 3D is the studio's pilot project for its Wear OS SDK. It is a real-time 3D game set in a neon city on a watch-sized screen. It is in active development and in testing, and it will come out of testing soon.\n\nThe development media below shows the visual scene and an on-screen performance overlay. We have not published device performance results or battery-life figures yet.",
     "pet_body": "Feed Me, Loser! is a legacy-maintenance Wear OS concept about a satirical virtual pet on a watch-sized screen. The concept centres on feeding, care and the consequences of looking after a demanding monster.\n\nArchived development notes describe the intended pet loop. The screenshots below are development material; they are not a promise that every planned mechanic is ready for release.",
     "tool_label": "Developer tool",
     "tool_title": "WearView: see your screen on a real watch",
     "tool_text": "Paste a screenshot or mirror the Unity Game view onto 21 accurate 3D Wear OS watches at 1:1 physical size with 80%/90% safe zones, 14mm finger pad, and OLED AOD <10% OPR checker. Free, open source, runs in your browser.",
     "tool_cta": "Open WearView",
-    "tool_more": "About the tool"
+    "tool_more": "About the tool",
+    "games_hub_body": [
+      "I build small games for Wear OS smartwatches. I design them for short sessions, the round screen and rotary input. On my priority list, battery use and watch UX come before raw graphics. A watch screen has only a few seconds of attention to earn, so every screen has to explain itself at a glance.",
+      "My rule is no shovelware: native Wear OS builds, round-display ergonomics and offline gameplay, not bundles of tiny filler games.",
+      "The projects on this page are at different stages. Cyberpunk 3D is the studio's pilot project for its Wear OS SDK. It is a real-time 3D game set in a neon city. It is in active development and in testing, and it will come out of testing soon. There is no public download yet, and I do not have a release date to share.",
+      "Feed Me, Loser! is a satirical virtual pet that you feed, look after and exercise with the rotary bezel. It is archived in legacy maintenance, which means no new work without a separate decision. Its pages keep the design notes and development media, but it is not a current tester build.",
+      "More games are in development. I am not naming them on this page yet. I will share news about each one in the studio's development notes once there is something worth showing.",
+      "Each game page shows its current status, the development media I have, and an FAQ. Where a fact is not confirmed yet, such as the minimum Wear OS version or the tested watch models, the page says so instead of guessing.",
+      "If you build for Wear OS, the guides and WearView are written for that work. If you play watch games, the game pages tell you what is available right now and what is not.",
+      "If you want to know how I think about this kind of game, start with two guides. <a href=\"/blog/what-makes-good-wear-os-game/\">What Makes a Good Wear OS Game?</a> covers session length, input and readability. <a href=\"/blog/wearos-safe-zones-aod-opr-ergonomics/\">Wear OS Safe Zones, 14mm Touch Targets and AOD</a> covers round cropping, fingertip coverage and Always-On Display burn-in.",
+      "I also built <a href=\"/tools/wearview/\">WearView</a>, a free, open-source tool that shows Wear OS screenshots and live Unity windows on 3D watch models at real size. It runs in your browser, so nothing is uploaded."
+    ]
   },
   "uk": {
     "hero": "Маленький екран. Власний світ.",
@@ -73,15 +84,27 @@
     "notfound": "Сторінку не знайдено",
     "notfound_text": "За цією адресою немає сторінки. Перегляньте проєкти або поверніться на головну.",
     "privacy_note": "Сайт зберігає вибрану мову в цьому браузері. Окремий лічильник вебаналітики зараз не підключено.",
-    "cyber": "Експеримент із тривимірною графікою для Wear OS у неоновому місті.",
+    "cyber": "3D-гра для Wear OS у неоновому місті. Пілотний проєкт студії, зараз у тестуванні.",
     "pet": "Концепція віртуального вихованця для Wear OS: доглядайте за вередливим монстриком.",
-    "cyber_body": "Cyberpunk 3D — проєкт для Wear OS у режимі підтримки, що досліджує неонове місто в реальному часі на екрані розміром із годинник. Архівні матеріали розробки нижче показують сцену й екранні показники продуктивності.\n\nЗадум проєкту — дослідити формат графічного тесту. Перевіреної методики вимірювання, порівняльних результатів пристроїв і даних про витрату заряду ми не публікували.",
+    "cyber_body": "Cyberpunk 3D — пілотний проєкт студії для Wear OS SDK. Це 3D-гра в реальному часі, дія якої відбувається в неоновому місті на екрані розміром із годинник. Проєкт перебуває в активній розробці та тестуванні й незабаром вийде з тестування.\n\nНижче показано візуальну сцену та екранний показник продуктивності з матеріалів розробки. Результати продуктивності на пристроях і дані про витрату заряду ми ще не публікували.",
     "pet_body": "Feed Me, Loser! — концепція Wear OS у режимі підтримки: сатирична гра про віртуального вихованця на маленькому екрані. В основі — годування, догляд і наслідки турботи про вимогливого монстрика.\n\nАрхівні нотатки про розробку описують задуманий ігровий цикл. Скриншоти нижче є матеріалами розробки, а не обіцянкою готовності всіх запланованих механік до релізу.",
     "tool_label": "Інструмент для розробників",
     "tool_title": "WearView: ваш екран на справжньому годиннику",
     "tool_text": "Вставте скриншот або транслюйте Unity Game view на 21 точну 3D-модель годинників Wear OS у масштабі 1:1 із безпечними зонами 80%/90%, шаблоном пальця 14 мм і перевіркою OLED AOD <10% OPR. Безкоштовно, з відкритим кодом, у браузері.",
     "tool_cta": "Відкрити WearView",
-    "tool_more": "Про інструмент"
+    "tool_more": "Про інструмент",
+    "games_hub_body": [
+      "Я створюю невеликі ігри для смарт-годинників на Wear OS. Я проєктую їх для коротких сесій, круглого екрана й обертового керування. У моєму списку пріоритетів витрата батареї та UX годинника стоять вище за графіку.",
+      "На годиннику немає місця для довгих пояснень, тому кожен екран має бути зрозумілим з першого погляду. Саме це я перевіряю першим у кожній грі.",
+      "Моє правило: жодного шовдверу. Нативні збірки для Wear OS, ергономіка круглого екрана та офлайн-геймплей, а не пачки дрібних мініігор.",
+      "Проєкти на цій сторінці перебувають на різних етапах. Cyberpunk 3D — пілотний проєкт студії для Wear OS SDK. Це 3D-гра в реальному часі, дія якої відбувається в неоновому місті. Вона перебуває в активній розробці та тестуванні й незабаром вийде з тестування. Публічного завантаження поки немає, і дати релізу я назвати не можу.",
+      "Feed Me, Loser! — сатиричний віртуальний вихованець, якого ви годуєте, доглядаєте й тренуєте обертанням безеля. Гра в архіві, у режимі підтримки застарілого проєкту: нова робота без окремого рішення не ведеться. Сторінки зберігають нотатки з дизайну та матеріали розробки, але це не актуальна тестова збірка.",
+      "Ще кілька ігор у розробці. Поки що я не називаю їх на цій сторінці. Новини про кожну з них з'являтимуться в нотатках про розробку студії, коли буде що показати.",
+      "Кожна сторінка гри показує поточний статус, матеріали розробки та FAQ. Якщо якогось факту ще немає в підтвердженому вигляді, наприклад мінімальної версії Wear OS або перевірених моделей годинників, сторінка прямо про це пише, а не вгадує.",
+      "Якщо ви розробляєте для Wear OS, гайди й WearView написані саме для такої роботи. Якщо ви граєте в ігри на годиннику, сторінки ігор покажуть, що доступно зараз, а чого поки немає.",
+      "Якщо хочеться зрозуміти, як я думаю про такі ігри, почніть із двох гайдів. <a href=\"/uk/blog/what-makes-good-wear-os-game/\">Що робить гру на Wear OS хорошою?</a> пояснює тривалість сесій, керування й читабельність. <a href=\"/uk/blog/wearos-safe-zones-aod-opr-ergonomics/\">Безпечні зони Wear OS, зони дотику 14 мм та AOD</a> розбирає обрізання по колу, зони для пальця та вигорання Always-On Display.",
+      "Я також зробив <a href=\"/uk/tools/wearview/\">WearView</a>: безкоштовний інструмент з відкритим кодом, який показує скриншоти Wear OS і живі вікна Unity на 3D-моделях годинників у реальному розмірі. Він працює у браузері, тож нічого не завантажується на сервер. Питання про проєкти можна надіслати через сторінку контактів."
+    ]
   },
   "ru": {
     "hero": "Маленький экран. Свой мир.",
@@ -115,15 +138,27 @@
     "notfound": "Страница не найдена",
     "notfound_text": "По этому адресу нет страницы. Посмотрите проекты или вернитесь на главную.",
     "privacy_note": "Сайт сохраняет выбранный язык в этом браузере. Отдельный счётчик веб-аналитики сейчас не подключён.",
-    "cyber": "Эксперимент с трёхмерной графикой для Wear OS в неоновом городе.",
+    "cyber": "3D-игра для Wear OS в неоновом городе. Пилотный проект студии, сейчас в тестировании.",
     "pet": "Концепция виртуального питомца для Wear OS: заботьтесь о капризном монстрике.",
-    "cyber_body": "Cyberpunk 3D — проект для Wear OS в режиме поддержки, исследующий неоновый город в реальном времени на экране размером с часы. Архивные материалы разработки ниже показывают сцену и экранные показатели производительности.\n\nЗамысел проекта — исследовать формат графического теста. Проверенную методику измерения, сравнительные результаты устройств и данные о расходе заряда мы не публиковали.",
+    "cyber_body": "Cyberpunk 3D — пилотный проект студии для Wear OS SDK. Это 3D-игра в реальном времени, действие которой происходит в неоновом городе на экране размером с часы. Проект находится в активной разработке и тестировании и скоро выйдет из тестирования.\n\nНиже показаны визуальная сцена и экранный показатель производительности из материалов разработки. Результаты производительности на устройствах и данные о расходе заряда мы пока не публиковали.",
     "pet_body": "Feed Me, Loser! — концепция для Wear OS в режиме поддержки: сатирическая игра о виртуальном питомце на маленьком экране. В основе — кормление, уход и последствия заботы о требовательном монстрике.\n\nАрхивные заметки о разработке описывают задуманный игровой цикл. Скриншоты ниже являются материалами разработки, а не обещанием готовности всех запланированных механик к релизу.",
     "tool_label": "Инструмент для разработчиков",
     "tool_title": "WearView: ваш экран на настоящих часах",
     "tool_text": "Вставьте скриншот или транслируйте Unity Game view на 21 точную 3D-модель часов Wear OS в масштабе 1:1 с безопасными зонами 80%/90%, зоной касания пальца 14 мм и проверкой OLED AOD <10% OPR. Бесплатно, с открытым кодом, в браузере.",
     "tool_cta": "Открыть WearView",
-    "tool_more": "Об инструменте"
+    "tool_more": "Об инструменте",
+    "games_hub_body": [
+      "Я делаю небольшие игры для смарт-часов на Wear OS. Я проектирую их для коротких сессий, круглого экрана и вращающегося безеля. В моём списке приоритетов расход батареи и UX часов стоят выше графики.",
+      "На часах нет места для длинных объяснений, поэтому каждый экран должен быть понятен с первого взгляда. Именно это я проверяю первым в каждой игре.",
+      "Моё правило: никакого шовдвера. Нативные сборки для Wear OS, эргономика круглого экрана и офлайн-геймплей, а не наборы мелких мини-игр.",
+      "Проекты на этой странице находятся на разных этапах. Cyberpunk 3D — пилотный проект студии для Wear OS SDK. Это 3D-игра в реальном времени, действие которой происходит в неоновом городе. Она находится в активной разработке и тестировании и скоро выйдет из тестирования. Публичной загрузки пока нет, и дату релиза я назвать не могу.",
+      "Feed Me, Loser! — сатирический виртуальный питомец, которого нужно кормить, заботиться о нём и тренировать вращением безеля. Игра в архиве, в режиме поддержки устаревшего проекта: новая работа без отдельного решения не ведётся. Страницы сохраняют заметки о дизайне и материалы разработки, но это не актуальная тестовая сборка.",
+      "Ещё несколько игр в разработке. Пока я не называю их на этой странице. Новости о каждой появятся в заметках о разработке студии, когда будет что показать.",
+      "Каждая страница игры показывает текущий статус, материалы разработки и FAQ. Если какого-то факта ещё нет в подтверждённом виде, например минимальной версии Wear OS или проверенных моделей часов, страница прямо об этом пишет, а не угадывает.",
+      "Если вы разрабатываете для Wear OS, гайды и WearView написаны именно для такой работы. Если вы играете в игры на часах, страницы игр покажут, что доступно сейчас, а чего пока нет.",
+      "Если хотите понять, как я думаю о таких играх, начните с двух гайдов. <a href=\"/ru/blog/what-makes-good-wear-os-game/\">Что делает игру на Wear OS хорошей?</a> — о длине сессий, управлении и читаемости. <a href=\"/ru/blog/wearos-safe-zones-aod-opr-ergonomics/\">Безопасные зоны Wear OS, цели касания 14 мм и AOD</a> — об обрезке по кругу, зонах для пальца и выгорании Always-On Display.",
+      "Я также сделал <a href=\"/ru/tools/wearview/\">WearView</a>: бесплатный инструмент с открытым кодом, который показывает скриншоты Wear OS и живые окна Unity на 3D-моделях часов в реальном размере. Он работает в браузере, поэтому ничего не загружается на сервер. Вопросы о проектах можно отправить через страницу контактов."
+    ]
   },
   "ko": {
     "hero": "작은 화면. 우리만의 세계.",
@@ -157,14 +192,26 @@
     "notfound": "페이지를 찾을 수 없습니다",
     "notfound_text": "이 주소에는 페이지가 없습니다. 프로젝트를 살펴보거나 홈으로 돌아가세요.",
     "privacy_note": "웹사이트는 이 브라우저에 선택한 언어를 저장합니다. 현재 별도의 웹 분석 도구는 사용하지 않습니다.",
-    "cyber": "네온 도시를 배경으로 한 Wear OS용 3D 그래픽 실험입니다.",
+    "cyber": "네온 도시를 배경으로 한 Wear OS용 3D 게임. 스튜디오의 파일럿 프로젝트이며 현재 테스트 중입니다.",
     "pet": "Wear OS용 가상 반려동물 콘셉트: 까다로운 작은 몬스터를 돌보세요.",
-    "cyber_body": "Cyberpunk 3D는 레거시 유지보수 상태의 Wear OS 프로젝트로, 시계 크기의 화면에서 실시간 네온 도시를 탐구합니다. 아래 보관된 개발 자료에는 장면과 화면상의 성능 표시가 담겨 있습니다.\n\n이 프로젝트는 그래픽 벤치마크 형식을 탐구합니다. 검증된 측정 방법, 기기별 비교 결과 또는 배터리 사용 수치는 공개하지 않았습니다.",
+    "cyber_body": "Cyberpunk 3D는 Wear OS SDK를 위한 스튜디오의 파일럿 프로젝트입니다. 시계 크기의 화면에서 즐기는 실시간 3D 게임이며, 배경은 네온 도시입니다. 현재 활발히 개발 중이고 테스트 단계에 있으며, 곧 테스트 단계를 마칠 예정입니다.\n\n아래 개발 자료에는 장면과 화면상의 성능 표시가 담겨 있습니다. 기기별 성능 결과와 배터리 사용 수치는 아직 공개하지 않았습니다.",
     "pet_body": "Feed Me, Loser!는 레거시 유지보수 상태의 Wear OS 콘셉트로, 시계 크기의 화면에서 즐기는 풍자적인 가상 반려동물 게임입니다. 먹이 주기, 돌보기와 까다로운 몬스터를 보살핀 결과가 중심입니다.\n\n보관된 개발 기록에는 구상 중인 플레이 흐름이 설명되어 있습니다. 아래 스크린샷은 개발 자료이며 모든 계획된 기능의 출시 준비가 끝났다는 약속은 아닙니다.",
     "tool_label": "개발자 도구",
     "tool_title": "WearView: 실제 워치에서 화면 확인",
     "tool_text": "스크린샷을 붙여넣거나 Unity Game 뷰를 21종의 정확한 3D Wear OS 워치에 1:1 실제 크기로 미러링하세요. 80%/90% 세이프 존, 14mm 손가락 터치 패드, OLED AOD 10% 미만 OPR 검사 지원. 무료 오픈 소스 웹 도구.",
     "tool_cta": "WearView 열기",
-    "tool_more": "도구 소개"
+    "tool_more": "도구 소개",
+    "games_hub_body": [
+      "저는 Wear OS 스마트워치용 작은 게임을 만듭니다. 짧은 플레이 세션, 둥근 화면, 회전 베젤 입력을 기준으로 설계합니다. 제 우선순위 목록에서는 그래픽보다 배터리 사용과 워치 UX가 먼저입니다.",
+      "시계 화면에는 긴 설명을 넣을 자리가 없어서, 모든 화면은 한눈에 이해되어야 한다고 생각합니다. 저는 게임을 만들 때 이 점을 가장 먼저 확인합니다.",
+      "제 원칙은 얇은 콘텐츠를 억지로 채운 게임 묶음을 만들지 않는 것입니다. 네이티브 Wear OS 빌드, 둥근 화면에 맞춘 인체공학, 오프라인 플레이를 지향합니다.",
+      "이 페이지의 프로젝트들은 서로 다른 단계에 있습니다. Cyberpunk 3D는 Wear OS SDK를 위한 스튜디오의 파일럿 프로젝트입니다. 네온 도시를 배경으로 한 실시간 3D 게임이며, 현재 활발히 개발 중이고 테스트 단계에 있어 곧 테스트를 마칠 예정입니다. 아직 공개 다운로드는 없고, 제가 공유할 수 있는 출시일도 없습니다.",
+      "Feed Me, Loser!는 먹이를 주고 돌보며 회전 베젤로 운동을 시키는 풍자적인 가상 반려동물 게임입니다. 현재 레거시 유지보수 상태로 보관되어 있어, 별도 결정 없이 새 작업은 진행하지 않습니다. 페이지에는 설계 노트와 개발 자료가 남아 있지만 현재 테스트 빌드는 아닙니다.",
+      "그 밖에도 여러 게임을 개발 중입니다. 아직 이 페이지에서 이름을 밝히지는 않겠습니다. 보여 드릴 만한 단계가 되면 스튜디오 개발 기록에서 소식을 전하겠습니다.",
+      "각 게임 페이지에는 현재 상태, 개발 자료, FAQ가 있습니다. 최소 Wear OS 버전이나 테스트된 시계 모델처럼 아직 확인되지 않은 사실은 추측하지 않고 그렇다고 적어 둡니다.",
+      "Wear OS 앱을 만든다면 가이드와 WearView가 그 작업을 위해 쓰였습니다. 워치 게임을 즐기는 분이라면 게임 페이지에서 지금 이용할 수 있는 것과 아직 없는 것을 확인할 수 있습니다.",
+      "이런 게임을 어떻게 만드는지 궁금하다면 가이드 두 편부터 읽어 보세요. <a href=\"/ko/blog/what-makes-good-wear-os-game/\">훌륭한 Wear OS 게임의 조건은 무엇일까요?</a>에서는 세션 길이, 입력, 가독성을 다룹니다. <a href=\"/ko/blog/wearos-safe-zones-aod-opr-ergonomics/\">Wear OS 세이프 존, 14mm 터치 타겟, AOD</a>에서는 원형 화면에서 잘리는 요소, 손가락 터치 영역, 상시 표시 화면(AOD) 번인을 다룹니다.",
+      "저는 <a href=\"/ko/tools/wearview/\">WearView</a>도 만들었습니다. Wear OS 스크린샷과 Unity 실시간 창을 3D 워치 모델에 실제 크기로 보여 주는 무료 오픈소스 도구입니다. 브라우저에서 동작하므로 어떤 것도 업로드되지 않습니다. 프로젝트에 대한 질문은 문의 페이지로 보내 주세요."
+    ]
   }
 }

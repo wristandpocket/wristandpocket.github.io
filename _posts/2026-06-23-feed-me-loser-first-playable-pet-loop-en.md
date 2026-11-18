@@ -17,6 +17,8 @@ published: true
 fmContentType: "Post"
 ---
 
+**Update, November 2026:** Feed Me, Loser! is archived and in legacy maintenance. This devlog is kept for reference. For current status, see the [Feed Me, Loser! project page](/games/feed-me-loser/).
+
 This is an archived June 2026 devlog. It records a development snapshot from that date; Feed Me, Loser! is now in legacy maintenance, and this post does not describe a current tester build or invitation.
 
 At the time, [Feed Me, Loser!](/games/feed-me-loser/) was not trying to be a mobile pet simulator squeezed onto a watch. The goal described in this snapshot was smaller and more honest: make one complete virtual pet loop for Wear OS that a new tester could understand in under a minute.

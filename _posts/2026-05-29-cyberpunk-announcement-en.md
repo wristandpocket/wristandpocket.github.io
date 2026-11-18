@@ -14,9 +14,11 @@ published: true
 fmContentType: "Post"
 ---
 
+**Update, November 2026:** Cyberpunk 3D is the studio's pilot project and is in testing now. It will come out of testing soon. For current status, see the [Cyberpunk 3D project page](/games/cyberpunk-3d/).
+
 ## Archived May 2026 testing announcement
 
-This is an archived announcement from May 2026. It describes a testing phase at that time; Cyberpunk 3D is now in legacy maintenance, public access is unavailable, and this post is not an invitation to test. See the [Cyberpunk 3D project page](/games/cyberpunk-3d/) for current status.
+This is an archived announcement from May 2026. It describes a testing phase at that time; public access is not open yet, and this post is not an invitation to test. See the [Cyberpunk 3D project page](/games/cyberpunk-3d/) for current status.
 
 > _"Nobody expected it, but we did it."_
 

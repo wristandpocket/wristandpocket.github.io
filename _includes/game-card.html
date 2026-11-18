@@ -22,5 +22,5 @@
         </{{ include.heading | default: "h3" }}>
         <p>{{ game.description }}</p>
     </div>
-    <div class="project-card-end"><span class="project-status">{{ site.data.site_copy[site.active_lang].status }}</span><span class="project-more">{{ site.data.site_copy[site.active_lang].details }} &rarr;</span></div>
+    <div class="project-card-end"><span class="project-status">{{ game.status_label | default: site.data.site_copy[site.active_lang].status }}</span><span class="project-more">{{ site.data.site_copy[site.active_lang].details }} &rarr;</span></div>
 </a>

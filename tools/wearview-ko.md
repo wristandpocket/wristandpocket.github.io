@@ -3,9 +3,9 @@ layout: tool
 lang: ko
 page_id: "tool-wearview"
 permalink: /tools/wearview/
-title: "WearView — 3D Wear OS 화면 미리보기, 세이프 존 및 AOD 번인 검사기"
+title: "WearView: Wear OS 화면 미리보기"
 badge: "무료 개발자 도구"
-description: "스크린샷이나 Unity·에뮬레이터 화면을 21종의 정확한 3D Wear OS 워치에 1:1 실제 크기로 투영하세요. 80%/90% 세이프 존, 14mm 손가락 터치 패드, 2초 가독성 테스트 및 OLED AOD 10% 미만 OPR 검사를 지원합니다."
+description: "Wear OS 스크린샷과 Unity 실시간 화면을 21개 3D 워치 모델에 1:1 크기로 확인하세요. 세이프 존, 터치 영역, AOD 검사를 지원하며 무료입니다."
 banner: "/assets/images/tools/wearview-hero.webp"
 banner_alt: "3D Samsung Galaxy Watch7에 Wear OS 게임 화면을 표시한 WearView"
 image: "/assets/images/tools/wearview-og.webp"

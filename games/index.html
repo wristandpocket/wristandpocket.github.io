@@ -14,7 +14,7 @@ permalink: /games/
     <p>{{ strings.games_label }}</p>
 </div>
 
-<p class="catalog-intro">{{ site.data.site_copy[site.active_lang].intro }}</p>
+<div class="catalog-intro">{% for paragraph in site.data.site_copy[site.active_lang].games_hub_body %}<p>{{ paragraph }}</p>{% endfor %}</div>
 
 {% assign all_games = site.pages | where: "layout", "game" | where: "lang", site.active_lang %}
 {% assign sorted_games = all_games | sort: "order" %}

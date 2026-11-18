@@ -3,9 +3,9 @@ layout: tool
 lang: uk
 page_id: "tool-wearview"
 permalink: /tools/wearview/
-title: "WearView — 3D-перегляд екрана Wear OS, безпечні зони та перевірка AOD"
+title: "WearView: перегляд екрана Wear OS"
 badge: "Безкоштовний інструмент для розробників"
-description: "Вставте скриншот або транслюйте Unity чи емулятор наживо на 21 точну 3D-модель годинників Wear OS у масштабі 1:1 із безпечними зонами 80%/90%, шаблоном пальця 14 мм, тестом читання за 2 с та перевіркою OLED AOD <10% OPR."
+description: "Перегляд скриншотів Wear OS і живих вікон Unity на 21 3D-моделі годинників у масштабі 1:1: безпечні зони, дотик і перевірка AOD. Безкоштовно."
 banner: "/assets/images/tools/wearview-hero.webp"
 banner_alt: "WearView показує екран гри для Wear OS на 3D-моделі Samsung Galaxy Watch7"
 image: "/assets/images/tools/wearview-og.webp"

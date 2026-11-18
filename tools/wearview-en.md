@@ -3,9 +3,9 @@ layout: tool
 lang: en
 page_id: "tool-wearview"
 permalink: /tools/wearview/
-title: "WearView — 3D Wear OS Screen Preview, Safe Zones & AOD Burn-In Checker"
+title: "WearView: Wear OS Screen Preview"
 badge: "Free developer tool"
-description: "Preview Wear OS screenshots or live Unity/emulator windows on 21 accurate 3D smartwatches at 1:1 physical size with 80%/90% safe zones, 14mm finger touch target pad, 2s glanceability test, and OLED AOD <10% OPR checker."
+description: "Preview Wear OS screenshots and live Unity windows on 21 3D watch models at 1:1 size, with safe zones, touch-target and AOD burn-in checks. Free."
 banner: "/assets/images/tools/wearview-hero.webp"
 banner_alt: "WearView showing a Wear OS game screen on a 3D Samsung Galaxy Watch7"
 image: "/assets/images/tools/wearview-og.webp"

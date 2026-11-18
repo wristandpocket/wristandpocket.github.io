@@ -37,7 +37,7 @@ is_home: true
                 <span class="game-item__badge {% if game.badge_style == 'tamagotchi' %}game-item__badge--tamagotchi{% endif %}">{{ game.badge }}</span>
                 <h2>{{ game.title }}</h2>
                 <p>{{ game.description }}</p>
-                <span class="project-status">{{ copy.status }}</span>
+                <span class="project-status">{{ game.status_label | default: copy.status }}</span>
                 <span class="project-more">{{ copy.details }} &rarr;</span>
             </div>
         </a>

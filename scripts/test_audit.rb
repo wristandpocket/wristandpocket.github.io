@@ -27,7 +27,7 @@ Dir.mktmpdir('wrist-pocket-audit-') do |temp|
     puts "PASS: audit rejects #{name}"
     File.write(file, original, encoding: 'UTF-8')
   end
-  moved = File.join(temp, 'blog/hello-world/index.html')
+  moved = File.join(temp, 'blog/cyberpunk-announcement/index.html')
   FileUtils.mv(moved, moved + '.control')
   _, status = Open3.capture2e({ 'RUBYOPT' => '-EUTF-8:UTF-8' }, 'ruby', '-E', 'UTF-8:UTF-8', 'scripts/audit_site.rb', temp)
   raise 'Audit missed removed route' if status.success?
