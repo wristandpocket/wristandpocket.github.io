@@ -432,3 +432,13 @@ qa-evidence/
 .DS_Store
 desktop.ini
 Thumbs.db
+
+# Internal docs live in the private HQ repository, never here
+/Docs/
+/.agents/
+/GEMINI.md
+/CLAUDE.md
+/CONTENT_WORKFLOW.md
+/DEPLOYMENT_CHECKLIST.md
+/LOCAL_JEKYLL_SETUP.md
+/SITE_AUDIT_ROADMAP.md

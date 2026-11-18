@@ -26,7 +26,6 @@ This repository is the public website for **Wrist & Pocket Studio**, built with 
 /
 ├── .frontmatter/       ← Front Matter CMS scripts (preflight, build, HTMLProofer, JS budget, quality, scaffolds)
 ├── .github/workflows/  ← CI/CD pipeline (jekyll.yml: 10 verification gates + GitHub Pages deploy)
-├── Docs/               ← CI and site audit documentation (excluded from _site)
 ├── _data/              ← Localization dictionaries and shared structured copy
 │   ├── en/strings.yml  ← English UI strings (default locale)
 │   ├── uk/strings.yml  ← Ukrainian UI strings
@@ -112,4 +111,3 @@ On macOS/Linux use `npm run <script>`; on Windows PowerShell use `npm.cmd run <s
 | `npm run verify` | Runs the complete 10-step verification pipeline end-to-end |
 | `npm run check:images` | Checks `assets/images/` for WebP/SVG compliance and approved PNG icon exceptions |
 
-See [CONTENT_WORKFLOW.md](CONTENT_WORKFLOW.md), [DEPLOYMENT_CHECKLIST.md](DEPLOYMENT_CHECKLIST.md), [LOCAL_JEKYLL_SETUP.md](LOCAL_JEKYLL_SETUP.md), and [Docs/CI.md](Docs/CI.md) for detailed guides.

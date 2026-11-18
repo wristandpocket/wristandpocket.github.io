@@ -353,18 +353,11 @@ function validateFrontMatter() {
   addPass('Front matter, localization groups, URL stability, and game/tool assets validated.');
 }
 
-function validateRoadmapAndDocs() {
-  if (!exists('DEPLOYMENT_CHECKLIST.md')) {
-    addWarning('DEPLOYMENT_CHECKLIST.md is missing. Add it before production-heavy release work.');
-  }
-}
-
 function main() {
   validateRobots();
   validateDangerousSeoDirectives();
   validateHeadAndSitemapTemplates();
   validateFrontMatter();
-  validateRoadmapAndDocs();
 
   console.log('Wrist & Pocket Studio site preflight');
   console.log('====================================\n');
