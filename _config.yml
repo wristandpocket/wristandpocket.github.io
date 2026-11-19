@@ -29,6 +29,11 @@ exclude:
   - ci-results/
   - service-worker.js
   - README.md
+  - AGENTS.md
+  - CLAUDE.md
+  - GEMINI.md
+  - AI_CONTEXT.md
+  - mise.toml
   - Gemfile
   - Gemfile.lock
   - package.json

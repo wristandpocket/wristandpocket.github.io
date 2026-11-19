@@ -1,0 +1,60 @@
+name: Privacy & Secret Guard
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check for internal docs, AI files, local paths, and secrets
+        run: |
+          python3 - <<'PY'
+          import os, re, subprocess, sys
+
+          files = subprocess.check_output(["git", "ls-files"], text=True).splitlines()
+          errors = []
+
+          generic_forbidden_re = re.compile(
+              r"(^|/)(project_context\.md|debug\.log|\.env(\..*)?|.*NEXT_WORK_PROMPT.*|.*NEXT_AGENT_HANDOFF.*|.*IMPLEMENTATION_CHECKLIST.*|.*UX_CRO_.*|.*_PROMPT\.md|(AGENTS|CLAUDE|GEMINI|AI_CONTEXT)\.md)$|(^|/)(\.claude|\.agents?|\.cursor)(/|$)",
+              re.I,
+          )
+          repo_specific = [re.compile(p, re.I) for p in ['^(Docs/|docs/|\\.agents?/|qa-evidence/|ci-results/)', '^(GEMINI|CLAUDE|AGENTS|CONTENT_WORKFLOW|DEPLOYMENT_CHECKLIST|LOCAL_JEKYLL_SETUP|SITE_AUDIT.*)\\.md$']]
+          path_leak_re = re.compile(r"([A-Za-z]:\\Users\\|[A-Za-z]:\\GitHub\\|[A-Za-z]:\\OGCruncher|C:\\Program Files\\|/Users/[A-Za-z0-9._-]+/)")
+          fictional_re = re.compile(r"(UNVERIFIED AI-GENERATED EXAMPLES|permission_basis)")
+          secret_re = re.compile(r"(ghp_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|AIza[0-9A-Za-z_-]{35}|-----BEGIN [A-Z ]*PRIVATE KEY-----|\b[0-9]{8,10}:AA[A-Za-z0-9_-]{33}\b)")
+
+          for path in files:
+              if path == ".github/workflows/privacy-guard.yml":
+                  continue
+              if os.path.basename(path) != ".env.example" and generic_forbidden_re.search(path):
+                  errors.append(f"Forbidden internal/AI file tracked: {path}")
+              for pat in repo_specific:
+                  if pat.search(path):
+                      errors.append(f"Forbidden repo-specific path tracked: {path}")
+              try:
+                  with open(path, "rb") as fh:
+                      raw = fh.read()
+                  if b"\x00" in raw:
+                      continue
+                  text = raw.decode("utf-8", errors="replace")
+              except OSError:
+                  continue
+              for idx, line in enumerate(text.splitlines(), 1):
+                  if path_leak_re.search(line):
+                      errors.append(f"Local machine path leak in {path}:{idx}")
+                  if fictional_re.search(line):
+                      errors.append(f"Fictional/draft marker in {path}:{idx}")
+                  if secret_re.search(line):
+                      errors.append(f"Potential secret/token in {path}:{idx}")
+
+          if errors:
+              print("PRIVACY GUARD FAILED:\n" + "\n".join(" - " + e for e in errors))
+              sys.exit(1)
+          print(f"Privacy guard passed ({len(files)} tracked files scanned).")
+          PY
