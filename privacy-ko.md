@@ -9,7 +9,7 @@ permalink: /privacy/
 
 <div class="privacy-page fade-in">
     <h1>개인정보 처리방침</h1>
-    <p class="updated">최종 업데이트: 2026년 10월 23일</p>
+    <p class="updated">최종 업데이트: 2026년 11월 23일</p>
     <p><strong>제품 구성:</strong> 이 정책은 스튜디오 전체에 적용되는 기본 기준을 제공합니다. 아래 서비스의 사용 여부는 각 제품의 구성, 기능, 제공업체 및 동의 절차에 따라 달라집니다. SDK API가 존재한다는 사실만으로 데이터 수집 또는 전송이 확인되는 것은 아닙니다.</p>
 
     <section>

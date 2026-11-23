@@ -9,7 +9,7 @@ permalink: /privacy/
 
 <div class="privacy-page fade-in">
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: October 23, 2026</p>
+    <p class="updated">Last updated: November 23, 2026</p>
     <p><strong>Product configuration:</strong> This policy gives a studio-wide baseline. The services described below depend on the configuration, features, providers, and consent flow of each product. The presence of an SDK API alone does not confirm that data is collected or transmitted.</p>
 
     <section>
