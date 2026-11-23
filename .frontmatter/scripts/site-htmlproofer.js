@@ -18,9 +18,9 @@ const args = [
   '--allow-hash-href',
   '--ignore-empty-alt',
   '--disable-external',
-  // WearView is deployed from its own repository at /wearview/, outside this Jekyll build.
+  // WearView is deployed from its own repository at /wearview/, and /m/ is served by Cloudflare Worker.
   '--ignore-urls',
-  '/^\\/wearview\\//'
+  '/^\\/wearview\\//,/^\\/m\\//'
 ];
 
 const rubyOpt = [process.env.RUBYOPT, '-EUTF-8:UTF-8'].filter(Boolean).join(' ');

@@ -82,6 +82,8 @@ docs.each do |file, doc|
         next unless target_url.host == 'wristandpocket.dev'
         # Apps deployed from their own repositories under this domain, outside this Jekyll build.
         next if target_url.path.start_with?('/wearview/')
+        # First-party Cloudflare Worker analytics proxy routes.
+        next if target_url.path.start_with?('/m/')
         target = target_for.call(target_url.path)
         check.call(File.file?(target), route, "missing target #{value}")
         if File.file?(target) && target.end_with?('.html') && target_url.fragment
