@@ -103,14 +103,14 @@ jobs:
 
       - name: Plan IndexNow submission
         if: github.event_name != 'pull_request'
-        run: node scripts/indexnow.mjs plan --site _site --origin https://wristandpocket.dev --prev .indexnow-prev/manifest.json --out .indexnow
+        run: node scripts/indexnow.mjs plan --site _site --origin https://wristandpocket.dev --prev .indexnow-prev/manifest.json --out indexnow-plan
 
       - name: Upload IndexNow plan
         if: github.event_name != 'pull_request'
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: indexnow-plan
-          path: .indexnow/
+          path: indexnow-plan/
           retention-days: 3
 
       - name: Upload artifact
