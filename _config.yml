@@ -22,6 +22,9 @@ sass:
   sourcemap: never
 
 # Exclude dev artefacts from the build
+include:
+  - .well-known
+
 exclude:
   - Docs/
   - scripts/
@@ -62,6 +65,8 @@ plugins:
 languages: ["en", "uk", "ru", "ko"]
 default_lang: "en"
 exclude_from_localization:
+  - .well-known
+  - favicon.ico
   - assets
   - sw.js
   - css

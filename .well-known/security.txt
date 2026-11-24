@@ -1,0 +1,9 @@
+---
+layout: null
+permalink: /.well-known/security.txt
+---
+Contact: mailto:wristandpocket.studio@gmail.com
+Expires: 2027-11-24T00:00:00.000Z
+Preferred-Languages: uk, en
+Canonical: https://wristandpocket.dev/.well-known/security.txt
+Policy: https://wristandpocket.dev/.well-known/security.txt
