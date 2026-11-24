@@ -1,8 +1,3 @@
----
-layout: null
-permalink: /security.txt
-sitemap: false
----
 Contact: mailto:wristandpocket.studio@gmail.com
 Expires: 2027-11-24T00:00:00.000Z
 Preferred-Languages: uk, en
