@@ -55,3 +55,7 @@ layout: default
 
 {% include metadata/json-ld.html type="BlogPosting" %}
 
+{% if content contains 'class="term-wrap"' or content contains 'data-gallery' %}
+<script defer src="{{ '/assets/js/post-media.js' | relative_url }}"></script>
+{% endif %}
+

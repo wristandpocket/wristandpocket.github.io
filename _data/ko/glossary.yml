@@ -1,0 +1,17 @@
+# Inline glossary for posts: {% include term.html id="<key>" %}
+# term = headword shown in the tooltip, def = one or two plain sentences for parents.
+softlock:
+  term: "소프트락"
+  def: "게임이 멈추거나 꺼지지 않았고 버튼도 반응하지만, 버그 때문에 더 이상 진행할 수 없는 막다른 상태입니다. 보통 새로고침만이 해결책입니다."
+fps:
+  term: "FPS"
+  def: "초당 프레임 수입니다. 30 FPS 이상이면 움직임이 부드럽고, 15 미만이면 끊기며, 2~10 FPS는 사실상 슬라이드쇼입니다."
+render:
+  term: "렌더링"
+  def: "게임의 매 프레임을 화면에 그리는 과정입니다. 장면이 무겁고 기기가 약할수록 렌더링이 느려지고 FPS가 떨어집니다."
+ui-ux:
+  term: "UI/UX"
+  def: "UI는 버튼·화면·힌트 같은 인터페이스의 모습이고, UX는 그것을 얼마나 편하고 쉽게 쓸 수 있는지를 뜻합니다."
+bug:
+  term: "버그"
+  def: "프로그램이 개발자의 의도와 다르게 동작하게 만드는 오류입니다."

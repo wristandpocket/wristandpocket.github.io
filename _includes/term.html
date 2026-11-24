@@ -1,0 +1,16 @@
+{%- comment -%}
+  Inline glossary term with a hover / tap explanation.
+  Usage inside a post:  {% include term.html id="softlock" %}
+                        {% include term.html id="softlock" text="софтлоку" %}
+  Definitions live in _data/<lang>/glossary.yml (term + def per id).
+  Unknown ids render the plain text so a missing entry never breaks a post.
+  The explanation sits in data attributes and assets/js/post-media.js builds the
+  tooltip, so RSS, search snippets and excerpts never repeat the definition.
+{%- endcomment -%}
+{%- assign pm_entry = site.data[site.active_lang].glossary[include.id] -%}
+{%- assign pm_label = include.text | default: pm_entry.term | default: include.id -%}
+{%- if pm_entry and pm_entry.def -%}
+<span class="term-wrap"><button type="button" class="term" data-term="{{ pm_entry.term | escape }}" data-def="{{ pm_entry.def | escape }}" aria-expanded="false">{{ pm_label }}</button></span>
+{%- else -%}
+{{ pm_label }}
+{%- endif -%}

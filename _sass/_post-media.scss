@@ -1,0 +1,388 @@
+/* ============================================================
+   POST MEDIA — glossary terms + bento gallery + photo viewer
+   Markup: _includes/term.html, _includes/gallery.html
+   Behaviour: assets/js/post-media.js
+   ============================================================ */
+
+/* ── Glossary term ──────────────────────────────────────── */
+.term-wrap {
+  position: relative;
+  display: inline;
+  white-space: nowrap; /* keeps the tooltip anchored to one line */
+}
+
+.term {
+  display: inline;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  line-height: inherit;
+  color: inherit;
+  cursor: help;
+  text-decoration: underline dotted var(--wp-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.22em;
+  border-radius: 4px;
+  transition: background-color 0.15s ease;
+}
+
+.term:hover,
+.term-wrap.is-open .term {
+  background-color: rgba(114, 224, 214, 0.16);
+}
+
+.term:focus-visible {
+  outline: 2px solid var(--wp-accent);
+  outline-offset: 2px;
+}
+
+.term__tip {
+  position: absolute;
+  z-index: 30;
+  left: 50%;
+  bottom: calc(100% + 10px);
+  width: max-content;
+  max-width: min(300px, calc(100vw - 24px));
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: var(--wp-bg-surface-elevated);
+  border: 1px solid rgba(114, 224, 214, 0.25);
+  color: var(--wp-text-primary);
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  white-space: normal;
+  box-shadow: 0 10px 28px rgba(26, 26, 46, 0.25);
+  transform: translateX(calc(-50% + var(--tip-shift, 0px))) translateY(4px);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+}
+
+.term__tip::after {
+  content: "";
+  position: absolute;
+  left: calc(50% - var(--tip-shift, 0px));
+  top: 100%;
+  border: 7px solid transparent;
+  border-top-color: var(--wp-bg-surface-elevated);
+  transform: translateX(-50%);
+}
+
+/* invisible bridge so the pointer can move from the word onto the tooltip */
+.term__tip::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 12px;
+}
+
+.term-wrap--below .term__tip::before {
+  top: auto;
+  bottom: 100%;
+}
+
+.term__name {
+  font-weight: 700;
+  color: var(--wp-accent);
+}
+
+.term__name::after {
+  content: " —";
+  font-weight: 400;
+  color: var(--wp-text-primary);
+}
+
+.term-wrap--below .term__tip {
+  bottom: auto;
+  top: calc(100% + 10px);
+}
+
+.term-wrap--below .term__tip::after {
+  top: auto;
+  bottom: 100%;
+  border-top-color: transparent;
+  border-bottom-color: var(--wp-bg-surface-elevated);
+}
+
+.term-wrap.is-open .term__tip,
+.term-wrap:has(.term:focus-visible) .term__tip {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(calc(-50% + var(--tip-shift, 0px))) translateY(0);
+}
+
+@media (hover: hover) {
+  .term-wrap:hover .term__tip {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(calc(-50% + var(--tip-shift, 0px))) translateY(0);
+  }
+}
+
+.term-wrap.term-wrap--dismissed .term__tip {
+  visibility: hidden;
+  opacity: 0;
+}
+
+html.pm-lb-open {
+  overflow: hidden;
+}
+
+/* ── Bento gallery ──────────────────────────────────────── */
+.pm-gallery {
+  margin: 28px 0;
+}
+
+.pm-gallery__grid {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: clamp(120px, 22vw, 180px);
+}
+
+.pm-gallery__item {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--wp-bg-surface-elevated);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  cursor: zoom-in;
+}
+
+.pm-gallery__item[hidden] {
+  display: none;
+}
+
+.post-content .pm-gallery__item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.pm-gallery__item:hover img {
+  transform: scale(1.04);
+}
+
+.pm-gallery__item:focus-visible {
+  outline: 3px solid var(--wp-accent);
+  outline-offset: 2px;
+}
+
+.pm-gallery__more {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(26, 26, 46, 0.55);
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+/* 1 photo: show it whole */
+.pm-gallery--n1 .pm-gallery__grid {
+  grid-template-columns: 1fr;
+  grid-auto-rows: auto;
+}
+
+.post-content .pm-gallery--n1 .pm-gallery__item img {
+  height: auto;
+  max-height: 70vh;
+  object-fit: contain;
+}
+
+/* 2 photos: side by side */
+.pm-gallery--n2 .pm-gallery__grid {
+  grid-auto-rows: clamp(160px, 34vw, 300px);
+}
+
+/* 3–5 photos: one big tile + smaller ones */
+.pm-gallery--n3 .pm-gallery__grid {
+  grid-template-columns: 2fr 1fr;
+}
+
+.pm-gallery--n4 .pm-gallery__grid {
+  grid-template-columns: 2fr 1fr;
+  grid-auto-rows: clamp(90px, 15vw, 130px);
+}
+
+.pm-gallery--n5 .pm-gallery__grid {
+  grid-template-columns: 2fr 1fr 1fr;
+}
+
+.pm-gallery--n3 .pm-gallery__item:first-child,
+.pm-gallery--n5 .pm-gallery__item:first-child {
+  grid-row: span 2;
+}
+
+.pm-gallery--n4 .pm-gallery__item:first-child {
+  grid-row: span 3;
+}
+
+@media (max-width: 560px) {
+  .pm-gallery--n4 .pm-gallery__grid,
+  .pm-gallery--n5 .pm-gallery__grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: clamp(110px, 34vw, 170px);
+  }
+
+  .pm-gallery--n4 .pm-gallery__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .pm-gallery--n4 .pm-gallery__item:first-child,
+  .pm-gallery--n5 .pm-gallery__item:first-child {
+    grid-row: span 2;
+    grid-column: 1 / -1;
+  }
+}
+
+.pm-gallery__caption {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: var(--wp-text-tertiary);
+  text-align: center;
+}
+
+/* ── Full-screen viewer ─────────────────────────────────── */
+.pm-lb {
+  width: 100vw;
+  max-width: 100vw;
+  height: 100dvh;
+  max-height: 100dvh;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: rgba(12, 12, 22, 0.94);
+  color: #fff;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+}
+
+.pm-lb::backdrop {
+  background: rgba(12, 12, 22, 0.6);
+}
+
+.pm-lb[open] {
+  display: grid;
+  place-items: center;
+}
+
+.pm-lb__stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 56px 16px 24px;
+  box-sizing: border-box;
+}
+
+.pm-lb__img {
+  max-width: min(1200px, 100%);
+  max-height: calc(100dvh - 140px);
+  border-radius: 10px;
+  object-fit: contain;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.pm-lb__cap {
+  max-width: 720px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.pm-lb__count {
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.pm-lb__btn {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.pm-lb__btn:hover,
+.pm-lb__btn:focus-visible {
+  background: rgba(255, 255, 255, 0.25);
+  outline: none;
+}
+
+.pm-lb__close {
+  top: 8px;
+  right: 12px;
+}
+
+.pm-lb__prev,
+.pm-lb__next {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.pm-lb__prev {
+  left: 12px;
+}
+
+.pm-lb__next {
+  right: 12px;
+}
+
+.pm-lb--single .pm-lb__prev,
+.pm-lb--single .pm-lb__next {
+  display: none;
+}
+
+@media (max-width: 560px) {
+  .pm-lb__prev,
+  .pm-lb__next {
+    top: auto;
+    bottom: 16px;
+    transform: none;
+  }
+
+  .pm-lb__stage {
+    padding-bottom: 76px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .term,
+  .term__tip,
+  .pm-gallery__item img {
+    transition: none;
+  }
+}

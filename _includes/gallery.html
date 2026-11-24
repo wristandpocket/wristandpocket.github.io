@@ -1,0 +1,37 @@
+{%- comment -%}
+  Bento photo gallery with a full-screen swipe viewer (assets/js/post-media.js).
+  Usage inside a post:  {% include gallery.html id="tablets" caption="Шкільні планшети на уроці" %}
+  Photos are picked up automatically from
+    /assets/images/blog/<page_id>/<id>/   (sorted by file name; webp, jpg, png, avif)
+  so adding a photo only needs a file in that folder (see sivochka-hq scripts/blog_photos.py --site studio).
+  Optional per-photo alt text in the post front matter:
+    photo_alts:
+      tablets:
+        "01": "Планшет показує 4 FPS у квесті"   # quote the file name (without extension)
+  Pass dir="/assets/images/..." to point at another folder. An empty folder renders nothing.
+{%- endcomment -%}
+{%- assign pm_dir = include.dir | default: '' -%}
+{%- if pm_dir == '' -%}{%- capture pm_dir -%}/assets/images/blog/{{ page.page_id }}/{{ include.id }}/{%- endcapture -%}{%- endif -%}
+{%- assign pm_photos = pm_dir | gallery_photos -%}
+{%- assign pm_count = pm_photos.size -%}
+{%- if pm_count > 0 -%}
+{%- assign pm_alts = page.photo_alts[include.id] -%}
+{%- assign pm_caption = include.caption | default: page.title -%}
+{%- assign pm_layout = pm_count -%}{%- if pm_layout > 5 -%}{%- assign pm_layout = 5 -%}{%- endif -%}
+<figure class="pm-gallery pm-gallery--n{{ pm_layout }}" data-gallery>
+<div class="pm-gallery__grid">
+{%- for f in pm_photos -%}
+{%- assign pm_key = f.basename -%}
+{%- assign pm_alt = pm_alts[pm_key] -%}
+{%- unless pm_alt -%}{%- capture pm_alt -%}{{ pm_caption }} — {{ forloop.index }}/{{ pm_count }}{%- endcapture -%}{%- endunless -%}
+{%- capture pm_src -%}{{ pm_dir }}{{ f.name }}{%- endcapture -%}
+{%- if forloop.index <= 5 -%}
+<a class="pm-gallery__item" href="{{ pm_src | relative_url }}" data-alt="{{ pm_alt | escape }}"><img src="{{ pm_src | relative_url }}" alt="{{ pm_alt | escape }}" loading="lazy" decoding="async">{%- if forloop.index == 5 and pm_count > 5 -%}<span class="pm-gallery__more" aria-hidden="true">+{{ pm_count | minus: 5 }}</span>{%- endif -%}</a>
+{%- else -%}
+<a class="pm-gallery__item" href="{{ pm_src | relative_url }}" data-alt="{{ pm_alt | escape }}" hidden>{{ pm_alt | escape }}</a>
+{%- endif -%}
+{%- endfor -%}
+</div>
+{%- if include.caption -%}<figcaption class="pm-gallery__caption">{{ include.caption }}</figcaption>{%- endif -%}
+</figure>
+{%- endif -%}

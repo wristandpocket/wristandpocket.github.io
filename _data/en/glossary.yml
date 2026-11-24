@@ -1,0 +1,17 @@
+# Inline glossary for posts: {% include term.html id="<key>" %}
+# term = headword shown in the tooltip, def = one or two plain sentences for parents.
+softlock:
+  term: "Softlock"
+  def: "A dead end in a game: nothing has crashed and the buttons still respond, but a bug makes it impossible to move on. Usually only a reload helps."
+fps:
+  term: "FPS"
+  def: "Frames per second. From 30 FPS motion looks smooth, below 15 it stutters, and 2–10 FPS is a slideshow."
+render:
+  term: "Rendering"
+  def: "Drawing every frame of the game on screen. The heavier the scene and the weaker the device, the slower rendering gets and the lower the FPS."
+ui-ux:
+  term: "UI/UX"
+  def: "UI is how the interface looks (buttons, screens, hints); UX is how easy and clear it is to use."
+bug:
+  term: "Bug"
+  def: "A mistake in a program that makes it behave differently from what the developers intended."
