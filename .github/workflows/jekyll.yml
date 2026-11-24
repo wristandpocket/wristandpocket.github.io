@@ -92,6 +92,27 @@ jobs:
           QUALITY_OUTCOME: ${{ steps.quality.outcome }}
         run: ./scripts/ci/write-site-ci-report.ps1 -OutputPath ci-results/site-deployment-verification.md -Preflight $env:PREFLIGHT_OUTCOME -Build $env:BUILD_OUTCOME -Html $env:HTML_OUTCOME -JavaScript $env:JAVASCRIPT_OUTCOME -Quality $env:QUALITY_OUTCOME
 
+      # IndexNow: list pages whose HTML changed since the last successful submission.
+      - name: Restore IndexNow manifest
+        if: github.event_name != 'pull_request'
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .indexnow-prev
+          key: indexnow-${{ github.run_id }}
+          restore-keys: indexnow-
+
+      - name: Plan IndexNow submission
+        if: github.event_name != 'pull_request'
+        run: node scripts/indexnow.mjs plan --site _site --origin https://wristandpocket.dev --prev .indexnow-prev/manifest.json --out .indexnow
+
+      - name: Upload IndexNow plan
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: indexnow-plan
+          path: .indexnow/
+          retention-days: 3
+
       - name: Upload artifact
         if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
@@ -122,3 +143,44 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
+
+  indexnow:
+    name: Ping IndexNow (Bing, Yandex, Seznam, Naver)
+    if: github.event_name != 'pull_request'
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: deploy
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Download IndexNow plan
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: indexnow-plan
+          path: .indexnow
+
+      # Pages can take a moment to serve the new build after deploy-pages returns.
+      - name: Wait for the key file to go live
+        run: |
+          for i in $(seq 1 12); do
+            curl -fsS "https://wristandpocket.dev/$(ls *.txt | grep -E '^[a-f0-9]{32}\.txt$')" >/dev/null && exit 0
+            sleep 10
+          done
+          echo "::error::IndexNow key file is not reachable on wristandpocket.dev"; exit 1
+
+      - name: Submit changed URLs
+        run: node scripts/indexnow.mjs submit --dir .indexnow --origin https://wristandpocket.dev
+
+      - name: Remember submitted state
+        run: mkdir -p .indexnow-prev && cp .indexnow/manifest.json .indexnow-prev/manifest.json
+
+      - name: Save IndexNow manifest
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .indexnow-prev
+          key: indexnow-${{ github.run_id }}
