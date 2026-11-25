@@ -8,6 +8,7 @@ image: "/assets/images/games/feedmeloser-banner.webp"
 thumbnail: "/assets/images/games/feedmeloser-screen2-thumb.webp"
 game_icon: "/assets/images/icons/game-pet.png"
 description: "Wear OS용 가상 반려동물 콘셉트: 까다로운 작은 몬스터를 돌보세요."
+seo_description: "Feed Me, Loser!는 Wear OS용 풍자적인 가상 반려동물 콘셉트입니다. 까다로운 작은 몬스터에게 먹이를 주고 돌보세요. 현재 레거시 유지보수 상태입니다."
 order: 2
 tester_cta: false
 page_id: "game-feed-me-loser"

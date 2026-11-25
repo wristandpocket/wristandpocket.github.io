@@ -8,6 +8,7 @@ image: "/assets/images/games/cyberpunk3d-banner-new.webp"
 thumbnail: "/assets/images/games/cyberpunk3d-screen1-thumb.webp"
 game_icon: "/assets/images/icons/game-cyberpunk.png"
 description: "3D-игра для Wear OS в неоновом городе. Пилотный проект студии, сейчас в тестировании."
+seo_description: "Cyberpunk 3D — 3D-игра для Wear OS в неоновом городе, пилотный проект студии. Сейчас в тестировании, публичной загрузки пока нет."
 order: 1
 tester_cta: false
 page_id: "game-cyberpunk-3d"

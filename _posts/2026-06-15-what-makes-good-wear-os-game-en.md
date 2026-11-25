@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "What Makes a Good Wear OS Game?"
-description: "A dated June 2026 design note on smartwatch game design for Wear OS: short sessions, round screens, rotary input, battery limits, haptics, and honest performance."
+description: "A June 2026 design note on Wear OS smartwatch games: short sessions, round screens, rotary input, battery limits, haptics and honest performance."
 date: "2026-06-15T09:00:00.000Z"
 lang: "en"
 page_id: "what-makes-good-wear-os-game"

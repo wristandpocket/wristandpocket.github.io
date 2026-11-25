@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "Why I stopped trusting screenshots of my Wear OS games"
-description: "A screenshot on a monitor does not show a watch game the way a player sees it. Here is why I built WearView, a free tool that puts your screen on a 3D watch model at real size."
+description: "A monitor screenshot doesn't show a watch game as the player sees it. Why I built WearView, a free tool that puts your screen on a 3D watch at real size."
 date: "2026-10-15T12:00:00.000Z"
 last_modified_at: "2026-11-15T12:00:00.000Z"
 lang: "en"

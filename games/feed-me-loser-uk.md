@@ -8,6 +8,7 @@ image: "/assets/images/games/feedmeloser-banner.webp"
 thumbnail: "/assets/images/games/feedmeloser-screen2-thumb.webp"
 game_icon: "/assets/images/icons/game-pet.png"
 description: "Концепція віртуального вихованця для Wear OS: доглядайте за вередливим монстриком."
+seo_description: "Feed Me, Loser! — сатирична концепція віртуального вихованця для Wear OS: годуйте вимогливого монстрика і доглядайте за ним. Проєкт у режимі підтримки."
 order: 2
 tester_cta: false
 page_id: "game-feed-me-loser"

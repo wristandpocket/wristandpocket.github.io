@@ -8,6 +8,7 @@ image: "/assets/images/games/cyberpunk3d-banner-new.webp"
 thumbnail: "/assets/images/games/cyberpunk3d-screen1-thumb.webp"
 game_icon: "/assets/images/icons/game-cyberpunk.png"
 description: "A Wear OS 3D game set in a neon city. The studio's pilot project, now in testing."
+seo_description: "Cyberpunk 3D is a real-time 3D Wear OS game set in a neon city: the studio's pilot project, now in testing. Public download is not available yet."
 order: 1
 tester_cta: false
 page_id: "game-cyberpunk-3d"

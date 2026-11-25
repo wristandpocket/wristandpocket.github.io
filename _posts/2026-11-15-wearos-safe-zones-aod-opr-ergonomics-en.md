@@ -1,7 +1,8 @@
 ---
 layout: "post"
 title: "Wear OS Safe Zones, 14mm Touch Targets & AOD <10% OPR: A Practical Ergonomics Guide with WearView"
-description: "Prevent round corner clipping, raised bezel occlusion, cramped 14mm finger taps, and OLED Always-On Display <10% OPR rejections on Wear OS using WearView in 3D."
+seo_title: "Wear OS Safe Zones, Touch Targets & AOD: WearView Guide"
+description: "Avoid round-corner clipping, bezel overlap, cramped 14 mm touch targets and AOD over 10% OPR on Wear OS by checking your screen in 3D with WearView."
 date: "2026-11-15T12:00:00.000Z"
 last_modified_at: "2026-11-15T12:00:00.000Z"
 lang: "en"

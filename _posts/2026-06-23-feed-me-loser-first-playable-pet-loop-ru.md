@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "Архив девлога Feed Me, Loser!: первый игровой цикл монстрика"
-description: "Архивная заметка за июнь 2026 года о первом игровом цикле Feed Me, Loser! для Wear OS и понятности для тестеров."
+description: "Архивная заметка за июнь 2026 года о первом игровом цикле Feed Me, Loser! для Wear OS: уведомления, офлайн-симуляция и понятность для тестеров."
 date: "2026-06-23T00:00:00.000Z"
 lang: "ru"
 page_id: "feed-me-loser-first-playable-pet-loop"

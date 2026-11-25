@@ -1,6 +1,7 @@
 ---
 layout: "post"
 title: "Wear OS 세이프 존, 14mm 터치 타겟 & AOD 10% 미만 OPR: WearView 실전 인체공학 가이드"
+seo_title: "Wear OS 세이프 존·터치 타겟·AOD: WearView 가이드"
 description: "원형 화면 모서리 잘림, 돌출 베젤 시야 가림, 좁은 14mm 손가락 터치 영역, OLED Always-On Display 10% 미만 OPR 기준 위반을 WearView 3D로 미리 잡는 실전 가이드."
 date: "2026-11-15T12:00:00.000Z"
 last_modified_at: "2026-11-15T12:00:00.000Z"
