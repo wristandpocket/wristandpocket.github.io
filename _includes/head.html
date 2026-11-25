@@ -53,6 +53,10 @@
 <link rel="icon" href="{{ '/assets/images/favicon-wp.svg' | relative_url }}" type="image/svg+xml">
 <link rel="alternate icon" href="{{ '/assets/images/icons/game-cyberpunk.png' | relative_url }}" type="image/png">
 <link rel="stylesheet" href="{{ '/styles.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+<link rel="preload" href="{{ '/assets/fonts/outfit-600-QGYvz_MVcBeNP4NJtEtq.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+{%- if page.layout == 'post' %}
+<link rel="preload" href="{{ '/assets/fonts/PixeloidSans.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+{%- endif %}
 {% include lang-redirect.html %}
 <script data-goatcounter="/m/e" async src="/m/v1.js"></script>
 </head>

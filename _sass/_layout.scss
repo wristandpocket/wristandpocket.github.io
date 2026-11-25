@@ -25,6 +25,7 @@
 }
 
 .site-nav {
+  font-family: 'Outfit', 'Outfit Fallback', $font-sans;
   width: min(calc(100% - 40px), 1180px);
   margin: 0 auto;
   min-height: 56px;
@@ -40,7 +41,7 @@
   min-height: 44px;
   display: inline-flex;
   align-items: baseline;
-  font-family: $font-sans;
+  font-family: inherit;
   font-weight: 800;
   letter-spacing: -0.025em;
   font-size: 1.2rem;
