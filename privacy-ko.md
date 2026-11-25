@@ -53,3 +53,5 @@ permalink: /privacy/
 
     <a href="{{ '/' | relative_url }}" class="back-link">&larr; 홈으로 돌아가기</a>
 </div>
+
+{% include metadata/json-ld.html type="WebPage" %}

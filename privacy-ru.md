@@ -53,3 +53,5 @@ permalink: /privacy/
 
     <a href="{{ '/' | relative_url }}" class="back-link">&larr; На главную</a>
 </div>
+
+{% include metadata/json-ld.html type="WebPage" %}

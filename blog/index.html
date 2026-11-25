@@ -63,3 +63,6 @@ permalink: /blog/
         </p>
     {% endif %}
 </div>
+
+{% assign ld_name = site.data[site.active_lang].strings.news_title %}{% assign ld_desc = site.data[site.active_lang].strings.blog_meta_description %}
+{% include metadata/json-ld.html type="CollectionPage" name=ld_name description=ld_desc %}

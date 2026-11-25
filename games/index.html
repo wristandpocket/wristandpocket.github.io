@@ -37,11 +37,13 @@ permalink: /games/
 {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
+  "@id": "{{ site.url }}{% if site.active_lang != site.default_lang %}/{{ site.active_lang }}{% endif %}{{ page.url }}#webpage",
   "name": {{ strings.games_meta_title | default: page.title | jsonify }},
   "description": {{ strings.games_meta_description | default: page.description | jsonify }},
   "url": "{{ site.url }}{% if site.active_lang != site.default_lang %}/{{ site.active_lang }}{% endif %}{{ page.url }}",
   "publisher": {
     "@type": "Organization",
+    "@id": "https://wristandpocket.dev#organization",
     "name": "Wrist & Pocket Studio",
     "url": "{{ '/' | absolute_url }}"
   },
@@ -61,3 +63,4 @@ permalink: /games/
   }
 }
 </script>
+{% include metadata/json-ld.html breadcrumbs_only=true %}
