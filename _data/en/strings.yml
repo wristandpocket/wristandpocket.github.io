@@ -5,7 +5,7 @@ home_meta_description: "Games and experiments for Wear OS. Meet a demanding virt
 games_meta_title: "Wear OS Games by Wrist & Pocket Studio"
 games_meta_description: "Wear OS games by Wrist & Pocket Studio. Cyberpunk 3D is in testing as the pilot project, Feed Me, Loser! is archived, and more games are in development."
 blog_meta_title: "Developer News & Updates | Wrist & Pocket Studio"
-blog_meta_description: "Developer news, release notes, and Wear OS game design updates from Wrist & Pocket Studio."
+blog_meta_description: "Development notes from Wrist & Pocket Studio: Wear OS game design, devlogs on our watch games, release notes and tools for small round screens."
 philosophy_label: "Our Philosophy"
 philosophy_title: "No Shovelware"
 philosophy_desc: "Small-screen architecture with zero compromises: native Wear OS optimization, round display ergonomics, and strictly offline gameplay."
