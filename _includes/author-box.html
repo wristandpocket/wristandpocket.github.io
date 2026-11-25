@@ -1,0 +1,11 @@
+{%- assign author = site.data.authors | where: 'slug', 'ihor' | first -%}
+{%- if author -%}
+<aside class="author-box" aria-label="{{ site.data[site.active_lang].strings.published_by | default: 'Published by' }}">
+  <img class="author-box__avatar" src="{{ author.picture }}" alt="{{ author.name }}" width="64" height="64" loading="lazy" decoding="async">
+  <div class="author-box__body">
+    <p class="author-box__label">{{ site.data[site.active_lang].strings.published_by | default: 'Published by' }}</p>
+    <p class="author-box__name">{{ author.name }}</p>
+    <a class="author-box__link" href="https://sivochka.com/{% if site.active_lang != site.default_lang %}{{ site.active_lang }}/{% endif %}" rel="author">{{ site.data.site_copy[site.active_lang].founder }} &rarr;</a>
+  </div>
+</aside>
+{%- endif -%}

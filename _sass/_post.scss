@@ -207,8 +207,100 @@
   padding: 20px 0;
 }
 
-.post-back-link {
+/* Breadcrumbs (same trail as the BreadcrumbList JSON-LD) */
+.breadcrumbs {
   margin-bottom: 30px;
+}
+
+.breadcrumbs__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: $font-mono;
+  font-size: 0.8rem;
+  color: $text-muted;
+}
+
+.breadcrumbs__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  overflow-wrap: anywhere;
+
+  & + &::before {
+    content: "/";
+    color: $text-muted;
+  }
+
+  a {
+    color: $text-secondary;
+    text-decoration: none;
+
+    &:hover,
+    &:focus-visible {
+      color: $accent-cyan;
+    }
+  }
+}
+
+/* Author box under the post body */
+.author-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 40px;
+  padding: 20px;
+  background: $wp-bg-surface-elevated;
+  border: 1px solid var(--wp-border-05);
+  border-radius: 16px;
+}
+
+.author-box__avatar {
+  flex: 0 0 64px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
+
+.author-box__body {
+  min-width: 0;
+
+  p {
+    margin: 0;
+  }
+}
+
+.author-box__label {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  color: $text-muted;
+}
+
+.author-box__name {
+  font-weight: 700;
+  color: $text-primary;
+  margin: 2px 0 6px;
+}
+
+.author-box__link {
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}
+
+/* Related posts after the article */
+.related-posts {
+  max-width: 800px;
+  margin: 10px auto 40px;
+}
+
+.related-posts__title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 16px;
 }
 
 .post-header {
@@ -421,4 +513,8 @@
       color: $bg-color;
     }
   }
+}
+
+.related-posts .news-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
 }

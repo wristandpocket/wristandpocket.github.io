@@ -1,0 +1,8 @@
+{%- comment -%} Visible breadcrumbs for posts: the parents from the BreadcrumbList in metadata/json-ld.html.
+The post title (the last JSON-LD item) is the h1 right below, so it is not repeated here, as on sivochka.com. {%- endcomment -%}
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ol class="breadcrumbs__list">
+    <li class="breadcrumbs__item"><a href="{{ '/' | relative_url }}">Wrist &amp; Pocket Studio</a></li>
+    <li class="breadcrumbs__item"><a href="{{ '/blog/' | relative_url }}">{{ site.data[site.active_lang].strings.news_title | default: 'Blog' }}</a></li>
+  </ol>
+</nav>

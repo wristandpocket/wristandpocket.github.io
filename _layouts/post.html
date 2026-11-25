@@ -2,14 +2,9 @@
 layout: default
 ---
 
-<article class="post-detail" itemscope itemtype="https://schema.org/BlogPosting">
-    <meta itemprop="inLanguage" content="{{ page.lang }}">
+<article class="post-detail">
 
-    <div class="post-back-link">
-        <a href="{{ '/' | relative_url }}#news" class="btn-back">
-            &larr; {{ site.data[site.active_lang].strings.back_home | default: 'Back to Home' }}
-        </a>
-    </div>
+    {% include breadcrumbs.html %}
 
     <header class="post-header">
         <!-- Game Tag Badge -->
@@ -21,10 +16,10 @@ layout: default
         </div>
         {% endif %}
 
-        <h1 class="post-title" itemprop="headline">{{ page.title }}</h1>
+        <h1 class="post-title">{{ page.title }}</h1>
 
         <div class="post-meta">
-            <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+            <time datetime="{{ page.date | date_to_xmlschema }}">
                 {{ page.date | date: "%Y-%m-%d" }}
             </time>
             <span class="meta-sep">&bull;</span>
@@ -34,24 +29,29 @@ layout: default
                 {{ read_time }} {{ site.data[site.active_lang].strings.read_time_suffix | default: 'min read' }}
             </span>
             <span class="meta-sep">&bull;</span>
-            <span itemprop="author" itemscope itemtype="https://schema.org/Person">
-                {{ site.data[site.active_lang].strings.published_by | default: 'Published by' }} <span itemprop="name">Ihor Sivochka</span>
+            <span>
+                {{ site.data[site.active_lang].strings.published_by | default: 'Published by' }} <span>Ihor Sivochka</span>
             </span>
         </div>
     </header>
 
     {% if page.image %}
     <div class="post-cover-image">
-        <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title }}" itemprop="image" loading="lazy" width="1200" height="630">
+        {% assign cover_size = page.image | image_size %}
+        <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title }}" width="{{ cover_size[0] | default: 1200 }}" height="{{ cover_size[1] | default: 630 }}" loading="eager" fetchpriority="high" decoding="async">
     </div>
     {% endif %}
 
-    <section class="post-content" itemprop="articleBody">
+    <section class="post-content">
         {% unless page.archive_note == false %}<aside class="archive-note">{{ site.data.site_copy[site.active_lang].archive }} <a href="{{ "/games/" | relative_url }}">{{ site.data.site_copy[site.active_lang].projects }}</a></aside>{% endunless %}
-            {{ content }}
+            {{ content | lazy_images }}
     </section>
 
+    {% include author-box.html %}
+
 </article>
+
+{% include related-posts.html %}
 
 {% include metadata/json-ld.html type="BlogPosting" %}
 
