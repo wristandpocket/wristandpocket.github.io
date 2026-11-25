@@ -13,7 +13,16 @@
 {% elsif page.title_key %}{% assign title = strings[page.title_key] %}{% assign description = strings[page.description_key] %}{% endif %}
 {% capture current_url %}{{ site.url }}{% if site.active_lang != site.default_lang %}/{{ site.active_lang }}{% endif %}{{ page.url }}{% endcapture %}
 {% assign social_image = page.image | default: page.banner | default: '/assets/images/default-social-card.webp' | absolute_url %}
-<title>{{ title | escape }}{% unless page.is_home or title contains 'Wrist & Pocket' %} | Wrist &amp; Pocket Studio{% endunless %}</title>
+{% if page.meta_description_key %}{% assign description = copy[page.meta_description_key] | default: strings[page.meta_description_key] | default: description %}{% endif %}
+{% assign description = page.seo_description | default: description %}
+{% assign title = page.seo_title | default: title %}
+{% comment %}Append the brand suffix only when the whole <title> stays within 60 characters.{% endcomment %}
+{% assign head_title = title %}
+{% unless page.is_home or title contains 'Wrist & Pocket' %}{% assign suffixed_title = title | append: ' | Wrist & Pocket Studio' %}{% if suffixed_title.size <= 60 %}{% assign head_title = suffixed_title %}{% endif %}{% endunless %}
+{% assign social_size = page.image | default: page.banner | default: '/assets/images/default-social-card.webp' | image_size %}
+{% assign social_alt = page.image_alt | default: page.banner_alt | default: title %}
+{% assign lang_prefix = '' %}{% if site.active_lang != site.default_lang %}{% assign lang_prefix = site.active_lang | prepend: '/' %}{% endif %}
+<title>{{ head_title | escape }}</title>
 <meta name="description" content="{{ description | escape }}">
 <link rel="canonical" {% static_href %}href="{{ current_url }}"{% endstatic_href %}>
 <meta property="og:title" content="{{ title | escape }}">
@@ -21,14 +30,21 @@
 <meta property="og:url" content="{{ current_url }}">
 <meta property="og:site_name" content="Wrist &amp; Pocket Studio">
 <meta property="og:image" content="{{ social_image }}">
-<meta property="og:image:alt" content="{{ title | escape }}">
+{% if social_size %}<meta property="og:image:width" content="{{ social_size[0] }}">
+<meta property="og:image:height" content="{{ social_size[1] }}">{% endif %}
+<meta property="og:image:alt" content="{{ social_alt | escape }}">
 <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
 <meta property="og:locale" content="{{ site.data.locale_codes[site.active_lang] }}">
+{% for lang in site.languages %}{% unless lang == site.active_lang %}<meta property="og:locale:alternate" content="{{ site.data.locale_codes[lang] }}">
+{% endunless %}{% endfor %}{% if page.layout == 'post' %}<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+<meta property="article:modified_time" content="{{ page.last_modified_at | default: page.date | date_to_xmlschema }}">
+{% endif %}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ title | escape }}">
 <meta name="twitter:description" content="{{ description | escape }}">
 <meta name="twitter:image" content="{{ social_image }}">
-<meta name="twitter:image:alt" content="{{ title | escape }}">
+<meta name="twitter:image:alt" content="{{ social_alt | escape }}">
+<link rel="alternate" type="application/atom+xml" title="Wrist &amp; Pocket Studio" {% static_href %}href="{{ site.url }}{{ lang_prefix }}/feed.xml"{% endstatic_href %}>
 {% for lang in site.languages %}
 {% capture alternate_url %}{{ site.url }}{% if lang != site.default_lang %}/{{ lang }}{% endif %}{{ page.url }}{% endcapture %}
 <link rel="alternate" hreflang="{{ lang }}" {% static_href %}href="{{ alternate_url }}"{% endstatic_href %}>
