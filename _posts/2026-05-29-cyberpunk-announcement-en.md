@@ -2,6 +2,8 @@
 layout: "post"
 title: "Cyberpunk 3D: testing announcement archive"
 description: "A May 2026 development announcement for Cyberpunk 3D on Wear OS. Public access is currently unavailable; see the project page for its status."
+image: "/assets/images/blog/cyberpunk-announcement-en.webp"
+image_alt: "Cyberpunk 3D testing announcement card: a neon city street from the game"
 date: "2026-05-29T18:52:00.000Z"
 lang: "en"
 page_id: "cyberpunk-announcement"

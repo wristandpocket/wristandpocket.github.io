@@ -2,6 +2,8 @@
 layout: "post"
 title: "Cyberpunk 3D: архив объявления о тестировании"
 description: "Объявление о разработке Cyberpunk 3D для Wear OS за май 2026 года. Сейчас публичного доступа нет; актуальное состояние — на странице проекта."
+image: "/assets/images/blog/cyberpunk-announcement-ru.webp"
+image_alt: "Карточка анонса тестирования Cyberpunk 3D: неоновая улица из игры"
 date: "2026-05-29T18:52:00.000Z"
 lang: "ru"
 page_id: "cyberpunk-announcement"

@@ -2,6 +2,8 @@
 layout: "post"
 title: "Cyberpunk 3D: 테스트 공지 아카이브"
 description: "2026년 5월 테스트 단계에 대한 보관된 공지입니다. Cyberpunk 3D는 현재 스튜디오의 파일럿 프로젝트로 테스트 중이며 아직 공개 이용은 제공되지 않습니다. 최신 상태는 프로젝트 페이지를 확인하세요."
+image: "/assets/images/blog/cyberpunk-announcement-ko.webp"
+image_alt: "Cyberpunk 3D 테스트 공지 카드: 게임 속 네온 거리"
 date: "2026-05-29T18:52:00.000Z"
 lang: "ko"
 page_id: "cyberpunk-announcement"
