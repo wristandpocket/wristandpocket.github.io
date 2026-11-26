@@ -20,7 +20,7 @@ layout: default
 
         <div class="post-meta">
             <time datetime="{{ page.date | date_to_xmlschema }}">
-                {{ page.date | date: "%Y-%m-%d" }}
+                {{ page.date | local_date: site.active_lang }}
             </time>
             <span class="meta-sep">&bull;</span>
             <span>
@@ -30,7 +30,7 @@ layout: default
             </span>
             <span class="meta-sep">&bull;</span>
             <span>
-                {{ site.data[site.active_lang].strings.published_by | default: 'Published by' }} <span>Ihor Sivochka</span>
+                {{ site.data[site.active_lang].strings.published_by | default: 'Published by' }} <span>{{ site.data[site.active_lang].strings.author_name | default: site.data.en.strings.author_name | default: 'Ihor Sivochka' }}</span>
             </span>
         </div>
     </header>

@@ -24,8 +24,10 @@
             {% assign bare_url = page.url %}
             {% for lang in site.languages %}
             {% capture prefix %}/{{ lang }}{% endcapture %}
-            {% if page.url contains prefix %}
-            {% assign bare_url = page.url | replace_first: prefix, '' %}
+            {% assign url_head = page.url | slice: 0, prefix.size %}
+            {% assign url_next = page.url | slice: prefix.size, 1 %}
+            {% if url_head == prefix and url_next == '' or url_head == prefix and url_next == '/' %}
+            {% assign bare_url = page.url | slice: prefix.size, page.url.size %}
             {% break %}
             {% endif %}
             {% endfor %}

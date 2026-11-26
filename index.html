@@ -68,7 +68,7 @@ is_home: true
                     <h3 class="news-card__title">{{ post.title }}</h3>
                     <p class="news-card__excerpt">{{ post.description | truncate: 120 }}</p>
                     <div class="news-card__meta">
-                        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+                        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | local_date: site.active_lang }}</time>
                         <span>
                             {% assign words = post.content | number_of_words %}
                             {% assign read_time = words | divided_by: 180 | plus: 1 %}
