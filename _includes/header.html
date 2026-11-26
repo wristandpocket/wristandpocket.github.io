@@ -9,7 +9,7 @@
         <a href="{{ '/' | relative_url }}" class="site-nav__brand" aria-label="Wrist &amp; Pocket Studio"><span class="brand-w">W</span><span class="brand-amp">&amp;</span><span class="brand-p">P</span><span class="brand-tail">STUDIO</span></a>
         <div class="site-nav__links">
             <a href="{{ '/games/' | relative_url }}"{% if nav_path == '/games/' or page.layout == 'game' %} aria-current="page"{% endif %}>
-                <span class="nav-text-desktop">{{ site.data[site.active_lang].strings.games_title | default: 'Games' }}</span>
+                <span class="nav-text-desktop">{{ site.data[site.active_lang].strings.nav_games | default: 'Games' }}</span>
                 <span class="nav-text-mobile">{{ site.data[site.active_lang].strings.nav_games | default: 'Games' }}</span>
             </a>
             <a href="{{ '/blog/' | relative_url }}"{% if nav_path == '/blog/' or page.layout == 'post' %} aria-current="page"{% endif %}>
