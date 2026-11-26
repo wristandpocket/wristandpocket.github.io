@@ -22,6 +22,10 @@ layout: default
             <time datetime="{{ page.date | date_to_xmlschema }}">
                 {{ page.date | local_date: site.active_lang }}
             </time>
+            {% if page.last_modified_at %}
+            <span class="meta-sep">&bull;</span>
+            <span class="post-meta-updated">{{ site.data[site.active_lang].strings.updated_label | default: 'Updated' }} <time datetime="{{ page.last_modified_at | date_to_xmlschema }}">{{ page.last_modified_at | local_date: site.active_lang }}</time></span>
+            {% endif %}
             <span class="meta-sep">&bull;</span>
             <span>
                 {% assign words = content | number_of_words %}
