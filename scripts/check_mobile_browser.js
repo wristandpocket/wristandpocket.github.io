@@ -486,6 +486,7 @@ async function main() {
       '--no-sandbox',
       '--no-first-run',
       '--no-default-browser-check',
+      '--lang=en-US',
       `--user-data-dir=${profile}`,
       `--remote-debugging-port=${debugPort}`,
       `--window-size=${WIDTH},${HEIGHT}`,

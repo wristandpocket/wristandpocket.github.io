@@ -1,7 +1,7 @@
 {% assign copy = site.data.site_copy[site.active_lang] %}
 {% assign strings = site.data[site.active_lang].strings %}
 <footer class="site-footer">
-    <div class="footer-links"><a href="{{ '/games/' | relative_url }}">{{ strings.nav_games }}</a><a href="{{ '/tools/wearview/' | relative_url }}">WearView 3D</a><a href="https://wristandpocket.dev/wearview/">{{ copy.tool_cta }}</a><a href="{{ '/blog/' | relative_url }}">{{ strings.nav_news }}</a><a href="{{ '/contact/' | relative_url }}">{{ copy.contact }}</a><a href="https://discord.gg/6vzt33SX9D" target="_blank" rel="noopener noreferrer" data-goatcounter-click="footer-discord">Discord</a><a href="{{ '/privacy/' | relative_url }}">{{ strings.privacy_policy }}</a><a href="https://sivochka.com/{% if site.active_lang != 'en' %}{{ site.active_lang }}/{% endif %}" target="_blank" rel="noopener noreferrer">{{ copy.founder }}</a></div>
-    <p>&copy; {{ site.time | date: '%Y' }} Wrist &amp; Pocket Studio. {{ copy.rights }}</p>
+    <div class="footer-links"><a href="{{ '/games/' | relative_url }}">{{ strings.nav_games }}</a><a href="{{ '/tools/wearview/' | relative_url }}" translate="no">WearView 3D</a><a href="https://wristandpocket.dev/wearview/">{{ copy.tool_cta }}</a><a href="{{ '/blog/' | relative_url }}">{{ strings.nav_news }}</a><a href="{{ '/contact/' | relative_url }}">{{ copy.contact }}</a><a href="https://discord.gg/6vzt33SX9D" target="_blank" rel="noopener noreferrer" translate="no" data-goatcounter-click="footer-discord">Discord</a><a href="{{ '/privacy/' | relative_url }}">{{ strings.privacy_policy }}</a><a href="https://sivochka.com/{% if site.active_lang != 'en' %}{{ site.active_lang }}/{% endif %}" target="_blank" rel="noopener noreferrer">{{ copy.founder }}</a></div>
+    <p>&copy; {{ site.time | date: '%Y' }} <span class="notranslate" translate="no">Wrist &amp; Pocket Studio</span>. {{ copy.rights }}</p>
     <p class="site-footer__disclaimer">{{ copy.disclaimer }}</p>
 </footer>
