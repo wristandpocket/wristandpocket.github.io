@@ -9,7 +9,7 @@ permalink: /privacy/
 
 <div class="privacy-page fade-in">
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: November 23, 2026</p>
+    <p class="updated">Last updated: November 27, 2026</p>
     <p><strong>Product configuration:</strong> This policy gives a studio-wide baseline. The services described below depend on the configuration, features, providers, and consent flow of each product. The presence of an SDK API alone does not confirm that data is collected or transmitted.</p>
 
     <section>
@@ -42,7 +42,7 @@ permalink: /privacy/
         <p>We use reasonable technical and organizational measures for the data we process. Online services cannot guarantee complete security, and this policy does not promise a particular security or deletion result from a third-party provider.</p>
 
         <h2>8. Website</h2>
-        <p>Our website stores your selected language in this browser and uses cookieless, privacy-first pageview counting (GoatCounter) through our own first-party proxy on Cloudflare, without cookies, cross-site tracking, or personal profiles. For each pageview GoatCounter receives your IP address, User-Agent and Referer to count unique visits, and does not store the IP. Hosting or security systems may receive basic server logs such as IP address, browser type, pages visited, referrer, and request time. This website statement does not describe Product telemetry. If we add cookies, forms, or newsletters for new purposes, we will update this policy before using them for those purposes.</p>
+        <p>Our website stores your selected language in this browser and uses cookieless, privacy-first pageview counting (GoatCounter) through our own first-party proxy on Cloudflare, without cookies, cross-site tracking, or personal profiles. For each pageview GoatCounter receives your IP address, User-Agent and Referer to count unique visits, and does not store the IP. We also use Cloudflare Web Analytics, a cookieless script from our hosting provider Cloudflare that counts visits and page load speed without cookies, fingerprinting or personal profiles. Hosting or security systems may receive basic server logs such as IP address, browser type, pages visited, referrer, and request time. This website statement does not describe Product telemetry. If we add cookies, forms, or newsletters for new purposes, we will update this policy before using them for those purposes.</p>
 
         <h2>9. Children and families</h2>
         <p>Product audiences and store classifications can differ. This policy does not set a universal age rating or make every product child-directed. If a product becomes child-directed or joins a family program, we will review and update that product, this policy, and the relevant store disclosures before release.</p>
