@@ -336,7 +336,6 @@ function validateFrontMatter() {
     const langs = new Set(entries.map(entry => entry.fm.lang));
     const permalinks = new Set(entries.map(entry => entry.fm.permalink));
     for (const lang of LANGS) {
-      if (lang === 'pl' && entries.every(entry => entry.file.startsWith('_posts/'))) continue;
       if (!langs.has(lang)) addError(`page_id "${pageId}" is missing ${lang} translation.`);
     }
     if (permalinks.size !== 1) {
