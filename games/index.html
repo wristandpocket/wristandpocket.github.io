@@ -49,7 +49,7 @@ permalink: /games/
   },
   "mainEntity": {
     "@type": "ItemList",
-    "name": "Wrist & Pocket Wear OS Games",
+    "name": {{ strings.games_title | jsonify }},
     "itemListElement": [
       {% for game in sorted_games %}
       {

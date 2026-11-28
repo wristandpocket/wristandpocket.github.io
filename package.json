@@ -10,12 +10,13 @@
     "verify:source-claims": "node scripts/verify_source_claims.js",
     "test:source-claims": "node scripts/test_source_claims.js",
     "verify:browser-320": "node scripts/check_mobile_browser.js",
+    "verify:i18n": "node scripts/check-i18n.mjs",
     "check:images": "node .frontmatter/scripts/check-images.js",
     "new:post": "node .frontmatter/scripts/site-new.js post",
     "new:page": "node .frontmatter/scripts/site-new.js page",
     "new:game": "node .frontmatter/scripts/site-new.js game",
-    "verify": "npm run preflight && npm run build && npm run verify:source-claims && npm run test:source-claims && npm run verify:browser-320 && npm run verify:html && npm run verify:js && npm run verify:quality && npm run verify:routes && npm run test:audit",
-    "verify:ci": "npm run preflight && npm run build && npm run verify:source-claims && npm run test:source-claims && npm run verify:browser-320 && npm run verify:html && npm run verify:js && npm run verify:quality && npm run verify:routes && npm run test:audit",
+    "verify": "npm run preflight && npm run verify:i18n && npm run build && npm run verify:source-claims && npm run test:source-claims && npm run verify:browser-320 && npm run verify:html && npm run verify:js && npm run verify:quality && npm run verify:routes && npm run test:audit",
+    "verify:ci": "npm run preflight && npm run verify:i18n && npm run build && npm run verify:source-claims && npm run test:source-claims && npm run verify:browser-320 && npm run verify:html && npm run verify:js && npm run verify:quality && npm run verify:routes && npm run test:audit",
     "verify:routes": "ruby -E UTF-8:UTF-8 -S bundle exec ruby -E UTF-8:UTF-8 scripts/audit_site.rb",
     "test:audit": "ruby -E UTF-8:UTF-8 -S bundle exec ruby -E UTF-8:UTF-8 scripts/test_audit.rb"
   }

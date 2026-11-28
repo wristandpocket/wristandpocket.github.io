@@ -4,7 +4,7 @@
             var activeLang = '{{ site.active_lang }}';
             var preferredLang = localStorage.getItem('preferred_lang');
             var targetLang = null;
-            var supportedLangs = ['en', 'uk', 'ru', 'ko'];
+            var supportedLangs = ['en', 'uk', 'ru', 'ko', 'pl'];
 
             if (preferredLang) {
                 if (!supportedLangs.includes(preferredLang)) {
@@ -36,7 +36,7 @@
             if (targetLang && targetLang !== activeLang) {
                 var currentPath = window.location.pathname;
                 var pathWithoutLang = currentPath;
-                var match = currentPath.match(/^\/(uk|ru|ko)(\/|$)/);
+                var match = currentPath.match(/^\/(uk|ru|ko|pl)(\/|$)/);
                 if (match) {
                     pathWithoutLang = currentPath.substring(match[0].length);
                     if (!pathWithoutLang.startsWith('/')) {

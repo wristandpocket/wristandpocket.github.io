@@ -17,7 +17,7 @@ const path = require('path');
 const cp = require('child_process');
 
 const ROOT = path.resolve(__dirname, '..', '..');
-const LANGS = ['en', 'uk', 'ru', 'ko'];
+const LANGS = ['en', 'uk', 'ru', 'ko', 'pl'];
 const args = new Set(process.argv.slice(2));
 const allowUrlChange = args.has('--allow-url-change');
 
@@ -88,7 +88,7 @@ function grepValues(block, keys) {
 }
 
 function inferLangFromFile(file) {
-  const match = file.match(/-(en|uk|ru|ko)\.(md|html)$/);
+  const match = file.match(/-(en|uk|ru|ko|pl)\.(md|html)$/);
   return match ? match[1] : null;
 }
 
@@ -210,7 +210,7 @@ const SCAFFOLD_PLACEHOLDERS = [
 
 function contentFiles() {
   const localizedRootPages = fs.readdirSync(ROOT)
-    .filter(f => /-(en|uk|ru|ko)\.md$/.test(f));
+    .filter(f => /-(en|uk|ru|ko|pl)\.md$/.test(f));
   const files = []
     .concat(listFiles('games', f => f.endsWith('.md')))
     .concat(listFiles('tools', f => f.endsWith('.md')))
@@ -253,7 +253,7 @@ function validateFrontMatter() {
       if (!fm.permalink.startsWith('/')) addError(`${file} permalink must start with "/".`);
       if (!fm.permalink.endsWith('/')) addError(`${file} permalink must end with "/".`);
       if (/[A-Z]/.test(fm.permalink)) addError(`${file} permalink contains uppercase characters.`);
-      if (/^\/(uk|ru|ko)\//.test(fm.permalink)) {
+      if (/^\/(uk|ru|ko|pl)\//.test(fm.permalink)) {
         addError(`${file} permalink must be shared across translations; remove the language prefix.`);
       }
     }
@@ -336,6 +336,7 @@ function validateFrontMatter() {
     const langs = new Set(entries.map(entry => entry.fm.lang));
     const permalinks = new Set(entries.map(entry => entry.fm.permalink));
     for (const lang of LANGS) {
+      if (lang === 'pl' && entries.every(entry => entry.file.startsWith('_posts/'))) continue;
       if (!langs.has(lang)) addError(`page_id "${pageId}" is missing ${lang} translation.`);
     }
     if (permalinks.size !== 1) {

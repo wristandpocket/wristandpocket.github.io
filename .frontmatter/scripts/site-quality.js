@@ -16,7 +16,7 @@ const path = require('path');
 
 const ROOT = path.resolve(process.cwd());
 const SITE = path.join(ROOT, '_site');
-const LANGS = new Set(['en', 'uk', 'ru', 'ko']);
+const LANGS = new Set(['en', 'uk', 'ru', 'ko', 'pl']);
 const errors = [];
 const warnings = [];
 const passes = [];
@@ -143,9 +143,9 @@ else errors.push(`Expected at least four generated HTML pages; found ${pages.len
 
 const localePages = pages.filter(file => {
   const text = fs.readFileSync(file, 'utf8');
-  return /\/(en|uk|ru|ko)\//i.test(file)
-    || /-(en|uk|ru|ko)\.html$/i.test(file)
-    || /<html\b[^>]*\blang\s*=\s*["'](?:en|uk|ru|ko)["']/i.test(text);
+  return /\/(en|uk|ru|ko|pl)\//i.test(file)
+    || /-(en|uk|ru|ko|pl)\.html$/i.test(file)
+    || /<html\b[^>]*\blang\s*=\s*["'](?:en|uk|ru|ko|pl)["']/i.test(text);
 });
 if (localePages.length === 0) warnings.push('No localized generated paths were detected; verify locale routing manually.');
 else passes.push(`Detected ${localePages.length} localized generated page(s).`);

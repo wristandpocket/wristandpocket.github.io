@@ -1,0 +1,17 @@
+# Inline glossary for posts: {% include term.html id="<key>" %}
+# term = headword shown in the tooltip, def = one or two plain sentences for readers.
+softlock:
+  term: "Softlock"
+  def: "Ślepy zaułek w grze: aplikacja nie zawiesiła się i przyciski nadal działają, ale przez błąd nie da się przejść dalej. Zwykle pomaga tylko restart."
+fps:
+  term: "FPS"
+  def: "Klatki na sekundę. Od 30 FPS ruch wygląda płynnie, poniżej 15 obraz rwie, a 2–10 FPS to już pokaz slajdów."
+render:
+  term: "Renderowanie"
+  def: "Rysowanie każdej klatki gry na ekranie. Im cięższa scena i słabsze urządzenie, tym wolniejsze renderowanie i niższy FPS."
+ui-ux:
+  term: "UI/UX"
+  def: "UI to wygląd interfejsu (przyciski, ekrany, podpowiedzi), a UX to wygoda i przejrzystość korzystania z niego."
+bug:
+  term: "Błąd (bug)"
+  def: "Pomyłka w kodzie programu, przez którą działa on inaczej, niż zaplanowali twórcy."

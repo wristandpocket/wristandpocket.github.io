@@ -8,6 +8,7 @@ image: "/assets/images/games/cyberpunk3d-banner-new.webp"
 thumbnail: "/assets/images/games/cyberpunk3d-screen1-thumb.webp"
 game_icon: "/assets/images/icons/game-cyberpunk.png"
 description: "네온 도시를 배경으로 한 Wear OS용 3D 게임. 스튜디오의 파일럿 프로젝트이며 현재 테스트 중입니다."
+seo_description: "Cyberpunk 3D는 네온 도시를 배경으로 한 실시간 3D Wear OS 게임으로, 스튜디오의 파일럿 프로젝트이며 현재 테스트 중입니다. 공개 다운로드는 아직 제공되지 않습니다."
 order: 1
 tester_cta: false
 page_id: "game-cyberpunk-3d"

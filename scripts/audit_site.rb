@@ -25,9 +25,9 @@ indexable = []
 metadata = Hash.new { |hash, key| hash[key] = [] }
 docs.each do |file, doc|
   route = route_for.call(file)
-  bare = route.sub(%r{^/(uk|ru|ko)/}, '/')
+  bare = route.sub(%r{^/(uk|ru|ko|pl)/}, '/')
   url = origin + route
-  lang = route[%r{^/(uk|ru|ko)/}, 1] || 'en'
+  lang = route[%r{^/(uk|ru|ko|pl)/}, 1] || 'en'
   is_404 = bare == '/404.html'
   check.call(doc.at_css('html')&.[]('lang') == lang, route, 'incorrect document language')
   check.call(doc.css('h1').size == 1, route, 'expected one H1')
@@ -43,8 +43,8 @@ docs.each do |file, doc|
   check.call(is_404 ? robots.include?('noindex') : !robots.include?('noindex'), route, 'incorrect indexing directive')
   indexable << url unless is_404
   alternates = doc.css('link[hreflang]')
-  check.call(alternates.size == 5, route, 'expected exactly five hreflang links')
-  %w[en uk ru ko x-default].each do |alternate|
+  check.call(alternates.size == 6, route, 'expected exactly six hreflang links')
+  %w[en uk ru ko pl x-default].each do |alternate|
     expected = origin + (%w[en x-default].include?(alternate) ? '' : "/#{alternate}") + bare
     check.call(alternates.select { |n| n['hreflang'] == alternate }.map { |n| n['href'] } == [expected], route, "incorrect hreflang #{alternate}")
   end
@@ -59,7 +59,7 @@ docs.each do |file, doc|
       check.call(!block.text.match?(/aggregateRating|"offers"/), route, 'unverified rating or offer')
       # Check URL identities too: Polyglot does not localize JSON-LD strings.
       objects = data['@graph'] || [data]
-      if %w[/ /uk/ /ru/ /ko/].include?(route)
+      if %w[/ /uk/ /ru/ /ko/ /pl/].include?(route)
         check.call(objects.none? { |object| object['@type'] == 'BreadcrumbList' }, route, 'homepage emits self-referential BreadcrumbList')
       end
       objects.each do |object|

@@ -96,6 +96,7 @@
     uk: ["Перегляд фото", "Закрити", "Попереднє фото", "Наступне фото"],
     ru: ["Просмотр фото", "Закрыть", "Предыдущее фото", "Следующее фото"],
     ko: ["사진 보기", "닫기", "이전 사진", "다음 사진"],
+    pl: ["Podgląd zdjęcia", "Zamknij", "Poprzednie zdjęcie", "Następne zdjęcie"],
     en: ["Photo viewer", "Close", "Previous photo", "Next photo"]
   };
   var t = L[lang] || L.en;

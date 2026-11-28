@@ -59,7 +59,7 @@ plugins:
   - jekyll-last-modified-at
 
 # ── Polyglot Settings ────────────────────────────────────────
-languages: ["en", "uk", "ru", "ko"]
+languages: ["en", "uk", "ru", "ko", "pl"]
 default_lang: "en"
 exclude_from_localization:
   - security.txt
