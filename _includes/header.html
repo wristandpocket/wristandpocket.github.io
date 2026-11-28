@@ -6,7 +6,7 @@
     {% endif %}
     {% if nav_path == '' %}{% assign nav_path = '/' %}{% endif %}
     <nav class="site-nav">
-        <a href="{{ '/' | relative_url }}" class="site-nav__brand notranslate" translate="no" aria-label="Wrist &amp; Pocket Studio"><span class="brand-w">W</span><span class="brand-amp">&amp;</span><span class="brand-p">P</span><span class="brand-tail">STUDIO</span></a>
+        <a href="{{ '/' | relative_url }}" class="site-nav__brand notranslate" translate="no" aria-label="Wrist &amp; Pocket Studio"{% if nav_path == '/' %} aria-current="page"{% endif %}><span class="brand-w">W</span><span class="brand-amp">&amp;</span><span class="brand-p">P</span><span class="brand-tail">STUDIO</span></a>
         <div class="site-nav__links">
             <a href="{{ '/games/' | relative_url }}"{% if nav_path == '/games/' or page.layout == 'game' %} aria-current="page"{% endif %}>
                 <span class="nav-text-desktop">{{ site.data[site.active_lang].strings.nav_games | default: 'Games' }}</span>
@@ -19,25 +19,37 @@
             <a href="{{ '/tools/wearview/' | relative_url }}" translate="no"{% if page.layout == 'tool' %} aria-current="page"{% endif %}>WearView</a>
 
             <a href="{{ "/contact/" | relative_url }}" class="nav-contact"{% if nav_path == '/contact/' %} aria-current="page"{% endif %}>{{ site.data.site_copy[site.active_lang].contact }}</a>
+        </div>
 
-            <!-- Language Switcher (Polyglot) -->
-            {% assign bare_url = page.url %}
-            {% for lang in site.languages %}
-            {% capture prefix %}/{{ lang }}{% endcapture %}
-            {% assign url_head = page.url | slice: 0, prefix.size %}
-            {% assign url_next = page.url | slice: prefix.size, 1 %}
-            {% if url_head == prefix and url_next == '' or url_head == prefix and url_next == '/' %}
-            {% assign bare_url = page.url | slice: prefix.size, page.url.size %}
-            {% break %}
-            {% endif %}
-            {% endfor %}
-            {% if bare_url == '' %}{% assign bare_url = '/' %}{% endif %}
+        <!-- Language Switcher (Polyglot) -->
+        {% assign bare_url = page.url %}
+        {% for lang in site.languages %}
+        {% capture prefix %}/{{ lang }}{% endcapture %}
+        {% assign url_head = page.url | slice: 0, prefix.size %}
+        {% assign url_next = page.url | slice: prefix.size, 1 %}
+        {% if url_head == prefix and url_next == '' or url_head == prefix and url_next == '/' %}
+        {% assign bare_url = page.url | slice: prefix.size, page.url.size %}
+        {% break %}
+        {% endif %}
+        {% endfor %}
+        {% if bare_url == '' %}{% assign bare_url = '/' %}{% endif %}
 
-            <div class="lang-switch-wrapper" translate="no" role="group" aria-label="{{ site.data.site_copy[site.active_lang].languages }}">
-                {% for lang in site.languages %}
+        <div class="lang-switch-wrapper" translate="no">
+            <button type="button" class="lang-switch-btn" aria-expanded="false" aria-haspopup="menu" aria-label="{{ site.data.site_copy[site.active_lang].languages }}">
+                <span class="lang-switch-btn__globe" aria-hidden="true">&#x1F310;</span>
+                <span class="lang-switch-btn__code">{{ site.active_lang | upcase }}</span>
+                <span class="lang-switch-btn__caret" aria-hidden="true">&#x25BE;</span>
+            </button>
+            <div class="lang-menu" role="menu" aria-label="{{ site.data.site_copy[site.active_lang].languages }}" hidden>
+                {% assign lang_order = "en,uk,pl,ru,ko" | split: "," %}
+                {% for lang in lang_order %}
                 {% assign language_name = site.data.language_names[lang] %}
                 {% capture language_url %}{% if lang != site.default_lang %}/{{ lang }}{% endif %}{{ bare_url }}{% endcapture %}
-                <a {% static_href %}href="{{ language_url }}"{% endstatic_href %} class="lang-switch{% if lang == site.active_lang %} active{% endif %}" data-lang="{{ lang }}" lang="{{ lang }}" hreflang="{{ lang }}" aria-label="{{ language_name }}" {% if lang == site.active_lang %}aria-current="page"{% endif %}>{{ lang | upcase }}</a>
+                <a {% static_href %}href="{{ language_url }}"{% endstatic_href %} role="menuitem" class="lang-menu__item{% if lang == site.active_lang %} active{% endif %}" data-lang="{{ lang }}" lang="{{ lang }}" hreflang="{{ lang }}"{% if lang == site.active_lang %} aria-current="page"{% endif %}>
+                    <span class="lang-menu__code">{{ lang | upcase }}</span>
+                    <span class="lang-menu__sep" aria-hidden="true">&middot;</span>
+                    <span class="lang-menu__name">{{ language_name }}</span>
+                </a>
                 {% endfor %}
             </div>
         </div>

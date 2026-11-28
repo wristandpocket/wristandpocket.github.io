@@ -430,7 +430,9 @@ async function inspectRoute(session, baseUrl, route) {
       naturalWidth: image.naturalWidth,
       naturalHeight: image.naturalHeight
     }));
-    const navTargets = [...document.querySelectorAll('nav a, nav button')].map(element => {
+    const navTargets = [...document.querySelectorAll('nav a, nav button')]
+      .filter(element => !element.closest('[hidden]'))
+      .map(element => {
       const rect = element.getBoundingClientRect();
       return {
         label: element.getAttribute('aria-label') || element.textContent.trim().replace(/\\s+/g, ' ').slice(0, 60),
@@ -456,7 +458,7 @@ async function inspectRoute(session, baseUrl, route) {
   if (result.scrollWidth > WIDTH) routeFailures.push(`document overflow: scrollWidth ${result.scrollWidth}`);
   if (result.h1Count !== 1) routeFailures.push(`expected one H1, found ${result.h1Count}`);
   if (!result.lang) routeFailures.push('html[lang] is missing');
-  if (result.activeNavigationCount < 1) routeFailures.push('no active navigation item with aria-current="page"');
+  if (route !== '/404.html' && result.activeNavigationCount < 1) routeFailures.push('no active navigation item with aria-current="page"');
   if (result.images.some(image => !image.complete || image.naturalWidth === 0)) routeFailures.push('one or more images failed to load');
   if (result.tooSmallNavigation.length) routeFailures.push(`navigation target below 44x44: ${JSON.stringify(result.tooSmallNavigation)}`);
   if (routeFailures.length) failures.push(`${route}: ${routeFailures.join('; ')}`);

@@ -1,9 +1,31 @@
 // Progressive enhancement; no analytics transport is installed.
 (function () {
     'use strict';
-    document.querySelectorAll('.lang-switch[data-lang]').forEach(function (link) {
-        link.addEventListener('click', function () {
-            try { localStorage.setItem('preferred_lang', link.dataset.lang); } catch (_) { /* Optional storage. */ }
+    document.querySelectorAll('.lang-switch-wrapper').forEach(function (wrapper) {
+        var button = wrapper.querySelector('.lang-switch-btn');
+        var menu = wrapper.querySelector('.lang-menu');
+        if (!button || !menu) return;
+        function setOpen(open) {
+            button.setAttribute('aria-expanded', open ? 'true' : 'false');
+            menu.hidden = !open;
+        }
+        button.addEventListener('click', function (event) {
+            event.stopPropagation();
+            setOpen(menu.hidden);
+        });
+        document.addEventListener('click', function (event) {
+            if (!menu.hidden && !wrapper.contains(event.target)) setOpen(false);
+        });
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && !menu.hidden) {
+                setOpen(false);
+                button.focus();
+            }
+        });
+        menu.querySelectorAll('.lang-menu__item[data-lang]').forEach(function (link) {
+            link.addEventListener('click', function () {
+                try { localStorage.setItem('preferred_lang', link.dataset.lang); } catch (_) { /* Optional storage. */ }
+            });
         });
     });
     var filters = document.querySelectorAll('.btn-filter');
